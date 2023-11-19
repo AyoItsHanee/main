@@ -1,5 +1,4 @@
-repeat wait()
-until game:IsLoaded()
+repeat wait() until game:IsLoaded()
 local Players = game:GetService("Players")
 local ReplicatedStorage = game:GetService("ReplicatedStorage")
 local Workspace = game:GetService("Workspace")
@@ -30,7 +29,6 @@ game:GetService("ReplicatedStorage").handle_privateserver:InvokeServer(unpack(ar
 elseif placeId == 13883059853 then
 -- Auto collect chest
 local AutoCollectChest = true
-
 local function collectChest()
     while wait() do
         if AutoCollectChest then
