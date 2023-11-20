@@ -49,7 +49,7 @@ coroutine.wrap(collectChest)()
 
 -- Loop to initiate a skill
 local function initiateSkill()
-    while true do
+    while task.wait() do
         local Handle_Initiate_S_ = ReplicatedStorage.Remotes.To_Server.Handle_Initiate_S_
         Handle_Initiate_S_:InvokeServer("skil_ting_asd", Players.LocalPlayer, "arrow_knock_back", 5)
         wait(14)
@@ -60,7 +60,7 @@ coroutine.wrap(initiateSkill)()
 
 -- Loop to attack mobs
 local function attackMobs()
-    while true do
+    while task.wait() do
         local hitCounter = {}
 
         for _, mob in pairs(Workspace.Mobs:GetDescendants()) do
@@ -90,7 +90,7 @@ coroutine.wrap(attackMobs)()
 
 -- Loop to prevent falling
 local function preventFall()
-    while true do
+    while task.wait() do
         local antifall3 = Instance.new("BodyVelocity", Players.LocalPlayer.Character.HumanoidRootPart)
         antifall3.Velocity = Vector3.new(0, 0, 0)
         antifall3.MaxForce = Vector3.new(9e9, 9e9, 9e9)
