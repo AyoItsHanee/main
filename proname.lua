@@ -12,7 +12,6 @@ local Dir = COREGUI:FindFirstChild("RobloxPromptGui"):FindFirstChild("promptOver
 			Err:GetPropertyChangedSignal("Text"):Connect(function()
 				if Err.Text:sub(0, 12) == "Disconnected" then
 						Players.LocalPlayer:Kick("\nRejoining...")
-						wait()
 						TeleportService:Teleport(5956785391, Players.LocalPlayer)
 				end
 			end)
@@ -37,7 +36,6 @@ local function collectChest()
                 if chest.Name == "Loot_Chest" then
                     for _, drop in pairs(chest:FindFirstChild("Drops"):GetChildren()) do
                         chest.Add_To_Inventory:InvokeServer(drop.Name)
-                        wait(0.1)
                         drop:Destroy()
                     end
                 end
@@ -50,7 +48,7 @@ coroutine.wrap(collectChest)()
 
 -- Loop to initiate a skill
 local function initiateSkill()
-    while task.wait() do
+    while wait() do
         local Handle_Initiate_S_ = ReplicatedStorage.Remotes.To_Server.Handle_Initiate_S_
         Handle_Initiate_S_:InvokeServer("skil_ting_asd", Players.LocalPlayer, "arrow_knock_back", 5)
         wait(14)
@@ -61,7 +59,7 @@ coroutine.wrap(initiateSkill)()
 
 -- Loop to attack mobs
 local function attackMobs()
-    while task.wait() do
+    while wait() do
         local hitCounter = {}
 
         for _, mob in pairs(Workspace.Mobs:GetDescendants()) do
@@ -82,8 +80,6 @@ local function attackMobs()
                 end
             end
         end
-
-        wait()
     end
 end
 
@@ -91,11 +87,10 @@ coroutine.wrap(attackMobs)()
 
 -- Loop to prevent falling
 local function preventFall()
-    while task.wait() do
+    while wait() do
         local antifall3 = Instance.new("BodyVelocity", Players.LocalPlayer.Character.HumanoidRootPart)
         antifall3.Velocity = Vector3.new(0, 0, 0)
         antifall3.MaxForce = Vector3.new(9e9, 9e9, 9e9)
-        wait()
     end
 end
 
@@ -209,8 +204,6 @@ local function CheckAndMove(pathName, position, pathToCheck, Time, Num)
     local prevPosition = Root.Position
 
     while wait() do
-        wait(1)
-        
         if pathToCheck and #pathToCheck:GetChildren() <= Num then
             print("Moving to the next path")
             break
@@ -234,7 +227,6 @@ end
 local function main()
     for _, pathInfo in ipairs(pathsToCheck) do
         CheckAndMove(pathInfo.name, pathInfo.position, pathInfo.path, pathInfo.time, pathInfo.num)
-        wait(1)
     end
     wait(10)
     main()
