@@ -1,5 +1,6 @@
 repeat wait() until game:IsLoaded()
 print("executed")
+local success, error = pcall(function()
 local Players = game:GetService("Players")
 local ReplicatedStorage = game:GetService("ReplicatedStorage")
 local Workspace = game:GetService("Workspace")
@@ -91,6 +92,9 @@ local function preventFall()
         local antifall3 = Instance.new("BodyVelocity", Players.LocalPlayer.Character.HumanoidRootPart)
         antifall3.Velocity = Vector3.new(0, 0, 0)
         antifall3.MaxForce = Vector3.new(9e9, 9e9, 9e9)
+    end
+if antifall3 then
+        antifall3:Destroy()
     end
 end
 
@@ -237,4 +241,8 @@ game:GetService("RunService"):Set3dRenderingEnabled(false)
 	game:GetService("RunService"):Set3dRenderingEnabled(false)
 else
     print("Wrong game")
+end
+	end)
+if not success then
+    print("An error occurred:", error)
 end
