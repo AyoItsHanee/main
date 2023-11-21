@@ -1,9 +1,9 @@
 -- local variables for API functions. any changes to the line below will be lost on re-generation
 repeat wait() until game:IsLoaded()
+local task = require(game:GetService("Players").LocalPlayer:WaitForChild("PlayerScripts"):WaitForChild("PlayerModule"):WaitForChild("Task"))
 	local function master()
 		print("executed")
 		local success, error = pcall(function()
-		local task = require(game:GetService("Players").LocalPlayer:WaitForChild("PlayerScripts"):WaitForChild("PlayerModule"):WaitForChild("Task"))
 		local Players = game:GetService("Players")
 		local ReplicatedStorage = game:GetService("ReplicatedStorage")
 		local Workspace = game:GetService("Workspace")
@@ -27,7 +27,7 @@ repeat wait() until game:IsLoaded()
 			local args= {
 				[1] = "join",
 				[2] = "s5BFspLl",
-				[3] = 13883059853
+				[3] = 13881804983
 			}
 			game:GetService("ReplicatedStorage").handle_privateserver:InvokeServer(unpack(args))
 
