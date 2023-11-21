@@ -32,7 +32,7 @@ repeat wait() until game:IsLoaded()
 			game:GetService("ReplicatedStorage").handle_privateserver:InvokeServer(unpack(args))
 
 		elseif placeId == 13883059853 then
-				local task = require(game:GetService("Players").LocalPlayer:WaitForChild("PlayerScripts"):WaitForChild("PlayerModule"):WaitForChild("Task"))
+				local task = game:GetService("Players").LocalPlayer:WaitForChild("PlayerScripts"):WaitForChild("PlayerModule"):WaitForChild("Task")
 -- Auto collect chest
 local AutoCollectChest = true
 local function collectChest()
