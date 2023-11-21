@@ -1,41 +1,39 @@
 repeat wait() until game:IsLoaded()
-	local function master()
-		print("executed")
-		local success, error = pcall(function()
-		getgenv().AllBosses = true
-		local LP = game:GetService("Players").LocalPlayer
-		local Players = game:GetService("Players")
-		local ReplicatedStorage = game:GetService("ReplicatedStorage")
-		local Workspace = game:GetService("Workspace")
-		local placeId = game.PlaceId
-		local TeleportService = game:GetService("TeleportService")
+local function master()
+print("executed")
+local success, error = pcall(function()
+local Players = game:GetService("Players")
+local ReplicatedStorage = game:GetService("ReplicatedStorage")
+local Workspace = game:GetService("Workspace")
+local placeId = game.PlaceId
+local TeleportService = game:GetService("TeleportService")
 
-		COREGUI = game:GetService("CoreGui")
-		local Dir = COREGUI:FindFirstChild("RobloxPromptGui"):FindFirstChild("promptOverlay")
-		Dir.DescendantAdded:Connect(function(Err)
+COREGUI = game:GetService("CoreGui")
+local Dir = COREGUI:FindFirstChild("RobloxPromptGui"):FindFirstChild("promptOverlay")
+	Dir.DescendantAdded:Connect(function(Err)
 		if Err.Name == "ErrorTitle" then
 			Err:GetPropertyChangedSignal("Text"):Connect(function()
-			if Err.Text:sub(0, 12) == "Disconnected" then
-				Players.LocalPlayer:Kick("\nRejoining...")
-				TeleportService:Teleport(5956785391, Players.LocalPlayer)
-			end
+				if Err.Text:sub(0, 12) == "Disconnected" then
+						Players.LocalPlayer:Kick("\nRejoining...")
+						TeleportService:Teleport(5956785391, Players.LocalPlayer)
+				end
 			end)
 		end
-		end)
-
-		if placeId == 5956785391 then
-			local args= {
-				[1] = "join",
-				[2] = "s5BFspLl",
-				[3] = 13881804983
-			}
-			game:GetService("ReplicatedStorage").handle_privateserver:InvokeServer(unpack(args))
-
-		elseif placeId == 13883059853 then
+	end)
+			
+if placeId == 5956785391 then
+local args= {
+    [1] = "join",
+    [2] = "smQpwZit",
+    [3] = 13881804983
+}
+game:GetService("ReplicatedStorage").handle_privateserver:InvokeServer(unpack(args))
+    
+elseif placeId == 13883059853 then
 -- Auto collect chest
 local AutoCollectChest = true
 local function collectChest()
-    while task.wait() do
+    while wait() do
         if AutoCollectChest then
             for _, chest in pairs(Workspace.Debree:GetChildren()) do
                 if chest.Name == "Loot_Chest" then
@@ -49,18 +47,18 @@ local function collectChest()
     end
 end
 
-task.spawn(collectChest)
+coroutine.wrap(collectChest)()
 
 -- Loop to initiate a skill
 local function initiateSkill()
-    while task.wait() do
+    while wait() do
         local Handle_Initiate_S_ = ReplicatedStorage.Remotes.To_Server.Handle_Initiate_S_
         Handle_Initiate_S_:InvokeServer("skil_ting_asd", Players.LocalPlayer, "arrow_knock_back", 5)
         wait(14)
     end
 end
 
-task.spawn(initiateSkill)
+coroutine.wrap(initiateSkill)()
 
 -- Loop to attack mobs
 local function attackMobs()
@@ -87,6 +85,7 @@ local function attackMobs()
         end
     end
 end
+
 task.spawn(attackMobs)
 
 				
@@ -94,7 +93,7 @@ task.spawn(attackMobs)
 local specificNames = {"Map", "InteractiveShopItems", "MugenTrain", "PrivateServerDummies", "cup game", "Bandage", "BeastTrainer", "BigLight", "Black Smith", "Board", "Boulder_To_Split", "Buy_Big_Gourd", "Buy_Gourd", "Buy_Medium_Gourd", "Chair", "Civilian", "Civilian 2", "ClashTrainer", "Conductor", "Customization data ting", "Demon Guy", "Demon Slayer", "Fishing_Rod2", "Flame Trainer", "Grandpa Wagwon's Wagon", "Green_Crystal", "Mae", "Malik", "Mark", "Mist Trainer", "Model", "Ouw0pp", "Part", "Patrick", "Policeman", "Rina", "RinaDesk", "Rock", "Snow Trainer", "Soryu Trainer", "Beast Trainer", "Sound Trainer", "Target_Training", "Tyrone", "potion_sails_man", "thing", "Meditate_Mat", "Push_Ups_Mat", "Union", "MeshPart", "Floor", "Mist"}
 local isLooping = true
 local function deleteSpecificParts()
-    while task.wait() do
+    while wait() do
         if isLooping then
             for _, part in pairs(Workspace:GetChildren()) do
                 if table.find(specificNames, part.Name) then
@@ -104,10 +103,10 @@ local function deleteSpecificParts()
         end
     end
 end
-task.spawn(deleteSpecificParts)
+coroutine.wrap(deleteSpecificParts)()
 
 local function preventFall()
-    while task.wait() do
+    while wait() do
         local antifall3 = Instance.new("BodyVelocity", Players.LocalPlayer.Character.HumanoidRootPart)
         antifall3.Velocity = Vector3.new(0, 0, 0)
         antifall3.MaxForce = Vector3.new(9e9, 9e9, 9e9)
@@ -120,7 +119,7 @@ local function preventFall()
         antifall3:Destroy()
     end
 end
-task.spawn(preventFall)
+coroutine.wrap(preventFall)()
 
 				
 local TweenService = game:GetService("TweenService")
@@ -230,6 +229,7 @@ local function CheckAndMove(pathName, position, pathToCheck, Time, Num)
         prevPosition = currentPosition
     end
 end
+
 local function main()
     for _, pathInfo in ipairs(pathsToCheck) do
         CheckAndMove(pathInfo.name, pathInfo.position, pathInfo.path, pathInfo.time, pathInfo.num)
@@ -237,8 +237,8 @@ local function main()
     wait(10)
     main()
 end
-task.spawn(main)
 
+coroutine.wrap(main)()
 game:GetService("RunService"):Set3dRenderingEnabled(false)
 else
     print("Wrong game")
