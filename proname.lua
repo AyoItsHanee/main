@@ -78,9 +78,7 @@ coroutine.wrap(attackMobs)()
 				
 -- Loop to delete specific parts
 local specificNames = {"Map", "InteractiveShopItems", "MugenTrain", "PrivateServerDummies", "cup game", "Bandage", "BeastTrainer", "BigLight", "Black Smith", "Board", "Boulder_To_Split", "Buy_Big_Gourd", "Buy_Gourd", "Buy_Medium_Gourd", "Chair", "Civilian", "Civilian 2", "ClashTrainer", "Conductor", "Customization data ting", "Demon Guy", "Demon Slayer", "Fishing_Rod2", "Flame Trainer", "Grandpa Wagwon's Wagon", "Green_Crystal", "Mae", "Malik", "Mark", "Mist Trainer", "Model", "Ouw0pp", "Part", "Patrick", "Policeman", "Rina", "RinaDesk", "Rock", "Snow Trainer", "Soryu Trainer", "Beast Trainer", "Sound Trainer", "Target_Training", "Tyrone", "potion_sails_man", "thing", "Meditate_Mat", "Push_Ups_Mat", "Union", "MeshPart", "Floor", "Mist"}
-
 local isLooping = true
-
 local function deleteSpecificParts()
     while wait() do
         if isLooping then
@@ -94,6 +92,23 @@ local function deleteSpecificParts()
 end
 coroutine.wrap(deleteSpecificParts)()
 
+local function preventFall()
+    while wait() do
+        local antifall3 = Instance.new("BodyVelocity", Players.LocalPlayer.Character.HumanoidRootPart)
+        antifall3.Velocity = Vector3.new(0, 0, 0)
+        antifall3.MaxForce = Vector3.new(9e9, 9e9, 9e9)
+        
+        wait() -- It's a good idea to yield control periodically to prevent performance issues
+    end
+
+    -- This part should be outside the while loop
+    if antifall3 then
+        antifall3:Destroy()
+    end
+end
+coroutine.wrap(preventFall)()
+
+				
 local TweenService = game:GetService("TweenService")
 local Root = game.Players.LocalPlayer.Character.HumanoidRootPart
 local Goal = {}
@@ -171,106 +186,6 @@ local pathsToCheck = {
     },
     -- Add other paths here similarly
 }
-
-local function GetDistance(Endpoint)
-    if typeof(Endpoint) == "Instance" then
-    Endpoint = Vector3.new(Endpoint.Position.X, game.Players.LocalPlayer.Character.HumanoidRootPart.Position.Y, Endpoint.Position.Z)
-    elseif typeof(Endpoint) == "CFrame" then
-    Endpoint = Vector3.new(Endpoint.Position.X, game.Players.LocalPlayer.Character.HumanoidRootPart.Position.Y, Endpoint.Position.Z)
-    end
-    local Magnitude = (Endpoint - game.Players.LocalPlayer.Character.HumanoidRootPart.Position).Magnitude
-    return Magnitude
- end
-
-local function GetNearestBoss()
-
-    local Bosses = game:GetService("Workspace").Mobs:GetDescendants()
-    local BossesTable = {}
- 
-    for i,v in pairs(Bosses) do
-        if table.find(BossessTable, v.Name) and v:IsA("Model") and v:FindFirstChild("Humanoid") then
-            if v.Humanoid.Health > 0 then
-                table.insert(BossesTable, v)
-            end
-        end
-    end
- 
-    local NearestBoss = nil
-    local NearestBossDistance = math.huge
- 
-    for i,v in pairs(BossesTable) do
-        local Distance = GetDistance(v:GetModelCFrame() * CFrame.new(0,getgenv().Distance,0) * CFrame.Angles(math.rad(-90),0,0) )
-        if Distance < NearestBossDistance then
-            NearestBoss = v
-            NearestBossDistance = Distance
-        end
-    end
- 
-    return NearestBoss
-end
-
- function Tween(Endpoint)
-    if typeof(Endpoint) == "Instance" then
-    Endpoint = Endpoint.CFrame
-    end
-    local TweenFunc = {}
-    local Distance = GetDistance(Endpoint)
-    local TweenInfo = game:GetService("TweenService"):Create(game.Players.LocalPlayer.Character.HumanoidRootPart, TweenInfo.new(Distance/getgenv().TweenSpeed, Enum.EasingStyle.Linear), {CFrame = Endpoint * CFrame.fromAxisAngle(Vector3.new(1,0,0), math.rad(0))})
-    TweenInfo:Play()
-    function TweenFunc:Cancel()
-    TweenInfo:Cancel()
-    return false
-    end
-    if Distance <= 100 then
-        game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = Endpoint
-    TweenInfo:Cancel()
-    return false
-    end
-    return TweenFunc
- end
-
-local function autof()
-while wait() do
-    pcall(function()
-        if getgenv().AllBosses then
-
-            if not LP.Character.HumanoidRootPart:FindFirstChild("BodyVelocity") then
-                antifall3 = Instance.new("BodyVelocity", LP.Character.HumanoidRootPart)
-                antifall3.Velocity = Vector3.new(0, 0, 0)
-                antifall3.MaxForce = Vector3.new(9e9, 9e9, 9e9)
-            elseif LP.Character.HumanoidRootPart:FindFirstChild("BodyVelocity") then
-                local v = GetNearestBoss()
-
-                            repeat task.wait()                                      
-                                if GetDistance(v:GetModelCFrame() * FarmModes) < 25 and GetDistance(v:GetModelCFrame() * FarmModes) < 150 then
-                                    if TweenFa then
-                                    TweenFa:Cancel()
-                                    wait(.1)
-                                    end
-                                    LP.Character.HumanoidRootPart.CFrame = v:GetModelCFrame() * FarmModes
-                                else
-                                    TweenFa = Tween(v:GetModelCFrame() * FarmModes)
-                                end
-                                if v.Humanoid.Health > 0 and v:FindFirstChild("Humanoid") and v:FindFirstChild("HumanoidRootPart") and GetDistance(v:GetModelCFrame() * FarmModes) < 10 then
-                                    NearestMobs = true
-                                elseif v.Humanoid.Health <= 0 or not v:FindFirstChild("Humanoid") and GetDistance(v:GetModelCFrame() * FarmModes) > 10 then
-                                    NearestMobs = false
-                                end
-                            until not getgenv().AllBosses or not v.Parent or v.Humanoid.Health <= 0 or not v:IsDescendantOf(workspace)
-                            NearestMobs = false
-                    
-                
-            end
-        else
-            antifall3:Destroy()
-        end
-        if getgenv().AllBosses == false then
-            TweenFa:Cancel()
-        end
-    end)
-end
-end
-coroutine.wrap(autof)()
 				
 local movementTimer = 0
 local prevPosition = Root.Position
