@@ -1,7 +1,11 @@
--- local variables for API functions. any changes to the line below will be lost on re-generation
 repeat wait() until game:IsLoaded()
-local task = require(game:GetService("Players").LocalPlayer:WaitForChild("PlayerScripts"):WaitForChild("PlayerModule"):WaitForChild("Task"))
+local CFrame_new, coroutine_wrap, wait, print, getgenv, Instance_new, unpack, pairs, table_find, TweenInfo_new, Vector3_new, ipairs, pcall = CFrame.new, coroutine.wrap, wait, print, getgenv, Instance.new, unpack, pairs, table.find, TweenInfo.new, Vector3.new, ipairs, pcall
+
+	local function master()
 		print("executed")
+		local success, error = pcall(function()
+		getgenv().AllBosses = true
+		local LP = game:GetService("Players").LocalPlayer
 		local Players = game:GetService("Players")
 		local ReplicatedStorage = game:GetService("ReplicatedStorage")
 		local Workspace = game:GetService("Workspace")
@@ -33,7 +37,7 @@ local task = require(game:GetService("Players").LocalPlayer:WaitForChild("Player
 			-- Auto collect chest
 			local AutoCollectChest = true
 			local function collectChest()
-				while task.wait() do
+				while wait() do
 					if AutoCollectChest then
 						for _, chest in pairs(Workspace.Debree:GetChildren()) do
 							if chest.Name == "Loot_Chest" then
@@ -47,22 +51,22 @@ local task = require(game:GetService("Players").LocalPlayer:WaitForChild("Player
 				end
 			end
 
-			task.spawn(collectChest)
+			coroutine_wrap(collectChest)()
 
 			-- Loop to initiate a skill
 			local function initiateSkill()
-				while task.wait() do
+				while wait() do
 					local Handle_Initiate_S_ = ReplicatedStorage.Remotes.To_Server.Handle_Initiate_S_
 					Handle_Initiate_S_:InvokeServer("skil_ting_asd", Players.LocalPlayer, "arrow_knock_back", 5)
 					wait(14)
 				end
 			end
 
-			task.spawn(initiateSkill)
+			coroutine_wrap(initiateSkill)()
 
 			-- Loop to attack mobs
 			local function attackMobs()
-				while task.wait() do
+				while wait() do
 					local hitCounter = {}
 
 					for _, mob in pairs(Workspace.Mobs:GetDescendants()) do
@@ -85,14 +89,13 @@ local task = require(game:GetService("Players").LocalPlayer:WaitForChild("Player
 					end
 				end
 			end
-			task.spawn(attackMobs)
-
+			coroutine_wrap(attackMobs)()
 
 			-- Loop to delete specific parts
 			local specificNames = {"Map", "InteractiveShopItems", "MugenTrain", "PrivateServerDummies", "cup game", "Bandage", "BeastTrainer", "BigLight", "Black Smith", "Board", "Boulder_To_Split", "Buy_Big_Gourd", "Buy_Gourd", "Buy_Medium_Gourd", "Chair", "Civilian", "Civilian 2", "ClashTrainer", "Conductor", "Customization data ting", "Demon Guy", "Demon Slayer", "Fishing_Rod2", "Flame Trainer", "Grandpa Wagwon's Wagon", "Green_Crystal", "Mae", "Malik", "Mark", "Mist Trainer", "Model", "Ouw0pp", "Part", "Patrick", "Policeman", "Rina", "RinaDesk", "Rock", "Snow Trainer", "Soryu Trainer", "Beast Trainer", "Sound Trainer", "Target_Training", "Tyrone", "potion_sails_man", "thing", "Meditate_Mat", "Push_Ups_Mat", "Union", "MeshPart", "Floor", "Mist"}
 			local isLooping = true
 			local function deleteSpecificParts()
-				while task.wait() do
+				while wait() do
 					if isLooping then
 						for _, part in pairs(Workspace:GetChildren()) do
 							if table_find(specificNames, part.Name) then
@@ -102,10 +105,10 @@ local task = require(game:GetService("Players").LocalPlayer:WaitForChild("Player
 					end
 				end
 			end
-			task.spawn(deleteSpecificParts)
+			coroutine_wrap(deleteSpecificParts)()
 
 			local function preventFall()
-				while task.wait() do
+				while wait() do
 					local antifall3 = Instance_new("BodyVelocity", Players.LocalPlayer.Character.HumanoidRootPart)
 					antifall3.Velocity = Vector3_new(0, 0, 0)
 					antifall3.MaxForce = Vector3_new(9e9, 9e9, 9e9)
@@ -118,7 +121,7 @@ local task = require(game:GetService("Players").LocalPlayer:WaitForChild("Player
 					antifall3:Destroy()
 				end
 			end
-			task.spawn(preventFall)
+			coroutine_wrap(preventFall)()
 
 
 			local TweenService = game:GetService("TweenService")
@@ -199,6 +202,8 @@ local task = require(game:GetService("Players").LocalPlayer:WaitForChild("Player
 				-- Add other paths here similarly
 			}
 
+			local movementTimer = 0
+			local prevPosition = Root.Position
 			local function CheckAndMove(pathName, position, pathToCheck, Time, Num)
 				print("Going to " .. pathName)
 				Goal.CFrame = CFrame_new(position)
@@ -228,6 +233,7 @@ local task = require(game:GetService("Players").LocalPlayer:WaitForChild("Player
 					prevPosition = currentPosition
 				end
 			end
+
 			local function main()
 				for _, pathInfo in ipairs(pathsToCheck) do
 					CheckAndMove(pathInfo.name, pathInfo.position, pathInfo.path, pathInfo.time, pathInfo.num)
@@ -235,9 +241,11 @@ local task = require(game:GetService("Players").LocalPlayer:WaitForChild("Player
 				wait(10)
 				main()
 			end
-			task.spawn(main)
 
+			coroutine_wrap(main)()
 			game:GetService("RunService"):Set3dRenderingEnabled(false)
+				wait(120)
+				coroutine.stop(deleteSpecificParts)
 		else
 			print("Wrong game")
 		end
@@ -245,3 +253,5 @@ local task = require(game:GetService("Players").LocalPlayer:WaitForChild("Player
 		if not success then
 			print("An error occurred:", error)
 		end
+	end
+	master()
