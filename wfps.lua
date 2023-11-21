@@ -30,19 +30,6 @@ local args= {
 game:GetService("ReplicatedStorage").handle_privateserver:InvokeServer(unpack(args))
     
 elseif placeId == 13883059853 then
-local frameRateThreshold = 5
-local function checkFrameRate()
-    while task.wait() do
-        local frameRate = 1 / game:GetService("RunService").RenderStepped:Wait()
-        if frameRate < frameRateThreshold then
-            local TeleportService = game:GetService("TeleportService")
-            wait()
-            TeleportService:Teleport(5956785391)
-        end
-        wait(1)
-    end
-end
-coroutine.wrap(checkFrameRate)()
 -- Auto collect chest
 local AutoCollectChest = true
 local function collectChest()
@@ -250,6 +237,20 @@ end
 
 coroutine.wrap(main)()
 game:GetService("RunService"):Set3dRenderingEnabled(false)
+task.wait(30)
+local frameRateThreshold = 5
+local function checkFrameRate()
+    while task.wait() do
+        local frameRate = 1 / game:GetService("RunService").RenderStepped:Wait()
+        if frameRate < frameRateThreshold then
+            local TeleportService = game:GetService("TeleportService")
+            wait()
+            TeleportService:Teleport(5956785391)
+        end
+        wait(1)
+    end
+end
+coroutine.wrap(checkFrameRate)()
 else
     print("Wrong game")
 end
