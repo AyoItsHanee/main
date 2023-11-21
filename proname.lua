@@ -10,6 +10,19 @@ local Workspace = game:GetService("Workspace")
 local placeId = game.PlaceId
 local TeleportService = game:GetService("TeleportService")
 
+COREGUI = game:GetService("CoreGui")
+local Dir = COREGUI:FindFirstChild("RobloxPromptGui"):FindFirstChild("promptOverlay")
+	Dir.DescendantAdded:Connect(function(Err)
+		if Err.Name == "ErrorTitle" then
+			Err:GetPropertyChangedSignal("Text"):Connect(function()
+				if Err.Text:sub(0, 12) == "Disconnected" then
+						Players.LocalPlayer:Kick("\nRejoining...")
+						TeleportService:Teleport(5956785391, Players.LocalPlayer)
+				end
+			end)
+		end
+	end)
+			
 if placeId == 5956785391 then
 local args= {
     [1] = "join",
