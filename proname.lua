@@ -1,7 +1,7 @@
 -- local variables for API functions. any changes to the line below will be lost on re-generation
+repeat wait() until game:IsLoaded()
 local CFrame_new, Instance_new, wait, print, getgenv, require, unpack, pairs, table_find, TweenInfo_new, Vector3_new, ipairs, pcall = CFrame.new, Instance.new, wait, print, getgenv, require, unpack, pairs, table.find, TweenInfo.new, Vector3.new, ipairs, pcall
 
-repeat wait() until game:IsLoaded()
 	local function master()
 		print("executed")
 		local success, error = pcall(function()
