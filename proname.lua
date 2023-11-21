@@ -2,6 +2,7 @@ repeat wait() until game:IsLoaded()
 local function master()
 print("executed")
 local success, error = pcall(function()
+local LP = game:GetService("Players").LocalPlayer
 local Players = game:GetService("Players")
 local ReplicatedStorage = game:GetService("ReplicatedStorage")
 local Workspace = game:GetService("Workspace")
@@ -170,50 +171,7 @@ local pathsToCheck = {
     -- Add other paths here similarly
 }
 
-local movementTimer = 0
-local prevPosition = Root.Position
-local function CheckAndMove(pathName, position, pathToCheck, Time, Num)
-    print("Going to " .. pathName)
-    Goal.CFrame = CFrame.new(position)
-    local tween = TweenService:Create(Root, TweenInfo.new(Time, Enum.EasingStyle.Linear, Enum.EasingDirection.Out, 0, false, 0), Goal)
-    tween:Play()
-    wait(Time + 2)
-    local movementTimer = 0
-    local prevPosition = Root.Position
-
-    while wait() do
-        if pathToCheck and #pathToCheck:GetChildren() <= Num then
-            print("Moving to the next path")
-            break
-        end
-        
-        local currentPosition = Root.Position
-        if currentPosition == prevPosition then
-            movementTimer = movementTimer + 1
-            if movementTimer > 1 then
-                print("Character isn't moving, stopping the tween")
-                tween:Cancel() -- Stop the tween
-                break
-            end
-        else
-            movementTimer = 0
-        end
-        prevPosition = currentPosition
-    end
-end
-
-local function main()
-    for _, pathInfo in ipairs(pathsToCheck) do
-        CheckAndMove(pathInfo.name, pathInfo.position, pathInfo.path, pathInfo.time, pathInfo.num)
-    end
-    wait(10)
-    main()
-end
-
-coroutine.wrap(main)()
-game:GetService("RunService"):Set3dRenderingEnabled(false)
-	game:GetService("RunService"):Set3dRenderingEnabled(false)
-				local function GetDistance(Endpoint)
+local function GetDistance(Endpoint)
     if typeof(Endpoint) == "Instance" then
     Endpoint = Vector3.new(Endpoint.Position.X, game.Players.LocalPlayer.Character.HumanoidRootPart.Position.Y, Endpoint.Position.Z)
     elseif typeof(Endpoint) == "CFrame" then
@@ -311,7 +269,51 @@ while wait() do
     end)
 end
 end
-autof()
+coroutine.wrap(autof)()
+				
+local movementTimer = 0
+local prevPosition = Root.Position
+local function CheckAndMove(pathName, position, pathToCheck, Time, Num)
+    print("Going to " .. pathName)
+    Goal.CFrame = CFrame.new(position)
+    local tween = TweenService:Create(Root, TweenInfo.new(Time, Enum.EasingStyle.Linear, Enum.EasingDirection.Out, 0, false, 0), Goal)
+    tween:Play()
+    wait(Time + 2)
+    local movementTimer = 0
+    local prevPosition = Root.Position
+
+    while wait() do
+        if pathToCheck and #pathToCheck:GetChildren() <= Num then
+            print("Moving to the next path")
+            break
+        end
+        
+        local currentPosition = Root.Position
+        if currentPosition == prevPosition then
+            movementTimer = movementTimer + 1
+            if movementTimer > 1 then
+                print("Character isn't moving, stopping the tween")
+                tween:Cancel() -- Stop the tween
+                break
+            end
+        else
+            movementTimer = 0
+        end
+        prevPosition = currentPosition
+    end
+end
+
+local function main()
+    for _, pathInfo in ipairs(pathsToCheck) do
+        CheckAndMove(pathInfo.name, pathInfo.position, pathInfo.path, pathInfo.time, pathInfo.num)
+    end
+    wait(10)
+    main()
+end
+
+coroutine.wrap(main)()
+game:GetService("RunService"):Set3dRenderingEnabled(false)
+	game:GetService("RunService"):Set3dRenderingEnabled(false)
 else
     print("Wrong game")
 end
