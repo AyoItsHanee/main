@@ -1,4 +1,6 @@
 repeat wait() until game:IsLoaded()
+-- local variables for API functions. any changes to the line below will be lost on re-generation
+local CFrame_new, coroutine_wrap, wait, print, getgenv, Instance_new, unpack, pairs, table_find, TweenInfo_new, Vector3_new, ipairs, pcall = CFrame.new, coroutine.wrap, wait, print, getgenv, Instance.new, unpack, pairs, table.find, TweenInfo.new, Vector3.new, ipairs, pcall
 local function master()
 print("executed")
 local success, error = pcall(function()
@@ -49,7 +51,7 @@ local function collectChest()
     end
 end
 
-coroutine.wrap(collectChest)()
+coroutine_wrap(collectChest)()
 
 -- Loop to initiate a skill
 local function initiateSkill()
@@ -60,7 +62,7 @@ local function initiateSkill()
     end
 end
 
-coroutine.wrap(initiateSkill)()
+coroutine_wrap(initiateSkill)()
 
 -- Loop to attack mobs
 local function attackMobs()
@@ -87,7 +89,7 @@ local function attackMobs()
         end
     end
 end
-coroutine.wrap(attackMobs)()
+coroutine_wrap(attackMobs)()
 				
 -- Loop to delete specific parts
 local specificNames = {"Map", "InteractiveShopItems", "MugenTrain", "PrivateServerDummies", "cup game", "Bandage", "BeastTrainer", "BigLight", "Black Smith", "Board", "Boulder_To_Split", "Buy_Big_Gourd", "Buy_Gourd", "Buy_Medium_Gourd", "Chair", "Civilian", "Civilian 2", "ClashTrainer", "Conductor", "Customization data ting", "Demon Guy", "Demon Slayer", "Fishing_Rod2", "Flame Trainer", "Grandpa Wagwon's Wagon", "Green_Crystal", "Mae", "Malik", "Mark", "Mist Trainer", "Model", "Ouw0pp", "Part", "Patrick", "Policeman", "Rina", "RinaDesk", "Rock", "Snow Trainer", "Soryu Trainer", "Beast Trainer", "Sound Trainer", "Target_Training", "Tyrone", "potion_sails_man", "thing", "Meditate_Mat", "Push_Ups_Mat", "Union", "MeshPart", "Floor", "Mist"}
@@ -96,20 +98,20 @@ local function deleteSpecificParts()
     while wait() do
         if isLooping then
             for _, part in pairs(Workspace:GetChildren()) do
-                if table.find(specificNames, part.Name) then
+                if table_find(specificNames, part.Name) then
                     part:Destroy()
                 end
             end
         end
     end
 end
-coroutine.wrap(deleteSpecificParts)()
+coroutine_wrap(deleteSpecificParts)()
 
 local function preventFall()
     while wait() do
-        local antifall3 = Instance.new("BodyVelocity", Players.LocalPlayer.Character.HumanoidRootPart)
-        antifall3.Velocity = Vector3.new(0, 0, 0)
-        antifall3.MaxForce = Vector3.new(9e9, 9e9, 9e9)
+        local antifall3 = Instance_new("BodyVelocity", Players.LocalPlayer.Character.HumanoidRootPart)
+        antifall3.Velocity = Vector3_new(0, 0, 0)
+        antifall3.MaxForce = Vector3_new(9e9, 9e9, 9e9)
         
         wait() -- It's a good idea to yield control periodically to prevent performance issues
     end
@@ -119,7 +121,7 @@ local function preventFall()
         antifall3:Destroy()
     end
 end
-coroutine.wrap(preventFall)()
+coroutine_wrap(preventFall)()
 
 				
 local TweenService = game:GetService("TweenService")
@@ -129,70 +131,70 @@ local Goal = {}
 local pathsToCheck = {
     {
         name = "Sound Trainee",
-        position = Vector3.new(1859, 670, -2801),
+        position = Vector3_new(1859, 670, -2801),
         path = Workspace.Mobs.Bosses.Sound_Trainee["Sound Trainee"],
 		time = 10,
 		num = 2
     },
     {
         name = "Tengen",
-        position = Vector3.new(1463, 493, -3118),
+        position = Vector3_new(1463, 493, -3118),
         path = Workspace.Mobs.Bosses.Tengen,
 		time = 2,
 		num = 3
     },
         {
         name = "Douma",
-        position = Vector3.new(-2, 519, -1690),
+        position = Vector3_new(-2, 519, -1690),
         path = Workspace.Mobs.Bosses.Douma,
 		time = 5,
 		num = 3
     },
         {
         name = "Renpeke",
-        position = Vector3.new(-1289, 607, -664),
+        position = Vector3_new(-1289, 607, -664),
         path = Workspace.Mobs.Bosses["Flame Trainee"],
 		time = 5,
 		num = 2
     },
         {
         name = "Swampy",
-        position = Vector3.new(-1349, 607, -205),
+        position = Vector3_new(-1349, 607, -205),
         path = Workspace.Mobs.Bosses.Swampy,
 		time = 1,
 		num = 2
     },
         {
         name = "Akaza",
-        position = Vector3.new(2008, 563, -107),
+        position = Vector3_new(2008, 563, -107),
         path = Workspace.Mobs.Bosses.Akaza,
 		time = 10,
 		num = 3
     },
         {
         name = "Inosuke",
-        position = Vector3.new(1596, 307, -394),
+        position = Vector3_new(1596, 307, -394),
         path = Workspace.Mobs.Bosses.Inosuke,
 		time = 2,
 		num = 2
     },
         {
         name = "Enmu",
-        position = Vector3.new(1580, 490, -667),
+        position = Vector3_new(1580, 490, -667),
         path = Workspace.Mobs.Bosses.Enmu,
 		time = 2,
 		num = 2
     },
         {
         name = "Rengoku",
-        position = Vector3.new(3659, 680, -355),
+        position = Vector3_new(3659, 680, -355),
         path = Workspace.Mobs.Bosses.Rengoku,
 		time = 5,
 		num = 3
     },
         {
         name = "Muichiro",
-        position = Vector3.new(4512, 680, -553),
+        position = Vector3_new(4512, 680, -553),
         path = Workspace.Mobs.Bosses.Muichiro,
 		time = 2,
 		num = 2
@@ -204,8 +206,8 @@ local movementTimer = 0
 local prevPosition = Root.Position
 local function CheckAndMove(pathName, position, pathToCheck, Time, Num)
     print("Going to " .. pathName)
-    Goal.CFrame = CFrame.new(position)
-    local tween = TweenService:Create(Root, TweenInfo.new(Time, Enum.EasingStyle.Linear, Enum.EasingDirection.Out, 0, false, 0), Goal)
+    Goal.CFrame = CFrame_new(position)
+    local tween = TweenService:Create(Root, TweenInfo_new(Time, Enum.EasingStyle.Linear, Enum.EasingDirection.Out, 0, false, 0), Goal)
     tween:Play()
     wait(Time + 2)
     local movementTimer = 0
@@ -240,7 +242,7 @@ local function main()
     main()
 end
 
-coroutine.wrap(main)()
+coroutine_wrap(main)()
 game:GetService("RunService"):Set3dRenderingEnabled(false)
 	game:GetService("RunService"):Set3dRenderingEnabled(false)
 else
