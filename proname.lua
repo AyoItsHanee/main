@@ -2,6 +2,7 @@ repeat wait() until game:IsLoaded()
 local function master()
 print("executed")
 local success, error = pcall(function()
+getgenv().AllBosses = true
 local LP = game:GetService("Players").LocalPlayer
 local Players = game:GetService("Players")
 local ReplicatedStorage = game:GetService("ReplicatedStorage")
