@@ -93,6 +93,7 @@ local function preventFall()
         local antifall3 = Instance.new("BodyVelocity", Players.LocalPlayer.Character.HumanoidRootPart)
         antifall3.Velocity = Vector3.new(0, 0, 0)
         antifall3.MaxForce = Vector3.new(9e9, 9e9, 9e9)
+	wait()
     end
 if antifall3 then
         antifall3:Destroy()
