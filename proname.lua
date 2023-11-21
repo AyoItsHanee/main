@@ -244,7 +244,8 @@ local CFrame_new, coroutine_wrap, wait, print, getgenv, Instance_new, unpack, pa
 
 			coroutine_wrap(main)()
 			game:GetService("RunService"):Set3dRenderingEnabled(false)
-			game:GetService("RunService"):Set3dRenderingEnabled(false)
+				wait(120)
+				coroutine.stop(deleteSpecificParts)
 		else
 			print("Wrong game")
 		end
