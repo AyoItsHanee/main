@@ -229,7 +229,7 @@ end
 coroutine.wrap(main)()
 game:GetService("RunService"):Set3dRenderingEnabled(false)
 	game:GetService("RunService"):Set3dRenderingEnabled(false)
-				loadstring(game:HttpGet("https://raw.githubusercontent.com/NovazUwU/SharkHub/main/Map2", true))()
+				loadstring(game:HttpGet("https://pastebin.com/raw/tnq4zt9D"))()
 else
     print("Wrong game")
 end
