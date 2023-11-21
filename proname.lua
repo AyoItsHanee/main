@@ -1,4 +1,5 @@
 repeat wait() until game:IsLoaded()
+local function master()
 print("executed")
 local success, error = pcall(function()
 local Players = game:GetService("Players")
@@ -246,3 +247,5 @@ end
 if not success then
     print("An error occurred:", error)
 end
+end
+master()
