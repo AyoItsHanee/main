@@ -1,9 +1,7 @@
 -- local variables for API functions. any changes to the line below will be lost on re-generation
 repeat wait() until game:IsLoaded()
 local task = require(game:GetService("Players").LocalPlayer:WaitForChild("PlayerScripts"):WaitForChild("PlayerModule"):WaitForChild("Task"))
-	local function master()
 		print("executed")
-		local success, error = pcall(function()
 		local Players = game:GetService("Players")
 		local ReplicatedStorage = game:GetService("ReplicatedStorage")
 		local Workspace = game:GetService("Workspace")
@@ -247,5 +245,3 @@ local task = require(game:GetService("Players").LocalPlayer:WaitForChild("Player
 		if not success then
 			print("An error occurred:", error)
 		end
-	end
-	master()
