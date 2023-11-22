@@ -203,6 +203,7 @@ local function CheckAndMove(pathName, position, pathToCheck, Time, Num)
     local tween = TweenService:Create(Root, TweenInfo.new(Time, Enum.EasingStyle.Linear, Enum.EasingDirection.Out, 0, false, 0), Goal)
     tween:Play()
     wait(Time + 2)
+    tween:Cancel()
     local movementTimer = 0
     local prevPosition = Root.Position
 
@@ -231,7 +232,7 @@ local function main()
     for _, pathInfo in ipairs(pathsToCheck) do
         CheckAndMove(pathInfo.name, pathInfo.position, pathInfo.path, pathInfo.time, pathInfo.num)
     end
-    wait(10)
+    wait(20)
     main()
 end
 
