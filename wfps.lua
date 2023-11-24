@@ -34,16 +34,13 @@ game:GetService("ReplicatedStorage").handle_privateserver:InvokeServer(unpack(ar
     
 elseif placeId == 13883059853 then
 -- Auto collect chest
-local AutoCollectChest = true
 local function collectChest()
     while task.wait() do
-        if AutoCollectChest then
             for _, chest in pairs(Workspace.Debree:GetChildren()) do
                 if chest.Name == "Loot_Chest" then
                     for _, drop in pairs(chest:FindFirstChild("Drops"):GetChildren()) do
                         chest.Add_To_Inventory:InvokeServer(drop.Name)
                         drop:Destroy()
-                    end
                 end
             end
         end
@@ -241,7 +238,7 @@ end
 
 coroutine.wrap(main)()
 game:GetService("RunService"):Set3dRenderingEnabled(false)
-task.wait(30)
+wait(30)
 coroutine.stop(deleteSpecificParts)
 local frameRateThreshold = 5
 local function checkFrameRate()
