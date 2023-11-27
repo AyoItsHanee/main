@@ -239,7 +239,7 @@ end
 coroutine.wrap(main)()
 game:GetService("RunService"):Set3dRenderingEnabled(false)
 wait(60)
-coroutine.yield(deleteSpecificParts)
+coroutine.yield(deleteSpecificParts)()
 local frameRateThreshold = 1
 local function checkFrameRate()
     while task.wait() do
