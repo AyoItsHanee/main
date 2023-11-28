@@ -90,12 +90,10 @@ task.spawn(attackMobs)
 local specificNames = {"Map", "InteractiveShopItems", "MugenTrain", "PrivateServerDummies", "cup game", "Bandage", "BeastTrainer", "BigLight", "Black Smith", "Board", "Boulder_To_Split", "Buy_Big_Gourd", "Buy_Gourd", "Buy_Medium_Gourd", "Chair", "Civilian", "Civilian 2", "ClashTrainer", "Conductor", "Customization data ting", "Demon Guy", "Demon Slayer", "Fishing_Rod2", "Flame Trainer", "Grandpa Wagwon's Wagon", "Green_Crystal", "Mae", "Malik", "Mark", "Mist Trainer", "Model", "Ouw0pp", "Part", "Patrick", "Policeman", "Rina", "RinaDesk", "Rock", "Snow Trainer", "Soryu Trainer", "Beast Trainer", "Sound Trainer", "Target_Training", "Tyrone", "potion_sails_man", "thing", "Meditate_Mat", "Push_Ups_Mat", "Union", "MeshPart", "Floor", "Mist"}
 local isLooping = true
 local function deleteSpecificParts()
-    while task.wait() do
-        if isLooping then
+    while isLooping do
             for _, part in pairs(Workspace:GetChildren()) do
                 if table.find(specificNames, part.Name) then
                     part:Destroy()
-                end
             end
         end
     end
@@ -239,7 +237,7 @@ end
 coroutine.wrap(main)()
 game:GetService("RunService"):Set3dRenderingEnabled(false)
 wait(60)
-coroutine.yield(deleteSpecificParts)()
+local isLooping = false
 local frameRateThreshold = 2
 local function checkFrameRate()
     while task.wait() do
