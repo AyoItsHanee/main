@@ -91,11 +91,9 @@ local specificNames = {"Map", "InteractiveShopItems", "MugenTrain", "PrivateServ
 local isLooping = true
 local function deleteSpecificParts()
     while task.wait() do
-						if isLooping then
             for _, part in pairs(Workspace:GetChildren()) do
                 if table.find(specificNames, part.Name) then
                     part:Destroy()
-								end
             end
         end
     end
@@ -238,21 +236,6 @@ end
 
 coroutine.wrap(main)()
 game:GetService("RunService"):Set3dRenderingEnabled(false)
-wait(60)
-local isLooping = false
-local frameRateThreshold = 2
-local function checkFrameRate()
-    while task.wait() do
-        local frameRate = 1 / game:GetService("RunService").RenderStepped:Wait()
-        if frameRate < frameRateThreshold then
-            local TeleportService = game:GetService("TeleportService")
-            wait()
-            TeleportService:Teleport(5956785391)
-        end
-        wait(1)
-    end
-end
-coroutine.wrap(checkFrameRate)()
 else
     print("Wrong game")
 end
