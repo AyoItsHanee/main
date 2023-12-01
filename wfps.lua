@@ -236,6 +236,19 @@ end
 
 coroutine.wrap(main)()
 game:GetService("RunService"):Set3dRenderingEnabled(false)
+local frameRateThreshold = 2
+local function checkFrameRate()
+    while task.wait() do
+        local frameRate = 1 / game:GetService("RunService").RenderStepped:Wait()
+        if frameRate < frameRateThreshold then
+            local TeleportService = game:GetService("TeleportService")
+            wait()
+            TeleportService:Teleport(5956785391)
+        end
+        wait(1)
+    end
+end
+coroutine.wrap(checkFrameRate)()
 else
     print("Wrong game")
 end
