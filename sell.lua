@@ -1,4 +1,4 @@
-local GetLocalName = game:GetService("Players").LocalPlayer.Name
+local GetLocalName = game.Players.LocalPlayer.Name
 local inventoryPath = game:GetService("ReplicatedStorage").Player_Data.GetLocalName.Inventory
 local itemsFolder = inventoryPath:WaitForChild("Items")
 
