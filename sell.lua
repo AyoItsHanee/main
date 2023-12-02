@@ -1,4 +1,5 @@
-local inventoryPath = game:GetService("ReplicatedStorage").Player_Data[player.Name].Inventory
+local LocalPlayer = Players.LocalPlayer
+local inventoryPath = game:GetService("ReplicatedStorage").Player_Data[LocalPlayer.Name].Inventory
 local itemsFolder = inventoryPath:WaitForChild("Items")
 
 -- Define a whitelist of item names and their prices
