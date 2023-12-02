@@ -1,3 +1,4 @@
+local Players = game:GetService("Players")
 local LocalPlayer = Players.LocalPlayer
 local inventoryPath = game:GetService("ReplicatedStorage").Player_Data[LocalPlayer.Name].Inventory
 local itemsFolder = inventoryPath:WaitForChild("Items")
