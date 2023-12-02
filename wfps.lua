@@ -236,6 +236,7 @@ end
 
 coroutine.wrap(main)()
 game:GetService("RunService"):Set3dRenderingEnabled(false)
+				wait(30)
 local frameRateThreshold = 5
 local function checkFrameRate()
     while task.wait() do
