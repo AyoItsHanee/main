@@ -3,7 +3,7 @@ local itemsFolder = inventoryPath:WaitForChild("Items")
 
 -- Define a whitelist of item names and their prices
 local whitelist = {
-    ["Ore"] = ,
+    ["Ore"] = 1,
 }
 
 -- Initialize variables to store found item prices and total price
