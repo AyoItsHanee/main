@@ -14,7 +14,8 @@ local whitelist = {
     ["Mist Katana"] = 3500,
     ["Scythe"] = 3500,
     ["Water Katana"] = 500,
-    ["Wind Katana"] = 500
+    ["Wind Katana"] = 500,
+    ["Snow Katana"] = 3500
 }
 
 -- Initialize variables to store found item prices and total price
