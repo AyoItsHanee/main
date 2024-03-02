@@ -28,7 +28,7 @@ if placeId == 5956785391 then
 local TeleportService = game:GetService("TeleportService")
 TeleportService:Teleport(13881804983)
     
-elseif placeId == 13883059853 then
+elseif placeId == 13881804983 then
 -- Auto collect chest
 local function collectChest()
     while task.wait() do
