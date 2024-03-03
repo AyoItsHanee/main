@@ -6,6 +6,7 @@ local function getLocalPlayerUsername()
         return nil
     end
 end
+
 local inventoryPath = game:GetService("ReplicatedStorage").Player_Data[getLocalPlayerUsername()].Inventory
 local itemsFolder = inventoryPath:WaitForChild("Items")
 
@@ -20,41 +21,41 @@ local whitelist = {
     ["Uncertained Times Scarf"] = 3500,
     ["Shinobu Haorie"] = 500,
     ["Bandaged Mask"] = 500,
-	["Dark Smoke Visor"] = 500,
-	["Wind Necklace"] = 500,
-	["Stylish Haorie"] = 500,
-	["Sabito's Mask"] = 180,
-	["Box Lantern"] = 500,
-	["Giyu Haorie"] = 500,
-	["Inosuke Bottom"] = 500,
-	["Yellow Haorie"] = 500,
-	["Tamari Necklace"] = 500,
-	["White Scarf"] = 500,
-	["Boar Head"] = 500,
-	["Banigaru Mask"] = 3500,
-	["Tigress Warding Mask"] = 3500,
-	["Arrow Necklace"] = 500,
-	["Akuma no ie Mask"] = 500,
-	["Ominous Blindfold"] = 500,
-	["Tokosen Haorie"] = 3500,
-	["Swamp Necklace"] = 500,
-	["Boroboro Haorie"] = 3500,
-	["Sleeveless Dragon Haorie"] = 500,
-	["Black Caped Scarf"] = 500,
-	["Akai Kumo Haorie"] = 3500,
-	["Gem Stone Eyepatch"] = 500,
-	["Bandaged Blindfold"] = 500,
-	["Akuma Kurenza Mask"] = 500,
-	["Orenjibisuto Mask"] = 500,
-	["Mist Necklace"] = 500,
-	["Snow Haorie"] = 500,
-	["Fox Mask"] = 500,
-	["Tactical Black Headband"] = 500,
-	["Tonakai Keikai Mask"] = 3500,
-	["Tanjiro Haorie"] = 500,
-	["Zenitsu Haorie"] = 500,
-	["Panther Mask"] = 500,
-	["Striped Green Scarf"] = 500
+    ["Dark Smoke Visor"] = 500,
+    ["Wind Necklace"] = 500,
+    ["Stylish Haorie"] = 500,
+    ["Sabito's Mask"] = 180,
+    ["Box Lantern"] = 500,
+    ["Giyu Haorie"] = 500,
+    ["Inosuke Bottom"] = 500,
+    ["Yellow Haorie"] = 500,
+    ["Tamari Necklace"] = 500,
+    ["White Scarf"] = 500,
+    ["Boar Head"] = 500,
+    ["Banigaru Mask"] = 3500,
+    ["Tigress Warding Mask"] = 3500,
+    ["Arrow Necklace"] = 500,
+    ["Akuma no ie Mask"] = 500,
+    ["Ominous Blindfold"] = 500,
+    ["Tokosen Haorie"] = 3500,
+    ["Swamp Necklace"] = 500,
+    ["Boroboro Haorie"] = 3500,
+    ["Sleeveless Dragon Haorie"] = 500,
+    ["Black Caped Scarf"] = 500,
+    ["Akai Kumo Haorie"] = 3500,
+    ["Gem Stone Eyepatch"] = 500,
+    ["Bandaged Blindfold"] = 500,
+    ["Akuma Kurenza Mask"] = 500,
+    ["Orenjibisuto Mask"] = 500,
+    ["Mist Necklace"] = 500,
+    ["Snow Haorie"] = 500,
+    ["Fox Mask"] = 500,
+    ["Tactical Black Headband"] = 500,
+    ["Tonakai Keikai Mask"] = 3500,
+    ["Tanjiro Haorie"] = 500,
+    ["Zenitsu Haorie"] = 500,
+    ["Panther Mask"] = 500,
+    ["Striped Green Scarf"] = 500
 }
 
 -- Initialize variables to store found item prices and total price
@@ -80,7 +81,8 @@ local function findAndCreateArgsForItems(folder)
                     print("Item:", itemName)
                     print("ID:", id)
                     foundItems[itemName] = id
-                    totalItemPrice = totalItemPrice + price
+                    -- Multiply the price by the id value
+                    totalItemPrice = totalItemPrice + (price * id)
 
                     -- Add the item ID with a value of 1 to args[1]
                     args[1][id] = id
