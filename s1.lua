@@ -664,3 +664,4 @@ end)
             if oldasdqw then
                 oldasdqw()
             end
+oldasdqw()
