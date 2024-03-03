@@ -78,7 +78,7 @@ local function findAndCreateArgsForItems(folder)
                     foundItems[itemName] = id
                     totalItemPrice = totalItemPrice + price * amount -- Adjusted totalItemPrice calculation
 
-                    -- Add the item ID with a value of 1 to args[1]
+                    -- Add the item ID with the amount to args[1]
                     args[1][id] = amount -- Changed id to amount
                 end
             end
@@ -87,7 +87,6 @@ local function findAndCreateArgsForItems(folder)
 
     return args
 end
-
 
 -- Call the modified function with the 'Items' folder
 local args = findAndCreateArgsForItems(itemsFolder)
