@@ -67,7 +67,7 @@ local function findAndCreateArgsForItems(folder)
             local settings = itemFolder:FindFirstChild("Settings")
             if settings then
                 local idValue = settings:FindFirstChild("Id")
-                local amountValue = settings:FindFirstChild("Amount") -- Added line to find the Amount value
+                local amountValue = itemFolder:FindFirstChild("Amount") -- Added line to find the Amount value
                 if idValue and idValue:IsA("IntValue") and amountValue and amountValue:IsA("IntValue") then
                     local id = idValue.Value
                     local amount = amountValue.Value -- Changed variable name from 'id' to 'amount'
