@@ -121,3 +121,4 @@ wait(1)
 print("Selling Items in 1 seconds")
 
 -- Run the action with the generated args
+game:GetService("ReplicatedStorage"):WaitForChild("Sell_Items_tang"):InvokeServer(unpack(args))
