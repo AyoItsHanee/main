@@ -1,4 +1,8 @@
-local inventoryPath = game:GetService("ReplicatedStorage").Player_Data.HonestTested.Inventory
+
+local function getLocalPlayerUsername()
+local player = game.Players.LocalPlayer.player.Name
+end
+local inventoryPath = game:GetService("ReplicatedStorage").Player_Data:WaitForChild(getLocalPlayerUsername()).Inventory
 local itemsFolder = inventoryPath:WaitForChild("Items")
 
 -- Define a whitelist of item names and their prices
