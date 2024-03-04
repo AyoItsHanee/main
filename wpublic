@@ -1,4 +1,3 @@
-wait(1)
 repeat wait() until game:IsLoaded()
 game:GetService("Players").LocalPlayer.Idled:connect(function()
 game:GetService("VirtualUser"):ClickButton2(Vector2.new())
@@ -26,10 +25,14 @@ local Dir = COREGUI:FindFirstChild("RobloxPromptGui"):FindFirstChild("promptOver
 	end)
 			
 if placeId == 5956785391 then
-local TeleportService = game:GetService("TeleportService")
-TeleportService:Teleport(13881804983)
+local args= {
+    [1] = "join",
+    [2] = "loVpE98H",
+    [3] = 13881804983
+}
+game:GetService("ReplicatedStorage").handle_privateserver:InvokeServer(unpack(args))
     
-elseif placeId == 13881804983 then
+elseif placeId == 13883059853 then
 -- Auto collect chest
 local function collectChest()
     while task.wait() do
@@ -237,9 +240,6 @@ coroutine.wrap(main)()
 --game:GetService("RunService"):Set3dRenderingEnabled(false)
 wait(300)
 local isLooping = false
-wait(3600)
-local TeleportService = game:GetService("TeleportService")
-TeleportService:Teleport(5956785391)
 else
     print("Wrong game")
 end
