@@ -33,6 +33,17 @@ local args= {
 game:GetService("ReplicatedStorage").handle_privateserver:InvokeServer(unpack(args))
     
 elseif placeId == 13883059853 then
+				game:GetService("Players").LocalPlayer.PlayerScripts["Small_Scripts"].Gameplay["Sun_Damage"].Disabled = true
+
+local function wd()
+		local args = {
+    	[1] = true
+		}
+
+		game:GetService("ReplicatedStorage"):WaitForChild("Remotes"):WaitForChild("war_Drums_remote"):FireServer(unpack(args))
+		wait(3)
+end
+coroutine.wrap(wd)()
 -- Auto collect chest
 local function collectChest()
     while task.wait() do
