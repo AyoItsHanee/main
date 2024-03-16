@@ -25,12 +25,7 @@ local Dir = COREGUI:FindFirstChild("RobloxPromptGui"):FindFirstChild("promptOver
 	end)
 			
 if placeId == 5956785391 then
-local args= {
-    [1] = "join",
-    [2] = "loVpE98H",
-    [3] = 13881804983
-}
-game:GetService("ReplicatedStorage").handle_privateserver:InvokeServer(unpack(args))
+13881804983
     
 elseif placeId == 13883059853 then
 -- Auto collect chest
