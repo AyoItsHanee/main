@@ -225,7 +225,7 @@ local function CheckAndMove(pathName, position, pathToCheck, Time, Num)
         end
         
         local pathInWorkspace = Workspace.Mobs:FindFirstChild(pathName)
-        if not pathInWorkspace.[pathName] then
+        if not pathInWorkspace then
             print(pathName .. " doesn't exist, moving to the next path")
             break
         end
