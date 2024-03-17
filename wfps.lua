@@ -228,7 +228,7 @@ local function CheckAndMove(pathName, position, pathToCheck, Time, Num)
             print(pathName .. " doesn't exist, moving to the next path")
             break
 						else
-							repeat wait() until pathInWorkspace
+							repeat wait() until not pathInWorkspace
         end
         
         local currentPosition = Root.Position
