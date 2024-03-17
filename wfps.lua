@@ -224,6 +224,12 @@ local function CheckAndMove(pathName, position, pathToCheck, Time, Num)
             break
         end
         
+        local pathInWorkspace = Workspace.Mobs:FindFirstChild(pathName)
+        if not pathInWorkspace.[pathName] then
+            print(pathName .. " doesn't exist, moving to the next path")
+            break
+        end
+        
         local currentPosition = Root.Position
         if currentPosition == prevPosition then
             movementTimer = movementTimer + 1
@@ -243,7 +249,7 @@ local function main()
     for _, pathInfo in ipairs(pathsToCheck) do
         CheckAndMove(pathInfo.name, pathInfo.position, pathInfo.path, pathInfo.time, pathInfo.num)
     end
-					wait()
+    wait()
     main()
 end
 
