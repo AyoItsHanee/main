@@ -222,8 +222,9 @@ local function CheckAndMove(pathName, position, pathToCheck, Time, Num)
         if not pathInWorkspace then
             print(pathName .. " doesn't exist, moving to the next path")
             break
-						else
+						elseif pathInWorkspace then
 							repeat wait() until not pathInWorkspace
+							break
         end
         
         local currentPosition = Root.Position
