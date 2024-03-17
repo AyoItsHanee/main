@@ -243,7 +243,7 @@ local function main()
     for _, pathInfo in ipairs(pathsToCheck) do
         CheckAndMove(pathInfo.name, pathInfo.position, pathInfo.path, pathInfo.time, pathInfo.num)
     end
-    wait(20)
+					wait()
     main()
 end
 
