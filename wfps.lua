@@ -218,11 +218,6 @@ local function CheckAndMove(pathName, position, pathToCheck, Time, Num)
     local movementTimer = 0
     local prevPosition = Root.Position
 	while task.wait() do
-        if pathToCheck and #pathToCheck:GetChildren() <= Num then
-            print("Moving to the next path")
-            break
-        end
-
         local pathInWorkspace = Workspace.Mobs:FindFirstChild(pathName)
         if not pathInWorkspace then
             print(pathName .. " doesn't exist, moving to the next path")
