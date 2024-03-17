@@ -213,7 +213,7 @@ local function CheckAndMove(pathName, position, pathToCheck, Time, Num)
     Goal.CFrame = CFrame.new(position)
     local tween = TweenService:Create(Root, TweenInfo.new(Time, Enum.EasingStyle.Linear, Enum.EasingDirection.Out, 0, false, 0), Goal)
     tween:Play()
-    wait(Time)
+    wait(Time + 2)
     tween:Cancel()
     local movementTimer = 0
     local prevPosition = Root.Position
