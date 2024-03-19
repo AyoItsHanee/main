@@ -29,6 +29,17 @@ if placeId == 5956785391 then
 TeleportService:Teleport(13881804983)
 				
 elseif placeId == 13881804983 then
+game:GetService("Players").LocalPlayer.PlayerScripts["Small_Scripts"].Gameplay["Sun_Damage"].Disabled = true
+
+local function wd()
+		local args = {
+    	[1] = true
+		}
+
+		game:GetService("ReplicatedStorage"):WaitForChild("Remotes"):WaitForChild("war_Drums_remote"):FireServer(unpack(args))
+		wait(3)
+end
+coroutine.wrap(wd)()
 -- Auto collect chest
 local function collectChest()
     while task.wait() do
@@ -198,15 +209,18 @@ local function CheckAndMove(pathName, position, pathToCheck, Time, Num)
     Goal.CFrame = CFrame.new(position)
     local tween = TweenService:Create(Root, TweenInfo.new(Time, Enum.EasingStyle.Linear, Enum.EasingDirection.Out, 0, false, 0), Goal)
     tween:Play()
-    wait(Time + 2)
+    wait(Time + 1)
     tween:Cancel()
     local movementTimer = 0
     local prevPosition = Root.Position
-
-    while task.wait() do
-        if pathToCheck and #pathToCheck:GetChildren() <= Num then
-            print("Moving to the next path")
+	while task.wait() do
+        local pathInWorkspace = Workspace.Mobs:FindFirstChild(pathName)
+        if not pathInWorkspace then
+            print(pathName .. " doesn't exist, moving to the next path")
             break
+						elseif pathInWorkspace then
+							repeat wait() until not pathInWorkspace
+							break
         end
         
         local currentPosition = Root.Position
@@ -228,7 +242,7 @@ local function main()
     for _, pathInfo in ipairs(pathsToCheck) do
         CheckAndMove(pathInfo.name, pathInfo.position, pathInfo.path, pathInfo.time, pathInfo.num)
     end
-    wait(20)
+    wait()
     main()
 end
 
@@ -236,7 +250,8 @@ coroutine.wrap(main)()
 --game:GetService("RunService"):Set3dRenderingEnabled(false)
 wait(300)
 local isLooping = false
-				wait(3600)
+			
+wait(3600)
 local TeleportService = game:GetService("TeleportService")
 TeleportService:Teleport(5956785391)
 else
