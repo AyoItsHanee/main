@@ -78,7 +78,7 @@ local function findAndCreateArgsForItems(folder)
                 local amountValue = itemFolder:FindFirstChild("Amount") -- Added line to find the Amount value
                 if idValue and idValue:IsA("IntValue") and amountValue and amountValue:IsA("IntValue") then
                     local id = idValue.Value
-                    local amount = amountValue.Value -- Changed variable name from 'id' to 'amount'
+                    local amount = amountValue.Value - 1 -- Changed variable name from 'id' to 'amount'
 
                     print("Item:", itemName)
                     print("ID:", id)
