@@ -110,6 +110,8 @@ args[2] = result
 -- Print the result without a comma
 print("Total Price of Found Items (Divided by 25000):", result)
 
+print("Selling Items in 20 seconds")
+wait(10)
 print("Selling Items in 10 seconds")
 wait(5)
 print("Selling Items in 5 seconds")
