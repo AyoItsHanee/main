@@ -51,7 +51,10 @@ local whitelist = {
 	["Tanjiro Haorie"] = 500,
 	["Zenitsu Haorie"] = 500,
 	["Panther Mask"] = 500,
-	["Striped Green Scarf"] = 500
+	["Striped Green Scarf"] = 500,
+	["Tactical Black Headband"] = 500,
+	["Bandaged Blindfold"] = 500,
+	["Red Scarf"] = 500
 }
 
 -- Initialize variables to store found item prices and total price
