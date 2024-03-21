@@ -30,7 +30,6 @@ local whitelist = {
 	["Yellow Haorie"] = 500,
 	["Tamari Necklace"] = 500,
 	["White Scarf"] = 500,
-	["Boar Head"] = 500,
 	["Banigaru Mask"] = 3500,
 	["Tigress Warding Mask"] = 3500,
 	["Arrow Necklace"] = 500,
@@ -43,18 +42,19 @@ local whitelist = {
 	["Black Caped Scarf"] = 500,
 	["Akai Kumo Haorie"] = 3500,
 	["Gem Stone Eyepatch"] = 500,
-	["Bandaged Blindfold"] = 500,
 	["Akuma Kurenza Mask"] = 500,
 	["Orenjibisuto Mask"] = 500,
 	["Mist Necklace"] = 500,
 	["Snow Haorie"] = 500,
 	["Fox Mask"] = 500,
-	["Tactical Black Headband"] = 500,
-	["Tonakai Keikai Mask"] = 500,
+	["Tonakai Keikai Mask"] = 3500,
 	["Tanjiro Haorie"] = 500,
 	["Zenitsu Haorie"] = 500,
 	["Panther Mask"] = 500,
-	["Striped Green Scarf"] = 500
+	["Striped Green Scarf"] = 500,
+	["Tactical Black Headband"] = 500,
+	["Bandaged Blindfold"] = 500,
+	["Red Scarf"] = 500
 }
 
 -- Initialize variables to store found item prices and total price
@@ -78,7 +78,7 @@ local function findAndCreateArgsForItems(folder)
                 local amountValue = itemFolder:FindFirstChild("Amount") -- Added line to find the Amount value
                 if idValue and idValue:IsA("IntValue") and amountValue and amountValue:IsA("IntValue") then
                     local id = idValue.Value
-                    local amount = amountValue.Value -- Changed variable name from 'id' to 'amount'
+                    local amount = amountValue.Value - 1 -- Changed variable name from 'id' to 'amount'
 
                     print("Item:", itemName)
                     print("ID:", id)
