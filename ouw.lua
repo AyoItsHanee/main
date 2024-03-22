@@ -84,36 +84,53 @@ elseif placeId == 11468075017 then
         end
     end
     
-    -- Function to find a room name with spawnpoints
-    local function findRoomNameWithSpawnpoints()
-        for _, room in pairs(workspace.Map:GetChildren()) do
-            local spawnpoints = room:FindFirstChild("Spawnpoints")
-            if spawnpoints then
-                local part = spawnpoints:FindFirstChildWhichIsA("BasePart")
-                if part then
-                    return room.Name
-                end
+local player = game.Players.LocalPlayer
+local character = player.Character or player.CharacterAdded:Wait()
+local root = character:WaitForChild("HumanoidRootPart")
+local toggleTeleport = false
+local tweenTime = 1 -- Change this value to adjust tween duration (in seconds)
+
+-- Function to find the correct room name
+local function findRoomName()
+    for _, room in pairs(workspace.Map:GetChildren()) do
+        local spawnpoints = room:FindFirstChild("Spawnpoints")
+        if spawnpoints then
+            local part = spawnpoints:FindFirstChildWhichIsA("BasePart")
+            if part then
+                return room.Name
             end
         end
-        return nil
     end
-    
-    -- Define the function to calculate distance between two positions
-    local function calculateDistance(position1, position2)
-        return (position1 - position2).Magnitude
+    return nil
+end
+
+-- Function to tween the character to a random part within "Spawnpoints"
+local function tweenToRandomPart()
+    local roomName = findRoomName()
+    if roomName then
+        local spawnpoints = workspace.Map:FindFirstChild(roomName):FindFirstChild("Spawnpoints")
+        if spawnpoints then
+            local parts = spawnpoints:GetChildren()
+            if #parts > 0 then
+                local randomPart = parts[math.random(1, #parts)]
+                if randomPart and randomPart:IsA("BasePart") then
+                    local destination = randomPart.Position + Vector3.new(0, 5, 0)
+                    local tweenInfo = TweenInfo.new(tweenTime, Enum.EasingStyle.Linear, Enum.EasingDirection.Out)
+                    local tween = game.TweenService:Create(root, tweenInfo, {CFrame = CFrame.new(destination)})
+                    tween:Play()
+					wait(5)
+                end
+            else
+                warn("No parts found in Spawnpoints of room: " .. roomName)
+            end
+        else
+            warn("No 'Spawnpoints' found in room: " .. roomName)
+        end
+    else
+        warn("No room with parts found in workspace.Map.")
     end
-    
-    -- Modify the tweenToRandomSpawnPoint function to take the destination position as an argument
-    local function tweenToRandomSpawnPoint(root, destination)
-        local distance = calculateDistance(root.Position, destination) -- Calculate the distance
-        local tweenTime = distance / getgenv().TweenSpeed -- Calculate the tween duration based on speed
-        
-        local tweenInfo = TweenInfo.new(tweenTime, Enum.EasingStyle.Cubic, Enum.EasingDirection.Out, 0, false, 0)
-        local goal = { CFrame = CFrame.new(destination) }
-        game:GetService("TweenService"):Create(root, tweenInfo, goal):Play()
-        wait(tweenTime) -- Wait for the tween to complete
-    end
-    
+end
+
     -- Function to perform actions for a specified duration
     local function performActions(duration)
         local root = game.Players.LocalPlayer.Character.HumanoidRootPart
