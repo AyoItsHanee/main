@@ -47,7 +47,7 @@ end
     wait(10)
 loadstring(game:HttpGet("https://raw.githubusercontent.com/NovazUwU/SharkHub/main/Map2"))()
 elseif placeId == 11468075017 then
-    wait(10)
+    wait(1)
     local Info = TweenInfo.new(1, Enum.EasingStyle.Cubic, Enum.EasingDirection.Out, 0, false, 0)
     local Goal = {}
     local Root = game.Players.LocalPlayer.Character.HumanoidRootPart
