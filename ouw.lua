@@ -90,80 +90,6 @@ local root = character:WaitForChild("HumanoidRootPart")
 local toggleTeleport = false
 local tweenTime = 1 -- Change this value to adjust tween duration (in seconds)
 
--- Function to find the correct room name
-local function findRoomName()
-    for _, room in pairs(workspace.Map:GetChildren()) do
-        local spawnpoints = room:FindFirstChild("Spawnpoints")
-        if spawnpoints then
-            local part = spawnpoints:FindFirstChildWhichIsA("BasePart")
-            if part then
-                return room.Name
-            end
-        end
-    end
-    return nil
-end
-
--- Function to tween the character to a random part within "Spawnpoints"
-local function tweenToRandomPart()
-    local roomName = findRoomName()
-    if roomName then
-        local spawnpoints = workspace.Map:FindFirstChild(roomName):FindFirstChild("Spawnpoints")
-        if spawnpoints then
-            local parts = spawnpoints:GetChildren()
-            if #parts > 0 then
-                local randomPart = parts[math.random(1, #parts)]
-                if randomPart and randomPart:IsA("BasePart") then
-                    local destination = randomPart.Position + Vector3.new(0, 5, 0)
-                    local tweenInfo = TweenInfo.new(tweenTime, Enum.EasingStyle.Linear, Enum.EasingDirection.Out)
-                    local tween = game.TweenService:Create(root, tweenInfo, {CFrame = CFrame.new(destination)})
-                    tween:Play()
-					wait(5)
-                end
-            else
-                warn("No parts found in Spawnpoints of room: " .. roomName)
-            end
-        else
-            warn("No 'Spawnpoints' found in room: " .. roomName)
-        end
-    else
-        warn("No room with parts found in workspace.Map.")
-    end
-end
-
-    -- Function to perform actions for a specified duration
-    local function performActions(duration)
-        local root = game.Players.LocalPlayer.Character.HumanoidRootPart
-        local startTime = tick()
-    
-        while tick() - startTime < duration do
-            local roomName = findRoomNameWithSpawnpoints()
-            if roomName then
-                local spawnpoints = workspace.Map:FindFirstChild(roomName):FindFirstChild("Spawnpoints")
-                if spawnpoints then
-                    local parts = spawnpoints:GetChildren()
-                    if #parts > 0 then
-                        local randomPart = parts[math.random(1, #parts)]
-                        if randomPart and randomPart:IsA("BasePart") then
-                            local destination = randomPart.Position + Vector3.new(0, 5, 0)
-                            tweenToRandomSpawnPoint(root, destination) -- Use the modified function
-                            wait(1)  -- Adjust the delay (in seconds) between each move
-                        end
-                    else
-                        warn("No parts found in Spawnpoints of room: " .. roomName)
-                    end
-                else
-                    warn("No 'Spawnpoints' found in room: " .. roomName)
-                end
-            else
-                warn("No room with parts found in workspace.Map.")
-            end
-        end
-    
-        -- Actions completed after the specified duration
-        print("10 Minutes have passed")
-    end
-    
     -- Function to check if the Timer GUI is visible
     local function isTimerGuiNotVisible()
         local player = game:GetService("Players").LocalPlayer
@@ -301,7 +227,7 @@ if isTimerGuiVisible() then
     wait()
     local loopCM = coroutine.create(mainCoroutine)
     coroutine.resume(loopCM)
-    performActions(600)
+    wait(600)
     local p = game.Players.LocalPlayer
     local c = p.Character
     local h = c:FindFirstChild("Humanoid")
