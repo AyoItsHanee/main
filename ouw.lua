@@ -273,7 +273,6 @@ if isTimerGuiVisible() then
     wait()
     local loopCM = coroutine.create(mainCoroutine)
     coroutine.resume(loopCM)
-    loadstring(game:HttpGet("https://raw.githubusercontent.com/NovazUwU/SharkHub/main/Map2"))()
     performActions(600)
     local p = game.Players.LocalPlayer
     local c = p.Character
