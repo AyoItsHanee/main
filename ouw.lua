@@ -1,37 +1,21 @@
 --loadstring(game:HttpGet("https://raw.githubusercontent.com/EdgeIY/infiniteyield/master/source", true))()
 
 repeat wait()
-
 until game:IsLoaded()
-
 local placeId = game.PlaceId
 
-
-
 if placeId == 5956785391 then
-
     local TeleportService = game:GetService("TeleportService")
-
     wait()
-
     TeleportService:Teleport(9321822839)
-
 elseif placeId == 9321822839 then
-
     local myUsername = "nhfarming0" -- Replace with your actual username
-
 	local function findUsername(folder, username)
-
     for _, child in pairs(folder:GetChildren()) do
-
             local playerFolder = child:FindFirstChild(username)
-
             if playerFolder then
-
                 return child -- Return the folder containing the username
-
             else
-
                 local foundFolder = findUsername(child, username)
 
                 if foundFolder then
@@ -48,14 +32,7 @@ elseif placeId == 9321822839 then
 
 end
 
-local function getLocalPlayerUsername()
-    local player = game.Players.LocalPlayer
-    if player then
-        return player.Name
-    else
-        return nil
-    end
-	end
+
 
     local replicatedStorage = game:GetService("ReplicatedStorage")
 
