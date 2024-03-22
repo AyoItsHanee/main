@@ -48,13 +48,20 @@ elseif placeId == 9321822839 then
 
 end
 
-
+local function getLocalPlayerUsername()
+    local player = game.Players.LocalPlayer
+    if player then
+        return player.Name
+    else
+        return nil
+    end
+	end
 
     local replicatedStorage = game:GetService("ReplicatedStorage")
 
     local parties = replicatedStorage:WaitForChild("parties")
 
-    local folderContainingUsername = findUsername(parties, myUsername)
+    local folderContainingUsername = findUsername(parties, [getLocalPlayerUsername])
 
 
 
