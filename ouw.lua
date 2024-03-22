@@ -45,7 +45,6 @@ end
 
     game:GetService("ReplicatedStorage"):WaitForChild("queu_up"):FireServer()
     wait(10)
-loadstring(game:HttpGet("https://raw.githubusercontent.com/NovazUwU/SharkHub/main/Map2"))()
 elseif placeId == 11468075017 then
     wait(1)
     local Info = TweenInfo.new(1, Enum.EasingStyle.Cubic, Enum.EasingDirection.Out, 0, false, 0)
