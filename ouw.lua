@@ -18,7 +18,7 @@ if placeId == 5956785391 then
 
 elseif placeId == 9321822839 then
 
-    local myUsername = "HonestTested" -- Replace with your actual username
+    local myUsername = "nhfarming0" -- Replace with your actual username
 
 	local function findUsername(folder, username)
 
@@ -61,7 +61,7 @@ local function getLocalPlayerUsername()
 
     local parties = replicatedStorage:WaitForChild("parties")
 
-    local folderContainingUsername = findUsername(parties, [getLocalPlayerUsername()])
+    local folderContainingUsername = findUsername(parties, myUsername)
 
 
 
