@@ -61,7 +61,7 @@ local function getLocalPlayerUsername()
 
     local parties = replicatedStorage:WaitForChild("parties")
 
-    local folderContainingUsername = findUsername(parties, [getLocalPlayerUsername])
+    local folderContainingUsername = findUsername(parties, [getLocalPlayerUsername()])
 
 
 
