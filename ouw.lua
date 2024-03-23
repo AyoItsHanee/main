@@ -20,7 +20,7 @@ if placeId == 5956785391 then
     wait()
     TeleportService:Teleport(9321822839)
 elseif placeId == 9321822839 then
-    local myUsername = "nhfarming0" -- Replace with your actual username
+    local myUsername = "bruhbruh1233234" -- Replace with your actual username
 	local function findUsername(folder, username)
     for _, child in pairs(folder:GetChildren()) do
             local playerFolder = child:FindFirstChild(username)
