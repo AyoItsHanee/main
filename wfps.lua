@@ -27,7 +27,7 @@ local Dir = COREGUI:FindFirstChild("RobloxPromptGui"):FindFirstChild("promptOver
 if placeId == 5956785391 then
 local args= {
     [1] = "join",
-    [2] = "XEzUVasdE4P",
+    [2] = "h8o4ezij",
     [3] = 13881804983
 }
 game:GetService("ReplicatedStorage").handle_privateserver:InvokeServer(unpack(args))
