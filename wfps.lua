@@ -34,6 +34,17 @@ local args= {
 game:GetService("ReplicatedStorage").handle_privateserver:InvokeServer(unpack(args))
     
 elseif placeId == 13883059853 then
+game:GetService("Players").LocalPlayer.PlayerScripts["Small_Scripts"].Gameplay["Sun_Damage"].Disabled = true
+
+local function wd()
+		local args = {
+    	[1] = true
+		}
+
+		game:GetService("ReplicatedStorage"):WaitForChild("Remotes"):WaitForChild("war_Drums_remote"):FireServer(unpack(args))
+		wait(3)
+end
+coroutine.wrap(wd)()
 -- Auto collect chest
 local function collectChest()
     while task.wait() do
@@ -201,7 +212,7 @@ local function CheckAndMove(pathName, position, pathToCheck, Time, Num)
     Goal.CFrame = CFrame.new(position)
     local tween = TweenService:Create(Root, TweenInfo.new(Time, Enum.EasingStyle.Linear, Enum.EasingDirection.Out, 0, false, 0), Goal)
     tween:Play()
-    wait(Time + .5)
+    wait(Time + 2)
     tween:Cancel()
     local movementTimer = 0
     local prevPosition = Root.Position
