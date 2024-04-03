@@ -212,13 +212,13 @@ local function CheckAndMove(pathName, position, pathToCheck, Time, Num)
     Goal.CFrame = CFrame.new(position)
     local tween = TweenService:Create(Root, TweenInfo.new(Time, Enum.EasingStyle.Linear, Enum.EasingDirection.Out, 0, false, 0), Goal)
     tween:Play()
-    wait(Time + 2)
+    wait(Time + .5)
     tween:Cancel()
     local movementTimer = 0
     local prevPosition = Root.Position
 	while task.wait() do
         local pathInWorkspace = Workspace.Mobs:FindFirstChild(pathName)
-        if pathToCheck and #pathToCheck:GetChildren() <= Num then
+        if pathToCheck and #pathToCheck:GetChildren() < Num then
             print("Moving to the next path")
             break
         end
