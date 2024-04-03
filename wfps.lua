@@ -187,7 +187,7 @@ local pathsToCheck = {
         name = "Enmu",
         position = Vector3.new(1580, 490, -667),
         path = Workspace.Mobs.Bosses.Enmu,
-		time = 2,
+		time = 3,
 		num = 2
     },
         {
