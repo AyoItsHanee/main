@@ -1,5 +1,4 @@
 repeat wait() until game:IsLoaded()
-wait()
 game:GetService("Players").LocalPlayer.Idled:connect(function()
 game:GetService("VirtualUser"):ClickButton2(Vector2.new())
 end)
@@ -12,7 +11,7 @@ local Workspace = game:GetService("Workspace")
 local placeId = game.PlaceId
 local TeleportService = game:GetService("TeleportService")
 
-local COREGUI = game:GetService("CoreGui")
+COREGUI = game:GetService("CoreGui")
 local Dir = COREGUI:FindFirstChild("RobloxPromptGui"):FindFirstChild("promptOverlay")
 	Dir.DescendantAdded:Connect(function(Err)
 		if Err.Name == "ErrorTitle" then
@@ -94,7 +93,9 @@ local function attackMobs()
         end
     end
 end
-coroutine.wrap(attackMobs)()
+
+task.spawn(attackMobs)
+
 				
 -- Loop to delete specific parts
 local specificNames = {"Map", "InteractiveShopItems", "MugenTrain", "PrivateServerDummies", "cup game", "Bandage", "BeastTrainer", "BigLight", "Black Smith", "Board", "Boulder_To_Split", "Buy_Big_Gourd", "Buy_Gourd", "Buy_Medium_Gourd", "Chair", "Civilian", "Civilian 2", "ClashTrainer", "Conductor", "Customization data ting", "Demon Guy", "Demon Slayer", "Fishing_Rod2", "Flame Trainer", "Grandpa Wagwon's Wagon", "Green_Crystal", "Mae", "Malik", "Mark", "Mist Trainer", "Model", "Ouw0pp", "Part", "Patrick", "Policeman", "Rina", "RinaDesk", "Rock", "Snow Trainer", "Soryu Trainer", "Beast Trainer", "Sound Trainer", "Target_Training", "Tyrone", "potion_sails_man", "thing", "Meditate_Mat", "Push_Ups_Mat", "Union", "MeshPart", "Floor", "Mist"}
@@ -187,7 +188,7 @@ local pathsToCheck = {
         name = "Enmu",
         position = Vector3.new(1580, 490, -667),
         path = Workspace.Mobs.Bosses.Enmu,
-		time = 3,
+		time = 2,
 		num = 2
     },
         {
@@ -212,7 +213,7 @@ local function CheckAndMove(pathName, position, pathToCheck, Time, Num)
     Goal.CFrame = CFrame.new(position)
     local tween = TweenService:Create(Root, TweenInfo.new(Time, Enum.EasingStyle.Linear, Enum.EasingDirection.Out, 0, false, 0), Goal)
     tween:Play()
-    wait(Time + .5)
+    wait(Time)
     tween:Cancel()
     local movementTimer = 0
     local prevPosition = Root.Position
