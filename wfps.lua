@@ -218,7 +218,7 @@ local function CheckAndMove(pathName, position, pathToCheck, Time, Num)
     local prevPosition = Root.Position
 	while task.wait() do
         local pathInWorkspace = Workspace.Mobs:FindFirstChild(pathName)
-        if pathToCheck and #pathToCheck:GetChildren() < Num then
+        if pathToCheck and #pathToCheck:GetChildren() == Num then
             print("Moving to the next path")
             break
         end
@@ -229,7 +229,6 @@ local function CheckAndMove(pathName, position, pathToCheck, Time, Num)
             if movementTimer > 1 then
                 print("Character isn't moving, stopping the tween")
                 tween:Cancel() -- Stop the tween
-                break
             end
         else
             movementTimer = 0
