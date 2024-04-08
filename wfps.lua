@@ -10,7 +10,8 @@ local ReplicatedStorage = game:GetService("ReplicatedStorage")
 local Workspace = game:GetService("Workspace")
 local placeId = game.PlaceId
 local TeleportService = game:GetService("TeleportService")
-
+			
+if placeId == 5956785391 then
 COREGUI = game:GetService("CoreGui")
 local Dir = COREGUI:FindFirstChild("RobloxPromptGui"):FindFirstChild("promptOverlay")
 	Dir.DescendantAdded:Connect(function(Err)
@@ -23,8 +24,6 @@ local Dir = COREGUI:FindFirstChild("RobloxPromptGui"):FindFirstChild("promptOver
 			end)
 		end
 	end)
-			
-if placeId == 5956785391 then
 local args= {
     [1] = "join",
     [2] = "XCVRzFEC",
@@ -33,6 +32,18 @@ local args= {
 game:GetService("ReplicatedStorage").handle_privateserver:InvokeServer(unpack(args))
     
 elseif placeId == 13883059853 then
+COREGUI = game:GetService("CoreGui")
+local Dir = COREGUI:FindFirstChild("RobloxPromptGui"):FindFirstChild("promptOverlay")
+	Dir.DescendantAdded:Connect(function(Err)
+		if Err.Name == "ErrorTitle" then
+			Err:GetPropertyChangedSignal("Text"):Connect(function()
+				if Err.Text:sub(0, 12) == "Disconnected" then
+						Players.LocalPlayer:Kick("\nRejoining...")
+						TeleportService:Teleport(5956785391, Players.LocalPlayer)
+				end
+			end)
+		end
+	end)
 game:GetService("Players").LocalPlayer.PlayerScripts["Small_Scripts"].Gameplay["Sun_Damage"].Disabled = true
 
 local function wd()
