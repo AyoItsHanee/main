@@ -221,6 +221,7 @@ local pathsToCheck = {
 }
 
 local function CheckAndMove(pathName, position, pathToCheck, Time, Num)
+					if Root then
     print("Going to " .. pathName)
     Goal.CFrame = CFrame.new(position)
     local tween = TweenService:Create(Root, TweenInfo.new(Time, Enum.EasingStyle.Linear, Enum.EasingDirection.Out, 0, false, 0), Goal)
@@ -248,6 +249,9 @@ local function CheckAndMove(pathName, position, pathToCheck, Time, Num)
         end
         prevPosition = currentPosition
     end
+					else 
+print("Character not Found")
+					end
 end
 
 local function main()
