@@ -58,7 +58,6 @@ end
 coroutine.wrap(wd)()
 -- Auto collect chest
 local function collectChest()
-    while task.wait() do
             for _, chest in pairs(Workspace.Debree:GetChildren()) do
                 if chest.Name == "Loot_Chest" then
                     for _, drop in pairs(chest:FindFirstChild("Drops"):GetChildren()) do
@@ -68,22 +67,18 @@ local function collectChest()
             end
         end
     end
-end
 coroutine.wrap(collectChest)()
 
 -- Loop to initiate a skill
 local function initiateSkill()
-    while task.wait() do
         local Handle_Initiate_S_ = ReplicatedStorage.Remotes.To_Server.Handle_Initiate_S_
         Handle_Initiate_S_:InvokeServer("skil_ting_asd", Players.LocalPlayer, "arrow_knock_back", 5)
         wait(14)
     end
-end
 coroutine.wrap(initiateSkill)()
 
 -- Loop to attack mobs
 local function attackMobs()
-    while task.wait() do
         local hitCounter = {}
         for _, mob in pairs(Workspace.Mobs:GetDescendants()) do
             if mob:IsA("Model") and mob:FindFirstChild("HumanoidRootPart") then
@@ -104,16 +99,13 @@ local function attackMobs()
             end
         end
     end
-end
-
-task.spawn(attackMobs)
+coroutine.wrap(attackMobs)()
 
 				
 -- Loop to delete specific parts
 local specificNames = {"Map", "InteractiveShopItems", "MugenTrain", "PrivateServerDummies", "cup game", "Bandage", "BeastTrainer", "BigLight", "Black Smith", "Board", "Boulder_To_Split", "Buy_Big_Gourd", "Buy_Gourd", "Buy_Medium_Gourd", "Chair", "Civilian", "Civilian 2", "ClashTrainer", "Conductor", "Customization data ting", "Demon Guy", "Demon Slayer", "Fishing_Rod2", "Flame Trainer", "Grandpa Wagwon's Wagon", "Green_Crystal", "Mae", "Malik", "Mark", "Mist Trainer", "Model", "Ouw0pp", "Part", "Patrick", "Policeman", "Rina", "RinaDesk", "Rock", "Snow Trainer", "Soryu Trainer", "Beast Trainer", "Sound Trainer", "Target_Training", "Tyrone", "potion_sails_man", "thing", "Meditate_Mat", "Push_Ups_Mat", "Union", "MeshPart", "Floor", "Mist"}
 local isLooping = true
 local function deleteSpecificParts()
-    while task.wait() do
 	if isLooping then
             for _, part in pairs(Workspace:GetChildren()) do
                 if table.find(specificNames, part.Name) then
@@ -122,11 +114,9 @@ local function deleteSpecificParts()
         end
     end
 end
-end
 coroutine.wrap(deleteSpecificParts)()
 
 local function preventFall()
-    while task.wait() do
         local antifall3 = Instance.new("BodyVelocity", Players.LocalPlayer.Character.HumanoidRootPart)
         antifall3.Velocity = Vector3.new(0, 0, 0)
         antifall3.MaxForce = Vector3.new(9e9, 9e9, 9e9)
@@ -137,8 +127,7 @@ local function preventFall()
     -- This part should be outside the while loop
     if antifall3 then
         antifall3:Destroy()
-    end
-end
+				end
 coroutine.wrap(preventFall)()
 
 				
@@ -257,7 +246,6 @@ local function main()
     wait()
     main()
 end
-
 coroutine.wrap(main)()
 --game:GetService("RunService"):Set3dRenderingEnabled(false)
 wait(300)
