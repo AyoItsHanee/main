@@ -206,7 +206,7 @@ local isLooping = false
 			
 wait(3600)
 local TeleportService = game:GetService("TeleportService")
-TeleportService:Teleport(5956785391)
+--TeleportService:Teleport(5956785391)
 		
 else
     print("Wrong game")
