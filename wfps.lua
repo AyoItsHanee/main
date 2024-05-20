@@ -147,76 +147,16 @@ local Root = game.Players.LocalPlayer.Character.HumanoidRootPart
 local Goal = {}
 -- Function to teleport to specific paths
 local pathsToCheck = {
-    {
-        name = "Sound Trainee",
-        position = Vector3.new(1859, 670, -2801),
-        path = Workspace.Mobs.Bosses.Sound_Trainee["Sound Trainee"],
-		time = 10,
-		num = 2
-    },
-    {
-        name = "Tengen",
-        position = Vector3.new(1463, 493, -3118),
-        path = Workspace.Mobs.Bosses.Tengen,
-		time = 2,
-		num = 3
-    },
-        {
-        name = "Douma",
-        position = Vector3.new(-2, 519, -1690),
-        path = Workspace.Mobs.Bosses.Douma,
-		time = 5,
-		num = 3
-    },
-        {
-        name = "Renpeke",
-        position = Vector3.new(-1289, 607, -664),
-        path = Workspace.Mobs.Bosses["Flame Trainee"],
-		time = 5,
-		num = 2
-    },
-        {
-        name = "Swampy",
-        position = Vector3.new(-1349, 607, -205),
-        path = Workspace.Mobs.Bosses.Swampy,
-		time = 1,
-		num = 2
-    },
-        {
-        name = "Akaza",
-        position = Vector3.new(2008, 563, -107),
-        path = Workspace.Mobs.Bosses.Akaza,
-		time = 10,
-		num = 3
-    },
-        {
-        name = "Inosuke",
-        position = Vector3.new(1596, 307, -394),
-        path = Workspace.Mobs.Bosses.Inosuke,
-		time = 2,
-		num = 2
-    },
-        {
-        name = "Enmu",
-        position = Vector3.new(1580, 490, -667),
-        path = Workspace.Mobs.Bosses.Enmu,
-		time = 2,
-		num = 2
-    },
-        {
-        name = "Rengoku",
-        position = Vector3.new(3659, 680, -355),
-        path = Workspace.Mobs.Bosses.Rengoku,
-		time = 5,
-		num = 3
-    },
-        {
-        name = "Muichiro",
-        position = Vector3.new(4512, 680, -553),
-        path = Workspace.Mobs.Bosses.Muichiro,
-		time = 2,
-		num = 2
-    },
+    { name = "Sound Trainee", position = Vector3.new(1859, 670, -2801), path = Workspace.Mobs.Bosses.Sound_Trainee["Sound Trainee"], time = 10, num = 2 },
+    { name = "Tengen", position = Vector3.new(1463, 493, -3118), path = Workspace.Mobs.Bosses.Tengen, time = 2, num = 3 },
+    { name = "Douma", position = Vector3.new(-2, 519, -1690), path = Workspace.Mobs.Bosses.Douma, time = 5, num = 3 },
+    { name = "Renpeke", position = Vector3.new(-1289, 607, -664), path = Workspace.Mobs.Bosses["Flame Trainee"], time = 5, num = 2 },
+    { name = "Swampy", position = Vector3.new(-1349, 607, -205), path = Workspace.Mobs.Bosses.Swampy, time = 1, num = 2 },
+    { name = "Akaza", position = Vector3.new(2008, 563, -107), path = Workspace.Mobs.Bosses.Akaza, time = 10, num = 3 },
+    { name = "Inosuke", position = Vector3.new(1596, 307, -394), path = Workspace.Mobs.Bosses.Inosuke, time = 2, num = 2 },
+    { name = "Enmu", position = Vector3.new(1580, 490, -667), path = Workspace.Mobs.Bosses.Enmu, time = 2, num = 2 },
+    { name = "Rengoku", position = Vector3.new(3659, 680, -355), path = Workspace.Mobs.Bosses.Rengoku, time = 5, num = 3 },
+    { name = "Muichiro", position = Vector3.new(4512, 680, -553), path = Workspace.Mobs.Bosses.Muichiro, time = 2, num = 2 }
     -- Add other paths here similarly
 }
 
