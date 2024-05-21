@@ -200,7 +200,7 @@ local function main()
 end
 
 coroutine.wrap(main)()
-game:GetService("RunService"):Set3dRenderingEnabled(false)
+--game:GetService("RunService"):Set3dRenderingEnabled(false)
 wait(300)
 local isLooping = false
 			
