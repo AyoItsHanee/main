@@ -1,5 +1,8 @@
 --loadstring(game:HttpGet("https://raw.githubusercontent.com/EdgeIY/infiniteyield/master/source", true))()
 repeat wait() until game:IsLoaded()
+game:GetService("Players").LocalPlayer.Idled:connect(function()
+game:GetService("VirtualUser"):ClickButton2(Vector2.new())
+end)
 local placeId = game.PlaceId
 COREGUI = game:GetService("CoreGui")
 local Dir = COREGUI:FindFirstChild("RobloxPromptGui"):FindFirstChild("promptOverlay")
@@ -99,13 +102,11 @@ local orbTypes = {
 local function createOrbToggler(orb)
     spawn(function()
         while task.wait() do
-            if orb.enabled then
                 for _, v in pairs(game:GetService("Workspace").Map:GetChildren()) do
                     if v:IsA("Model") and v.Name == orb.name then
-                        LP.Character.HumanoidRootPart.CFrame = v:GetModelCFrame()
-                    end
+                        player.Character.HumanoidRootPart.CFrame = v:GetModelCFrame()
                 end
-            end
+        end
         end
     end)
 end
