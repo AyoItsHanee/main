@@ -129,7 +129,6 @@ local function sps()
     end
 end	
 end
-coroutine.wrap(sps)()
 
     -- Function to check if the Timer GUI is visible
     local function isTimerGuiNotVisible()
@@ -268,6 +267,8 @@ if isTimerGuiVisible() then
     wait()
     local loopCM = coroutine.create(mainCoroutine)
     coroutine.resume(loopCM)
+		wait(1)
+		coroutine.wrap(sps)()
 --[[    wait(600)
     local p = game.Players.LocalPlayer
     local c = p.Character
