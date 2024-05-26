@@ -74,8 +74,8 @@ elseif placeId == 11468075017 then
     local TeleportService = game:GetService("TeleportService")
     local function destroyModels(modelNames)
         for _, modelName in pairs(modelNames) do
-            if game:GetService("Workspace").Map:FindFirstChild(modelName) then
-                for _, v in pairs(game:GetService("Workspace").Map:GetChildren()) do
+            if Workspace.Map:FindFirstChild(modelName) then
+                for _, v in pairs(Workspace.Map:GetChildren()) do
                     if v:IsA("Model") and v.Name == modelName then
                         v:Destroy()
                     end
