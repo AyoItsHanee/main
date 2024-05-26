@@ -89,6 +89,42 @@ local root = character:WaitForChild("HumanoidRootPart")
 local toggleTeleport = false
 local tweenTime = 1 -- Change this value to adjust tween duration (in seconds)
 
+local orbTypes = {
+    {name = "HealthRegen", toggleName = "GetOrb1", displayName = "Auto [Health Regen] Orb"},
+    {name = "StaminaRegen", toggleName = "GetOrb2", displayName = "Auto [Stamina Regen] Orb"},
+    {name = "BloodMoney", toggleName = "GetOrb3", displayName = "Auto [Blood Money] Orb"},
+    {name = "DoublePoints", toggleName = "GetOrb4", displayName = "Auto [Double Points] Orb"},
+    {name = "InstaKill", toggleName = "GetOrb5", displayName = "Auto [Instant Kill] Orb"},
+    {name = "WisteriaPoisoning", toggleName = "GetOrb6", displayName = "Auto [Wisteria Poisoning] Orb"},
+    {name = "MobCamouflage", toggleName = "GetOrb7", displayName = "Auto [Mob Camouflage] Orb"}
+}
+
+local function createOrbToggler(orb)
+    spawn(function()
+        while task.wait() do
+            if _G[orb.name] then
+                for _, v in pairs(game:GetService("Workspace").Map:GetChildren()) do
+                    if v:IsA("Model") and v.Name == orb.name then
+                        player.Character.HumanoidRootPart.CFrame = v:GetModelCFrame()
+                    end
+                end
+            end
+        end
+    end)
+
+    Ouwi:AddToggle(orb.toggleName, {
+        Text = orb.displayName,
+        Default = false,
+        Callback = function(value)
+            _G[orb.name] = value
+        end
+    })
+end
+
+for _, orb in ipairs(orbTypes) do
+    createOrbToggler(orb)
+end
+	
 -- Function to find the correct room name
 local function findRoomName()
     for _, room in pairs(workspace.Map:GetChildren()) do
@@ -105,32 +141,34 @@ end
 
 -- Function to tween the character to a random part within "Spawnpoints"
 local function sps()
-	while true do
-    local roomName = findRoomName()
-    if roomName then
-        local spawnpoints = workspace.Map:FindFirstChild(roomName):FindFirstChild("Spawnpoints")
-        if spawnpoints then
-            local parts = spawnpoints:GetChildren()
-            if #parts > 0 then
-                local randomPart = parts[math.random(1, #parts)]
-                if randomPart and randomPart:IsA("BasePart") then
-                    local destination = randomPart.Position + Vector3.new(0, 5, 0)
-                    local tweenInfo = TweenInfo.new(tweenTime, Enum.EasingStyle.Linear, Enum.EasingDirection.Out)
-                    local tween = game.TweenService:Create(root, tweenInfo, {CFrame = CFrame.new(destination)})
-                    tween:Play()
-			wait(3)
+    while true do
+        local roomName = findRoomName()
+        if roomName then
+            local spawnpoints = workspace.Map:FindFirstChild(roomName):FindFirstChild("Spawnpoints")
+            if spawnpoints then
+                local parts = spawnpoints:GetChildren()
+                if #parts > 0 then
+                    local randomPart = parts[math.random(1, #parts)]
+                    if randomPart and randomPart:IsA("BasePart") then
+                        local destination = randomPart.Position + Vector3.new(0, 5, 0)
+                        local tweenInfo = TweenInfo.new(1, Enum.EasingStyle.Linear, Enum.EasingDirection.Out) -- Adjust tweenTime as needed
+                        local tween = game.TweenService:Create(LP.Character.HumanoidRootPart, tweenInfo, {CFrame = CFrame.new(destination)})
+                        tween:Play()
+                        wait(3)
+                    end
+                else
+                    warn("No parts found in Spawnpoints of room: " .. roomName)
                 end
             else
-                warn("No parts found in Spawnpoints of room: " .. roomName)
+                warn("No 'Spawnpoints' found in room: " .. roomName)
             end
         else
-            warn("No 'Spawnpoints' found in room: " .. roomName)
+            warn("No room with parts found in workspace.Map.")
         end
-    else
-        warn("No room with parts found in workspace.Map.")
-    end
-end	
+        task.wait(1) -- Add a wait to prevent the loop from running too fast
+    end	
 end
+	
 	local function wd()
 		local args = {
     	[1] = true
