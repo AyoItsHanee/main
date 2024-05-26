@@ -3,7 +3,6 @@ repeat wait() until game:IsLoaded()
 game:GetService("Players").LocalPlayer.Idled:connect(function()
 game:GetService("VirtualUser"):ClickButton2(Vector2.new())
 end)
-local success, error = pcall(function()
 local placeId = game.PlaceId
 COREGUI = game:GetService("CoreGui")
 local Dir = COREGUI:FindFirstChild("RobloxPromptGui"):FindFirstChild("promptOverlay")
@@ -90,41 +89,6 @@ local root = character:WaitForChild("HumanoidRootPart")
 local toggleTeleport = false
 local tweenTime = 1 -- Change this value to adjust tween duration (in seconds)
 
-local orbTypes = {
-    {name = "HealthRegen", enabled = true},
-    {name = "StaminaRegen", enabled = true},
-    {name = "BloodMoney", enabled = true},
-    {name = "DoublePoints", enabled = true},
-    {name = "InstaKill", enabled = true},
-    {name = "WisteriaPoisoning", enabled = true},
-    {name = "MobCamouflage", enabled = true}
-}
-
-local function createOrbToggler(orb)
-    spawn(function()
-        while task.wait() do
-            if orb.enabled then
-                for _, v in pairs(game:GetService("Workspace").Map:GetChildren()) do
-                    if v:IsA("Model") and v.Name == orb.name then
-                        player.Character.HumanoidRootPart.CFrame = v:GetModelCFrame()
-                    end
-                end
-            end
-        end
-    end)
-end
-
-	local function orbz()
-for _, orb in ipairs(orbTypes) do
-    createOrbToggler(orb)
-end
-	end
-		local function orbx()
-			while task.wait() do
-				orbz()
-				wait()
-			end
-		end
 
 	
 -- Function to find the correct room name
@@ -296,8 +260,4 @@ end
 --TeleportService:Teleport(9321822839)
 else
     print("Place ID doesn't match")
-end
-			end)
-if not success then
-    print("An error occurred:", error)
 end
