@@ -4,6 +4,7 @@ game:GetService("Players").LocalPlayer.Idled:connect(function()
 game:GetService("VirtualUser"):ClickButton2(Vector2.new())
 end)
 local placeId = game.PlaceId
+local Workspace = game:GetService("Workspace")
 COREGUI = game:GetService("CoreGui")
 local Dir = COREGUI:FindFirstChild("RobloxPromptGui"):FindFirstChild("promptOverlay")
 	Dir.DescendantAdded:Connect(function(Err)
