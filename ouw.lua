@@ -227,7 +227,7 @@ if isTimerGuiVisible() then
     wait()
     local loopCM = coroutine.create(mainCoroutine)
     coroutine.resume(loopCM)
-    wait(600)
+    --[[wait(600)
     local p = game.Players.LocalPlayer
     local c = p.Character
     local h = c:FindFirstChild("Humanoid")
@@ -245,6 +245,7 @@ end
     TeleportService:Teleport(9321822839)
 end
 TeleportService:Teleport(9321822839)
+]]--
 else
     print("Place ID doesn't match")
 end
