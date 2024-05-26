@@ -232,28 +232,7 @@ end
     -- Create and start a separate coroutine for the looped function
     local loopC2 = coroutine.create(loopFunction)
     coroutine.resume(loopC2)
-
-        -- Create and start a separate coroutine for destroying models
-        local destroyModelsCoroutine = coroutine.create(function()
-            while true do
-                local modelsToDestroy = {
-                    "MobCamouflage",
-                    "HealthRegen",
-                    "StaminaRegen",
-                    "BloodMoney",
-                    "DoublePoints",
-                    "InstaKill",
-                    "WisteriaPoisoning"
-                }
-    
-                destroyModels(modelsToDestroy)
-    
-                wait(1)  -- Adjust the delay (in seconds) between each loop iteration if needed
-            end
-        end)
-    
-        coroutine.resume(destroyModelsCoroutine)
-
+	
     local startTime = tick() -- Record the start time
 -- Wait until the Timer GUI is visible or until the timeout is reached
 while not isTimerGuiVisible() do
