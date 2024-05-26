@@ -131,6 +131,15 @@ local function sps()
     end
 end	
 end
+	local function wd()
+		local args = {
+    	[1] = true
+		}
+
+		game:GetService("ReplicatedStorage"):WaitForChild("Remotes"):WaitForChild("war_Drums_remote"):FireServer(unpack(args))
+		wait(3)
+end
+coroutine.wrap(wd)()
 
     -- Function to check if the Timer GUI is visible
     local function isTimerGuiNotVisible()
