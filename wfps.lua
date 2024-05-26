@@ -204,7 +204,7 @@ coroutine.wrap(main)()
 wait(300)
 local isLooping = false
 			
-wait(3600)
+wait(1800)
 local TeleportService = game:GetService("TeleportService")
 TeleportService:Teleport(5956785391)
 		
