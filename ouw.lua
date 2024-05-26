@@ -68,9 +68,6 @@ elseif placeId == 11468075017 then
     Goal.CFrame = CFrame.new(4988, -148, 2030)
     game:GetService("TweenService"):Create(Root, Info, Goal):Play()
     wait(11)
-    Goal.CFrame = CFrame.new(5022, -148, 2032)
-    game:GetService("TweenService"):Create(Root, Info, Goal):Play()
-    wait(11)
     local TeleportService = game:GetService("TeleportService")
     local function destroyModels(modelNames)
         for _, modelName in pairs(modelNames) do
