@@ -87,6 +87,74 @@ local root = character:WaitForChild("HumanoidRootPart")
 local toggleTeleport = false
 local tweenTime = 1 -- Change this value to adjust tween duration (in seconds)
 
+-- Function to find the correct room name
+local function findRoomName()
+    for _, room in pairs(workspace.Map:GetChildren()) do
+        local spawnpoints = room:FindFirstChild("Spawnpoints")
+        if spawnpoints then
+            local part = spawnpoints:FindFirstChildWhichIsA("BasePart")
+            if part then
+                return room.Name
+            end
+        end
+    end
+    return nil
+end
+
+-- Function to tween the character to a random part within "Spawnpoints"
+local function tweenToRandomPart()
+    local roomName = findRoomName()
+    if roomName then
+        local spawnpoints = workspace.Map:FindFirstChild(roomName):FindFirstChild("Spawnpoints")
+        if spawnpoints then
+            local parts = spawnpoints:GetChildren()
+            if #parts > 0 then
+                local randomPart = parts[math.random(1, #parts)]
+                if randomPart and randomPart:IsA("BasePart") then
+                    local destination = randomPart.Position + Vector3.new(0, 5, 0)
+                    local tweenInfo = TweenInfo.new(tweenTime, Enum.EasingStyle.Linear, Enum.EasingDirection.Out)
+                    local tween = game.TweenService:Create(root, tweenInfo, {CFrame = CFrame.new(destination)})
+                    tween:Play()
+					wait(5)
+                end
+            else
+                warn("No parts found in Spawnpoints of room: " .. roomName)
+            end
+        else
+            warn("No 'Spawnpoints' found in room: " .. roomName)
+        end
+    else
+        warn("No room with parts found in workspace.Map.")
+    end
+end
+
+	local sps = coroutine.create(function()
+        while true do
+            local roomName = findRoomNameWithSpawnpoints()
+            if roomName then
+                local spawnpoints = workspace.Map:FindFirstChild(roomName):FindFirstChild("Spawnpoints")
+                if spawnpoints then
+                    local parts = spawnpoints:GetChildren()
+                    if #parts > 0 then
+                        local randomPart = parts[math.random(1, #parts)]
+                        if randomPart and randomPart:IsA("BasePart") then
+                            local destination = randomPart.Position + Vector3.new(0, 5, 0)
+                            tweenToRandomSpawnPoint(root, destination) -- Use the modified function
+                            wait(1)  -- Adjust the delay (in seconds) between each move
+                        end
+                    else
+                        warn("No parts found in Spawnpoints of room: " .. roomName)
+                    end
+                else
+                    warn("No 'Spawnpoints' found in room: " .. roomName)
+                end
+            else
+                warn("No room with parts found in workspace.Map.")
+            end
+        end
+    end
+		coroutine.resume(sps)
+
     -- Function to check if the Timer GUI is visible
     local function isTimerGuiNotVisible()
         local player = game:GetService("Players").LocalPlayer
