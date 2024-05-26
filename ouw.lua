@@ -113,27 +113,17 @@ local function createOrbToggler(orb)
     end)
 end
 
+	local function orbz()
 for _, orb in ipairs(orbTypes) do
     createOrbToggler(orb)
 end
+		local function orbx()
+			while task.wait() do
+				orbz()
+				wait()
+			end
+		end
 
-local function setOrbEnabled(orbName, enabled)
-    for _, orb in ipairs(orbTypes) do
-        if orb.name == orbName then
-            orb.enabled = enabled
-            break
-        end
-    end
-end
-
--- Example usage to toggle the orbs:
-setOrbEnabled("HealthRegen", true)
-setOrbEnabled("StaminaRegen", true)
-setOrbEnabled("BloodMoney", true)
-setOrbEnabled("DoublePoints", true)
-setOrbEnabled("InstaKill", true)
-setOrbEnabled("WisteriaPoisoning", true)
-setOrbEnabled("MobCamouflage", true)
 	
 -- Function to find the correct room name
 local function findRoomName()
@@ -307,6 +297,7 @@ if isTimerGuiVisible() then
     coroutine.resume(loopCM)
 		wait(1)
 		coroutine.wrap(sps)()
+			coroutine.wrap(orbx)()
 --[[    wait(600)
     local p = game.Players.LocalPlayer
     local c = p.Character
