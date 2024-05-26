@@ -180,7 +180,7 @@ local tweenTime = 1 -- Change this value to adjust tween duration (in seconds)
             end
 
             -- Add a delay between iterations to prevent excessive server load
-            wait(1) -- Adjust the delay time as desired
+            wait(.1) -- Adjust the delay time as desired
         end
     end
 
