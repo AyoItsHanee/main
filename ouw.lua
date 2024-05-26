@@ -90,40 +90,50 @@ local toggleTeleport = false
 local tweenTime = 1 -- Change this value to adjust tween duration (in seconds)
 
 local orbTypes = {
-    {name = "HealthRegen", toggleName = "GetOrb1", displayName = "Auto [Health Regen] Orb"},
-    {name = "StaminaRegen", toggleName = "GetOrb2", displayName = "Auto [Stamina Regen] Orb"},
-    {name = "BloodMoney", toggleName = "GetOrb3", displayName = "Auto [Blood Money] Orb"},
-    {name = "DoublePoints", toggleName = "GetOrb4", displayName = "Auto [Double Points] Orb"},
-    {name = "InstaKill", toggleName = "GetOrb5", displayName = "Auto [Instant Kill] Orb"},
-    {name = "WisteriaPoisoning", toggleName = "GetOrb6", displayName = "Auto [Wisteria Poisoning] Orb"},
-    {name = "MobCamouflage", toggleName = "GetOrb7", displayName = "Auto [Mob Camouflage] Orb"}
+    {name = "HealthRegen", enabled = false},
+    {name = "StaminaRegen", enabled = false},
+    {name = "BloodMoney", enabled = false},
+    {name = "DoublePoints", enabled = false},
+    {name = "InstaKill", enabled = false},
+    {name = "WisteriaPoisoning", enabled = false},
+    {name = "MobCamouflage", enabled = false}
 }
 
 local function createOrbToggler(orb)
     spawn(function()
         while task.wait() do
-            if _G[orb.name] then
+            if orb.enabled then
                 for _, v in pairs(game:GetService("Workspace").Map:GetChildren()) do
                     if v:IsA("Model") and v.Name == orb.name then
-                        player.Character.HumanoidRootPart.CFrame = v:GetModelCFrame()
+                        LP.Character.HumanoidRootPart.CFrame = v:GetModelCFrame()
                     end
                 end
             end
         end
     end)
-
-    Ouwi:AddToggle(orb.toggleName, {
-        Text = orb.displayName,
-        Default = false,
-        Callback = function(value)
-            _G[orb.name] = value
-        end
-    })
 end
 
 for _, orb in ipairs(orbTypes) do
     createOrbToggler(orb)
 end
+
+local function setOrbEnabled(orbName, enabled)
+    for _, orb in ipairs(orbTypes) do
+        if orb.name == orbName then
+            orb.enabled = enabled
+            break
+        end
+    end
+end
+
+-- Example usage to toggle the orbs:
+setOrbEnabled("HealthRegen", true)
+setOrbEnabled("StaminaRegen", true)
+setOrbEnabled("BloodMoney", true)
+setOrbEnabled("DoublePoints", true)
+setOrbEnabled("InstaKill", true)
+setOrbEnabled("WisteriaPoisoning", true)
+setOrbEnabled("MobCamouflage", true)
 	
 -- Function to find the correct room name
 local function findRoomName()
