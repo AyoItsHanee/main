@@ -114,12 +114,11 @@ local function createOrbToggler(orb)
 end
 
 	local function orbx()
-		while task.wait() do
 for _, orb in ipairs(orbTypes) do
     createOrbToggler(orb)
 end
 			wait()
-		end
+		orbx()
 	end
 	
 -- Function to find the correct room name
