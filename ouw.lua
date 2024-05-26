@@ -245,7 +245,7 @@ end
     TeleportService:Teleport(9321822839)
 ]]--
 end
-TeleportService:Teleport(9321822839)
+--TeleportService:Teleport(9321822839)
 else
     print("Place ID doesn't match")
 end
