@@ -135,47 +135,6 @@ local tweenTime = 1 -- Change this value to adjust tween duration (in seconds)
     local loopC1 = coroutine.create(loopBp)
     coroutine.resume(loopC1)
 
--- Function to find the correct room name
-local function findRoomName()
-    for _, room in pairs(workspace.Map:GetChildren()) do
-        local spawnpoints = room:FindFirstChild("Spawnpoints")
-        if spawnpoints then
-            local part = spawnpoints:FindFirstChildWhichIsA("BasePart")
-            if part then
-                return room.Name
-            end
-        end
-    end
-    return nil
-end
-
--- Function to tween the character to a random part within "Spawnpoints"
-local function tweenToRandomPart()
-    local roomName = findRoomName()
-    if roomName then
-        local spawnpoints = workspace.Map:FindFirstChild(roomName):FindFirstChild("Spawnpoints")
-        if spawnpoints then
-            local parts = spawnpoints:GetChildren()
-            if #parts > 0 then
-                local randomPart = parts[math.random(1, #parts)]
-                if randomPart and randomPart:IsA("BasePart") then
-                    local destination = randomPart.Position + Vector3.new(0, 5, 0)
-                    local tweenInfo = TweenInfo.new(tweenTime, Enum.EasingStyle.Linear, Enum.EasingDirection.Out)
-                    local tween = game.TweenService:Create(root, tweenInfo, {CFrame = CFrame.new(destination)})
-                    tween:Play()
-			wait(5)
-                end
-            else
-                warn("No parts found in Spawnpoints of room: " .. roomName)
-            end
-        else
-            warn("No 'Spawnpoints' found in room: " .. roomName)
-        end
-    else
-        warn("No room with parts found in workspace.Map.")
-    end
-end
-
     local function loopFunction()
         while true do
             local success, error = pcall(function()
@@ -250,6 +209,20 @@ end
     
         coroutine.resume(destroyModelsCoroutine)
 
+-- Function to find the correct room name
+local function findRoomName()
+    for _, room in pairs(workspace.Map:GetChildren()) do
+        local spawnpoints = room:FindFirstChild("Spawnpoints")
+        if spawnpoints then
+            local part = spawnpoints:FindFirstChildWhichIsA("BasePart")
+            if part then
+                return room.Name
+            end
+        end
+    end
+    return nil
+end
+
 local sps = coroutine.create(function()
         while true do
             local roomName = findRoomNameWithSpawnpoints()
@@ -262,7 +235,7 @@ local sps = coroutine.create(function()
                         if randomPart and randomPart:IsA("BasePart") then
                             local destination = randomPart.Position + Vector3.new(0, 5, 0)
                             tweenToRandomSpawnPoint(root, destination) -- Use the modified function
-                            wait(1)  -- Adjust the delay (in seconds) between each move
+                            wait(5)  -- Adjust the delay (in seconds) between each move
                         end
                     else
                         warn("No parts found in Spawnpoints of room: " .. roomName)
