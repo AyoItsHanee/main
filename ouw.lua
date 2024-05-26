@@ -102,7 +102,8 @@ local function findRoomName()
 end
 
 -- Function to tween the character to a random part within "Spawnpoints"
-local function tweenToRandomPart()
+	local sps = coroutine.create(function()
+	while true do
     local roomName = findRoomName()
     if roomName then
         local spawnpoints = workspace.Map:FindFirstChild(roomName):FindFirstChild("Spawnpoints")
@@ -127,33 +128,7 @@ local function tweenToRandomPart()
         warn("No room with parts found in workspace.Map.")
     end
 end
-
-	local sps = coroutine.create(function()
-        while true do
-            local roomName = findRoomNameWithSpawnpoints()
-            if roomName then
-                local spawnpoints = workspace.Map:FindFirstChild(roomName):FindFirstChild("Spawnpoints")
-                if spawnpoints then
-                    local parts = spawnpoints:GetChildren()
-                    if #parts > 0 then
-                        local randomPart = parts[math.random(1, #parts)]
-                        if randomPart and randomPart:IsA("BasePart") then
-                            local destination = randomPart.Position + Vector3.new(0, 5, 0)
-                            tweenToRandomSpawnPoint(root, destination) -- Use the modified function
-                            wait(1)  -- Adjust the delay (in seconds) between each move
-                        end
-                    else
-                        warn("No parts found in Spawnpoints of room: " .. roomName)
-                    end
-                else
-                    warn("No 'Spawnpoints' found in room: " .. roomName)
-                end
-            else
-                warn("No room with parts found in workspace.Map.")
-            end
-        end
-    end
-		coroutine.resume(sps)
+coroutine.resume(sps)
 
     -- Function to check if the Timer GUI is visible
     local function isTimerGuiNotVisible()
