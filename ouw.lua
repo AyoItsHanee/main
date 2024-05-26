@@ -89,7 +89,38 @@ local root = character:WaitForChild("HumanoidRootPart")
 local toggleTeleport = false
 local tweenTime = 1 -- Change this value to adjust tween duration (in seconds)
 
+local orbTypes = {
+    {name = "HealthRegen", enabled = true},
+    {name = "StaminaRegen", enabled = true},
+    {name = "BloodMoney", enabled = true},
+    {name = "DoublePoints", enabled = true},
+    {name = "InstaKill", enabled = true},
+    {name = "WisteriaPoisoning", enabled = true},
+    {name = "MobCamouflage", enabled = true}
+}
 
+local function createOrbToggler(orb)
+    spawn(function()
+        while task.wait() do
+            if orb.enabled then
+                for _, v in pairs(game:GetService("Workspace").Map:GetChildren()) do
+                    if v:IsA("Model") and v.Name == orb.name then
+                        player.Character.HumanoidRootPart.CFrame = v:GetModelCFrame()
+                    end
+                end
+            end
+        end
+    end)
+end
+
+	local function orbx()
+		while task.wait() do
+for _, orb in ipairs(orbTypes) do
+    createOrbToggler(orb)
+end
+			wait()
+		end
+	end
 	
 -- Function to find the correct room name
 local function findRoomName()
