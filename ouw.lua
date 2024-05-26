@@ -99,27 +99,24 @@ local orbTypes = {
     {name = "MobCamouflage", enabled = true}
 }
 
-local function createOrbToggler(orb)
-    spawn(function()
-        while task.wait() do
+local function orbx()
+    while true do
+        local mapChildren = Workspace.Map:GetChildren()
+        
+        for _, orb in ipairs(orbTypes) do
             if orb.enabled then
-                for _, v in pairs(game:GetService("Workspace").Map:GetChildren()) do
+                for _, v in pairs(mapChildren) do
                     if v:IsA("Model") and v.Name == orb.name then
                         player.Character.HumanoidRootPart.CFrame = v:GetModelCFrame()
+                        break -- Break out of the inner loop to avoid redundant checks
                     end
                 end
             end
         end
-    end)
+        
+        task.wait(1) -- Wait for 1 second before the next iteration to reduce CPU usage
+    end
 end
-
-	local function orbx()
-for _, orb in ipairs(orbTypes) do
-    createOrbToggler(orb)
-end
-			wait()
-		orbx()
-	end
 	
 -- Function to find the correct room name
 local function findRoomName()
