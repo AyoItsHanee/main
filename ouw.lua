@@ -3,6 +3,7 @@ repeat wait() until game:IsLoaded()
 game:GetService("Players").LocalPlayer.Idled:connect(function()
 game:GetService("VirtualUser"):ClickButton2(Vector2.new())
 end)
+local success, error = pcall(function()
 local placeId = game.PlaceId
 COREGUI = game:GetService("CoreGui")
 local Dir = COREGUI:FindFirstChild("RobloxPromptGui"):FindFirstChild("promptOverlay")
@@ -295,4 +296,8 @@ end
 --TeleportService:Teleport(9321822839)
 else
     print("Place ID doesn't match")
+end
+			end)
+if not success then
+    print("An error occurred:", error)
 end
