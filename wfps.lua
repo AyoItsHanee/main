@@ -48,12 +48,14 @@ local Dir = COREGUI:FindFirstChild("RobloxPromptGui"):FindFirstChild("promptOver
 game:GetService("Players").LocalPlayer.PlayerScripts["Small_Scripts"].Gameplay["Sun_Damage"].Disabled = true
 
 local function wd()
+					while true do
 		local args = {
     	[1] = true
 		}
 
 		game:GetService("ReplicatedStorage"):WaitForChild("Remotes"):WaitForChild("war_Drums_remote"):FireServer(unpack(args))
 		wait(3)
+					end
 end
 coroutine.wrap(wd)()
 -- Auto collect chest
