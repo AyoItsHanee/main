@@ -2,6 +2,7 @@ repeat wait() until game:IsLoaded()
 game:GetService("Players").LocalPlayer.Idled:connect(function()
 game:GetService("VirtualUser"):ClickButton2(Vector2.new())
 end)
+
 local function master()
 print("executed")
 local success, error = pcall(function()
