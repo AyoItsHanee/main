@@ -27,7 +27,7 @@ local Dir = COREGUI:FindFirstChild("RobloxPromptGui"):FindFirstChild("promptOver
 	end)
 local args= {
     [1] = "join",
-    [2] = "Lr15ogal",
+    [2] = "dtTLKiGR",
     [3] = 17387482786
 }
 game:GetService("ReplicatedStorage").handle_privateserver:InvokeServer(unpack(args))
