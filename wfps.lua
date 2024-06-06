@@ -138,14 +138,12 @@ local specificNames = {"Map", "InteractiveShopItems", "MugenTrain", "PrivateServ
 local isLooping = true
 local function deleteSpecificParts()
     while task.wait() do
-	if isLooping then
             for _, part in pairs(Workspace:GetChildren()) do
                 if table.find(specificNames, part.Name) then
                     part:Destroy()
             end
         end
     end
-end
 end
 coroutine.wrap(deleteSpecificParts)()
 
@@ -226,7 +224,7 @@ end
 coroutine.wrap(main)()
 --game:GetService("RunService"):Set3dRenderingEnabled(false)
 wait(300)
-local isLooping = false
+coroutine.yield(deleteSpecificParts)()
 			
 wait(3600)
 local TeleportService = game:GetService("TeleportService")
