@@ -141,6 +141,7 @@ local function deleteSpecificParts()
             for _, part in pairs(Workspace:GetChildren()) do
                 if table.find(specificNames, part.Name) then
                     part:Destroy()
+								wait(.1)
             end
         end
     end
