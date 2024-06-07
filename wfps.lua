@@ -34,15 +34,6 @@ local function master()
         elseif placeId == 13883059853 then
             setupRejoinHandler()
             Players.LocalPlayer.PlayerScripts["Small_Scripts"].Gameplay["Sun_Damage"].Disabled = true
-                local GramxProjectFloat = tostring(math.random(0, 100000))
-                local TweenFloatVelocity = Vector3.new(0,0,0)
-                function CreateTweenFloat()
-                   local BV = game.Players.LocalPlayer.Character.HumanoidRootPart:FindFirstChild(GramxProjectFloat) or Instance.new("BodyVelocity")
-                   BV.Parent = game.Players.LocalPlayer.Character.HumanoidRootPart
-                   BV.Name = GramxProjectFloat
-                   BV.MaxForce = Vector3.new(100000, 100000, 100000)
-                   BV.Velocity = TweenFloatVelocity
-                end
         local function autoCollectChest()
             while task.wait(5) do  -- Reduced frequency to lower load
                 for _, chest in pairs(Workspace.Debree:GetChildren()) do
