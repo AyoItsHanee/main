@@ -119,11 +119,9 @@ local function master()
         local function preventFall()
             while task.wait(1) do  -- Increased delay to reduce frequency
                 local antifall = Players.LocalPlayer.Character:FindFirstChild("HumanoidRootPart") and Instance.new("BodyVelocity", Players.LocalPlayer.Character.HumanoidRootPart)
-                if antifall then
                     antifall.Velocity = Vector3.new(0, 0, 0)
                     antifall.MaxForce = Vector3.new(9e9, 9e9, 9e9)
                     antifall:Destroy()  -- Destroy immediately after setting values
-                end
             end
         end
 
