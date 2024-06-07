@@ -146,7 +146,6 @@ local function master()
             local movementTimer = 0
             local prevPosition = Root.Position
             while task.wait() do
-                local pathInWorkspace = Workspace.Mobs:FindFirstChild(pathName)
                 if pathToCheck and #pathToCheck:GetChildren() == Num then
                     print("Moving to the next path")
                     break
