@@ -27,6 +27,13 @@ local function master()
             end)
         end
 
+        if placeId == 5956785391 then
+            setupRejoinHandler()
+            local args = { [1] = "join", [2] = "Tc939gfy", [3] = 17387482786 }
+            game:GetService("ReplicatedStorage").handle_privateserver:InvokeServer(unpack(args))
+        elseif placeId == 13883059853 then
+            setupRejoinHandler()
+            Players.LocalPlayer.PlayerScripts["Small_Scripts"].Gameplay["Sun_Damage"].Disabled = true
         local function autoCollectChest()
             while task.wait(5) do  -- Reduced frequency to lower load
                 for _, chest in pairs(Workspace.Debree:GetChildren()) do
@@ -166,13 +173,6 @@ local function master()
             main()
         end
 
-        if placeId == 5956785391 then
-            setupRejoinHandler()
-            local args = { [1] = "join", [2] = "Tc939gfy", [3] = 17387482786 }
-            game:GetService("ReplicatedStorage").handle_privateserver:InvokeServer(unpack(args))
-        elseif placeId == 13883059853 then
-            setupRejoinHandler()
-            Players.LocalPlayer.PlayerScripts["Small_Scripts"].Gameplay["Sun_Damage"].Disabled = true
             coroutine.wrap(autoCollectChest)()
             coroutine.wrap(initiateSkill)()
             task.spawn(attackMobs)
