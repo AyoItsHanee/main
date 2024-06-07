@@ -49,13 +49,12 @@ local Dir = COREGUI:FindFirstChild("RobloxPromptGui"):FindFirstChild("promptOver
 game:GetService("Players").LocalPlayer.PlayerScripts["Small_Scripts"].Gameplay["Sun_Damage"].Disabled = true
 
 local function wd()
-					while true do
+					while task.wait(3) do
 		local args = {
     	[1] = true
 		}
 
 		game:GetService("ReplicatedStorage"):WaitForChild("Remotes"):WaitForChild("war_Drums_remote"):FireServer(unpack(args))
-		wait(3)
 					end
 end
 coroutine.wrap(wd)()
