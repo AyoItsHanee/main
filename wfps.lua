@@ -48,7 +48,6 @@ local Dir = COREGUI:FindFirstChild("RobloxPromptGui"):FindFirstChild("promptOver
 	end)
 game:GetService("Players").LocalPlayer.PlayerScripts["Small_Scripts"].Gameplay["Sun_Damage"].Disabled = true
 
-				--[[
 local function wd()
 					while true do
 		local args = {
@@ -60,7 +59,7 @@ local function wd()
 					end
 end
 coroutine.wrap(wd)()
-				]]--
+				
 -- Auto collect chest
 local function collectChest()
     while task.wait() do
