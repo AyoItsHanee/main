@@ -11,6 +11,7 @@ local ReplicatedStorage = game:GetService("ReplicatedStorage")
 local Workspace = game:GetService("Workspace")
 local placeId = game.PlaceId
 local TeleportService = game:GetService("TeleportService")
+local Handle_Initiate_S_ = ReplicatedStorage.Remotes.To_Server.Handle_Initiate_S_
 			
 if placeId == 5956785391 then
 COREGUI = game:GetService("CoreGui")
@@ -77,7 +78,6 @@ coroutine.wrap(collectChest)()
 -- Loop to initiate a skill
 local function initiateSkill()
     while task.wait() do
-        local Handle_Initiate_S_ = ReplicatedStorage.Remotes.To_Server.Handle_Initiate_S_
         Handle_Initiate_S_:InvokeServer("skil_ting_asd", Players.LocalPlayer, "arrow_knock_back", 5)
         wait(14)
     end
@@ -86,7 +86,7 @@ coroutine.wrap(initiateSkill)()
 
 -- Loop to attack mobs
 local function attackMobs()
-        while true do
+        while task.wait(.1) do
             local success, error = pcall(function()
                 local hitCounter = {} -- Counter for each model
                 for i, v in next, workspace.Mobs:GetDescendants() do
@@ -100,7 +100,6 @@ local function attackMobs()
                         if hitCounter[modelId] < 2 then
                             local humanoid = v:FindFirstChildOfClass("Humanoid")
                             if humanoid and humanoid.Health > 0 then
-                                local Handle_Initiate_S_ = game.ReplicatedStorage.Remotes.To_Server.Handle_Initiate_S_
                                 Handle_Initiate_S_:InvokeServer("arrow_knock_back_damage", game.Players.LocalPlayer.Character, v.HumanoidRootPart.CFrame, v, 500, 500)
                                 hitCounter[modelId] = hitCounter[modelId] + 1
                             else
@@ -123,8 +122,6 @@ local function attackMobs()
             if not success then
                 print("An error occurred:", error)
             end
-            -- Add a delay between iterations to prevent excessive server load
-            wait(.1) -- Adjust the delay time as desired
         end
 end
 
@@ -135,11 +132,10 @@ task.spawn(attackMobs)
 local specificNames = {"Map", "InteractiveShopItems", "MugenTrain", "PrivateServerDummies", "cup game", "Bandage", "BeastTrainer", "BigLight", "Black Smith", "Board", "Boulder_To_Split", "Buy_Big_Gourd", "Buy_Gourd", "Buy_Medium_Gourd", "Chair", "Civilian", "Civilian 2", "ClashTrainer", "Conductor", "Customization data ting", "Demon Guy", "Demon Slayer", "Fishing_Rod2", "Flame Trainer", "Grandpa Wagwon's Wagon", "Green_Crystal", "Mae", "Malik", "Mark", "Mist Trainer", "Model", "Ouw0pp", "Part", "Patrick", "Policeman", "Rina", "RinaDesk", "Rock", "Snow Trainer", "Soryu Trainer", "Beast Trainer", "Sound Trainer", "Target_Training", "Tyrone", "potion_sails_man", "thing", "Meditate_Mat", "Push_Ups_Mat", "Union", "MeshPart", "Floor", "Mist"}
 local isLooping = true
 local function deleteSpecificParts()
-    while task.wait() do
+    while task.wait(.1) do
             for _, part in pairs(Workspace:GetChildren()) do
                 if table.find(specificNames, part.Name) then
                     part:Destroy()
-								wait(.1)
             end
         end
     end
@@ -147,15 +143,11 @@ end
 coroutine.wrap(deleteSpecificParts)()
 
 local function preventFall()
-    while task.wait() do
+    while task.wait(.1) do
         local antifall3 = Instance.new("BodyVelocity", Players.LocalPlayer.Character.HumanoidRootPart)
         antifall3.Velocity = Vector3.new(0, 0, 0)
         antifall3.MaxForce = Vector3.new(9e9, 9e9, 9e9)
-        
-        wait() -- It's a good idea to yield control periodically to prevent performance issues
     end
-
-    -- This part should be outside the while loop
     if antifall3 then
         antifall3:Destroy()
     end
