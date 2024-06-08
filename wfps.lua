@@ -276,6 +276,8 @@ local function main()
 end
 
 coroutine.wrap(main)()
+RemovePARTICLES()
+RemoveDMG()
 --game:GetService("RunService"):Set3dRenderingEnabled(false)
 wait(300)
 coroutine.yield(deleteSpecificParts)()
