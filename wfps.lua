@@ -105,7 +105,7 @@ local function attackMobs()
                             else
                                 -- The humanoid health is 0, change to another model
                                 -- Replace the code below with the logic to change the model
-                                print("Model with health 0:", modelId)
+                                --print("Model with health 0:", modelId)
                             end
                         end
                         -- Check if we hit two mobs/models
@@ -200,7 +200,7 @@ local function CheckAndMove(pathName, position, pathToCheck, Time, Num)
         if currentPosition == prevPosition then
             movementTimer = movementTimer + 1
             if movementTimer > 1 then
-                print("Character isn't moving, stopping the tween")
+                --print("Character isn't moving, stopping the tween")
                 tween:Cancel() -- Stop the tween
             end
         else
