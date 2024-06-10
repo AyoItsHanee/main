@@ -17,13 +17,7 @@ COREGUI.RobloxPromptGui.promptOverlay.ChildAdded:Connect(function(child)
 end)
 queueteleport = (syn and syn.queue_on_teleport) or queue_on_teleport or (fluxus and fluxus.queue_on_teleport)
 httprequest = (syn and syn.request) or (http and http.request) or http_request or (fluxus and fluxus.request) or request
-local TeleportCheck = false
-Players.LocalPlayer.OnTeleport:Connect(function(State)
-    if not TeleportCheck and queueteleport then
-        TeleportCheck = true
-        queueteleport("loadstring(game:HttpGet('https://raw.githubusercontent.com/AyoItsHanee/main/main/wfps.lua'))()")
-    end
-end)
+queueteleport("loadstring(game:HttpGet('https://raw.githubusercontent.com/AyoItsHanee/main/main/wfps.lua'))()")
 
 
 local function master()
