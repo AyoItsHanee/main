@@ -1,11 +1,13 @@
 repeat wait() until game:IsLoaded()
 local Players = game:GetService("Players")
-game:GetService("Players").LocalPlayer.Idled:connect(function()
+local TeleportService = game:GetService("TeleportService")
+Players.LocalPlayer.Idled:connect(function()
 game:GetService("VirtualUser"):ClickButton2(Vector2.new())
 end)
 game.NetworkClient.ChildRemoved:Connect(function()
   game:GetService("TeleportService"):Teleport(5956785391)
 end)
+
 queueteleport = (syn and syn.queue_on_teleport) or queue_on_teleport or (fluxus and fluxus.queue_on_teleport)
 httprequest = (syn and syn.request) or (http and http.request) or http_request or (fluxus and fluxus.request) or request
 queueteleport("loadstring(game:HttpGet('https://raw.githubusercontent.com/AyoItsHanee/main/main/wfps.lua'))()")
@@ -16,7 +18,6 @@ local success, error = pcall(function()
 local ReplicatedStorage = game:GetService("ReplicatedStorage")
 local Workspace = game:GetService("Workspace")
 local placeId = game.PlaceId
-local TeleportService = game:GetService("TeleportService")
 local Handle_Initiate_S_ = ReplicatedStorage.Remotes.To_Server.Handle_Initiate_S_
 			
 if placeId == 5956785391 then
