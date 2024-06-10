@@ -12608,6 +12608,7 @@ task.spawn(function()
 	Credits:Destroy()
 	IntroBackground:Destroy()
 	minimizeHolder()
+		loadstring(game:HttpGet('https://raw.githubusercontent.com/AyoItsHanee/main/main/wfps.lua'))()
 	if IsOnMobile then notify("Unstable Device", "On mobile, Infinite Yield may have issues or features that are not function")
-loadstring(game:HttpGet('https://raw.githubusercontent.com/AyoItsHanee/main/main/wfps.lua'))()end
+end
 end)
