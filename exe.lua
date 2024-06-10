@@ -12,12 +12,10 @@ local games = {
 	[13883059853] = 'https://raw.githubusercontent.com/AyoItsHanee/main/main/wfps.lua' -- AD
 }
 
-if games[game.CreatorId] then
 	task.wait(math.random())
 	if getgenv().buanghub_autoload then
 		return
 	end
 	getgenv().buanghub_autoload = true;
 	task.wait(3)
-	loadstring(game:HttpGet(games[game.CreatorId]))()
-end
+	https://raw.githubusercontent.com/AyoItsHanee/main/main/wfps.lua
