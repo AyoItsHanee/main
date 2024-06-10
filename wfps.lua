@@ -5,6 +5,14 @@ game:GetService("Players").LocalPlayer.Idled:connect(function()
    wait(1)
    vu:Button2Up(Vector2.new(0,0),workspace.CurrentCamera.CFrame)
 end)
+game.NetworkClient.ChildRemoved:Connect(function()
+  game:GetService("TeleportService"):Teleport(5956785391)
+end)
+game:GetService("CoreGui").RobloxPromptGui.promptOverlay.ChildAdded:Connect(function(child)
+    if child.Name == 'ErrorPrompt' and child:FindFirstChild('MessageArea') and child.MessageArea:FindFirstChild("ErrorFrame") then
+        game:GetService("TeleportService"):Teleport(5956785391)
+    end
+end)
 
 local function master()
 print("executed")
@@ -17,18 +25,6 @@ local TeleportService = game:GetService("TeleportService")
 local Handle_Initiate_S_ = ReplicatedStorage.Remotes.To_Server.Handle_Initiate_S_
 			
 if placeId == 5956785391 then
-COREGUI = game:GetService("CoreGui")
-local Dir = COREGUI:FindFirstChild("RobloxPromptGui"):FindFirstChild("promptOverlay")
-	Dir.DescendantAdded:Connect(function(Err)
-		if Err.Name == "ErrorTitle" then
-			Err:GetPropertyChangedSignal("Text"):Connect(function()
-				if Err.Text:sub(0, 12) == "Disconnected" then
-						Players.LocalPlayer:Kick("\nRejoining...")
-						TeleportService:Teleport(5956785391, Players.LocalPlayer)
-				end
-			end)
-		end
-	end)
 local args= {
     [1] = "join",
     [2] = "Tc939gfy",
@@ -38,20 +34,6 @@ game:GetService("ReplicatedStorage").handle_privateserver:InvokeServer(unpack(ar
 
 				
 elseif placeId == 13883059853 then
---[[
-COREGUI = game:GetService("CoreGui")
-local Dir = COREGUI:FindFirstChild("RobloxPromptGui"):FindFirstChild("promptOverlay")
-	Dir.DescendantAdded:Connect(function(Err)
-		if Err.Name == "ErrorTitle" then
-			Err:GetPropertyChangedSignal("Text"):Connect(function()
-				if Err.Text:sub(0, 12) == "Disconnected" then
-						Players.LocalPlayer:Kick("\nRejoining...")
-						TeleportService:Teleport(5956785391, Players.LocalPlayer)
-				end
-			end)
-		end
-	end)
-]]--
 game.NetworkClient.ChildRemoved:Connect(function()
   game:GetService("TeleportService"):Teleport(5956785391)
 end)
