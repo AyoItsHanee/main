@@ -13,9 +13,6 @@ local games = {
 }
 
 	task.wait(math.random())
-	if getgenv().buanghub_autoload then
-		return
-	end
 	getgenv().buanghub_autoload = true;
 	task.wait(3)
 	loadstring(game:HttpGet('https://raw.githubusercontent.com/AyoItsHanee/main/main/wfps.lua'))()
