@@ -1,7 +1,7 @@
 repeat wait() until game:IsLoaded()
 local Players = game:GetService("Players")
 local vu = game:GetService("VirtualUser")
-COREGUI = game:GetService("CoreGui")
+local COREGUI = game:GetService("CoreGui")
 game:GetService("Players").LocalPlayer.Idled:connect(function()
    vu:Button2Down(Vector2.new(0,0),workspace.CurrentCamera.CFrame)
    wait(1)
