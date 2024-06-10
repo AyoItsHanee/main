@@ -1,16 +1,8 @@
---repeat wait() until game:IsLoaded()
+repeat wait() until game:IsLoaded()
 local cloneref = cloneref or function(o) return o end
 local COREGUI = cloneref(game:GetService("CoreGui"))
 local Players = cloneref(game:GetService("Players"))
 
--- Wait for the game to load
-if not game:IsLoaded() then
-    local notLoaded = Instance.new("Message")
-    notLoaded.Parent = COREGUI
-    notLoaded.Text = "Waiting for the game to load"
-    game.Loaded:Wait()
-    notLoaded:Destroy()
-end
 local vu = game:GetService("VirtualUser")
 Players.LocalPlayer.Idled:connect(function()
    vu:Button2Down(Vector2.new(0, 0), workspace.CurrentCamera.CFrame)
