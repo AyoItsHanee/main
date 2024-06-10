@@ -4,9 +4,6 @@ local TeleportService = game:GetService("TeleportService")
 Players.LocalPlayer.Idled:connect(function()
 game:GetService("VirtualUser"):ClickButton2(Vector2.new())
 end)
-game.NetworkClient.ChildRemoved:Connect(function()
-  game:GetService("TeleportService"):Teleport(5956785391)
-end)
 
 queueteleport = (syn and syn.queue_on_teleport) or queue_on_teleport or (fluxus and fluxus.queue_on_teleport)
 httprequest = (syn and syn.request) or (http and http.request) or http_request or (fluxus and fluxus.request) or request
@@ -18,8 +15,7 @@ local success, error = pcall(function()
 local ReplicatedStorage = game:GetService("ReplicatedStorage")
 local Workspace = game:GetService("Workspace")
 local placeId = game.PlaceId
-local Handle_Initiate_S_ = ReplicatedStorage.Remotes.To_Server.Handle_Initiate_S_
-			
+
 if placeId == 5956785391 then
 local args= {
     [1] = "join",
@@ -70,7 +66,7 @@ coroutine.wrap(collectChest)()
 -- Loop to initiate a skill
 local function initiateSkill()
     while task.wait() do
-        Handle_Initiate_S_:InvokeServer("skil_ting_asd", Players.LocalPlayer, "arrow_knock_back", 5)
+        ReplicatedStorage.Remotes.To_Server.Handle_Initiate_S_:InvokeServer("skil_ting_asd", Players.LocalPlayer, "arrow_knock_back", 5)
         wait(14)
     end
 end
@@ -92,7 +88,7 @@ local function attackMobs()
                         if hitCounter[modelId] < 2 then
                             local humanoid = v:FindFirstChildOfClass("Humanoid")
                             if humanoid and humanoid.Health > 0 then
-                                Handle_Initiate_S_:InvokeServer("arrow_knock_back_damage", game.Players.LocalPlayer.Character, v.HumanoidRootPart.CFrame, v, 500, 500)
+                                ReplicatedStorage.Remotes.To_Server.Handle_Initiate_S_:InvokeServer("arrow_knock_back_damage", game.Players.LocalPlayer.Character, v.HumanoidRootPart.CFrame, v, 500, 500)
                                 hitCounter[modelId] = hitCounter[modelId] + 1
                             else
                                 -- The humanoid health is 0, change to another model
@@ -210,12 +206,11 @@ local function main()
     wait()
     main()
 end
-
 coroutine.wrap(main)()
+				
 --game:GetService("RunService"):Set3dRenderingEnabled(false)
 wait(300)
-local isLooping = false
-			
+local isLooping = false		
 wait(1800)
 TeleportService:Teleport(5956785391)
 		
