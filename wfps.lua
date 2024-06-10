@@ -25,12 +25,13 @@ local placeId = game.PlaceId
 local TeleportService = game:GetService("TeleportService")
 			
 if placeId == 5956785391 then
-local args= {
+local args = {
     [1] = "join",
     [2] = "Tc939gfy",
     [3] = 17387482786
 }
-game:GetService("ReplicatedStorage").handle_privateserver:InvokeServer(unpack(args))
+
+game:GetService("ReplicatedStorage"):WaitForChild("handle_privateserver"):InvokeServer(unpack(args))
     
 elseif placeId == 13883059853 then
 game:GetService("Players").LocalPlayer.PlayerScripts["Small_Scripts"].Gameplay["Sun_Damage"].Disabled = true
