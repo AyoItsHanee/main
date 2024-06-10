@@ -35,6 +35,41 @@ game:GetService("ReplicatedStorage"):WaitForChild("handle_privateserver"):Invoke
     
 elseif placeId == 13883059853 then
 game:GetService("Players").LocalPlayer.PlayerScripts["Small_Scripts"].Gameplay["Sun_Damage"].Disabled = true
+function RemoveDMG()
+   local part  =  game:GetService("StarterPlayer").StarterPlayerScripts.Client_Modules.Modules.Extra.Damage_Text
+
+   local part1 =  game:GetService("ReplicatedStorage").Assets.Extras.Damage_Text
+
+   local part2 = game:GetService("Players").LocalPlayer.PlayerScripts.Client_Modules.Modules.Extra.Damage_Text
+
+   if part then
+       part:Destroy()
+   end
+
+   if part1 then
+       part1:Destroy()
+   end
+
+   if part2 then
+       part2:Destroy()
+   end
+end
+
+
+
+function RemovePARTICLES()
+   local COINS = game:GetService("ReplicatedStorage").Assets.Extras.Coin
+
+   local PARTICLES = game:GetService("ReplicatedStorage").Assets.Particles.Parts
+
+   if COINS then
+       COINS:Destroy()
+   end
+
+   if PARTICLES then
+       PARTICLES:Destroy()
+   end
+end
 
 local function wd()
 		local args = {
@@ -248,6 +283,10 @@ local function main()
 end
 
 coroutine.wrap(main)()
+				wait()
+				RemoveDMG()
+				wait()
+				RemovePARTICLES()
 --game:GetService("RunService"):Set3dRenderingEnabled(false)
 wait(300)
 local isLooping = false
