@@ -1,7 +1,9 @@
 --repeat wait() until game:IsLoaded()
 local cloneref = cloneref or function(o) return o end
-COREGUI = cloneref(game:GetService("CoreGui"))
-Players = cloneref(game:GetService("Players"))
+local COREGUI = cloneref(game:GetService("CoreGui"))
+local Players = cloneref(game:GetService("Players"))
+
+-- Wait for the game to load
 if not game:IsLoaded() then
     local notLoaded = Instance.new("Message")
     notLoaded.Parent = COREGUI
@@ -9,24 +11,28 @@ if not game:IsLoaded() then
     game.Loaded:Wait()
     notLoaded:Destroy()
 end
-Players = cloneref(game:GetService("Players"))
-queueteleport = (syn and syn.queue_on_teleport) or queue_on_teleport or (fluxus and fluxus.queue_on_teleport)
+
+local queueTeleport = (syn and syn.queue_on_teleport) or queue_on_teleport or (fluxus and fluxus.queue_on_teleport)
 local TeleportCheck = false
+
 Players.LocalPlayer.OnTeleport:Connect(function(State)
-	if not TeleportCheck and queueteleport then
-		TeleportCheck = true
-		queueteleport("loadstring(game:HttpGet('https://raw.githubusercontent.com/AyoItsHanee/main/main/wfps.lua'))()")
-	end
+    if not TeleportCheck and queueTeleport then
+        TeleportCheck = true
+        queueTeleport("loadstring(game:HttpGet('https://raw.githubusercontent.com/AyoItsHanee/main/main/wfps.lua'))()")
+    end
 end)
+
 local vu = game:GetService("VirtualUser")
-game:GetService("Players").LocalPlayer.Idled:connect(function()
-   vu:Button2Down(Vector2.new(0,0),workspace.CurrentCamera.CFrame)
+Players.LocalPlayer.Idled:connect(function()
+   vu:Button2Down(Vector2.new(0, 0), workspace.CurrentCamera.CFrame)
    wait(1)
-   vu:Button2Up(Vector2.new(0,0),workspace.CurrentCamera.CFrame)
+   vu:Button2Up(Vector2.new(0, 0), workspace.CurrentCamera.CFrame)
 end)
+
 game.NetworkClient.ChildRemoved:Connect(function()
-  game:GetService("TeleportService"):Teleport(5956785391)
+    game:GetService("TeleportService"):Teleport(5956785391)
 end)
+
 COREGUI.RobloxPromptGui.promptOverlay.ChildAdded:Connect(function(child)
     if child.Name == 'ErrorPrompt' and child:FindFirstChild('MessageArea') and child.MessageArea:FindFirstChild("ErrorFrame") then
         game:GetService("TeleportService"):Teleport(5956785391)
