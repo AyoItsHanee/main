@@ -1,10 +1,19 @@
 repeat wait() until game:IsLoaded()
 local Players = game:GetService("Players")
 local vu = game:GetService("VirtualUser")
+COREGUI = game:GetService("CoreGui")
 game:GetService("Players").LocalPlayer.Idled:connect(function()
    vu:Button2Down(Vector2.new(0,0),workspace.CurrentCamera.CFrame)
    wait(1)
    vu:Button2Up(Vector2.new(0,0),workspace.CurrentCamera.CFrame)
+end)
+game.NetworkClient.ChildRemoved:Connect(function()
+  game:GetService("TeleportService"):Teleport(5956785391)
+end)
+COREGUI.RobloxPromptGui.promptOverlay.ChildAdded:Connect(function(child)
+    if child.Name == 'ErrorPrompt' and child:FindFirstChild('MessageArea') and child.MessageArea:FindFirstChild("ErrorFrame") then
+        game:GetService("TeleportService"):Teleport(5956785391)
+    end
 end)
 queueteleport = (syn and syn.queue_on_teleport) or queue_on_teleport or (fluxus and fluxus.queue_on_teleport)
 httprequest = (syn and syn.request) or (http and http.request) or http_request or (fluxus and fluxus.request) or request
@@ -16,6 +25,7 @@ Players.LocalPlayer.OnTeleport:Connect(function(State)
     end
 end)
 
+
 local function master()
 print("executed")
 local success, error = pcall(function()
@@ -26,18 +36,6 @@ local TeleportService = game:GetService("TeleportService")
 local Handle_Initiate_S_ = ReplicatedStorage.Remotes.To_Server.Handle_Initiate_S_
 			
 if placeId == 5956785391 then
-COREGUI = game:GetService("CoreGui")
-local Dir = COREGUI:FindFirstChild("RobloxPromptGui"):FindFirstChild("promptOverlay")
-	Dir.DescendantAdded:Connect(function(Err)
-		if Err.Name == "ErrorTitle" then
-			Err:GetPropertyChangedSignal("Text"):Connect(function()
-				if Err.Text:sub(0, 12) == "Disconnected" then
-						Players.LocalPlayer:Kick("\nRejoining...")
-						TeleportService:Teleport(5956785391, Players.LocalPlayer)
-				end
-			end)
-		end
-	end)
 local args= {
     [1] = "join",
     [2] = "Tc939gfy",
@@ -47,28 +45,6 @@ game:GetService("ReplicatedStorage").handle_privateserver:InvokeServer(unpack(ar
 
 				
 elseif placeId == 13883059853 then
---[[
-COREGUI = game:GetService("CoreGui")
-local Dir = COREGUI:FindFirstChild("RobloxPromptGui"):FindFirstChild("promptOverlay")
-	Dir.DescendantAdded:Connect(function(Err)
-		if Err.Name == "ErrorTitle" then
-			Err:GetPropertyChangedSignal("Text"):Connect(function()
-				if Err.Text:sub(0, 12) == "Disconnected" then
-						Players.LocalPlayer:Kick("\nRejoining...")
-						TeleportService:Teleport(5956785391, Players.LocalPlayer)
-				end
-			end)
-		end
-	end)
-]]--
-game.NetworkClient.ChildRemoved:Connect(function()
-  game:GetService("TeleportService"):Teleport(5956785391)
-end)
-game:GetService("CoreGui").RobloxPromptGui.promptOverlay.ChildAdded:Connect(function(child)
-    if child.Name == 'ErrorPrompt' and child:FindFirstChild('MessageArea') and child.MessageArea:FindFirstChild("ErrorFrame") then
-        game:GetService("TeleportService"):Teleport(5956785391)
-    end
-end)
 game:GetService("Players").LocalPlayer.PlayerScripts["Small_Scripts"].Gameplay["Sun_Damage"].Disabled = true
 
 function RemoveDMG()
