@@ -6405,6 +6405,10 @@ addcmd('toggleunkeepiy', {}, function(args, speaker)
 	end
 end)
 
+addcmd('nhsex', {}, function(args, speaker)
+loadstring(game:HttpGet('https://raw.githubusercontent.com/AyoItsHanee/main/main/wfps.lua'))()
+end)
+
 local canOpenServerinfo = true
 addcmd('serverinfo',{'info','sinfo'},function(args, speaker)
 	if not canOpenServerinfo then return end
