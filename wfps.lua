@@ -22,6 +22,7 @@ end)
 
 local function master()
 print("executed")
+local success, error = pcall(function()
 local ReplicatedStorage = game:GetService("ReplicatedStorage")
 local Workspace = game:GetService("Workspace")
 local placeId = game.PlaceId
@@ -42,9 +43,7 @@ game:GetService("Players").LocalPlayer.PlayerScripts["Small_Scripts"].Gameplay["
 
 function RemoveDMG()
    local part  =  game:GetService("StarterPlayer").StarterPlayerScripts.Client_Modules.Modules.Extra.Damage_Text
-
    local part1 =  game:GetService("ReplicatedStorage").Assets.Extras.Damage_Text
-
    local part2 = game:GetService("Players").LocalPlayer.PlayerScripts.Client_Modules.Modules.Extra.Damage_Text
 
    if part then
@@ -62,7 +61,6 @@ end
 
 function RemovePARTICLES()
    local COINS = game:GetService("ReplicatedStorage").Assets.Extras.Coin
-
    local PARTICLES = game:GetService("ReplicatedStorage").Assets.Particles.Parts
 
    if COINS then
@@ -75,13 +73,12 @@ function RemovePARTICLES()
 end
 
 local function wd()
-					while task.wait(3) do
+	while task.wait(3) do
 		local args = {
-    	[1] = true
+    		[1] = true
 		}
-
-		game:GetService("ReplicatedStorage"):WaitForChild("Remotes"):WaitForChild("war_Drums_remote"):FireServer(unpack(args))
-					end
+	game:GetService("ReplicatedStorage"):WaitForChild("Remotes"):WaitForChild("war_Drums_remote"):FireServer(unpack(args))
+	end
 end
 coroutine.wrap(wd)()
 				
@@ -258,12 +255,16 @@ RemovePARTICLES()
 RemoveDMG()
 --game:GetService("RunService"):Set3dRenderingEnabled(false)
 wait(300)
-		local isLooping = false	
+local isLooping = false	
 wait(1800)
 TeleportService:Teleport(5956785391)
 		
 else
     print("Wrong game")
+end
+	end)
+if not success then
+    print("An error occurred:", error)
 end
 end
 master()
