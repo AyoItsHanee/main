@@ -35,8 +35,6 @@ end)
 
 local function master()
 print("executed")
-local success, error = pcall(function()
-local Players = game:GetService("Players")
 local ReplicatedStorage = game:GetService("ReplicatedStorage")
 local Workspace = game:GetService("Workspace")
 local placeId = game.PlaceId
@@ -287,10 +285,6 @@ TeleportService:Teleport(5956785391)
 		
 else
     print("Wrong game")
-end
-	end)
-if not success then
-    print("An error occurred:", error)
 end
 end
 master()
