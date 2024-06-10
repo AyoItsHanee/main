@@ -1,4 +1,5 @@
 repeat wait() until game:IsLoaded()
+local COREGUI = game:GetService("CoreGui")
 local TeleportService = game:GetService("TeleportService")
 local Players = game:GetService("Players")
 local vu = game:GetService("VirtualUser")
