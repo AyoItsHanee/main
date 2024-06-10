@@ -1,19 +1,13 @@
 repeat wait() until game:IsLoaded()
 local Players = game:GetService("Players")
 local vu = game:GetService("VirtualUser")
-local COREGUI = game:GetService("CoreGui")
-game:GetService("Players").LocalPlayer.Idled:connect(function()
+Players.LocalPlayer.Idled:connect(function()
    vu:Button2Down(Vector2.new(0,0),workspace.CurrentCamera.CFrame)
    wait(1)
    vu:Button2Up(Vector2.new(0,0),workspace.CurrentCamera.CFrame)
 end)
 game.NetworkClient.ChildRemoved:Connect(function()
   game:GetService("TeleportService"):Teleport(5956785391)
-end)
-COREGUI.RobloxPromptGui.promptOverlay.ChildAdded:Connect(function(child)
-    if child.Name == 'ErrorPrompt' and child:FindFirstChild('MessageArea') and child.MessageArea:FindFirstChild("ErrorFrame") then
-        game:GetService("TeleportService"):Teleport(5956785391)
-    end
 end)
 queueteleport = (syn and syn.queue_on_teleport) or queue_on_teleport or (fluxus and fluxus.queue_on_teleport)
 httprequest = (syn and syn.request) or (http and http.request) or http_request or (fluxus and fluxus.request) or request
@@ -256,8 +250,8 @@ local function main()
 end
 
 coroutine.wrap(main)()
-RemovePARTICLES()
-RemoveDMG()
+--RemovePARTICLES()
+--RemoveDMG()
 --game:GetService("RunService"):Set3dRenderingEnabled(false)
 wait(300)
 local isLooping = false
