@@ -1,6 +1,17 @@
 repeat wait() until game:IsLoaded()
+local vu = game:GetService("VirtualUser")
 game:GetService("Players").LocalPlayer.Idled:connect(function()
-game:GetService("VirtualUser"):ClickButton2(Vector2.new())
+   vu:Button2Down(Vector2.new(0,0),workspace.CurrentCamera.CFrame)
+   wait(1)
+   vu:Button2Up(Vector2.new(0,0),workspace.CurrentCamera.CFrame)
+end)
+game.NetworkClient.ChildRemoved:Connect(function()
+  game:GetService("TeleportService"):Teleport(5956785391)
+end)
+game:GetService("CoreGui").RobloxPromptGui.promptOverlay.ChildAdded:Connect(function(child)
+    if child.Name == 'ErrorPrompt' and child:FindFirstChild('MessageArea') and child.MessageArea:FindFirstChild("ErrorFrame") then
+        game:GetService("TeleportService"):Teleport(5956785391)
+    end
 end)
 local function master()
 print("executed")
@@ -14,20 +25,6 @@ local placeId = game.PlaceId
 local TeleportService = game:GetService("TeleportService")
 			
 if placeId == 5956785391 then
-local vu = game:GetService("VirtualUser")
-game:GetService("Players").LocalPlayer.Idled:connect(function()
-   vu:Button2Down(Vector2.new(0,0),workspace.CurrentCamera.CFrame)
-   wait(1)
-   vu:Button2Up(Vector2.new(0,0),workspace.CurrentCamera.CFrame)
-end)
-game.NetworkClient.ChildRemoved:Connect(function()
-  game:GetService("TeleportService"):Teleport(5956785391)
-end)
-game:GetService("CoreGui").RobloxPromptGui.promptOverlay.ChildAdded:Connect(function(child)
-    if child.Name == 'ErrorPrompt' and child:FindFirstChild('MessageArea') and child.MessageArea:FindFirstChild("ErrorFrame") then
-        game:GetService("TeleportService"):Teleport(5956785391)
-    end
-end)
 local args= {
     [1] = "join",
     [2] = "Tc939gfy",
@@ -36,20 +33,6 @@ local args= {
 game:GetService("ReplicatedStorage").handle_privateserver:InvokeServer(unpack(args))
     
 elseif placeId == 13883059853 then
-local vu = game:GetService("VirtualUser")
-game:GetService("Players").LocalPlayer.Idled:connect(function()
-   vu:Button2Down(Vector2.new(0,0),workspace.CurrentCamera.CFrame)
-   wait(1)
-   vu:Button2Up(Vector2.new(0,0),workspace.CurrentCamera.CFrame)
-end)
-game.NetworkClient.ChildRemoved:Connect(function()
-  game:GetService("TeleportService"):Teleport(5956785391)
-end)
-game:GetService("CoreGui").RobloxPromptGui.promptOverlay.ChildAdded:Connect(function(child)
-    if child.Name == 'ErrorPrompt' and child:FindFirstChild('MessageArea') and child.MessageArea:FindFirstChild("ErrorFrame") then
-        game:GetService("TeleportService"):Teleport(5956785391)
-    end
-end)
 game:GetService("Players").LocalPlayer.PlayerScripts["Small_Scripts"].Gameplay["Sun_Damage"].Disabled = true
 
 local function wd()
