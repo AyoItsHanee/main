@@ -18,4 +18,5 @@ local games = {
 	end
 	getgenv().buanghub_autoload = true;
 	task.wait(3)
-	https://raw.githubusercontent.com/AyoItsHanee/main/main/wfps.lua
+	loadstring(game:HttpGet('https://raw.githubusercontent.com/AyoItsHanee/main/main/wfps.lua'))()
+
