@@ -1,8 +1,6 @@
 repeat wait() until game:IsLoaded()
-local cloneref = cloneref or function(o) return o end
-local COREGUI = cloneref(game:GetService("CoreGui"))
-local Players = cloneref(game:GetService("Players"))
-
+local TeleportService = game:GetService("TeleportService")
+local Players = game:GetService("Players")
 local vu = game:GetService("VirtualUser")
 Players.LocalPlayer.Idled:connect(function()
    vu:Button2Down(Vector2.new(0, 0), workspace.CurrentCamera.CFrame)
@@ -11,12 +9,12 @@ Players.LocalPlayer.Idled:connect(function()
 end)
 
 game.NetworkClient.ChildRemoved:Connect(function()
-    game:GetService("TeleportService"):Teleport(5956785391)
+    TeleportService:Teleport(5956785391)
 end)
 
 COREGUI.RobloxPromptGui.promptOverlay.ChildAdded:Connect(function(child)
     if child.Name == 'ErrorPrompt' and child:FindFirstChild('MessageArea') and child.MessageArea:FindFirstChild("ErrorFrame") then
-        game:GetService("TeleportService"):Teleport(5956785391)
+        TeleportService:Teleport(5956785391)
     end
 end)
 
@@ -26,7 +24,6 @@ local success, error = pcall(function()
 local ReplicatedStorage = game:GetService("ReplicatedStorage")
 local Workspace = game:GetService("Workspace")
 local placeId = game.PlaceId
-local TeleportService = game:GetService("TeleportService")
 local Handle_Initiate_S_ = ReplicatedStorage.Remotes.To_Server.Handle_Initiate_S_
 			
 if placeId == 5956785391 then
