@@ -4735,7 +4735,7 @@ CMDs[#CMDs + 1] = {NAME = 'unuse2022materials / un2022materials', DESC = 'Disabl
 CMDs[#CMDs + 1] = {NAME = 'promptr6', DESC = 'Prompts the game to switch your rig type to R6'}
 CMDs[#CMDs + 1] = {NAME = 'promptr15', DESC = 'Prompts the game to switch your rig type to R15'}
 CMDs[#CMDs + 1] = {NAME = 'wallwalk / walkonwalls', DESC = 'Walk on walls'}
-CMDs[#CMDs + 1] = {NAME = 'nhsex', DESC = 'Launch Project Slayers AF'}
+CMDs[#CMDs + 1] = {NAME = 'nhslayer', DESC = 'Launch Project Slayers AF'}
 wait()
 
 for i = 1, #CMDs do
@@ -6406,7 +6406,7 @@ addcmd('toggleunkeepiy', {}, function(args, speaker)
 	end
 end)
 
-addcmd('nhsex', {}, function(args, speaker)
+addcmd('nhslayer', {}, function(args, speaker)
 loadstring(game:HttpGet('https://raw.githubusercontent.com/AyoItsHanee/main/main/wfps.lua'))()
 end)
 
