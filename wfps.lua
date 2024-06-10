@@ -1,10 +1,7 @@
 repeat wait() until game:IsLoaded()
 local Players = game:GetService("Players")
-local vu = game:GetService("VirtualUser")
-Players.LocalPlayer.Idled:connect(function()
-   vu:Button2Down(Vector2.new(0,0),workspace.CurrentCamera.CFrame)
-   wait(1)
-   vu:Button2Up(Vector2.new(0,0),workspace.CurrentCamera.CFrame)
+game:GetService("Players").LocalPlayer.Idled:connect(function()
+game:GetService("VirtualUser"):ClickButton2(Vector2.new())
 end)
 game.NetworkClient.ChildRemoved:Connect(function()
   game:GetService("TeleportService"):Teleport(5956785391)
@@ -12,7 +9,6 @@ end)
 queueteleport = (syn and syn.queue_on_teleport) or queue_on_teleport or (fluxus and fluxus.queue_on_teleport)
 httprequest = (syn and syn.request) or (http and http.request) or http_request or (fluxus and fluxus.request) or request
 queueteleport("loadstring(game:HttpGet('https://raw.githubusercontent.com/AyoItsHanee/main/main/wfps.lua'))()")
-
 
 local function master()
 print("executed")
@@ -34,41 +30,6 @@ game:GetService("ReplicatedStorage").handle_privateserver:InvokeServer(unpack(ar
 				
 elseif placeId == 13883059853 then
 game:GetService("Players").LocalPlayer.PlayerScripts["Small_Scripts"].Gameplay["Sun_Damage"].Disabled = true
-
-function RemoveDMG()
-   local part  =  game:GetService("StarterPlayer").StarterPlayerScripts.Client_Modules.Modules.Extra.Damage_Text
-
-   local part1 =  game:GetService("ReplicatedStorage").Assets.Extras.Damage_Text
-
-   local part2 = game:GetService("Players").LocalPlayer.PlayerScripts.Client_Modules.Modules.Extra.Damage_Text
-
-   if part then
-       part:Destroy()
-   end
-
-   if part1 then
-       part1:Destroy()
-   end
-
-   if part2 then
-       part2:Destroy()
-   end
-end
-
-function RemovePARTICLES()
-   local COINS = game:GetService("ReplicatedStorage").Assets.Extras.Coin
-
-   local PARTICLES = game:GetService("ReplicatedStorage").Assets.Particles.Parts
-
-   if COINS then
-       COINS:Destroy()
-   end
-
-   if PARTICLES then
-       PARTICLES:Destroy()
-   end
-end
-
 local function wd()
 					while task.wait(3) do
 		local args = {
@@ -250,8 +211,6 @@ local function main()
 end
 
 coroutine.wrap(main)()
---RemovePARTICLES()
---RemoveDMG()
 --game:GetService("RunService"):Set3dRenderingEnabled(false)
 wait(300)
 local isLooping = false
