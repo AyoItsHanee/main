@@ -15,7 +15,7 @@ end
 queueteleport = (syn and syn.queue_on_teleport) or queue_on_teleport or (fluxus and fluxus.queue_on_teleport)
 httprequest = (syn and syn.request) or (http and http.request) or http_request or (fluxus and fluxus.request) or request
 local TeleportCheck = false
-        queueTeleport("loadstring(game:HttpGet('https://raw.githubusercontent.com/AyoItsHanee/main/main/wfps.lua'))()")
+        queueteleport("loadstring(game:HttpGet('https://raw.githubusercontent.com/AyoItsHanee/main/main/wfps.lua'))()")
 
 local vu = game:GetService("VirtualUser")
 Players.LocalPlayer.Idled:connect(function()
