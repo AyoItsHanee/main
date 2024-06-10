@@ -12,7 +12,7 @@ if not game:IsLoaded() then
     notLoaded:Destroy()
 end
 
-local queueTeleport = (syn and syn.queue_on_teleport) or queue_on_teleport or (fluxus and fluxus.queue_on_teleport)
+local queueTeleport = queue_on_teleport
 local TeleportCheck = false
 
 Players.LocalPlayer.OnTeleport:Connect(function(State)
