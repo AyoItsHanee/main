@@ -17,7 +17,6 @@ repeat wait() until game:IsLoaded()
 	end)
 	local placeId = game.PlaceId
 	local Workspace = game:GetService("Workspace")
-local function autoexc()
 	queueteleport = (syn and syn.queue_on_teleport) or queue_on_teleport or (fluxus and fluxus.queue_on_teleport)
 	local TeleportCheck = false
 game:GetService("Players").LocalPlayer.OnTeleport:Connect(function(State)
@@ -26,7 +25,6 @@ game:GetService("Players").LocalPlayer.OnTeleport:Connect(function(State)
 		queueteleport("loadstring(game:HttpGet('https://raw.githubusercontent.com/AyoItsHanee/main/main/ouw.lua'))()")
 	end
 end)
-end
 
 	if placeId == 5956785391 then
 
@@ -347,4 +345,3 @@ end
 	else
 		print("Place ID doesn't match")
 	end
-autoexc()
