@@ -89,6 +89,19 @@ end)
 		Goal.CFrame = CFrame.new(4988, -148, 2030)
 		game:GetService("TweenService"):Create(Root, Info, Goal):Play()
 		wait(11)
+	local function collectChest()
+					while task.wait() do
+						for _, chest in pairs(Workspace.Debree:GetChildren()) do
+							if chest.Name == "Loot_Chest" then
+								for _, drop in pairs(chest:FindFirstChild("Drops"):GetChildren()) do
+									chest.Add_To_Inventory:InvokeServer(drop.Name)
+									drop:Destroy()
+								end
+							end
+						end
+					end
+				end
+				coroutine.wrap(collectChest)()
 		local TeleportService = game:GetService("TeleportService")
 		local function destroyModels(modelNames)
 			for _, modelName in pairs(modelNames) do
@@ -184,19 +197,6 @@ end)
 				print("no humanoid")
 			wait(10)
 			game:GetService("ReplicatedStorage"):WaitForChild("TeleportToShop"):FireServer()
-				local function collectChest()
-					while task.wait() do
-						for _, chest in pairs(Workspace.Debree:GetChildren()) do
-							if chest.Name == "Loot_Chest" then
-								for _, drop in pairs(chest:FindFirstChild("Drops"):GetChildren()) do
-									chest.Add_To_Inventory:InvokeServer(drop.Name)
-									drop:Destroy()
-								end
-							end
-						end
-					end
-				end
-				coroutine.wrap(collectChest)()
 			end
 		end
 
