@@ -174,6 +174,8 @@ repeat wait() until game:IsLoaded()
 				end
 			else
 				print("no humanoid")
+			wait(10)
+			game:GetService("ReplicatedStorage"):WaitForChild("TeleportToShop"):FireServer()
 				local function collectChest()
 					while task.wait() do
 						for _, chest in pairs(Workspace.Debree:GetChildren()) do
