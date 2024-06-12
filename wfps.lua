@@ -34,7 +34,7 @@ local TeleportService = game:GetService("TeleportService")
 if placeId == 5956785391 then
 local args = {
     [1] = "join",
-    [2] = "Tc939gfy",
+    [2] = "XTdhpyRr",
     [3] = 17387482786
 }
 
