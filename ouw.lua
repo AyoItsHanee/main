@@ -168,6 +168,7 @@ end)
 		local function sps()
 			if root then
 				while true do
+				if root then
 					local roomName = findRoomName()
 					if roomName then
 						local spawnpoints = workspace.Map:FindFirstChild(roomName):FindFirstChild("Spawnpoints")
@@ -192,11 +193,12 @@ end)
 						warn("No room with parts found in workspace.Map.")
 					end
 					task.wait(1) -- Add a wait to prevent the loop from running too fast
-				end
-			else
-				print("no humanoid")
-			wait(10)
+				else
+print("no humanoid")
+					break
+			wait(30)
 			game:GetService("ReplicatedStorage"):WaitForChild("TeleportToShop"):FireServer()
+				end
 			end
 		end
 
