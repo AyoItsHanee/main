@@ -174,6 +174,19 @@ repeat wait() until game:IsLoaded()
 		end
 	else
 		print("no humanoid")
+			local function collectChest()
+    while task.wait() do
+            for _, chest in pairs(Workspace.Debree:GetChildren()) do
+                if chest.Name == "Loot_Chest" then
+                    for _, drop in pairs(chest:FindFirstChild("Drops"):GetChildren()) do
+                        chest.Add_To_Inventory:InvokeServer(drop.Name)
+                        drop:Destroy()
+                end
+            end
+        end
+    end
+end
+coroutine.wrap(collectChest)()
 	end
 end
 
