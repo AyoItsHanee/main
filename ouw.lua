@@ -17,6 +17,9 @@ repeat wait() until game:IsLoaded()
 	end)
 	local placeId = game.PlaceId
 	local Workspace = game:GetService("Workspace")
+	local p = game.Players.LocalPlayer
+	local c = p.Character
+	local h = c:FindFirstChild("Humanoid")
 
 	if placeId == 5956785391 then
 
@@ -145,59 +148,59 @@ repeat wait() until game:IsLoaded()
 
 		-- Function to tween the character to a random part within "Spawnpoints"
 		local function sps()
-		if c and h then
-			while true do
-				local roomName = findRoomName()
-				if roomName then
-					local spawnpoints = workspace.Map:FindFirstChild(roomName):FindFirstChild("Spawnpoints")
-					if spawnpoints then
-						local parts = spawnpoints:GetChildren()
-						if #parts > 0 then
-							local randomPart = parts[math.random(1, #parts)]
-							if randomPart and randomPart:IsA("BasePart") then
-								local destination = randomPart.Position + Vector3.new(0, 5, 0)
-								local tweenInfo = TweenInfo.new(1, Enum.EasingStyle.Linear, Enum.EasingDirection.Out) -- Adjust tweenTime as needed
-								local tween = game.TweenService:Create(player.Character.HumanoidRootPart, tweenInfo, {CFrame = CFrame.new(destination)})
-								tween:Play()
-								wait(3)
+			if c and h then
+				while true do
+					local roomName = findRoomName()
+					if roomName then
+						local spawnpoints = workspace.Map:FindFirstChild(roomName):FindFirstChild("Spawnpoints")
+						if spawnpoints then
+							local parts = spawnpoints:GetChildren()
+							if #parts > 0 then
+								local randomPart = parts[math.random(1, #parts)]
+								if randomPart and randomPart:IsA("BasePart") then
+									local destination = randomPart.Position + Vector3.new(0, 5, 0)
+									local tweenInfo = TweenInfo.new(1, Enum.EasingStyle.Linear, Enum.EasingDirection.Out) -- Adjust tweenTime as needed
+									local tween = game.TweenService:Create(player.Character.HumanoidRootPart, tweenInfo, {CFrame = CFrame.new(destination)})
+									tween:Play()
+									wait(3)
+								end
+							else
+								warn("No parts found in Spawnpoints of room: " .. roomName)
 							end
 						else
-							warn("No parts found in Spawnpoints of room: " .. roomName)
+							warn("No 'Spawnpoints' found in room: " .. roomName)
 						end
 					else
-						warn("No 'Spawnpoints' found in room: " .. roomName)
+						warn("No room with parts found in workspace.Map.")
 					end
-				else
-					warn("No room with parts found in workspace.Map.")
+					task.wait(1) -- Add a wait to prevent the loop from running too fast
 				end
-				task.wait(1) -- Add a wait to prevent the loop from running too fast
+			else
+				print("no humanoid")
+				local function collectChest()
+					while task.wait() do
+						for _, chest in pairs(Workspace.Debree:GetChildren()) do
+							if chest.Name == "Loot_Chest" then
+								for _, drop in pairs(chest:FindFirstChild("Drops"):GetChildren()) do
+									chest.Add_To_Inventory:InvokeServer(drop.Name)
+									drop:Destroy()
+								end
+							end
+						end
+					end
+				end
+				coroutine.wrap(collectChest)()
+			end
 		end
-	else
-		print("no humanoid")
-			local function collectChest()
-    while task.wait() do
-            for _, chest in pairs(Workspace.Debree:GetChildren()) do
-                if chest.Name == "Loot_Chest" then
-                    for _, drop in pairs(chest:FindFirstChild("Drops"):GetChildren()) do
-                        chest.Add_To_Inventory:InvokeServer(drop.Name)
-                        drop:Destroy()
-                end
-            end
-        end
-    end
-end
-coroutine.wrap(collectChest)()
-	end
-end
 
 		local function wd()
-		while task.wait(3) do
-			local args = {
-				[1] = true
-			}
+			while task.wait(3) do
+				local args = {
+					[1] = true
+				}
 
-			game:GetService("ReplicatedStorage"):WaitForChild("Remotes"):WaitForChild("war_Drums_remote"):FireServer(unpack(args))
-		end
+				game:GetService("ReplicatedStorage"):WaitForChild("Remotes"):WaitForChild("war_Drums_remote"):FireServer(unpack(args))
+			end
 		end
 		coroutine.wrap(wd)()
 
@@ -315,10 +318,6 @@ end
 			coroutine.wrap(sps)()
 			coroutine.wrap(orbx)()
 			--[[    wait(600)
-			local p = game.Players.LocalPlayer
-			local c = p.Character
-			local h = c:FindFirstChild("Humanoid")
-
 			-- Check if your character and humanoid exist
 			if c and h then
 				-- Set the humanoid's health to 0 to "kill" the character
