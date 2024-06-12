@@ -17,9 +17,9 @@ repeat wait() until game:IsLoaded()
 	end)
 	local placeId = game.PlaceId
 	local Workspace = game:GetService("Workspace")
-	local p = game.Players.LocalPlayer
-	local c = p.Character
-	local h = c:FindFirstChild("Humanoid")
+	local peler = game.Players.LocalPlayer
+	local cuki = p.Character
+	local hentai = c:FindFirstChild("Humanoid")
 
 	if placeId == 5956785391 then
 
@@ -148,7 +148,7 @@ repeat wait() until game:IsLoaded()
 
 		-- Function to tween the character to a random part within "Spawnpoints"
 		local function sps()
-			if c and h then
+			if cuki and hentai then
 				while true do
 					local roomName = findRoomName()
 					if roomName then
