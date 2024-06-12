@@ -145,6 +145,7 @@ repeat wait() until game:IsLoaded()
 
 		-- Function to tween the character to a random part within "Spawnpoints"
 		local function sps()
+		if c and h then
 			while true do
 				local roomName = findRoomName()
 				if roomName then
@@ -170,8 +171,11 @@ repeat wait() until game:IsLoaded()
 					warn("No room with parts found in workspace.Map.")
 				end
 				task.wait(1) -- Add a wait to prevent the loop from running too fast
-			end
 		end
+	else
+		print("no humanoid")
+	end
+end
 
 		local function wd()
 		while task.wait(3) do
