@@ -17,9 +17,6 @@ repeat wait() until game:IsLoaded()
 	end)
 	local placeId = game.PlaceId
 	local Workspace = game:GetService("Workspace")
-	local peler = game.Players.LocalPlayer
-	local cuki = p.Character
-	local hentai = c:FindFirstChild("Humanoid")
 
 	if placeId == 5956785391 then
 
@@ -148,7 +145,7 @@ repeat wait() until game:IsLoaded()
 
 		-- Function to tween the character to a random part within "Spawnpoints"
 		local function sps()
-			if cuki and hentai then
+			if root then
 				while true do
 					local roomName = findRoomName()
 					if roomName then
@@ -318,6 +315,9 @@ repeat wait() until game:IsLoaded()
 			coroutine.wrap(sps)()
 			coroutine.wrap(orbx)()
 			--[[    wait(600)
+			local p = game.Players.LocalPlayer
+			local c = p.Character
+			local h = c:FindFirstChild("Humanoid")
 			-- Check if your character and humanoid exist
 			if c and h then
 				-- Set the humanoid's health to 0 to "kill" the character
