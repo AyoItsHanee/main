@@ -274,10 +274,10 @@ end
 								local Handle_Initiate_S_ = game.ReplicatedStorage.Remotes.To_Server.Handle_Initiate_S_
 								Handle_Initiate_S_:InvokeServer("arrow_knock_back_damage", game.Players.LocalPlayer.Character, v.HumanoidRootPart.CFrame, v, 500, 500)
 								hitCounter[modelId] = hitCounter[modelId] + 1
-							else
+							--else
 								-- The humanoid health is 0, change to another model
 								-- Replace the code below with the logic to change the model
-								print("Model with health 0:", modelId)
+								--print("Model with health 0:", modelId)
 							end
 						end
 						-- Check if we hit two mobs/models
@@ -313,12 +313,12 @@ end
 			wait(1) -- Adjust the delay as needed, e.g., check every second
 		end
 	local function mst()
-		if root then
+		if root.Health => 1 then
 			coroutine.wrap(sps)()
 			coroutine.wrap(orbx)()
 		else
 			spsn = false
-			print("no humanoid")
+			print("UR DEAD NIGG")
 			game:GetService("ReplicatedStorage"):WaitForChild("TeleportToShop"):FireServer()
 		end
 	end
