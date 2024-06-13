@@ -312,8 +312,9 @@ end
 			end
 			wait(1) -- Adjust the delay as needed, e.g., check every second
 		end
+	local rooth = game.Players.LocalPlayer.Character:FindFirstChild("Humanoid")
 	local function mst()
-		if root.Health => 1 then
+		if rooth.Health > 0 then
 			coroutine.wrap(sps)()
 			coroutine.wrap(orbx)()
 		else
@@ -329,7 +330,7 @@ end
 			local loopCM = coroutine.create(mainCoroutine)
 			coroutine.resume(loopCM)
 			wait(1)
-		coroutine.wrap(mst)()
+			coroutine.wrap(mst)()
 			--[[    wait(600)
 			local p = game.Players.LocalPlayer
 			local c = p.Character
