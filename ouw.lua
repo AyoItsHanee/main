@@ -197,7 +197,7 @@ local function sps()
 			else
 			spsn = false
 			print("UR DEAD NIGG")
-			wait(20)
+			wait(10)
 			game:GetService("ReplicatedStorage"):WaitForChild("TeleportToShop"):FireServer()
 				break
 		end
