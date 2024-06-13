@@ -1,6 +1,6 @@
 --loadstring(game:HttpGet("https://raw.githubusercontent.com/EdgeIY/infiniteyield/master/source", true))()
 repeat wait() until game:IsLoaded()
-print("SCRIPT MADE BY realhanif WWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWW")
+print("SCRIPT MADE BY realhanif")
 	wait(5)
 	local vu = game:GetService("VirtualUser")
 	game:GetService("Players").LocalPlayer.Idled:connect(function()
@@ -265,7 +265,6 @@ end
 		local loopC1 = coroutine.create(loopBp)
 		coroutine.resume(loopC1)
 
-	--[[
 		local function loopFunction()
 			while true do
 				local success, error = pcall(function()
@@ -284,7 +283,7 @@ end
 								local Handle_Initiate_S_ = game.ReplicatedStorage.Remotes.To_Server.Handle_Initiate_S_
 								Handle_Initiate_S_:InvokeServer("arrow_knock_back_damage", game.Players.LocalPlayer.Character, v.HumanoidRootPart.CFrame, v, 500, 500)
 								hitCounter[modelId] = hitCounter[modelId] + 1
-							--else
+							else
 								-- The humanoid health is 0, change to another model
 								-- Replace the code below with the logic to change the model
 								--print("Model with health 0:", modelId)
@@ -308,31 +307,6 @@ end
 				wait(.1) -- Adjust the delay time as desired
 			end
 		end
-		coroutine.wrap(loopFunction)
-	]]--
-	local function attackMobs()
-    while task.wait() do
-        local hitCounter = {}
-        for _, mob in pairs(Workspace.Mobs:GetDescendants()) do
-            if mob:IsA("Model") and mob:FindFirstChild("HumanoidRootPart") then
-                local modelId = mob:GetFullName()
-
-                if not hitCounter[modelId] then
-                    hitCounter[modelId] = 0
-                end
-
-                if hitCounter[modelId] < 2 then
-                    local humanoid = mob:FindFirstChildOfClass("Humanoid")
-                    if humanoid and humanoid.Health > 0 then
-                        local Handle_Initiate_S_ = ReplicatedStorage.Remotes.To_Server.Handle_Initiate_S_
-                        Handle_Initiate_S_:InvokeServer("arrow_knock_back_damage", Players.LocalPlayer.Character, mob.HumanoidRootPart.CFrame, mob, 500, 500)
-                        hitCounter[modelId] = hitCounter[modelId] + 1
-                    end
-                end
-            end
-        end
-    end
-end
 
 		local startTime = tick() -- Record the start time
 		-- Wait until the Timer GUI is visible or until the timeout is reached
@@ -363,7 +337,7 @@ end
 			local loopCM = coroutine.create(mainCoroutine)
 			coroutine.resume(loopCM)
 			wait(1)
-			coroutine.wrap(attackMobs)()
+			coroutine.wrap(loopFunction)()
 			coroutine.wrap(sps)()
 			coroutine.wrap(orbx)()
 			--[[    wait(600)
