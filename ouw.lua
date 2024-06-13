@@ -165,9 +165,10 @@ end)
 		end
 
 -- Function to tween the character to a random part within "Spawnpoints"
+	spsn = true
 local function sps()
 	while true do
-		if root then
+		if spsn then
 			local roomName = findRoomName()
 			if roomName then
 				local spawnpoints = workspace.Map:FindFirstChild(roomName):FindFirstChild("Spawnpoints")
@@ -192,11 +193,6 @@ local function sps()
 				warn("No room with parts found in workspace.Map.")
 			end
 			task.wait(1) -- Add a wait to prevent the loop from running too fast
-		else
-			print("no humanoid")
-			wait(30)
-			game:GetService("ReplicatedStorage"):WaitForChild("TeleportToShop"):FireServer()
-			break
 		end
 	end
 end
@@ -316,6 +312,16 @@ end
 			end
 			wait(1) -- Adjust the delay as needed, e.g., check every second
 		end
+	local function mst()
+		if root then
+			coroutine.wrap(sps)()
+			coroutine.wrap(orbx)()
+		else
+			spsn = false
+			print("no humanoid")
+			game:GetService("ReplicatedStorage"):WaitForChild("TeleportToShop"):FireServer()
+		end
+	end
 		-- Check if the Timer GUI became visible or not
 		if isTimerGuiVisible() then
 			print("Timer GUI is now visible, continuing with the script...")
@@ -323,8 +329,7 @@ end
 			local loopCM = coroutine.create(mainCoroutine)
 			coroutine.resume(loopCM)
 			wait(1)
-			coroutine.wrap(sps)()
-			coroutine.wrap(orbx)()
+		coroutine.wrap(mst)()
 			--[[    wait(600)
 			local p = game.Players.LocalPlayer
 			local c = p.Character
