@@ -265,7 +265,6 @@ end
 		local loopC1 = coroutine.create(loopBp)
 		coroutine.resume(loopC1)
 
-	--[[
 		local function loopFunction()
 			while true do
 				local success, error = pcall(function()
@@ -308,35 +307,7 @@ end
 				wait(.1) -- Adjust the delay time as desired
 			end
 		end
-
-		-- Create and start a separate coroutine for the looped function
-		local loopC2 = coroutine.create(loopFunction)
-		coroutine.resume(loopC2)
-	]]--
-	local function attackMobs()
-    while task.wait() do
-        local hitCounter = {}
-        for _, mob in pairs(Workspace.Mobs:GetDescendants()) do
-            if mob:IsA("Model") and mob:FindFirstChild("HumanoidRootPart") then
-                local modelId = mob:GetFullName()
-
-                if not hitCounter[modelId] then
-                    hitCounter[modelId] = 0
-                end
-
-                if hitCounter[modelId] < 2 then
-                    local humanoid = mob:FindFirstChildOfClass("Humanoid")
-                    if humanoid and humanoid.Health > 0 then
-                        game.ReplicatedStorage.Remotes.To_Server.Handle_Initiate_S_:InvokeServer("arrow_knock_back_damage", game.Players.LocalPlayer.Character, v.HumanoidRootPart.CFrame, v, 500, 500)
-                        hitCounter[modelId] = hitCounter[modelId] + 1
-                    end
-                end
-            end
-        end
-    end
-end
-
-task.spawn(attackMobs)
+		coroutine.wrap(loopFunction)
 
 		local startTime = tick() -- Record the start time
 		-- Wait until the Timer GUI is visible or until the timeout is reached
