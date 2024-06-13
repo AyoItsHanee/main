@@ -164,43 +164,42 @@ end)
 			return nil
 		end
 
-		-- Function to tween the character to a random part within "Spawnpoints"
-		local function sps()
-			if root then
-				while true do
-				if root then
-					local roomName = findRoomName()
-					if roomName then
-						local spawnpoints = workspace.Map:FindFirstChild(roomName):FindFirstChild("Spawnpoints")
-						if spawnpoints then
-							local parts = spawnpoints:GetChildren()
-							if #parts > 0 then
-								local randomPart = parts[math.random(1, #parts)]
-								if randomPart and randomPart:IsA("BasePart") then
-									local destination = randomPart.Position + Vector3.new(0, 5, 0)
-									local tweenInfo = TweenInfo.new(1, Enum.EasingStyle.Linear, Enum.EasingDirection.Out) -- Adjust tweenTime as needed
-									local tween = game.TweenService:Create(player.Character.HumanoidRootPart, tweenInfo, {CFrame = CFrame.new(destination)})
-									tween:Play()
-									wait(3)
-								end
-							else
-								warn("No parts found in Spawnpoints of room: " .. roomName)
-							end
-						else
-							warn("No 'Spawnpoints' found in room: " .. roomName)
+-- Function to tween the character to a random part within "Spawnpoints"
+local function sps()
+	while true do
+		if root then
+			local roomName = findRoomName()
+			if roomName then
+				local spawnpoints = workspace.Map:FindFirstChild(roomName):FindFirstChild("Spawnpoints")
+				if spawnpoints then
+					local parts = spawnpoints:GetChildren()
+					if #parts > 0 then
+						local randomPart = parts[math.random(1, #parts)]
+						if randomPart and randomPart:IsA("BasePart") then
+							local destination = randomPart.Position + Vector3.new(0, 5, 0)
+							local tweenInfo = TweenInfo.new(1, Enum.EasingStyle.Linear, Enum.EasingDirection.Out) -- Adjust tweenTime as needed
+							local tween = game.TweenService:Create(player.Character.HumanoidRootPart, tweenInfo, {CFrame = CFrame.new(destination)})
+							tween:Play()
+							wait(3)
 						end
 					else
-						warn("No room with parts found in workspace.Map.")
+						warn("No parts found in Spawnpoints of room: " .. roomName)
 					end
-					task.wait(1) -- Add a wait to prevent the loop from running too fast
 				else
-print("no humanoid")
-					break
+					warn("No 'Spawnpoints' found in room: " .. roomName)
+				end
+			else
+				warn("No room with parts found in workspace.Map.")
+			end
+			task.wait(1) -- Add a wait to prevent the loop from running too fast
+		else
+			print("no humanoid")
 			wait(30)
 			game:GetService("ReplicatedStorage"):WaitForChild("TeleportToShop"):FireServer()
-				end
-			end
+			break
 		end
+	end
+end
 
 		local function wd()
 			while task.wait(3) do
