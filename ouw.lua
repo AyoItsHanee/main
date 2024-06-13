@@ -326,8 +326,7 @@ end
                 if hitCounter[modelId] < 2 then
                     local humanoid = mob:FindFirstChildOfClass("Humanoid")
                     if humanoid and humanoid.Health > 0 then
-                        local Handle_Initiate_S_ = ReplicatedStorage.Remotes.To_Server.Handle_Initiate_S_
-                        Handle_Initiate_S_:InvokeServer("arrow_knock_back_damage", Players.LocalPlayer.Character, mob.HumanoidRootPart.CFrame, mob, 500, 500)
+                        ReplicatedStorage.Remotes.To_Server.Handle_Initiate_S_:InvokeServer("arrow_knock_back_damage", Players.LocalPlayer.Character, mob.HumanoidRootPart.CFrame, mob, 500, 500)
                         hitCounter[modelId] = hitCounter[modelId] + 1
                     end
                 end
