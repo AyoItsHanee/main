@@ -199,6 +199,7 @@ local function sps()
 			print("UR DEAD NIGG")
 			wait(20)
 			game:GetService("ReplicatedStorage"):WaitForChild("TeleportToShop"):FireServer()
+				break
 		end
 		task.wait(1) -- Add a wait to prevent the loop from running too fast
 	end
