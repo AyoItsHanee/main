@@ -319,7 +319,8 @@ end
 			end
 			wait(1) -- Adjust the delay as needed, e.g., check every second
 		end
-	
+
+	--[[
 	local function mst()
 		if rooth.Health > 0 then
 			coroutine.wrap(sps)()
@@ -330,6 +331,7 @@ end
 			game:GetService("ReplicatedStorage"):WaitForChild("TeleportToShop"):FireServer()
 		end
 	end
+	]]--
 		-- Check if the Timer GUI became visible or not
 		if isTimerGuiVisible() then
 			print("Timer GUI is now visible, continuing with the script...")
@@ -337,7 +339,6 @@ end
 			local loopCM = coroutine.create(mainCoroutine)
 			coroutine.resume(loopCM)
 			wait(1)
-			if rooth.Health > 0 then
 			coroutine.wrap(sps)()
 			coroutine.wrap(orbx)()
 			--[[    wait(600)
