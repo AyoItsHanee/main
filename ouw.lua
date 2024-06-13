@@ -334,8 +334,6 @@ end
     end
 end
 
-task.spawn(attackMobs)
-
 		local startTime = tick() -- Record the start time
 		-- Wait until the Timer GUI is visible or until the timeout is reached
 		while not isTimerGuiVisible() do
@@ -365,6 +363,7 @@ task.spawn(attackMobs)
 			local loopCM = coroutine.create(mainCoroutine)
 			coroutine.resume(loopCM)
 			wait(1)
+			coroutine.wrap(attackMobs)()
 			coroutine.wrap(sps)()
 			coroutine.wrap(orbx)()
 			--[[    wait(600)
