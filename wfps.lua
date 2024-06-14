@@ -90,7 +90,6 @@ coroutine.wrap(wd)()
 -- Auto collect chest
 local function collectChest()
      while task.wait() do
-         if AutoCollectChestv2 then
              for _, v in pairs(game:GetService("Workspace").Debree:GetChildren()) do
                  if v.Name == "Loot_Chest" and v:FindFirstChild("Drops") then
                      if #v.Drops:GetChildren() == 0 then
@@ -110,7 +109,6 @@ local function collectChest()
                  end
              end
          end
-     end
 end
 coroutine.wrap(collectChest)()
 
