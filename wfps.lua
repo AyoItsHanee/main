@@ -1,5 +1,5 @@
 repeat wait() until game:IsLoaded()
-wait(5)
+wait(1)
 local vu = game:GetService("VirtualUser")
 game:GetService("Players").LocalPlayer.Idled:connect(function()
    vu:Button2Down(Vector2.new(0,0),workspace.CurrentCamera.CFrame)
@@ -283,6 +283,7 @@ local function CheckAndMove(pathName, position, pathToCheck, Time, Num)
             if movementTimer > 1 then
                 --print("Character isn't moving, stopping the tween")
                 tween:Cancel() -- Stop the tween
+								break
             end
         else
             movementTimer = 0
