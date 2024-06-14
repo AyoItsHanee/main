@@ -132,7 +132,7 @@ end)
 			{name = "WisteriaPoisoning", enabled = true},
 			{name = "MobCamouflage", enabled = true}
 		}
-
+local rooth = game.Players.LocalPlayer.Character:FindFirstChild("Humanoid")
 		local function orbx()
 			while true do
 				local mapChildren = Workspace.Map:GetChildren()
@@ -141,8 +141,10 @@ end)
 					if orb.enabled then
 						for _, v in pairs(mapChildren) do
 							if v:IsA("Model") and v.Name == orb.name then
+								if rooth then
 								player.Character.HumanoidRootPart.CFrame = v:GetModelCFrame()
 								break -- Break out of the inner loop to avoid redundant checks
+								end
 							end
 						end
 					end
@@ -167,7 +169,6 @@ end)
 		end
 
 -- Function to tween the character to a random part within "Spawnpoints"
-	local rooth = game.Players.LocalPlayer.Character:FindFirstChild("Humanoid")
 	spsn = true
 local function sps()
 	while true do
