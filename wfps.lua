@@ -182,10 +182,12 @@ local function preventFall()
 end
 coroutine.wrap(preventFall)()
 
-				
+
+				--[[
 local TweenService = game:GetService("TweenService")
 local Root = game.Players.LocalPlayer.Character.HumanoidRootPart
 local Goal = {}
+				
 -- Function to teleport to specific paths
 local pathsToCheck = {
     {
@@ -299,12 +301,108 @@ local function main()
     wait()
     main()
 end
+				]]--
+local TweenService = game:GetService("TweenService")
+local Workspace = game:GetService("Workspace")
+local Player = game.Players.LocalPlayer
+local Root = Player.Character.HumanoidRootPart
+
+-- Function to calculate the distance to the Endpoint
+local function GetDistance(Endpoint)
+    if typeof(Endpoint) == "Instance" then
+        Endpoint = Vector3.new(Endpoint.Position.X, Root.Position.Y, Endpoint.Position.Z)
+    elseif typeof(Endpoint) == "CFrame" then
+        Endpoint = Vector3.new(Endpoint.Position.X, Root.Position.Y, Endpoint.Position.Z)
+    end
+    local Magnitude = (Endpoint - Root.Position).Magnitude
+    return Magnitude
+end
+
+-- Function to perform a tween to the specified endpoint
+local function TweenTo(Endpoint)
+    if typeof(Endpoint) == "Instance" then
+        Endpoint = Endpoint.CFrame
+    end
+
+    local TweenFunc = {}
+    local Distance = GetDistance(Endpoint)
+    local tweenInfo = TweenInfo.new(Distance / getgenv().TweenSpeed, Enum.EasingStyle.Linear)
+    local tween = TweenService:Create(Root, tweenInfo, {CFrame = Endpoint})
+
+    tween:Play()
+
+    function TweenFunc:Cancel()
+        tween:Cancel()
+        return false
+    end
+
+    if Distance <= 100 then
+        Root.CFrame = Endpoint
+        tween:Cancel()
+        return false
+    end
+
+    return TweenFunc
+end
+
+-- List of paths to check
+local pathsToCheck = {
+    { name = "Sound Trainee", position = Vector3.new(1859, 670, -2801), path = Workspace.Mobs.Bosses.Sound_Trainee["Sound Trainee"], time = 10, num = 2 },
+    { name = "Tengen", position = Vector3.new(1463, 493, -3118), path = Workspace.Mobs.Bosses.Tengen, time = 2, num = 3 },
+    { name = "Douma", position = Vector3.new(-2, 519, -1690), path = Workspace.Mobs.Bosses.Douma, time = 5, num = 3 },
+    { name = "Renpeke", position = Vector3.new(-1289, 607, -664), path = Workspace.Mobs.Bosses["Flame Trainee"], time = 5, num = 2 },
+    { name = "Swampy", position = Vector3.new(-1349, 607, -205), path = Workspace.Mobs.Bosses.Swampy, time = 1, num = 2 },
+    { name = "Akaza", position = Vector3.new(2008, 563, -107), path = Workspace.Mobs.Bosses.Akaza, time = 10, num = 3 },
+    { name = "Inosuke", position = Vector3.new(1596, 307, -394), path = Workspace.Mobs.Bosses.Inosuke, time = 2, num = 2 },
+    { name = "Enmu", position = Vector3.new(1580, 490, -667), path = Workspace.Mobs.Bosses.Enmu, time = 3, num = 2 },
+    { name = "Rengoku", position = Vector3.new(3659, 680, -355), path = Workspace.Mobs.Bosses.Rengoku, time = 6, num = 3 },
+    { name = "Muichiro", position = Vector3.new(4512, 680, -553), path = Workspace.Mobs.Bosses.Muichiro, time = 3, num = 2 },
+}
+
+-- Function to check and move to a specified path
+local function CheckAndMove(pathName, position, pathToCheck, time, num)
+    print("Going to " .. pathName)
+    local tweenFunc = TweenTo(position)
+    wait(time)
+
+    local movementTimer = 0
+    local prevPosition = Root.Position
+
+    while task.wait() do
+        if pathToCheck and #pathToCheck:GetChildren() == num then
+            print("Moving to the next path")
+            tweenFunc:Cancel()
+            break
+        end
+
+        local currentPosition = Root.Position
+        if currentPosition == prevPosition then
+            movementTimer = movementTimer + 1
+            if movementTimer > 1 then
+                tweenFunc:Cancel()
+                break
+            end
+        else
+            movementTimer = 0
+        end
+        prevPosition = currentPosition
+    end
+end
+
+-- Main function to iterate through paths and move the player
+local function main()
+    for _, pathInfo in ipairs(pathsToCheck) do
+        CheckAndMove(pathInfo.name, pathInfo.position, pathInfo.path, pathInfo.time, pathInfo.num)
+    end
+    wait(1)
+    main()
+end
 
 coroutine.wrap(main)()
-				wait()
-				RemoveDMG()
-				wait()
-				RemovePARTICLES()
+wait()
+RemoveDMG()
+wait()
+RemovePARTICLES()
 --game:GetService("RunService"):Set3dRenderingEnabled(false)
 wait(300)
 local isLooping = false
