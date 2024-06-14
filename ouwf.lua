@@ -141,7 +141,8 @@ local rooth = game.Players.LocalPlayer.Character:FindFirstChild("Humanoid")
 						for _, v in pairs(mapChildren) do
 							if v:IsA("Model") and v.Name == orb.name then
 								if rooth then
-                tween:Cancel()
+                						tween:Cancel()
+								wait()
 								player.Character.HumanoidRootPart.CFrame = v:GetModelCFrame()
 								break -- Break out of the inner loop to avoid redundant checks
 								end
