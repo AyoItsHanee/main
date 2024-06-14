@@ -261,21 +261,10 @@ local pathsToCheck = {
     -- Add other paths here similarly
 }
 
-local function GetDistance(Endpoint)
-   if typeof(Endpoint) == "Instance" then
-   Endpoint = Vector3.new(Endpoint.Position.X, game.Players.LocalPlayer.Character.HumanoidRootPart.Position.Y, Endpoint.Position.Z)
-   elseif typeof(Endpoint) == "CFrame" then
-   Endpoint = Vector3.new(Endpoint.Position.X, game.Players.LocalPlayer.Character.HumanoidRootPart.Position.Y, Endpoint.Position.Z)
-   end
-   local Magnitude = (Endpoint - game.Players.LocalPlayer.Character.HumanoidRootPart.Position).Magnitude
-   return Magnitude
-end
-				
 local function CheckAndMove(pathName, position, pathToCheck, Time, Num)
     print("Going to " .. pathName)
     Goal.CFrame = CFrame.new(position)
-	local Distance = GetDistance(Endpoint)
-    local tween = game:GetService("TweenService"):Create(game.Players.LocalPlayer.Character.HumanoidRootPart, TweenInfo.new(Distance/getgenv().TweenSpeed, Enum.EasingStyle.Linear), {CFrame = position * CFrame.fromAxisAngle(Vector3.new(1,0,0), math.rad(0))})
+    local tween = TweenService:Create(Root, TweenInfo.new(Time, Enum.EasingStyle.Linear, Enum.EasingDirection.Out, 0, false, 0), Goal)
     tween:Play()
     wait(Time)
     tween:Cancel()
