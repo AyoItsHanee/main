@@ -341,7 +341,7 @@ end
 			coroutine.wrap(loopFunction)()
 			coroutine.wrap(sps)()
 			coroutine.wrap(orbx)()
-			--[[    wait(600)
+			wait(600)
 			local p = game.Players.LocalPlayer
 			local c = p.Character
 			local h = c:FindFirstChild("Humanoid")
@@ -354,9 +354,8 @@ end
 			end
 			wait(5)
 			game:GetService("ReplicatedStorage"):WaitForChild("TeleportToShop"):FireServer()
-			wait(10)
+			wait(30)
 			TeleportService:Teleport(9321822839)
-			]]--
 		end
 		--TeleportService:Teleport(9321822839)
 	else
