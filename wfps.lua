@@ -231,21 +231,21 @@ local pathsToCheck = {
         name = "Enmu",
         position = Vector3.new(1580, 490, -667),
         path = Workspace.Mobs.Bosses.Enmu,
-		time = 2,
+		time = 3,
 		num = 2
     },
         {
         name = "Rengoku",
         position = Vector3.new(3659, 680, -355),
         path = Workspace.Mobs.Bosses.Rengoku,
-		time = 5,
+		time = 6,
 		num = 3
     },
         {
         name = "Muichiro",
         position = Vector3.new(4512, 680, -553),
         path = Workspace.Mobs.Bosses.Muichiro,
-		time = 2,
+		time = 3,
 		num = 2
     },
     -- Add other paths here similarly
