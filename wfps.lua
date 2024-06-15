@@ -1,5 +1,6 @@
 repeat wait() until game:IsLoaded()
 wait(1)
+local KeepSC = true
 local vu = game:GetService("VirtualUser")
 game:GetService("Players").LocalPlayer.Idled:connect(function()
    vu:Button2Down(Vector2.new(0,0),workspace.CurrentCamera.CFrame)
@@ -39,9 +40,8 @@ button.Parent = frame
 local label = Instance.new("TextLabel")
 label.Size = UDim2.new(1, 0, 0.5, 0)
 label.Position = UDim2.new(0, 0, 0.5, 0)
-label.Text = "KeepSC: false"
+label.Text = "KeepSC: " .. tostring(KeepSC)
 label.Parent = frame
-local KeepSC = true
 
 -- Function to toggle KeepSC and update UI
 local function toggleKeepSC()
