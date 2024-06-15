@@ -183,7 +183,7 @@ local function sps()
 							local tweenInfo = TweenInfo.new(2, Enum.EasingStyle.Linear, Enum.EasingDirection.Out) -- Adjust tweenTime as needed
 							local tween = game.TweenService:Create(player.Character.HumanoidRootPart, tweenInfo, {CFrame = CFrame.new(destination)})
 							tween:Play()
-							wait(4)
+							wait(2.5)
 						end
 					else
 						warn("No parts found in Spawnpoints of room: " .. roomName)
