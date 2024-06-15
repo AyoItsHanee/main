@@ -53,7 +53,6 @@ label.Parent = frame
 	
 -- Function to toggle KeepSC and update UI
 local function toggleKeepSC()
-    KeepSC = not KeepSC
     label.Text = "KeepSC: " .. tostring(KeepSC)
     
     -- Send notification
