@@ -62,7 +62,8 @@ local whitelist = {
 	["Blood Necklace"] = 500,
 	["Green Vine Haorie"] = 500,
 	["Purple Flower Haorie"] = 500,
-	["Sakura Haorie"] = 500
+	["Sakura Haorie"] = 500,
+	["Skinned Hide"] = 3500
 }
 
 -- Initialize variables to store found item prices and total price
