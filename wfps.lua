@@ -65,7 +65,6 @@ local function toggleKeepSC()
 end
 button.MouseButton1Click:Connect(toggleKeepSC)
 
-local oream = game:GetService("ReplicatedStorage")["Player_Data"][getLocalPlayerUsername()].Inventory.Items.Ore.Amount
 -- Create a Frame
 local frame = Instance.new("Frame")
 frame.Size = UDim2.new(0, 100, 0, 25)
@@ -82,18 +81,6 @@ oreLabel.Text = "Ore:"
 oreLabel.TextColor3 = Color3.fromRGB(255, 255, 255)
 oreLabel.BackgroundTransparency = 1
 oreLabel.Parent = frame
-
--- Function to update the Ore value in the UI
-local function updateOreLabel()
-    local oreValue = oream.Value
-    oreLabel.Text = "Ore: " .. tostring(oreValue)
-end
-
-local function upore()
-while task.wait(10) do
-    updateOreLabel()
-		end
-	end
 
 queueteleport = (syn and syn.queue_on_teleport) or queue_on_teleport or (fluxus and fluxus.queue_on_teleport)
 	local TeleportCheck = false
@@ -121,6 +108,19 @@ game:GetService("ReplicatedStorage"):WaitForChild("handle_privateserver"):Invoke
     
 elseif placeId == 13883059853 then
 game:GetService("Players").LocalPlayer.PlayerScripts["Small_Scripts"].Gameplay["Sun_Damage"].Disabled = true
+-- Function to update the Ore value in the UI
+local oream = game:GetService("ReplicatedStorage")["Player_Data"][getLocalPlayerUsername()].Inventory.Items.Ore.Amount
+local function updateOreLabel()
+    local oreValue = oream.Value
+    oreLabel.Text = "Ore: " .. tostring(oreValue)
+end
+
+local function upore()
+while task.wait(10) do
+    updateOreLabel()
+		end
+	end
+				
 function RemoveDMG()
    local part  =  game:GetService("StarterPlayer").StarterPlayerScripts.Client_Modules.Modules.Extra.Damage_Text
 
