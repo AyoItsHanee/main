@@ -17,6 +17,14 @@ game:GetService("CoreGui").RobloxPromptGui.promptOverlay.ChildAdded:Connect(func
 end)
 local function master()
 print("executed")
+local function getLocalPlayerUsername()
+    local player = game.Players.LocalPlayer
+    if player then
+        return player.Name
+    else
+        return nil
+    end
+end
 -- Create a ScreenGui
 local screenGui = Instance.new("ScreenGui")
 screenGui.Parent = game.Players.LocalPlayer:WaitForChild("PlayerGui")
@@ -42,7 +50,7 @@ label.Size = UDim2.new(1, 0, 0.5, 0)
 label.Position = UDim2.new(0, 0, 0.5, 0)
 label.Text = "KeepSC: " .. tostring(KeepSC)
 label.Parent = frame
-
+	
 -- Function to toggle KeepSC and update UI
 local function toggleKeepSC()
     KeepSC = not KeepSC
@@ -55,8 +63,39 @@ local function toggleKeepSC()
         Duration = 3
     })
 end
-
 button.MouseButton1Click:Connect(toggleKeepSC)
+
+local oream = game:GetService("ReplicatedStorage")["Player_Data"][getLocalPlayerUsername()].Inventory.Items.Ore.Amount
+-- Create a Frame
+local frame = Instance.new("Frame")
+frame.Size = UDim2.new(0, 100, 0, 25)
+frame.Position = UDim2.new(0, 1, 0, 1)
+frame.BackgroundColor3 = Color3.fromRGB(0, 0, 0)
+frame.BackgroundTransparency = 0.5
+frame.Parent = screenGui
+
+-- Create a TextLabel to display the Ore value
+local oreLabel = Instance.new("TextLabel")
+oreLabel.Size = UDim2.new(1, 0, 1, 0)
+oreLabel.Position = UDim2.new(0, 0, 0, 0)
+oreLabel.Text = "Ore:"
+oreLabel.TextColor3 = Color3.fromRGB(255, 255, 255)
+oreLabel.BackgroundTransparency = 1
+oreLabel.Parent = frame
+
+-- Function to update the Ore value in the UI
+local function updateOreLabel()
+if oream then
+    local oreValue = oream.Value
+    oreLabel.Text = "Ore: " .. tostring(oreValue)
+	end
+end
+
+local function upore()
+while task.wait(10) do
+    updateOreLabel()
+		end
+	end
 
 queueteleport = (syn and syn.queue_on_teleport) or queue_on_teleport or (fluxus and fluxus.queue_on_teleport)
 	local TeleportCheck = false
