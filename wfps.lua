@@ -32,7 +32,7 @@ screenGui.Parent = game.Players.LocalPlayer:WaitForChild("PlayerGui")
 -- Create a Frame
 local frame = Instance.new("Frame")
 frame.Size = UDim2.new(0, 100, 0, 50)
-frame.Position = UDim2.new(0.5, -100, 0.5, 0)
+frame.Position = UDim2.new(0, 101, 0, 0)
 frame.BackgroundColor3 = Color3.fromRGB(0, 0, 0)
 frame.BackgroundTransparency = 0.5
 frame.Parent = screenGui
@@ -76,7 +76,7 @@ frame.Parent = screenGui
 local oreLabel = Instance.new("TextLabel")
 oreLabel.Size = UDim2.new(1, 0, 1, 0)
 oreLabel.Position = UDim2.new(0, 0, 0, 0)
-oreLabel.Text = "Ore:"
+oreLabel.Text = "Ore: 0"
 oreLabel.TextColor3 = Color3.fromRGB(255, 255, 255)
 oreLabel.BackgroundTransparency = 1
 oreLabel.Parent = frame
