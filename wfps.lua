@@ -364,7 +364,6 @@ local function CheckAndMove(pathName, position, pathToCheck, Time, Num)
             if movementTimer > 1 then
                 --print("Character isn't moving, stopping the tween")
                 tween:Cancel() -- Stop the tween
-								break
             end
         else
             movementTimer = 0
