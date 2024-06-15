@@ -85,10 +85,8 @@ oreLabel.Parent = frame
 
 -- Function to update the Ore value in the UI
 local function updateOreLabel()
-if oream then
     local oreValue = oream.Value
     oreLabel.Text = "Ore: " .. tostring(oreValue)
-	end
 end
 
 local function upore()
