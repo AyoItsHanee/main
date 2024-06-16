@@ -106,7 +106,7 @@ oreLabel.Position = UDim2.new(0, 0, 0, 0)
 oreLabel.Text = "Ore:"
 oreLabel.TextColor3 = Color3.fromRGB(255, 255, 255)
 oreLabel.BackgroundTransparency = 1
-oreLabel.Parent = frame
+oreLabel.Parent = frame1
 
 -- Function to update the Ore value in the UI
 local function updateOreLabel()
