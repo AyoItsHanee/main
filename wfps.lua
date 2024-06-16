@@ -1,5 +1,5 @@
 repeat wait() until game:IsLoaded()
-wait(1)
+wait(5)
 local KeepSC = true
 local vu = game:GetService("VirtualUser")
 game:GetService("Players").LocalPlayer.Idled:connect(function()
