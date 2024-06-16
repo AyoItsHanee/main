@@ -119,9 +119,11 @@ end
 
 -- Update the Ore value every second
 local function updore()
+					if oream then
 while task.wait(10) do
     updateOreLabel()
 end
+				end
 				end
 				coroutine.wrap(updore)()
 
