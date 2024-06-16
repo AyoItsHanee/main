@@ -118,7 +118,7 @@ end
 
 -- Update the Ore value every second
 local function updore()
-while task.wait(1) do
+while task.wait(10) do
     updateOreLabel()
 end
 				end
