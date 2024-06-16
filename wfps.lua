@@ -89,6 +89,44 @@ local args = {
 game:GetService("ReplicatedStorage"):WaitForChild("handle_privateserver"):InvokeServer(unpack(args))
     
 elseif placeId == 13883059853 then
+local oream = game:GetService("ReplicatedStorage")["Player_Data"][getLocalPlayerUsername()].Inventory.Items.Ore.Amount
+
+local screenGui = Instance.new("ScreenGui")
+screenGui.Parent = game.Players.LocalPlayer:WaitForChild("PlayerGui")
+
+-- Create a Frame
+local frame1 = Instance.new("Frame")
+frame1.Size = UDim2.new(0, 100, 0, 25)
+frame1.Position = UDim2.new(0, 1, 0, 1)
+frame1.BackgroundColor3 = Color3.fromRGB(0, 0, 0)
+frame1.BackgroundTransparency = 0.5
+frame1.Parent = screenGui
+
+-- Create a TextLabel to display the Ore value
+local oreLabel = Instance.new("TextLabel")
+oreLabel.Size = UDim2.new(1, 0, 1, 0)
+oreLabel.Position = UDim2.new(0, 0, 0, 0)
+oreLabel.Text = "Ore:"
+oreLabel.TextColor3 = Color3.fromRGB(255, 255, 255)
+oreLabel.BackgroundTransparency = 1
+oreLabel.Parent = frame
+
+-- Function to update the Ore value in the UI
+local function updateOreLabel()
+if oream then
+    local oreValue = oream.Value
+    oreLabel.Text = "Ore: " .. tostring(oreValue)
+	end
+end
+
+-- Update the Ore value every second
+local function updore()
+while task.wait(1) do
+    updateOreLabel()
+end
+				end
+				coroutine.wrap(updore)()
+
 game:GetService("Players").LocalPlayer.PlayerScripts["Small_Scripts"].Gameplay["Sun_Damage"].Disabled = true			
 function RemoveDMG()
    local part  =  game:GetService("StarterPlayer").StarterPlayerScripts.Client_Modules.Modules.Extra.Damage_Text
