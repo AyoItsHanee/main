@@ -174,24 +174,16 @@ coroutine.wrap(wd)()
 -- Auto collect chest
 local function collectChest()
      while task.wait() do
-             for _, v in pairs(game:GetService("Workspace").Debree:GetChildren()) do
-                 if v.Name == "Loot_Chest" and v:FindFirstChild("Drops") then
-                     if #v.Drops:GetChildren() == 0 then
-                         v:Destroy()
-                     else
-                         for _, drop in pairs(v.Drops:GetChildren()) do
-                             local args = {
-                                 [1] = drop.Name
-                             }
- 
-                             v.Add_To_Inventory:InvokeServer(unpack(args))
-                             if #v.Drops:GetChildren() == 0 then
-                                 v:Destroy()
-                             end
-                         end
-                     end
-                 end
-             end
+         for _, v in pairs(game:GetService("Workspace").Debree:GetChildren()) do
+            if v.Name == "Loot_Chest" then
+               for _, c in pairs(v:FindFirstChild("Drops"):GetChildren()) do
+                  v["Add_To_Inventory"]:InvokeServer(c.Name)
+                  delay(0.1, function()
+                     c:Destroy()
+                  end)
+               end
+         end
+      end
          end
 end
 coroutine.wrap(collectChest)()
