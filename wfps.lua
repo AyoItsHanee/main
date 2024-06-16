@@ -90,7 +90,6 @@ local args = {
 game:GetService("ReplicatedStorage"):WaitForChild("handle_privateserver"):InvokeServer(unpack(args))
     
 elseif placeId == 13883059853 then
-local oream = game:GetService("ReplicatedStorage")["Player_Data"][getLocalPlayerUsername()].Inventory.Items.Ore.Amount
 
 -- Create a Frame
 local frame1 = Instance.new("Frame")
@@ -112,6 +111,7 @@ oreLabel.Parent = frame1
 -- Function to update the Ore value in the UI
 local function updateOreLabel()
 if oream then
+local oream = game:GetService("ReplicatedStorage")["Player_Data"][getLocalPlayerUsername()].Inventory.Items.Ore.Amount
     local oreValue = oream.Value
     oreLabel.Text = "Ore: " .. tostring(oreValue)
 	end
@@ -119,11 +119,9 @@ end
 
 -- Update the Ore value every second
 local function updore()
-					if oream then
 while task.wait(10) do
     updateOreLabel()
 end
-				end
 				end
 				coroutine.wrap(updore)()
 
