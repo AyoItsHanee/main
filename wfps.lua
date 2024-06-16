@@ -91,9 +91,6 @@ game:GetService("ReplicatedStorage"):WaitForChild("handle_privateserver"):Invoke
 elseif placeId == 13883059853 then
 local oream = game:GetService("ReplicatedStorage")["Player_Data"][getLocalPlayerUsername()].Inventory.Items.Ore.Amount
 
-local screenGui = Instance.new("ScreenGui")
-screenGui.Parent = game.Players.LocalPlayer:WaitForChild("PlayerGui")
-
 -- Create a Frame
 local frame1 = Instance.new("Frame")
 frame1.Size = UDim2.new(0, 100, 0, 25)
