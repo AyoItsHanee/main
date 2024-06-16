@@ -238,7 +238,7 @@ end
 			TeleportService:Teleport(9321822839)
 		end
 
-		local timeout = 25 -- Set the timeout in seconds (change this as needed)
+		local timeout = 60 -- Set the timeout in seconds (change this as needed)
 		-- Function to check if the Timer GUI is visible
 		local function isTimerGuiVisible()
 			local player = game:GetService("Players").LocalPlayer
@@ -355,7 +355,7 @@ end
 			--wait(20)
 			TeleportService:Teleport(9321822839)
 		end
-		--TeleportService:Teleport(9321822839)
+		TeleportService:Teleport(9321822839)
 	else
 		print("Place ID doesn't match")
 	end
