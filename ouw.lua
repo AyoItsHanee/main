@@ -350,9 +350,9 @@ end
 			else
 				print("Character or humanoid not found.")
 			end
-			wait(5)
-			game:GetService("ReplicatedStorage"):WaitForChild("TeleportToShop"):FireServer()
-			wait(20)
+			wait(10)
+			--game:GetService("ReplicatedStorage"):WaitForChild("TeleportToShop"):FireServer()
+			--wait(20)
 			TeleportService:Teleport(9321822839)
 		end
 		--TeleportService:Teleport(9321822839)
