@@ -110,8 +110,8 @@ repeat wait() until game:IsLoaded()
 
 			-- Function to update the Ore value in the UI
 			local function updateOreLabel()
-				if oream then
 					local oream = game:GetService("ReplicatedStorage")["Player_Data"][getLocalPlayerUsername()].Inventory.Items.Ore.Amount
+				if oream then
 					local oreValue = oream.Value
 					oreLabel.Text = "Ore: " .. tostring(oreValue)
 				end
