@@ -78,6 +78,8 @@ label.Position = UDim2.new(0,5, -100, 0.5, -49)
 label.Text = "Total Price of Found Items (Divided by 25000): " .. tostring(result)
 label.Parent = screenGui
 
+print("Selling Items in 20 seconds")
+wait(10)
 print("Selling Items in 10 seconds")
 wait(5)
 print("Selling Items in 5 seconds")
