@@ -84,7 +84,7 @@ repeat wait() until game:IsLoaded()
 		if placeId == 5956785391 then
 			local args = {
 				[1] = "join",
-				[2] = "XTdhpyRr",
+				[2] = "uvWjzOBZ",
 				[3] = 17387482786
 			}
 
