@@ -125,7 +125,7 @@ screenGui.Parent = game.Players.LocalPlayer:WaitForChild("PlayerGui")
 -- Create a Frame
 local framess = Instance.new("Frame")
 framess.Size = UDim2.new(0, 300, 0, 50)
-framess.Position = UDim2.new(0.5, -100, 0.5, 0)
+framess.Position = UDim2.new(0.5, 0, 0.5, -10)
 framess.BackgroundColor3 = Color3.fromRGB(0, 0, 0)
 framess.BackgroundTransparency = 0.5
 framess.Parent = screenGui
