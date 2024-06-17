@@ -127,7 +127,7 @@ local framess = Instance.new("Frame")
 framess.Size = UDim2.new(0, 300, 0, 50)
 framess.Position = UDim2.new(0.5, -100, 0.5, -50)
 framess.BackgroundColor3 = Color3.fromRGB(0, 0, 0)
-framess.BackgroundTransparency = 0.5s
+framess.BackgroundTransparency = 0.5
 framess.Parent = screenGui
 -- Create a TextLabel to display the state of KeepSC
 local label = Instance.new("TextLabel")
