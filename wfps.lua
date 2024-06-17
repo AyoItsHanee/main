@@ -112,16 +112,16 @@ repeat wait() until game:IsLoaded()
 			-- Function to update the Ore value in the UI
 			local function updateOreLabel()
 					local oream = game:GetService("ReplicatedStorage")["Player_Data"][getLocalPlayerUsername()].Inventory.Items.Ore.Amount
-				if checkore then
 					local oreValue = oream.Value
 					oreLabel.Text = "Ore: " .. tostring(oreValue)
-				end
 			end
 
 			-- Update the Ore value every second
 			local function updore()
 				while task.wait(10) do
+						if checkore then
 					updateOreLabel()
+						end
 				end
 			end
 			coroutine.wrap(updore)()
