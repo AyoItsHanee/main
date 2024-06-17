@@ -1,6 +1,7 @@
 repeat wait() until game:IsLoaded()
 	wait(5)
 	local KeepSC = true
+	local checkore = true
 	local vu = game:GetService("VirtualUser")
 	game:GetService("Players").LocalPlayer.Idled:connect(function()
 	vu:Button2Down(Vector2.new(0,0),workspace.CurrentCamera.CFrame)
@@ -111,7 +112,7 @@ repeat wait() until game:IsLoaded()
 			-- Function to update the Ore value in the UI
 			local function updateOreLabel()
 					local oream = game:GetService("ReplicatedStorage")["Player_Data"][getLocalPlayerUsername()].Inventory.Items.Ore.Amount
-				if oream then
+				if checkore then
 					local oreValue = oream.Value
 					oreLabel.Text = "Ore: " .. tostring(oreValue)
 				end
