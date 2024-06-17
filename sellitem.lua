@@ -71,12 +71,19 @@ print("Total Price of Found Items (Divided by 25000):", result)
 local screenGui = Instance.new("ScreenGui")
 screenGui.Parent = game.Players.LocalPlayer:WaitForChild("PlayerGui")
 
+-- Create a Frame
+local framest = Instance.new("Frame")
+framest.Size = UDim2.new(0, 300, 0, 50)
+framest.Position = UDim2.new(0.5, -100, 0.5, 0)
+framest.BackgroundColor3 = Color3.fromRGB(0, 0, 0)
+framest.BackgroundTransparency = 0.5
+framest.Parent = screenGui
 -- Create a TextLabel to display the state of KeepSC
 local label = Instance.new("TextLabel")
 label.Size = UDim2.new(1, 0, 0.5, 0)
-label.Position = UDim2.new(0,5, -100, 0.5, -49)
+label.Position = UDim2.new(0, 0, 0, 0, 0)
 label.Text = "Total Price of Found Items (Divided by 25000): " .. tostring(result)
-label.Parent = screenGui
+label.Parent = framest
 
 print("Selling Items in 20 seconds")
 wait(10)
