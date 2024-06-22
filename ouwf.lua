@@ -17,16 +17,14 @@ print("SCRIPT MADE BY realhanif")
 	end)
 	local placeId = game.PlaceId
 	local Workspace = game:GetService("Workspace")
---[[
 	queueteleport = (syn and syn.queue_on_teleport) or queue_on_teleport or (fluxus and fluxus.queue_on_teleport)
 	local TeleportCheck = false
 game:GetService("Players").LocalPlayer.OnTeleport:Connect(function(State)
 	if (not TeleportCheck) and queueteleport then
 		TeleportCheck = true
-		queueteleport("loadstring(game:HttpGet('https://raw.githubusercontent.com/AyoItsHanee/main/main/ouw.lua'))()")
+		queueteleport("loadstring(game:HttpGet('https://raw.githubusercontent.com/AyoItsHanee/main/main/ouwf.lua'))()")
 	end
 end)
-]]--
 	if placeId == 5956785391 then
 
 
