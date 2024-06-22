@@ -1,5 +1,6 @@
 --loadstring(game:HttpGet("https://raw.githubusercontent.com/EdgeIY/infiniteyield/master/source", true))()
 repeat wait() until game:IsLoaded()
+wait(1)
 print("SCRIPT MADE BY realhanif")
 	local vu = game:GetService("VirtualUser")
 	game:GetService("Players").LocalPlayer.Idled:connect(function()
