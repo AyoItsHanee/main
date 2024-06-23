@@ -4,6 +4,7 @@ local KeepSC = true
 wait(1)
 print("SCRIPT MADE BY realhanif")
 	local vu = game:GetService("VirtualUser")
+        local TeleportService = game:GetService("TeleportService")
 	game:GetService("Players").LocalPlayer.Idled:connect(function()
 	vu:Button2Down(Vector2.new(0,0),workspace.CurrentCamera.CFrame)
 	wait(1)
@@ -69,14 +70,10 @@ print("SCRIPT MADE BY realhanif")
 		end)
 	if placeId == 5956785391 then
 
-
-		local TeleportService = game:GetService("TeleportService")
 		wait()
 		TeleportService:Teleport(9321822839)
 
-
 	elseif placeId == 9321822839 then
-
 
 		local myUsername = "nhfarming0" -- Replace with your actual username
 		local function findUsername(folder, username)
@@ -114,11 +111,10 @@ print("SCRIPT MADE BY realhanif")
 		else
 			print("Username not found in ReplicatedStorage.parties")
 		end
-		wait(10)
-
+		wait(20)
+	TeleportService:Teleport(9321822839)
 
 	elseif placeId == 11468075017 then
-
 
 		wait(1)
 		local Info = TweenInfo.new(1, Enum.EasingStyle.Cubic, Enum.EasingDirection.Out, 0, false, 0)
