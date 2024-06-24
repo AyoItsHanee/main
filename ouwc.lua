@@ -309,7 +309,7 @@ end
 			end
 			end
 				
-
+--[[
 		local function wd()
 			while task.wait(3) do
 				local args = {
@@ -320,6 +320,7 @@ end
 			end
 		end
 		coroutine.wrap(wd)()
+	]]--
 
 		-- Function to check if the Timer GUI is visible
 		local function isTimerGuiNotVisible()
