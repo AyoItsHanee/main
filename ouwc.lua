@@ -281,7 +281,6 @@ end
 		while task.wait() do
 				for x, Mox in next, workspace.Mobs:GetChildren() do
 					Mox = Mox:FindFirstChildOfClass("Model")
-				tween:Cancel()
 					Teleport(Mox.HumanoidRootPart.CFrame.Position, Vector3.new(0, 50, 0), 128)
 					repeat
 						local Status = pcall(function()
