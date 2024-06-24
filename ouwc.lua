@@ -272,9 +272,6 @@ repeat wait() until game:IsLoaded()
 
 				repeat
 					local Status = pcall(function()
-					if workspace.Mobs:GetChildren() == 0 then
-						sps()
-					end
 					Players.LocalPlayer.Character.HumanoidRootPart.CFrame = Mob.HumanoidRootPart.CFrame
 					wait(.25)
 					Attack()
