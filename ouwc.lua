@@ -222,24 +222,8 @@ repeat wait() until game:IsLoaded()
 			end
 		end
 
-		local function CreateInstance(Class, Properties)
-			local Instance = Instance.new(Class)
-
-			for Property, Value in Properties do
-				Instance[Property] = Value
-			end
-
-			return Instance
-		end
-
-		local AttackMethods = {
-			Fist = "fist_combat",
-			Sword = "Sword_Combat_Slash",
-			Claws = "claw_Combat_Slash"
-		}
-
 		local function Attack()
-			local method = AttackMethods[Method]
+			local method = "fist_combat"
 				wait()
     game:GetService("ReplicatedStorage").Remotes.To_Server.Handle_Initiate_S:FireServer(method, client, client.Character, client.Character.HumanoidRootPart, client.Character.Humanoid, 919, "ground_slash")
     wait()
@@ -323,7 +307,7 @@ repeat wait() until game:IsLoaded()
 				end
 			end
 
-
+--[[
 			local function wd()
 				while task.wait(3) do
 					local args = {
@@ -334,6 +318,7 @@ repeat wait() until game:IsLoaded()
 				end
 			end
 			coroutine.wrap(wd)()
+			]]--
 
 			-- Function to check if the Timer GUI is visible
 			local function isTimerGuiNotVisible()
