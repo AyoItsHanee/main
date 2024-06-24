@@ -36,8 +36,16 @@ repeat wait() until game:IsLoaded()
 
 	elseif placeId == 9321822839 then
 
+		local function getLocalPlayerUsername()
+			local player = game.Players.LocalPlayer
+			if player then
+				return player.Name
+			else
+				return nil
+			end
+		end
 
-		local myUsername = "nhfarming2" -- Replace with your actual username
+		local myUsername = getLocalPlayerUsername()
 		local function findUsername(folder, username)
 			for _, child in pairs(folder:GetChildren()) do
 				local playerFolder = child:FindFirstChild(username)
@@ -187,283 +195,200 @@ repeat wait() until game:IsLoaded()
 		end
 
 		-- Function to tween the character to a random part within "Spawnpoints"
-		spsn = true
 		local function sps()
-			while true do
-				if spsn and rooth.Health > 0 then
-					local roomName = findRoomName()
-					if roomName then
-						local spawnpoints = workspace.Map:FindFirstChild(roomName):FindFirstChild("Spawnpoints")
-						if spawnpoints then
-							local parts = spawnpoints:GetChildren()
-							if #parts > 0 then
-								local randomPart = parts[math.random(1, #parts)]
-								if randomPart and randomPart:IsA("BasePart") then
-									local destination = randomPart.Position + Vector3.new(0, 5, 0)
-									local tweenInfo = TweenInfo.new(2, Enum.EasingStyle.Linear, Enum.EasingDirection.Out) -- Adjust tweenTime as needed
-									local tween = game.TweenService:Create(player.Character.HumanoidRootPart, tweenInfo, {CFrame = CFrame.new(destination)})
-									tween:Play()
-									wait(4)
-								end
-							else
-								warn("No parts found in Spawnpoints of room: " .. roomName)
-							end
-						else
-							warn("No 'Spawnpoints' found in room: " .. roomName)
+			local roomName = findRoomName()
+			if roomName then
+				local spawnpoints = workspace.Map:FindFirstChild(roomName):FindFirstChild("Spawnpoints")
+				if spawnpoints then
+					local parts = spawnpoints:GetChildren()
+					if #parts > 0 then
+						local randomPart = parts[math.random(1, #parts)]
+						if randomPart and randomPart:IsA("BasePart") then
+							local destination = randomPart.Position + Vector3.new(0, 5, 0)
+							local tweenInfo = TweenInfo.new(2, Enum.EasingStyle.Linear, Enum.EasingDirection.Out) -- Adjust tweenTime as needed
+							local tween = game.TweenService:Create(player.Character.HumanoidRootPart, tweenInfo, {CFrame = CFrame.new(destination)})
+							tween:Play()
+							wait(4)
 						end
 					else
-						warn("No room with parts found in workspace.Map.")
+						warn("No parts found in Spawnpoints of room: " .. roomName)
 					end
 				else
-					spsn = false
-					print("UR DEAD NIGG")
-					wait(10)
-					game:GetService("ReplicatedStorage"):WaitForChild("TeleportToShop"):FireServer()
-					break
+					warn("No 'Spawnpoints' found in room: " .. roomName)
 				end
-				task.wait(1) -- Add a wait to prevent the loop from running too fast
+			else
+				warn("No room with parts found in workspace.Map.")
 			end
 		end
 
-local function CreateInstance(Class, Properties)
-    local Instance = Instance.new(Class)
+		local function CreateInstance(Class, Properties)
+			local Instance = Instance.new(Class)
 
-    for Property, Value in Properties do
-        Instance[Property] = Value
-    end
+			for Property, Value in Properties do
+				Instance[Property] = Value
+			end
 
-    return Instance
-end
-	
-	local AttackMethods = {
-    Fist = "fist_combat",
-    Sword = "Sword_Combat_Slash",
-    Claws = "claw_Combat_Slash"
-}
+			return Instance
+		end
 
-local function Attack()
-    local Method = AttackMethods[Method]
+		local AttackMethods = {
+			Fist = "fist_combat",
+			Sword = "Sword_Combat_Slash",
+			Claws = "claw_Combat_Slash"
+		}
 
-    for Cycle=1, 5 do
-        Call(
-            Remotes.To_Server.Handle_Initiate_S_,
-            Method,
-            Players.LocalPlayer,
-            Players.LocalPlayer.Character,
-            Players.LocalPlayer.Character.HumanoidRootPart,
-            Players.LocalPlayer.Character.Humanoid,
-             Cycle ~= 5 and Cycle or Cycle == 5 and 919
-        )
-    end
-end
-	
-local function Teleportx(Position, Offset, Speed)
-    local Distance = Players.LocalPlayer:DistanceFromCharacter(Position + (Offset or Vector3.zero))
-    
-    if Distance < 2500 then
-        local Tween = TweenService:Create(
-            Players.LocalPlayer.Character.HumanoidRootPart,
-            TweenInfo.new(Distance/Speed, Enum.EasingStyle.Linear),
-            {CFrame = CFrame.new(Position + (Offset or Vector3.zero)
-        )})
+		local function Attack()
+			local Method = AttackMethods[Method]
 
-        Tween:Play()
+			for Cycle=1, 5 do
+				Call(
+				Remotes.To_Server.Handle_Initiate_S_,
+				Method,
+				Players.LocalPlayer,
+				Players.LocalPlayer.Character,
+				Players.LocalPlayer.Character.HumanoidRootPart,
+				Players.LocalPlayer.Character.Humanoid,
+				Cycle ~= 5 and Cycle or Cycle == 5 and 919
+				)
+			end
+		end
 
-        return Tween.Completed:Wait()
-    else
-        Players.LocalPlayer.Character.HumanoidRootPart.CFrame = Position + (Offset or Vector3.zero)
-        
-        return wait()
-    end
-end
-	
-	local function skibidi()
-		while task.wait() do
-				for x, Mox in next, workspace.Mobs:GetChildren() do
-					Mox = Mox:FindFirstChildOfClass("Model")
-					Teleportx(Mox.HumanoidRootPart.CFrame.Position, Vector3.new(0, 50, 0), 128)
-					repeat
-						local Status = pcall(function()
-								if workspace.Mobs:GetChildren() == 0 then
-									sps()
-								end
-								Players.LocalPlayer.Character.HumanoidRootPart.CFrame = Mob.HumanoidRootPart.CFrame
-								wait(.25)
-								Attack()
-								Teleportx(Mox.HumanoidRootPart.CFrame.Position, Vector3.new(0, 50, 0), 256)
-								repeat wait() until Players.LocalPlayer:WaitForChild("combotangasd123", 9e9).Value == 0 and wait(0.25)
-							end)
+		local function Teleportx(Position, Offset, Speed)
+			local Distance = Players.LocalPlayer:DistanceFromCharacter(Position + (Offset or Vector3.zero))
+
+			if Distance < 2500 then
+				local Tween = TweenService:Create(
+				Players.LocalPlayer.Character.HumanoidRootPart,
+				TweenInfo.new(Distance/Speed, Enum.EasingStyle.Linear),
+				{CFrame = CFrame.new(Position + (Offset or Vector3.zero)
+				)})
+
+				Tween:Play()
+
+				return Tween.Completed:Wait()
+			else
+				Players.LocalPlayer.Character.HumanoidRootPart.CFrame = Position + (Offset or Vector3.zero)
+
+				return wait()
+			end
+		end
+
+		local function skibidi()
+			for i, Mox in next, workspace.Mobs:GetChildren() do
+				Mox = Mox:FindFirstChildOfClass("Model")
+				Teleportx(Mox.HumanoidRootPart.CFrame.Position, Vector3.new(0, 50, 0), 128)
+
+				repeat
+					local Status = pcall(function()
+					if workspace.Mobs:GetChildren() == 0 then
+						sps()
+					end
+					Players.LocalPlayer.Character.HumanoidRootPart.CFrame = Mob.HumanoidRootPart.CFrame
+					wait(.25)
+					Attack()
+					Teleportx(Mox.HumanoidRootPart.CFrame.Position, Vector3.new(0, 50, 0), 256)
+					repeat wait() until Players.LocalPlayer:WaitForChild("combotangasd123", 9e9).Value == 0 and wait(0.25)
+						end)
 						if not Status then
 							break
 						end
 
-						until wait()
+					until wait()
 
 					pcall(function()
-							Players.LocalPlayer.Character.LowerTorso:FindFirstChildOfClass("BodyVelocity"):Destroy()
-							Players.LocalPlayer.Character.LowerTorso:FindFirstChildOfClass("BodyAngularVelocity"):Destroy()
-						end)
+					Players.LocalPlayer.Character.LowerTorso:FindFirstChildOfClass("BodyVelocity"):Destroy()
+					Players.LocalPlayer.Character.LowerTorso:FindFirstChildOfClass("BodyAngularVelocity"):Destroy()
+					end)
 				end
-				wait()
 			end
+
+
+			local function wd()
+				while task.wait(3) do
+					local args = {
+						[1] = true
+					}
+
+					game:GetService("ReplicatedStorage"):WaitForChild("Remotes"):WaitForChild("war_Drums_remote"):FireServer(unpack(args))
+				end
 			end
-				
---[[
-		local function wd()
-			while task.wait(3) do
-				local args = {
-					[1] = true
-				}
+			coroutine.wrap(wd)()
 
-				game:GetService("ReplicatedStorage"):WaitForChild("Remotes"):WaitForChild("war_Drums_remote"):FireServer(unpack(args))
+			-- Function to check if the Timer GUI is visible
+			local function isTimerGuiNotVisible()
+				local player = game:GetService("Players").LocalPlayer
+				local timerGui = player.PlayerGui:WaitForChild("top_ui"):FindFirstChild("Timer")
+
+				if timerGui and timerGui.Visible == false then
+					return false
+				else
+					return true
+				end
 			end
-		end
-		coroutine.wrap(wd)()
-	]]--
 
-		-- Function to check if the Timer GUI is visible
-		local function isTimerGuiNotVisible()
-			local player = game:GetService("Players").LocalPlayer
-			local timerGui = player.PlayerGui:WaitForChild("top_ui"):FindFirstChild("Timer")
+			-- Coroutine function
+			local function mainCoroutine()
+				while isTimerGuiNotVisible() do
+					wait(1) -- Adjust the delay as needed, e.g., check every second
+				end
 
-			if timerGui and timerGui.Visible == false then
-				return false
-			else
-				return true
+				-- Timer GUI is not visible, so teleport to the desired game
+				TeleportService:Teleport(9321822839)
 			end
-		end
 
-		-- Coroutine function
-		local function mainCoroutine()
-			while isTimerGuiNotVisible() do
+			local timeout = 25 -- Set the timeout in seconds (change this as needed)
+			-- Function to check if the Timer GUI is visible
+			local function isTimerGuiVisible()
+				local player = game:GetService("Players").LocalPlayer
+				local timerGui = player.PlayerGui:FindFirstChild("top_ui"):FindFirstChild("Timer")
+
+				if timerGui and timerGui.Visible == true then
+					return true
+				else
+					return false
+				end
+			end
+			print("Farming Ouw for 10 Minutes..")
+
+			local startTime = tick() -- Record the start time
+			-- Wait until the Timer GUI is visible or until the timeout is reached
+			while not isTimerGuiVisible() do
+				if tick() - startTime >= timeout then
+					print("Timeout reached. Timer GUI did not become visible.")
+					break -- Exit the loop if the timeout is reached
+				end
 				wait(1) -- Adjust the delay as needed, e.g., check every second
 			end
 
-			-- Timer GUI is not visible, so teleport to the desired game
-			TeleportService:Teleport(9321822839)
-		end
-
-		local timeout = 25 -- Set the timeout in seconds (change this as needed)
-		-- Function to check if the Timer GUI is visible
-		local function isTimerGuiVisible()
-			local player = game:GetService("Players").LocalPlayer
-			local timerGui = player.PlayerGui:FindFirstChild("top_ui"):FindFirstChild("Timer")
-
-			if timerGui and timerGui.Visible == true then
-				return true
-			else
-				return false
-			end
-		end
-		print("Farming Ouw for 10 Minutes..")
---[[
-		-- Execute SH V2
-		local function loopBp()
-			while true do
-				local Handle_Initiate_S_ = game.ReplicatedStorage.Remotes.To_Server.Handle_Initiate_S_
-				Handle_Initiate_S_:InvokeServer("skil_ting_asd", game.Players.LocalPlayer, "arrow_knock_back", 5)
-				wait(14)
-			end
-		end
-
-		local loopC1 = coroutine.create(loopBp)
-		coroutine.resume(loopC1)
-
-		local function loopFunction()
-			while true do
-				local success, error = pcall(function()
-				local hitCounter = {} -- Counter for each model
-				for i, v in next, workspace.Mobs:GetDescendants() do
-					if v:IsA("Model") and v:FindFirstChild("HumanoidRootPart") then
-						local modelId = v:GetFullName()
-						-- Check if the model has a counter and initialize it if not present
-						if not hitCounter[modelId] then
-							hitCounter[modelId] = 0
-						end
-						-- Check if the model has been hit less than 2 times
-						if hitCounter[modelId] < 2 then
-							local humanoid = v:FindFirstChildOfClass("Humanoid")
-							if humanoid and humanoid.Health > 0 then
-								local Handle_Initiate_S_ = game.ReplicatedStorage.Remotes.To_Server.Handle_Initiate_S_
-								Handle_Initiate_S_:InvokeServer("arrow_knock_back_damage", game.Players.LocalPlayer.Character, v.HumanoidRootPart.CFrame, v, 500, 500)
-								hitCounter[modelId] = hitCounter[modelId] + 1
-							else
-								-- The humanoid health is 0, change to another model
-								-- Replace the code below with the logic to change the model
-								--print("Model with health 0:", modelId)
-							end
-						end
-						-- Check if we hit two mobs/models
-						local hitCount = 0
-						for _, count in pairs(hitCounter) do
-							hitCount = hitCount + count
-						end
-						if hitCount >= 2 then
-							break -- Exit the loop if we hit two mobs/models
-						end
-					end
-				end
-				end)
-				if not success then
-					print("An error occurred:", error)
-				end
-				-- Add a delay between iterations to prevent excessive server load
-				wait(.1) -- Adjust the delay time as desired
-			end
-		end
-	]]--
-
-		local startTime = tick() -- Record the start time
-		-- Wait until the Timer GUI is visible or until the timeout is reached
-		while not isTimerGuiVisible() do
-			if tick() - startTime >= timeout then
-				print("Timeout reached. Timer GUI did not become visible.")
-				break -- Exit the loop if the timeout is reached
-			end
-			wait(1) -- Adjust the delay as needed, e.g., check every second
-		end
-
-		--[[
-		local function mst()
-			if rooth.Health > 0 then
-				coroutine.wrap(sps)()
+			-- Check if the Timer GUI became visible or not
+			if isTimerGuiVisible() then
+				print("Timer GUI is now visible, continuing with the script...")
+				wait()
+				local loopCM = coroutine.create(mainCoroutine)
+				coroutine.resume(loopCM)
+				wait(1)
+				--coroutine.wrap(loopFunction)()
+				coroutine.wrap(skibidi)()
 				coroutine.wrap(orbx)()
-			else
-				spsn = false
-				print("UR DEAD NIGG")
+				--[[
+				wait(600)
+				local p = game.Players.LocalPlayer
+				local c = p.Character
+				local h = c:FindFirstChild("Humanoid")
+				-- Check if your character and humanoid exist
+				if c and h then
+					-- Set the humanoid's health to 0 to "kill" the character
+					h.Health = 0
+				else
+					print("Character or humanoid not found.")
+				end
+				wait(5)
 				game:GetService("ReplicatedStorage"):WaitForChild("TeleportToShop"):FireServer()
+				wait(30)
+				TeleportService:Teleport(9321822839)
+				]]--
 			end
-		end
-		]]--
-		-- Check if the Timer GUI became visible or not
-		if isTimerGuiVisible() then
-			print("Timer GUI is now visible, continuing with the script...")
-			wait()
-			local loopCM = coroutine.create(mainCoroutine)
-			coroutine.resume(loopCM)
-			wait(1)
-			--coroutine.wrap(loopFunction)()
-			coroutine.wrap(skibidi)()
-			coroutine.wrap(orbx)()
-			--[[
-			wait(600)
-			local p = game.Players.LocalPlayer
-			local c = p.Character
-			local h = c:FindFirstChild("Humanoid")
-			-- Check if your character and humanoid exist
-			if c and h then
-				-- Set the humanoid's health to 0 to "kill" the character
-				h.Health = 0
-			else
-				print("Character or humanoid not found.")
-			end
-			wait(5)
-			game:GetService("ReplicatedStorage"):WaitForChild("TeleportToShop"):FireServer()
-			wait(30)
 			TeleportService:Teleport(9321822839)
-			]]--
+		else
+			print("Place ID doesn't match")
 		end
-		--TeleportService:Teleport(9321822839)
-	else
-		print("Place ID doesn't match")
-	end
