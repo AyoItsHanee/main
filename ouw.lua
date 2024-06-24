@@ -68,6 +68,16 @@ print("SCRIPT MADE BY realhanif")
 			queueteleport("loadstring(game:HttpGet('https://raw.githubusercontent.com/AyoItsHanee/main/main/ouw.lua'))()")
 		end
 		end)
+
+		local function getLocalPlayerUsername()
+			local player = game.Players.LocalPlayer
+			if player then
+				return player.Name
+			else
+				return nil
+			end
+		end
+
 	if placeId == 5956785391 then
 
 		wait()
@@ -75,7 +85,7 @@ print("SCRIPT MADE BY realhanif")
 
 	elseif placeId == 9321822839 then
 
-		local myUsername = "nhfarming0" -- Replace with your actual username
+		local myUsername = getLocalPlayerUsername()
 		local function findUsername(folder, username)
 			for _, child in pairs(folder:GetChildren()) do
 				local playerFolder = child:FindFirstChild(username)
