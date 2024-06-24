@@ -37,7 +37,7 @@ repeat wait() until game:IsLoaded()
 	elseif placeId == 9321822839 then
 
 
-		local myUsername = "nhfarming0" -- Replace with your actual username
+		local myUsername = "nhfarming2" -- Replace with your actual username
 		local function findUsername(folder, username)
 			for _, child in pairs(folder:GetChildren()) do
 				local playerFolder = child:FindFirstChild(username)
@@ -225,6 +225,90 @@ repeat wait() until game:IsLoaded()
 			end
 		end
 
+local function CreateInstance(Class, Properties)
+    local Instance = Instance.new(Class)
+
+    for Property, Value in Properties do
+        Instance[Property] = Value
+    end
+
+    return Instance
+end
+	
+	local AttackMethods = {
+    Fist = "fist_combat",
+    Sword = "Sword_Combat_Slash",
+    Claws = "claw_Combat_Slash"
+}
+
+local function Attack()
+    local Method = AttackMethods[Method]
+
+    for Cycle=1, 5 do
+        Call(
+            Remotes.To_Server.Handle_Initiate_S_,
+            Method,
+            Players.LocalPlayer,
+            Players.LocalPlayer.Character,
+            Players.LocalPlayer.Character.HumanoidRootPart,
+            Players.LocalPlayer.Character.Humanoid,
+             Cycle ~= 5 and Cycle or Cycle == 5 and 919
+        )
+    end
+end
+	
+local function Teleport(Position, Offset, Speed)
+    local Distance = Client:DistanceFromCharacter(Position + (Offset or Vector3.zero))
+    
+    if Distance < 2500 then
+        local Tween = TweenService:Create(
+            Players.LocalPlayer.Character.HumanoidRootPart,
+            TweenInfo.new(Distance/Speed, Enum.EasingStyle.Linear),
+            {CFrame = CFrame.new(Position + (Offset or Vector3.zero)
+        )})
+
+        Tween:Play()
+
+        return Tween.Completed:Wait()
+    else
+        Players.LocalPlayer.Character.HumanoidRootPart.CFrame = Position + (Offset or Vector3.zero)
+        
+        return wait()
+    end
+end
+	
+	local function skibidi()
+		while task.wait() do
+				for x, Mox in next, workspace.Mobs:GetChildren() do
+					Mox = Mox:FindFirstChildOfClass("Model")
+					Teleport(Mox.HumanoidRootPart.CFrame.Position, Vector3.new(0, 50, 0), 128)
+					repeat
+						local Status = pcall(function()
+								if #workspace.Mobs:GetChildren() == 0 then
+									sps()
+								end
+								Players.LocalPlayer.Character.HumanoidRootPart.CFrame = Mob.HumanoidRootPart.CFrame
+								wait(.25)
+								Attack()
+								Teleport(Mox.HumanoidRootPart.CFrame.Position, Vector3.new(0, 50, 0), 256)
+								repeat wait() until Players.LocalPlayer:WaitForChild("combotangasd123", 9e9).Value == 0 and wait(0.25)
+							end)
+						if not Status then
+							break
+						end
+
+						until wait()
+
+					pcall(function()
+							Players.LocalPlayer.Character.LowerTorso:FindFirstChildOfClass("BodyVelocity"):Destroy()
+							Players.LocalPlayer.Character.LowerTorso:FindFirstChildOfClass("BodyAngularVelocity"):Destroy()
+						end)
+				end
+				wait()
+			end
+			end
+				
+
 		local function wd()
 			while task.wait(3) do
 				local args = {
@@ -356,8 +440,8 @@ repeat wait() until game:IsLoaded()
 			local loopCM = coroutine.create(mainCoroutine)
 			coroutine.resume(loopCM)
 			wait(1)
-			coroutine.wrap(loopFunction)()
-			coroutine.wrap(sps)()
+			--coroutine.wrap(loopFunction)()
+			coroutine.wrap(skibidi)()
 			coroutine.wrap(orbx)()
 			--[[
 			wait(600)
