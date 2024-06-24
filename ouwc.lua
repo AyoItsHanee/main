@@ -356,7 +356,7 @@ end
 			end
 		end
 		print("Farming Ouw for 10 Minutes..")
-
+--[[
 		-- Execute SH V2
 		local function loopBp()
 			while true do
@@ -367,7 +367,7 @@ end
 		end
 
 		local loopC1 = coroutine.create(loopBp)
-		--coroutine.resume(loopC1)
+		coroutine.resume(loopC1)
 
 		local function loopFunction()
 			while true do
@@ -411,6 +411,7 @@ end
 				wait(.1) -- Adjust the delay time as desired
 			end
 		end
+	]]--
 
 		local startTime = tick() -- Record the start time
 		-- Wait until the Timer GUI is visible or until the timeout is reached
