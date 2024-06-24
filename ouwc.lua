@@ -257,8 +257,8 @@ local function Attack()
     end
 end
 	
-local function Teleport(Position, Offset, Speed)
-    local Distance = Client:DistanceFromCharacter(Position + (Offset or Vector3.zero))
+local function Teleportx(Position, Offset, Speed)
+    local Distance = Players.LocalPlayer:DistanceFromCharacter(Position + (Offset or Vector3.zero))
     
     if Distance < 2500 then
         local Tween = TweenService:Create(
@@ -281,7 +281,7 @@ end
 		while task.wait() do
 				for x, Mox in next, workspace.Mobs:GetChildren() do
 					Mox = Mox:FindFirstChildOfClass("Model")
-					Teleport(Mox.HumanoidRootPart.CFrame.Position, Vector3.new(0, 50, 0), 128)
+					Teleportx(Mox.HumanoidRootPart.CFrame.Position, Vector3.new(0, 50, 0), 128)
 					repeat
 						local Status = pcall(function()
 								if #workspace.Mobs:GetChildren() == 0 then
@@ -290,7 +290,7 @@ end
 								Players.LocalPlayer.Character.HumanoidRootPart.CFrame = Mob.HumanoidRootPart.CFrame
 								wait(.25)
 								Attack()
-								Teleport(Mox.HumanoidRootPart.CFrame.Position, Vector3.new(0, 50, 0), 256)
+								Teleportx(Mox.HumanoidRootPart.CFrame.Position, Vector3.new(0, 50, 0), 256)
 								repeat wait() until Players.LocalPlayer:WaitForChild("combotangasd123", 9e9).Value == 0 and wait(0.25)
 							end)
 						if not Status then
