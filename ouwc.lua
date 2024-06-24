@@ -1,7 +1,7 @@
 --loadstring(game:HttpGet("https://raw.githubusercontent.com/EdgeIY/infiniteyield/master/source", true))()
 repeat wait() until game:IsLoaded()
-wait(1)
-print("SCRIPT MADE BY realhanif")
+	wait(1)
+	print("SCRIPT MADE BY realhanif")
 	local vu = game:GetService("VirtualUser")
 	game:GetService("Players").LocalPlayer.Idled:connect(function()
 	vu:Button2Down(Vector2.new(0,0),workspace.CurrentCamera.CFrame)
@@ -20,12 +20,12 @@ print("SCRIPT MADE BY realhanif")
 	local Workspace = game:GetService("Workspace")
 	queueteleport = (syn and syn.queue_on_teleport) or queue_on_teleport or (fluxus and fluxus.queue_on_teleport)
 	local TeleportCheck = false
-game:GetService("Players").LocalPlayer.OnTeleport:Connect(function(State)
+	game:GetService("Players").LocalPlayer.OnTeleport:Connect(function(State)
 	if (not TeleportCheck) and queueteleport then
 		TeleportCheck = true
 		queueteleport("loadstring(game:HttpGet('https://raw.githubusercontent.com/AyoItsHanee/main/main/ouwf.lua'))()")
 	end
-end)
+	end)
 	if placeId == 5956785391 then
 
 
@@ -79,6 +79,22 @@ end)
 	elseif placeId == 11468075017 then
 
 
+		local function preventFall()
+			while task.wait() do
+				local antifall3 = Instance.new("BodyVelocity", Players.LocalPlayer.Character.HumanoidRootPart)
+				antifall3.Velocity = Vector3.new(0, 0, 0)
+				antifall3.MaxForce = Vector3.new(9e9, 9e9, 9e9)
+
+				wait() -- It's a good idea to yield control periodically to prevent performance issues
+			end
+
+			-- This part should be outside the while loop
+			if antifall3 then
+				antifall3:Destroy()
+			end
+		end
+		coroutine.wrap(preventFall)()
+
 		wait(1)
 		local Info = TweenInfo.new(1, Enum.EasingStyle.Cubic, Enum.EasingDirection.Out, 0, false, 0)
 		local Goal = {}
@@ -89,19 +105,21 @@ end)
 		Goal.CFrame = CFrame.new(4988, -148, 2030)
 		game:GetService("TweenService"):Create(Root, Info, Goal):Play()
 		wait(11)
-	local function collectChest()
-					while task.wait() do
-						for _, chest in pairs(Workspace.Debree:GetChildren()) do
-							if chest.Name == "Loot_Chest" then
-								for _, drop in pairs(chest:FindFirstChild("Drops"):GetChildren()) do
-									chest.Add_To_Inventory:InvokeServer(drop.Name)
-									drop:Destroy()
-								end
-							end
+
+		local function collectChest()
+			while task.wait() do
+				for _, chest in pairs(Workspace.Debree:GetChildren()) do
+					if chest.Name == "Loot_Chest" then
+						for _, drop in pairs(chest:FindFirstChild("Drops"):GetChildren()) do
+							chest.Add_To_Inventory:InvokeServer(drop.Name)
+							drop:Destroy()
 						end
 					end
 				end
-				coroutine.wrap(collectChest)()
+			end
+		end
+		coroutine.wrap(collectChest)()
+
 		local TeleportService = game:GetService("TeleportService")
 		local function destroyModels(modelNames)
 			for _, modelName in pairs(modelNames) do
@@ -130,7 +148,7 @@ end)
 			{name = "WisteriaPoisoning", enabled = true},
 			{name = "MobCamouflage", enabled = true}
 		}
-local rooth = game.Players.LocalPlayer.Character:FindFirstChild("Humanoid")
+		local rooth = game.Players.LocalPlayer.Character:FindFirstChild("Humanoid")
 		local function orbx()
 			while true do
 				local mapChildren = Workspace.Map:GetChildren()
@@ -140,10 +158,10 @@ local rooth = game.Players.LocalPlayer.Character:FindFirstChild("Humanoid")
 						for _, v in pairs(mapChildren) do
 							if v:IsA("Model") and v.Name == orb.name then
 								if rooth then
-                						tween:Cancel()
-								wait()
-								player.Character.HumanoidRootPart.CFrame = v:GetModelCFrame()
-								break -- Break out of the inner loop to avoid redundant checks
+									tween:Cancel()
+									wait()
+									player.Character.HumanoidRootPart.CFrame = v:GetModelCFrame()
+									break -- Break out of the inner loop to avoid redundant checks
 								end
 							end
 						end
@@ -168,44 +186,44 @@ local rooth = game.Players.LocalPlayer.Character:FindFirstChild("Humanoid")
 			return nil
 		end
 
--- Function to tween the character to a random part within "Spawnpoints"
-	spsn = true
-local function sps()
-	while true do
-		if spsn and rooth.Health > 0 then
-			local roomName = findRoomName()
-			if roomName then
-				local spawnpoints = workspace.Map:FindFirstChild(roomName):FindFirstChild("Spawnpoints")
-				if spawnpoints then
-					local parts = spawnpoints:GetChildren()
-					if #parts > 0 then
-						local randomPart = parts[math.random(1, #parts)]
-						if randomPart and randomPart:IsA("BasePart") then
-							local destination = randomPart.Position + Vector3.new(0, 5, 0)
-							local tweenInfo = TweenInfo.new(2, Enum.EasingStyle.Linear, Enum.EasingDirection.Out) -- Adjust tweenTime as needed
-							local tween = game.TweenService:Create(player.Character.HumanoidRootPart, tweenInfo, {CFrame = CFrame.new(destination)})
-							tween:Play()
-							wait(4)
+		-- Function to tween the character to a random part within "Spawnpoints"
+		spsn = true
+		local function sps()
+			while true do
+				if spsn and rooth.Health > 0 then
+					local roomName = findRoomName()
+					if roomName then
+						local spawnpoints = workspace.Map:FindFirstChild(roomName):FindFirstChild("Spawnpoints")
+						if spawnpoints then
+							local parts = spawnpoints:GetChildren()
+							if #parts > 0 then
+								local randomPart = parts[math.random(1, #parts)]
+								if randomPart and randomPart:IsA("BasePart") then
+									local destination = randomPart.Position + Vector3.new(0, 5, 0)
+									local tweenInfo = TweenInfo.new(2, Enum.EasingStyle.Linear, Enum.EasingDirection.Out) -- Adjust tweenTime as needed
+									local tween = game.TweenService:Create(player.Character.HumanoidRootPart, tweenInfo, {CFrame = CFrame.new(destination)})
+									tween:Play()
+									wait(4)
+								end
+							else
+								warn("No parts found in Spawnpoints of room: " .. roomName)
+							end
+						else
+							warn("No 'Spawnpoints' found in room: " .. roomName)
 						end
 					else
-						warn("No parts found in Spawnpoints of room: " .. roomName)
+						warn("No room with parts found in workspace.Map.")
 					end
 				else
-					warn("No 'Spawnpoints' found in room: " .. roomName)
+					spsn = false
+					print("UR DEAD NIGG")
+					wait(10)
+					game:GetService("ReplicatedStorage"):WaitForChild("TeleportToShop"):FireServer()
+					break
 				end
-			else
-				warn("No room with parts found in workspace.Map.")
+				task.wait(1) -- Add a wait to prevent the loop from running too fast
 			end
-			else
-			spsn = false
-			print("UR DEAD NIGG")
-			wait(10)
-			game:GetService("ReplicatedStorage"):WaitForChild("TeleportToShop"):FireServer()
-				break
 		end
-		task.wait(1) -- Add a wait to prevent the loop from running too fast
-	end
-end
 
 		local function wd()
 			while task.wait(3) do
@@ -319,18 +337,18 @@ end
 			wait(1) -- Adjust the delay as needed, e.g., check every second
 		end
 
-	--[[
-	local function mst()
-		if rooth.Health > 0 then
-			coroutine.wrap(sps)()
-			coroutine.wrap(orbx)()
-		else
-			spsn = false
-			print("UR DEAD NIGG")
-			game:GetService("ReplicatedStorage"):WaitForChild("TeleportToShop"):FireServer()
+		--[[
+		local function mst()
+			if rooth.Health > 0 then
+				coroutine.wrap(sps)()
+				coroutine.wrap(orbx)()
+			else
+				spsn = false
+				print("UR DEAD NIGG")
+				game:GetService("ReplicatedStorage"):WaitForChild("TeleportToShop"):FireServer()
+			end
 		end
-	end
-	]]--
+		]]--
 		-- Check if the Timer GUI became visible or not
 		if isTimerGuiVisible() then
 			print("Timer GUI is now visible, continuing with the script...")
@@ -341,7 +359,7 @@ end
 			coroutine.wrap(loopFunction)()
 			coroutine.wrap(sps)()
 			coroutine.wrap(orbx)()
-    --[[
+			--[[
 			wait(600)
 			local p = game.Players.LocalPlayer
 			local c = p.Character
@@ -357,7 +375,7 @@ end
 			game:GetService("ReplicatedStorage"):WaitForChild("TeleportToShop"):FireServer()
 			wait(30)
 			TeleportService:Teleport(9321822839)
-    ]]--
+			]]--
 		end
 		--TeleportService:Teleport(9321822839)
 	else
