@@ -284,7 +284,7 @@ end
 					Teleportx(Mox.HumanoidRootPart.CFrame.Position, Vector3.new(0, 50, 0), 128)
 					repeat
 						local Status = pcall(function()
-								if #workspace.Mobs:GetChildren() == 0 then
+								if workspace.Mobs:GetChildren() == 0 then
 									sps()
 								end
 								Players.LocalPlayer.Character.HumanoidRootPart.CFrame = Mob.HumanoidRootPart.CFrame
