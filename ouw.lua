@@ -70,9 +70,8 @@ print("SCRIPT MADE BY realhanif")
 		end)
 
 		local function getLocalPlayerUsername()
-			local player = game.Players.LocalPlayer
-			if player then
-				return player.Name
+			if game.Players.LocalPlayer then
+				return game.Players.LocalPlayer.Name
 			else
 				return nil
 			end
