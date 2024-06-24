@@ -23,7 +23,7 @@ repeat wait() until game:IsLoaded()
 	game:GetService("Players").LocalPlayer.OnTeleport:Connect(function(State)
 	if (not TeleportCheck) and queueteleport then
 		TeleportCheck = true
-		queueteleport("loadstring(game:HttpGet('https://raw.githubusercontent.com/AyoItsHanee/main/main/ouwf.lua'))()")
+		queueteleport("loadstring(game:HttpGet('https://raw.githubusercontent.com/AyoItsHanee/main/main/ouwc.lua'))()")
 	end
 	end)
 	if placeId == 5956785391 then
