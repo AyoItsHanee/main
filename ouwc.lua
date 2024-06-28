@@ -86,23 +86,6 @@ repeat wait() until game:IsLoaded()
 
 	elseif placeId == 11468075017 then
 
-
-		local function preventFall()
-			while task.wait() do
-				local antifall3 = Instance.new("BodyVelocity", Players.LocalPlayer.Character.HumanoidRootPart)
-				antifall3.Velocity = Vector3.new(0, 0, 0)
-				antifall3.MaxForce = Vector3.new(9e9, 9e9, 9e9)
-
-				wait() -- It's a good idea to yield control periodically to prevent performance issues
-			end
-
-			-- This part should be outside the while loop
-			if antifall3 then
-				antifall3:Destroy()
-			end
-		end
-		coroutine.wrap(preventFall)()
-
 		wait(1)
 		local Info = TweenInfo.new(1, Enum.EasingStyle.Cubic, Enum.EasingDirection.Out, 0, false, 0)
 		local Goal = {}
@@ -114,195 +97,8 @@ repeat wait() until game:IsLoaded()
 		game:GetService("TweenService"):Create(Root, Info, Goal):Play()
 		wait(11)
 
-		local function collectChest()
-			while task.wait() do
-				for _, chest in pairs(Workspace.Debree:GetChildren()) do
-					if chest.Name == "Loot_Chest" then
-						for _, drop in pairs(chest:FindFirstChild("Drops"):GetChildren()) do
-							chest.Add_To_Inventory:InvokeServer(drop.Name)
-							drop:Destroy()
-						end
-					end
-				end
-			end
-		end
-		coroutine.wrap(collectChest)()
-
-		local TeleportService = game:GetService("TeleportService")
-		local function destroyModels(modelNames)
-			for _, modelName in pairs(modelNames) do
-				if Workspace.Map:FindFirstChild(modelName) then
-					for _, v in pairs(Workspace.Map:GetChildren()) do
-						if v:IsA("Model") and v.Name == modelName then
-							v:Destroy()
-						end
-					end
-				end
-			end
-		end
-
-		local player = game.Players.LocalPlayer
-		local character = player.Character or player.CharacterAdded:Wait()
-		local root = character:WaitForChild("HumanoidRootPart")
-		local toggleTeleport = false
-		local tweenTime = 1 -- Change this value to adjust tween duration (in seconds)
-
-		local orbTypes = {
-			{name = "HealthRegen", enabled = true},
-			{name = "StaminaRegen", enabled = true},
-			{name = "BloodMoney", enabled = true},
-			{name = "DoublePoints", enabled = true},
-			{name = "InstaKill", enabled = true},
-			{name = "WisteriaPoisoning", enabled = true},
-			{name = "MobCamouflage", enabled = true}
-		}
-		local rooth = game.Players.LocalPlayer.Character:FindFirstChild("Humanoid")
-		local function orbx()
-			while true do
-				local mapChildren = Workspace.Map:GetChildren()
-
-				for _, orb in ipairs(orbTypes) do
-					if orb.enabled then
-						for _, v in pairs(mapChildren) do
-							if v:IsA("Model") and v.Name == orb.name then
-								if rooth then
-									tween:Cancel()
-									wait()
-									player.Character.HumanoidRootPart.CFrame = v:GetModelCFrame()
-									break -- Break out of the inner loop to avoid redundant checks
-								end
-							end
-						end
-					end
-				end
-
-				task.wait(1) -- Wait for 1 second before the next iteration to reduce CPU usage
-			end
-		end
-
-		-- Function to find the correct room name
-		local function findRoomName()
-			for _, room in pairs(workspace.Map:GetChildren()) do
-				local spawnpoints = room:FindFirstChild("Spawnpoints")
-				if spawnpoints then
-					local part = spawnpoints:FindFirstChildWhichIsA("BasePart")
-					if part then
-						return room.Name
-					end
-				end
-			end
-			return nil
-		end
-
-		-- Function to tween the character to a random part within "Spawnpoints"
-		local function sps()
-			local roomName = findRoomName()
-			if roomName then
-				local spawnpoints = workspace.Map:FindFirstChild(roomName):FindFirstChild("Spawnpoints")
-				if spawnpoints then
-					local parts = spawnpoints:GetChildren()
-					if #parts > 0 then
-						local randomPart = parts[math.random(1, #parts)]
-						if randomPart and randomPart:IsA("BasePart") then
-							local destination = randomPart.Position + Vector3.new(0, 5, 0)
-							local tweenInfo = TweenInfo.new(2, Enum.EasingStyle.Linear, Enum.EasingDirection.Out) -- Adjust tweenTime as needed
-							local tween = game.TweenService:Create(player.Character.HumanoidRootPart, tweenInfo, {CFrame = CFrame.new(destination)})
-							tween:Play()
-							wait(4)
-						end
-					else
-						warn("No parts found in Spawnpoints of room: " .. roomName)
-					end
-				else
-					warn("No 'Spawnpoints' found in room: " .. roomName)
-				end
-			else
-				warn("No room with parts found in workspace.Map.")
-			end
-		end
-
-		local function Attack()
-			local method = "fist_combat"
-				wait()
-    game:GetService("ReplicatedStorage").Remotes.To_Server.Handle_Initiate_S:FireServer(method, Players.LocalPlayer, Players.LocalPlayer.Character, Players.LocalPlayer.Character.HumanoidRootPart, Players.LocalPlayer.Character.Humanoid, 919, "ground_slash")
-    wait()
-    game:GetService("ReplicatedStorage").Remotes.To_Server.Handle_Initiate_S:FireServer(method, Players.LocalPlayer, Players.LocalPlayer.Character, Players.LocalPlayer.Character.HumanoidRootPart, Players.LocalPlayer.Character.Humanoid, math.huge, "ground_slash")
-    wait()
-    game:GetService("ReplicatedStorage").Remotes.To_Server.Handle_Initiate_S:FireServer(method, Players.LocalPlayer, Players.LocalPlayer.Character, Players.LocalPlayer.Character.HumanoidRootPart, Players.LocalPlayer.Character.Humanoid, 919, "ground_slash")
-    wait()
-    game:GetService("ReplicatedStorage").Remotes.To_Server.Handle_Initiate_S:FireServer(method, Players.LocalPlayer, Players.LocalPlayer.Character, Players.LocalPlayer.Character.HumanoidRootPart, Players.LocalPlayer.Character.Humanoid, math.huge, "ground_slash")
-    wait()
-    game:GetService("ReplicatedStorage").Remotes.To_Server.Handle_Initiate_S:FireServer(method, Players.LocalPlayer, Players.LocalPlayer.Character, Players.LocalPlayer.Character.HumanoidRootPart, Players.LocalPlayer.Character.Humanoid, 919, "ground_slash")
-    wait()
-    game:GetService("ReplicatedStorage").Remotes.To_Server.Handle_Initiate_S:FireServer(method, Players.LocalPlayer, Players.LocalPlayer.Character, Players.LocalPlayer.Character.HumanoidRootPart, Players.LocalPlayer.Character.Humanoid, math.huge, "ground_slash")
-    wait()
-    game:GetService("ReplicatedStorage").Remotes.To_Server.Handle_Initiate_S:FireServer(method, Players.LocalPlayer, Players.LocalPlayer.Character, Players.LocalPlayer.Character.HumanoidRootPart, Players.LocalPlayer.Character.Humanoid, 919, "ground_slash")
-    wait()
-    game:GetService("ReplicatedStorage").Remotes.To_Server.Handle_Initiate_S:FireServer(method, Players.LocalPlayer, Players.LocalPlayer.Character, Players.LocalPlayer.Character.HumanoidRootPart, Players.LocalPlayer.Character.Humanoid, math.huge, "ground_slash")
-    wait()
-    game:GetService("ReplicatedStorage").Remotes.To_Server.Handle_Initiate_S:FireServer(method, Players.LocalPlayer, Players.LocalPlayer.Character, Players.LocalPlayer.Character.HumanoidRootPart, Players.LocalPlayer.Character.Humanoid, 919, "ground_slash")
-    wait()
-    game:GetService("ReplicatedStorage").Remotes.To_Server.Handle_Initiate_S:FireServer(method, Players.LocalPlayer, Players.LocalPlayer.Character, Players.LocalPlayer.Character.HumanoidRootPart, Players.LocalPlayer.Character.Humanoid, math.huge, "ground_slash")
-		end
-
-		local function Teleportx(Position, Offset, Speed)
-			local Distance = Players.LocalPlayer:DistanceFromCharacter(Position + (Offset or Vector3.zero))
-
-			if Distance < 2500 then
-				local Tween = TweenService:Create(
-				Players.LocalPlayer.Character.HumanoidRootPart,
-				TweenInfo.new(Distance/Speed, Enum.EasingStyle.Linear),
-				{CFrame = CFrame.new(Position + (Offset or Vector3.zero)
-				)})
-
-				Tween:Play()
-
-				return Tween.Completed:Wait()
-			else
-				Players.LocalPlayer.Character.HumanoidRootPart.CFrame = Position + (Offset or Vector3.zero)
-
-				return wait()
-			end
-		end
-
-		local function skibidi()
-			for i, Mox in next, workspace.Mobs:GetChildren() do
-				Mox = Mox:FindFirstChildOfClass("Model")
-				Teleportx(Mox.HumanoidRootPart.CFrame.Position, Vector3.new(0, 50, 0), 128)
-
-				repeat
-					local Status = pcall(function()
-					Players.LocalPlayer.Character.HumanoidRootPart.CFrame = Mob.HumanoidRootPart.CFrame
-					wait(.25)
-					Attack()
-					Teleportx(Mox.HumanoidRootPart.CFrame.Position, Vector3.new(0, 50, 0), 256)
-					repeat wait() until Players.LocalPlayer:WaitForChild("combotangasd123", 9e9).Value == 0 and wait(0.25)
-						end)
-						if not Status then
-							break
-						end
-
-					until wait()
-
-					pcall(function()
-					Players.LocalPlayer.Character.LowerTorso:FindFirstChildOfClass("BodyVelocity"):Destroy()
-					Players.LocalPlayer.Character.LowerTorso:FindFirstChildOfClass("BodyAngularVelocity"):Destroy()
-					end)
-				end
-			end
-
---[[
-			local function wd()
-				while task.wait(3) do
-					local args = {
-						[1] = true
-					}
-
-					game:GetService("ReplicatedStorage"):WaitForChild("Remotes"):WaitForChild("war_Drums_remote"):FireServer(unpack(args))
-				end
-			end
-			coroutine.wrap(wd)()
-			]]--
+		
+			
 
 			-- Function to check if the Timer GUI is visible
 			local function isTimerGuiNotVisible()
@@ -358,8 +154,215 @@ repeat wait() until game:IsLoaded()
 				coroutine.resume(loopCM)
 				wait(1)
 				--coroutine.wrap(loopFunction)()
-				coroutine.wrap(skibidi)()
-				coroutine.wrap(orbx)()
+				--Options
+local Method = "Fist" --Fist/Claws/Sword
+_G.Enabled = true
+--Services
+local ReplicatedStorage = game:GetService("ReplicatedStorage")
+local Players = game:GetService("Players")
+local TweenService = game:GetService("TweenService")
+print()
+--Instances
+local Map = workspace.Map
+local Mobs = workspace.Mobs
+local Remotes = ReplicatedStorage.Remotes
+local Client = Players.LocalPlayer
+
+--#region Functions
+local spawn, wait = task.spawn, task.wait
+
+local FireServer = Instance.new("RemoteEvent").FireServer
+local InvokeServer = Instance.new("RemoteFunction").InvokeServer
+
+function Call(self, ...) --Caching the FireServer and InvokeServer functions for optimization
+    local Method = self.ClassName == ("RemoteEvent") and FireServer or self.ClassName == ("RemoteFunction") and InvokeServer
+
+    return spawn(Method, self, ...)
+end
+
+function Teleport(Position, Offset, Speed)
+    local Distance = Client:DistanceFromCharacter(Position + (Offset or Vector3.zero))
+    
+    if Distance < 2500 then
+        local Tween = TweenService:Create(
+            Client.Character.HumanoidRootPart,
+            TweenInfo.new(Distance/Speed, Enum.EasingStyle.Linear),
+            {CFrame = CFrame.new(Position + (Offset or Vector3.zero)
+        )})
+
+        Tween:Play()
+
+        return Tween.Completed:Wait()
+    else
+        Client.Character.HumanoidRootPart.CFrame = Position + (Offset or Vector3.zero)
+        
+        return wait()
+    end
+end
+
+local Initiate_S = Remotes.To_Server.Handle_Initiate_S_
+
+local AttackMethods = {
+    Fist = "fist_combat",
+    Sword = "Sword_Combat_Slash",
+    Claws = "claw_Combat_Slash"
+}
+
+function Attack()
+    local Method = AttackMethods[Method]
+
+    for Cycle=1, 5 do
+        Call(
+            Initiate_S,
+            Method,
+            Client,
+            Client.Character,
+            Client.Character.HumanoidRootPart,
+            Client.Character.Humanoid,
+             Cycle ~= 5 and Cycle or Cycle == 5 and 919
+        )
+    end
+end
+
+local Orbs = {
+    "InstaKill",
+    "HealthRegen",
+    "StaminaRegen",
+    "BloodMoney",
+    "DoublePoints",
+}
+
+function ClaimOrbs()
+    for i, Orb in next, Map:GetChildren() do
+        if table.find(Orbs, Orb.Name) then
+            pcall(Teleport, Orb:FindFirstChildOfClass("MeshPart").CFrame.Position, nil, 256)
+        end
+    end
+end
+
+function CreateInstance(Class, Properties)
+    local Instance = Instance.new(Class)
+
+    for Property, Value in Properties do
+        Instance[Property] = Value
+    end
+
+    return Instance
+end
+
+-- Function to find the correct room name
+local function findRoomName()
+    for _, room in pairs(workspace.Map:GetChildren()) do
+        local spawnpoints = room:FindFirstChild("Spawnpoints")
+        if spawnpoints then
+            local part = spawnpoints:FindFirstChildWhichIsA("BasePart")
+            if part then
+                return room.Name
+            end
+        end
+    end
+    return nil
+end
+
+-- Function to tween the character to a random part within "Spawnpoints"
+local function sps()
+    local roomName = findRoomName()
+    if roomName then
+        local spawnpoints = workspace.Map:FindFirstChild(roomName):FindFirstChild("Spawnpoints")
+        if spawnpoints then
+            local parts = spawnpoints:GetChildren()
+            if #parts > 0 then
+                local randomPart = parts[math.random(1, #parts)]
+                if randomPart and randomPart:IsA("BasePart") then
+                    local destination = randomPart.Position + Vector3.new(0, 5, 0)
+                    local tweenInfo = TweenInfo.new(2, Enum.EasingStyle.Linear, Enum.EasingDirection.Out) -- Adjust tweenTime as needed
+                    local tween = game.TweenService:Create(Client.Character.HumanoidRootPart, tweenInfo, {CFrame = CFrame.new(destination)})
+                    tween:Play()
+                    wait(3)
+                end
+            else
+                warn("No parts found in Spawnpoints of room: " .. roomName)
+            end
+        else
+            warn("No 'Spawnpoints' found in room: " .. roomName)
+        end
+    else
+        warn("No room with parts found in workspace.Map.")
+    end
+end
+--#endregion
+
+--Main
+local BodyVelocity = CreateInstance("BodyVelocity", {MaxForce = Vector3.new(1/0, 1/0, 1/0), Velocity = Vector3.zero, Name = "BV"})
+local BodyAngularVelocity = CreateInstance("BodyAngularVelocity", {MaxTorque = Vector3.new(1/0, 1/0, 1/0), AngularVelocity = Vector3.zero, Name = "BAV"})
+
+spawn(function()
+    while _G.Enabled do
+        local orbPresent = false
+        for i, Orb in next, Map:GetChildren() do
+            if table.find(Orbs, Orb.Name) then
+                orbPresent = true
+                break
+            end
+        end
+
+        if orbPresent then
+            ClaimOrbs()
+        elseif #Mobs:GetChildren() == 0 then
+            sps()
+        else
+            for i, Mob in next, Mobs:GetChildren() do
+                Mob = Mob:FindFirstChildOfClass("Model")
+
+                pcall(function()
+                    BodyVelocity:Clone().Parent = Client.Character.LowerTorso
+                    BodyAngularVelocity:Clone().Parent = Client.Character.LowerTorso
+
+                    Teleport(Mob.HumanoidRootPart.CFrame.Position, Vector3.new(0, 50, 0), 128)
+                end)        
+                
+                repeat
+                    local Status = pcall(function()
+                        if #Mobs:GetChildren() == 0 then
+                            spawn(ClaimOrbs)
+                        end
+
+                        Client.Character.HumanoidRootPart.CFrame = Mob.HumanoidRootPart.CFrame
+                        wait(0.25)
+                        Attack()
+                        Teleport(Mob.HumanoidRootPart.CFrame.Position, Vector3.new(0, 50, 0), 256)
+                        repeat wait() until Client:WaitForChild("combotangasd123", 9e9).Value == 0 and wait(0.25)
+                    end)
+                    if not Status or not _G.Enabled then
+                        break
+                    end
+
+                until wait() and not _G.Enabled
+
+                pcall(function()
+                    Client.Character.LowerTorso:FindFirstChildOfClass("BodyVelocity"):Destroy()
+                    Client.Character.LowerTorso:FindFirstChildOfClass("BodyAngularVelocity"):Destroy()    
+                end)
+            end
+        end
+        wait()
+    end
+end)
+
+spawn(function()
+    while _G.Enabled do
+        local Chest = game:GetService("Workspace").Debree:FindFirstChild("Loot_Chest")
+        
+        if Chest and #Chest:WaitForChild("Drops"):GetChildren() > 0 then
+            local Remote = Chest:WaitForChild("Add_To_Inventory")
+        
+            for _,Drop in next, Chest:WaitForChild("Drops"):GetChildren() do
+                Call(Remote, Drop.Name)
+            end
+        end
+        wait(3)
+    end
+end)
 				--[[
 				wait(600)
 				local p = game.Players.LocalPlayer
