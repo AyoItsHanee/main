@@ -192,7 +192,7 @@ local function sps()
 							local tweenInfo = TweenInfo.new(2, Enum.EasingStyle.Linear, Enum.EasingDirection.Out) -- Adjust tweenTime as needed
 							local tween = game.TweenService:Create(player.Character.HumanoidRootPart, tweenInfo, {CFrame = CFrame.new(destination)})
 							tween:Play()
-							wait(4)
+							wait(2.5)
 						end
 					else
 						warn("No parts found in Spawnpoints of room: " .. roomName)
@@ -345,6 +345,22 @@ end
 			local loopCM = coroutine.create(mainCoroutine)
 			coroutine.resume(loopCM)
 			wait(1)
+					local function preventFall()
+				while task.wait() do
+					local antifall3 = Instance.new("BodyVelocity", game.Players.LocalPlayer.Character.HumanoidRootPart)
+					antifall3.Velocity = Vector3.new(0, 0, 0)
+					antifall3.MaxForce = Vector3.new(9e9, 9e9, 9e9)
+
+					wait() -- It's a good idea to yield control periodically to prevent performance issues
+				end
+
+				-- This part should be outside the while loop
+				if antifall3 then
+					antifall3:Destroy()
+				end
+			end
+			coroutine.wrap(preventFall)()
+	
 			coroutine.wrap(loopFunction)()
 			coroutine.wrap(sps)()
 			coroutine.wrap(orbx)()
