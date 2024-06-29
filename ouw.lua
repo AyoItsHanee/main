@@ -135,22 +135,7 @@ print("SCRIPT MADE BY realhanif")
 		Goal.CFrame = CFrame.new(4988, -148, 2030)
 		game:GetService("TweenService"):Create(Root, Info, Goal):Play()
 		wait(11)
-			local function preventFall()
-				while task.wait() do
-					local antifall3 = Instance.new("BodyVelocity", game.Players.LocalPlayer.Character.HumanoidRootPart)
-					antifall3.Velocity = Vector3.new(0, 0, 0)
-					antifall3.MaxForce = Vector3.new(9e9, 9e9, 9e9)
-
-					wait() -- It's a good idea to yield control periodically to prevent performance issues
-				end
-
-				-- This part should be outside the while loop
-				if antifall3 then
-					antifall3:Destroy()
-				end
-			end
-			coroutine.wrap(preventFall)()
-	
+			
 	local function collectChest()
 					while task.wait() do
 						for _, chest in pairs(Workspace.Debree:GetChildren()) do
@@ -399,6 +384,22 @@ end
 			wait(1)
 			coroutine.wrap(loopFunction)()
 			coroutine.wrap(sps)()
+		local function preventFall()
+				while true do
+					local antifall3 = Instance.new("BodyVelocity", game.Players.LocalPlayer.Character.HumanoidRootPart)
+					antifall3.Velocity = Vector3.new(0, 0, 0)
+					antifall3.MaxForce = Vector3.new(9e9, 9e9, 9e9)
+
+					wait() -- It's a good idea to yield control periodically to prevent performance issues
+				end
+
+				-- This part should be outside the while loop
+				if antifall3 then
+					antifall3:Destroy()
+				end
+			end
+			coroutine.wrap(preventFall)()
+	
 			--coroutine.wrap(orbx)()
 			wait(600)
 			local p = game.Players.LocalPlayer
