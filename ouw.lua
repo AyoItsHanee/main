@@ -399,7 +399,7 @@ end
 			wait(1)
 			coroutine.wrap(loopFunction)()
 			coroutine.wrap(sps)()
-			coroutine.wrap(orbx)()
+			--coroutine.wrap(orbx)()
 			wait(600)
 			local p = game.Players.LocalPlayer
 			local c = p.Character
