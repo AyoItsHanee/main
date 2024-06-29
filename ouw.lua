@@ -231,7 +231,7 @@ local rooth = game.Players.LocalPlayer.Character:FindFirstChild("Humanoid")
 -- Function to tween the character to a random part within "Spawnpoints"
 	spsn = true
 local function sps()
-	while true do
+	while task.wait() do
 		if spsn and rooth.Health > 0 then
 			local roomName = findRoomName()
 			if roomName then
@@ -245,7 +245,7 @@ local function sps()
 							local tweenInfo = TweenInfo.new(2, Enum.EasingStyle.Linear, Enum.EasingDirection.Out) -- Adjust tweenTime as needed
 							local tween = game.TweenService:Create(player.Character.HumanoidRootPart, tweenInfo, {CFrame = CFrame.new(destination)})
 							tween:Play()
-							wait(2.5)
+							wait(2)
 						end
 					else
 						warn("No parts found in Spawnpoints of room: " .. roomName)
@@ -263,7 +263,6 @@ local function sps()
 			game:GetService("ReplicatedStorage"):WaitForChild("TeleportToShop"):FireServer()
 				break
 		end
-		task.wait(1) -- Add a wait to prevent the loop from running too fast
 	end
 end
 
