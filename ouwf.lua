@@ -108,7 +108,7 @@ end
 						end
 					end
 				end
-				coroutine.wrap(collectChest)()
+				--coroutine.wrap(collectChest)()
 		local TeleportService = game:GetService("TeleportService")
 		local function destroyModels(modelNames)
 			for _, modelName in pairs(modelNames) do
