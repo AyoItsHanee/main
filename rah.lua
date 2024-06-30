@@ -15,7 +15,7 @@ repeat wait() until game:IsLoaded()
 		game:GetService("TeleportService"):Teleport(5956785391)
 	end
 	end)
-		print("executed")
+		print("executed false sc")
 		-- Create a ScreenGui
 		local screenGui = Instance.new("ScreenGui")
 		screenGui.Parent = game.Players.LocalPlayer:WaitForChild("PlayerGui")
@@ -62,7 +62,7 @@ repeat wait() until game:IsLoaded()
 		if KeepSC and (not TeleportCheck) and queueteleport then
 			TeleportCheck = true
 			queueteleport("loadstring(game:HttpGet('https://raw.githubusercontent.com/AyoItsHanee/main/main/wfps.lua'))()")
-			else
+			elseif not KeepSC and (not TeleportCheck) and queueteleport then
 				TeleportCheck = true
 				queueteleport("loadstring(game:HttpGet('https://raw.githubusercontent.com/AyoItsHanee/main/main/rah.lua'))()")
 		end
