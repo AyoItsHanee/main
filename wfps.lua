@@ -1,4 +1,5 @@
 repeat wait() until game:IsLoaded()
+	wait(5)
 	local KeepSC = true
 	local checkore = true
 	local vu = game:GetService("VirtualUser")
@@ -71,6 +72,9 @@ repeat wait() until game:IsLoaded()
 		if KeepSC and (not TeleportCheck) and queueteleport then
 			TeleportCheck = true
 			queueteleport("loadstring(game:HttpGet('https://raw.githubusercontent.com/AyoItsHanee/main/main/wfps.lua'))()")
+			elseif not KeepSC then
+				TeleportCheck = true
+				queueteleport("loadstring(game:HttpGet('https://raw.githubusercontent.com/AyoItsHanee/main/main/rah.lua'))()")
 		end
 		end)
 		local success, error = pcall(function()
@@ -79,7 +83,6 @@ repeat wait() until game:IsLoaded()
 		local Workspace = game:GetService("Workspace")
 		local placeId = game.PlaceId
 		local TeleportService = game:GetService("TeleportService")
-			wait(5)
 
 		if placeId == 5956785391 then
 			local args = {
