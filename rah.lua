@@ -1,7 +1,6 @@
 repeat wait() until game:IsLoaded()
 	wait(5)
 	local KeepSC = true
-	local checkore = true
 	local vu = game:GetService("VirtualUser")
 	game:GetService("Players").LocalPlayer.Idled:connect(function()
 	vu:Button2Down(Vector2.new(0,0),workspace.CurrentCamera.CFrame)
@@ -16,16 +15,7 @@ repeat wait() until game:IsLoaded()
 		game:GetService("TeleportService"):Teleport(5956785391)
 	end
 	end)
-	local function master()
 		print("executed")
-		local function getLocalPlayerUsername()
-			local player = game.Players.LocalPlayer
-			if player then
-				return player.Name
-			else
-				return nil
-			end
-		end
 		-- Create a ScreenGui
 		local screenGui = Instance.new("ScreenGui")
 		screenGui.Parent = game.Players.LocalPlayer:WaitForChild("PlayerGui")
