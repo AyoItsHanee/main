@@ -1,6 +1,6 @@
 repeat wait() until game:IsLoaded()
 	wait(5)
-	local KeepSC = true
+	local KeepSC = false
 	local vu = game:GetService("VirtualUser")
 	game:GetService("Players").LocalPlayer.Idled:connect(function()
 	vu:Button2Down(Vector2.new(0,0),workspace.CurrentCamera.CFrame)
@@ -62,7 +62,7 @@ repeat wait() until game:IsLoaded()
 		if KeepSC and (not TeleportCheck) and queueteleport then
 			TeleportCheck = true
 			queueteleport("loadstring(game:HttpGet('https://raw.githubusercontent.com/AyoItsHanee/main/main/wfps.lua'))()")
-			elseif not KeepSC and (not TeleportCheck) and queueteleport then
+			else
 				TeleportCheck = true
 				queueteleport("loadstring(game:HttpGet('https://raw.githubusercontent.com/AyoItsHanee/main/main/rah.lua'))()")
 		end
