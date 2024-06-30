@@ -16,7 +16,6 @@ repeat wait() until game:IsLoaded()
 	end
 	end)
 
-wait(5)
 	local function master()
 		print("executed")
 		local function getLocalPlayerUsername()
@@ -81,7 +80,8 @@ wait(5)
 		local Workspace = game:GetService("Workspace")
 		local placeId = game.PlaceId
 		local TeleportService = game:GetService("TeleportService")
-
+			
+wait(5)
 		if placeId == 5956785391 then
 			local args = {
 				[1] = "join",
