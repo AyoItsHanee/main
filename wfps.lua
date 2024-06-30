@@ -64,7 +64,7 @@ repeat wait() until game:IsLoaded()
 				Duration = 3
 			})
 		end
-		--button.MouseButton1Click:Connect(toggleKeepSC)
+		button.MouseButton1Click:Connect(toggleKeepSC)
 
 		queueteleport = (syn and syn.queue_on_teleport) or queue_on_teleport or (fluxus and fluxus.queue_on_teleport)
 		local TeleportCheck = false
