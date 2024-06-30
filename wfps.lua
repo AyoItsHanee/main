@@ -72,9 +72,6 @@ repeat wait() until game:IsLoaded()
 		if KeepSC and (not TeleportCheck) and queueteleport then
 			TeleportCheck = true
 			queueteleport("loadstring(game:HttpGet('https://raw.githubusercontent.com/AyoItsHanee/main/main/wfps.lua'))()")
-			elseif not KeepSC then
-				TeleportCheck = true
-				queueteleport("loadstring(game:HttpGet('https://raw.githubusercontent.com/AyoItsHanee/main/main/rah.lua'))()")
 		end
 		end)
 		local success, error = pcall(function()
