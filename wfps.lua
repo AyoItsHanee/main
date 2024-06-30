@@ -1,5 +1,4 @@
 repeat wait() until game:IsLoaded()
-	wait(5)
 	local KeepSC = true
 	local checkore = true
 	local vu = game:GetService("VirtualUser")
@@ -80,6 +79,7 @@ repeat wait() until game:IsLoaded()
 		local Workspace = game:GetService("Workspace")
 		local placeId = game.PlaceId
 		local TeleportService = game:GetService("TeleportService")
+			wait(5)
 
 		if placeId == 5956785391 then
 			local args = {
