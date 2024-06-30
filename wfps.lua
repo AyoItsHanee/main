@@ -31,26 +31,26 @@ repeat wait() until game:IsLoaded()
 		screenGui.Parent = game.Players.LocalPlayer:WaitForChild("PlayerGui")
 
 		-- Create a Frame
-		local frame = Instance.new("Frame")
-		frame.Size = UDim2.new(0, 100, 0, 50)
-		frame.Position = UDim2.new(0, 300, 0, 0)
-		frame.BackgroundColor3 = Color3.fromRGB(0, 0, 0)
-		frame.BackgroundTransparency = 0.5
-		frame.Parent = screenGui
+		local framsex = Instance.new("Frame")
+		framsex.Size = UDim2.new(0, 100, 0, 50)
+		framsex.Position = UDim2.new(0, 300, 0, 0)
+		framsex.BackgroundColor3 = Color3.fromRGB(0, 0, 0)
+		framsexsex.BackgroundTransparency = 0.5
+		framsex.Parent = screenGui
 
 		-- Create a TextButton
 		local button = Instance.new("TextButton")
 		button.Size = UDim2.new(1, 0, 0.5, 0)
 		button.Position = UDim2.new(0, 0, 0, 0)
 		button.Text = "Toggle KeepSC"
-		button.Parent = frame
+		button.Parent = framsex
 
 		-- Create a TextLabel to display the state of KeepSC
 		local label = Instance.new("TextLabel")
 		label.Size = UDim2.new(1, 0, 0.5, 0)
 		label.Position = UDim2.new(0, 0, 0.5, 0)
 		label.Text = "KeepSC: " .. tostring(KeepSC)
-		label.Parent = frame
+		label.Parent = framsex
 
 		-- Function to toggle KeepSC and update UI
 		local function toggleKeepSC()
