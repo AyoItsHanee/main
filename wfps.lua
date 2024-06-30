@@ -17,7 +17,7 @@ repeat wait() until game:IsLoaded()
 	end)
 
 	local function master()
-		print("executed")
+		print("executed true sc")
 		local function getLocalPlayerUsername()
 			local player = game.Players.LocalPlayer
 			if player then
