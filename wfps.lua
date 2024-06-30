@@ -35,7 +35,7 @@ repeat wait() until game:IsLoaded()
 		framsex.Size = UDim2.new(0, 100, 0, 50)
 		framsex.Position = UDim2.new(0, 300, 0, 0)
 		framsex.BackgroundColor3 = Color3.fromRGB(0, 0, 0)
-		framsexsex.BackgroundTransparency = 0.5
+		framsex.BackgroundTransparency = 0.5
 		framsex.Parent = screenGui
 
 		-- Create a TextButton
