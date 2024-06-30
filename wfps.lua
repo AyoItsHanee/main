@@ -1,5 +1,4 @@
 repeat wait() until game:IsLoaded()
-	wait(5)
 	local KeepSC = true
 	local checkore = true
 	local vu = game:GetService("VirtualUser")
@@ -16,6 +15,8 @@ repeat wait() until game:IsLoaded()
 		game:GetService("TeleportService"):Teleport(5956785391)
 	end
 	end)
+
+wait(5)
 	local function master()
 		print("executed")
 		local function getLocalPlayerUsername()
