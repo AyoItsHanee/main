@@ -97,6 +97,8 @@ wait(5)
 			}
 
 			game:GetService("ReplicatedStorage"):WaitForChild("handle_privateserver"):InvokeServer(unpack(args))
+				wait(30)
+				game:GetService("TeleportService"):Teleport(5956785391)
 
 		elseif placeId == 13883059853 then
 
@@ -396,7 +398,7 @@ wait(5)
 
 			wait(3600)
 			local TeleportService = game:GetService("TeleportService")
-			TeleportService:Teleport(5956785391)
+			game:GetService("TeleportService"):Teleport(5956785391)
 
 		else
 			print("Wrong game")
