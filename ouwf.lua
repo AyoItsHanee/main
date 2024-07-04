@@ -144,7 +144,7 @@ end
 
 		local orbTypes = {
 			{name = "HealthRegen", enabled = true},
-			{name = "StaminaRegen", enabled = true},
+			{name = "StaminaRegen", enabled = false},
 			{name = "BloodMoney", enabled = true},
 			{name = "DoublePoints", enabled = true},
 			{name = "InstaKill", enabled = true},
@@ -153,25 +153,21 @@ end
 		}
 local rooth = game.Players.LocalPlayer.Character:FindFirstChild("Humanoid")
 		local function orbx()
-			while true do
-				local mapChildren = Workspace.Map:GetChildren()
-
+			while task.wait() do
 				for _, orb in ipairs(orbTypes) do
 					if orb.enabled then
-						for _, v in pairs(mapChildren) do
-							if v:IsA("Model") and v.Name == orb.name then
-								if rooth then
+						for _, v in pairs(Workspace.Map:GetChildren()) do
+							if v:IsA("Model") and v.Name == orb.name then do
+								if rooth.Health > 0 then
                 						tween:Cancel()
 								wait()
-								player.Character.HumanoidRootPart.CFrame = v:GetModelCFrame()
+								game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = v:GetModelCFrame()
 								break -- Break out of the inner loop to avoid redundant checks
 								end
 							end
 						end
 					end
 				end
-
-				task.wait(1) -- Wait for 1 second before the next iteration to reduce CPU usage
 			end
 		end
 
