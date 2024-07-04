@@ -144,7 +144,7 @@ end
 
 		local orbTypes = {
 			{name = "HealthRegen", enabled = true},
-			{name = "StaminaRegen", enabled = false},
+			{name = "StaminaRegen", enabled = true},
 			{name = "BloodMoney", enabled = true},
 			{name = "DoublePoints", enabled = true},
 			{name = "InstaKill", enabled = true},
@@ -159,6 +159,7 @@ local rooth = game.Players.LocalPlayer.Character:FindFirstChild("Humanoid")
 						for _, v in pairs(Workspace.Map:GetChildren()) do
 							if v:IsA("Model") and v.Name == orb.name then do
 								if rooth.Health > 0 then
+								wait()
 								game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = v:GetModelCFrame()
 								break -- Break out of the inner loop to avoid redundant checks
 								end
@@ -167,6 +168,7 @@ local rooth = game.Players.LocalPlayer.Character:FindFirstChild("Humanoid")
 					end
 				end
 			end
+		end
 		end
 
 		-- Function to find the correct room name
