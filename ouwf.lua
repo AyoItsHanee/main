@@ -206,7 +206,7 @@ local function sps()
 					if #parts > 0 then
 						local randomPart = parts[math.random(1, #parts)]
 						if randomPart and randomPart:IsA("BasePart") then
-						if checkmob => 5 then
+						if checkmob > 5 then
 							game.TweenService:Create(player.Character.HumanoidRootPart, tweenInfo, {CFrame = CFrame.new(randomPart.Position + Vector3.new(0, 75, 0))}):Play()
 							wait(2.5)
 							else
