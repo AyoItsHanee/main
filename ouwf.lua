@@ -136,12 +136,6 @@ end
 			end
 		end
 
-		local player = game.Players.LocalPlayer
-		local character = player.Character or player.CharacterAdded:Wait()
-		local root = character:WaitForChild("HumanoidRootPart")
-		local toggleTeleport = false
-		local tweenTime = 1 -- Change this value to adjust tween duration (in seconds)
-
 		local orbTypes = {
 			{name = "HealthRegen", enabled = true},
 			{name = "StaminaRegen", enabled = true},
