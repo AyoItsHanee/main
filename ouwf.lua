@@ -146,24 +146,6 @@ end
 			{name = "MobCamouflage", enabled = true}
 		}
 local rooth = game.Players.LocalPlayer.Character:FindFirstChild("Humanoid")
-		local function orbx()
-			while task.wait() do
-				for _, orb in ipairs(orbTypes) do
-					if orb.enabled then
-						for _, v in pairs(Workspace.Map:GetChildren()) do
-							if v:IsA("Model") and v.Name == orb.name then do
-								if rooth.Health > 0 then
-								wait()
-								game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = v:GetModelCFrame()
-								break -- Break out of the inner loop to avoid redundant checks
-								end
-							end
-						end
-					end
-				end
-			end
-		end
-		end
 
 		-- Function to find the correct room name
 		local function findRoomName()
@@ -218,6 +200,26 @@ local function sps()
 		task.wait(1) -- Add a wait to prevent the loop from running too fast
 	end
 end
+
+		local function orbx()
+			while task.wait() do
+				for _, orb in ipairs(orbTypes) do
+					if orb.enabled then
+						for _, v in pairs(Workspace.Map:GetChildren()) do
+							if v:IsA("Model") and v.Name == orb.name then do
+								if rooth.Health > 0 then
+								tween:Cancel()
+								wait()
+								game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = v:GetModelCFrame()
+								break -- Break out of the inner loop to avoid redundant checks
+								end
+							end
+						end
+					end
+				end
+			end
+		end
+		end
 
 		local function wd()
 			while task.wait(3) do
