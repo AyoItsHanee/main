@@ -18,6 +18,7 @@ print("SCRIPT MADE BY realhanif")
 	end)
 	local placeId = game.PlaceId
 	local Workspace = game:GetService("Workspace")
+
 	queueteleport = (syn and syn.queue_on_teleport) or queue_on_teleport or (fluxus and fluxus.queue_on_teleport)
 	local TeleportCheck = false
 game:GetService("Players").LocalPlayer.OnTeleport:Connect(function(State)
@@ -26,6 +27,7 @@ game:GetService("Players").LocalPlayer.OnTeleport:Connect(function(State)
 		queueteleport("loadstring(game:HttpGet('https://raw.githubusercontent.com/AyoItsHanee/main/main/ouwf.lua'))()")
 	end
 end)
+
 		local function getLocalPlayerUsername()
 			if game.Players.LocalPlayer then
 				return game.Players.LocalPlayer.Name
@@ -96,6 +98,19 @@ end
 		Goal.CFrame = CFrame.new(4988, -148, 2030)
 		game:GetService("TweenService"):Create(Root, Info, Goal):Play()
 		wait(11)
+		
+		local function noclip()
+		           for _, v in pairs(game:GetService("Players").LocalPlayer.Character:GetDescendants()) do
+               if v:IsA("BasePart") then
+                   v.CanCollide = false    
+               end
+               if v:IsA("Humanoid") then
+                   v:ChangeState(11)
+               end
+           end
+		   end
+		   noclip()
+		
 	local function collectChest()
 					while task.wait() do
 						for _, chest in pairs(Workspace.Debree:GetChildren()) do
@@ -108,7 +123,6 @@ end
 						end
 					end
 				end
-				--coroutine.wrap(collectChest)()
 		local TeleportService = game:GetService("TeleportService")
 		local function destroyModels(modelNames)
 			for _, modelName in pairs(modelNames) do
@@ -175,26 +189,8 @@ local rooth = game.Players.LocalPlayer.Character:FindFirstChild("Humanoid")
 			return nil
 		end
 
-			local function collectChest()
-				while task.wait(1) do
-					for _, chest in pairs(Workspace.Debree:GetChildren()) do
-						if chest.Name == "Loot_Chest" then
-							for _, drop in pairs(chest:FindFirstChild("Drops"):GetChildren()) do
-								chest.Add_To_Inventory:InvokeServer(drop.Name)
-								drop:Destroy()
-								if #chest.Drops:GetChildren() == 0 then
-									chest:Destroy()
-								end
-							end
-						end
-					end
-				end
-			end
-
 -- Function to tween the character to a random part within "Spawnpoints"
 	spsn = true
-	local checkmob = workspace.Mobs:GetDescendants()
-	local tweenInfo = TweenInfo.new(2, Enum.EasingStyle.Linear, Enum.EasingDirection.Out) -- Adjust tweenTime as needed
 local function sps()
 	while true do
 		if spsn and rooth.Health > 0 then
@@ -206,13 +202,11 @@ local function sps()
 					if #parts > 0 then
 						local randomPart = parts[math.random(1, #parts)]
 						if randomPart and randomPart:IsA("BasePart") then
-						if checkmob > 5 then
-							game.TweenService:Create(player.Character.HumanoidRootPart, tweenInfo, {CFrame = CFrame.new(randomPart.Position + Vector3.new(0, 75, 0))}):Play()
+							local destination = randomPart.Position + Vector3.new(0, 75, 0)
+							local tweenInfo = TweenInfo.new(2, Enum.EasingStyle.Linear, Enum.EasingDirection.Out) -- Adjust tweenTime as needed
+							local tween = game.TweenService:Create(player.Character.HumanoidRootPart, tweenInfo, {CFrame = CFrame.new(destination)})
+							tween:Play()
 							wait(2.5)
-							else
-							game.TweenService:Create(player.Character.HumanoidRootPart, tweenInfo, {CFrame = CFrame.new(randomPart.Position + Vector3.new(0, 25, 0))}):Play()
-							wait(2.5)
-							end
 						end
 					else
 						warn("No parts found in Spawnpoints of room: " .. roomName)
