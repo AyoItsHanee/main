@@ -3,9 +3,6 @@ repeat wait() until game:IsLoaded()
 local KeepSC = true
 wait(1)
 print("SCRIPT MADE BY realhanif")
-		local player = game.Players.LocalPlayer
-		local character = player.Character or player.CharacterAdded:Wait()
-		local root = character:WaitForChild("HumanoidRootPart")
 	local vu = game:GetService("VirtualUser")
         local TeleportService = game:GetService("TeleportService")
 	game:GetService("Players").LocalPlayer.Idled:connect(function()
@@ -220,7 +217,7 @@ local function sps()
 						if randomPart and randomPart:IsA("BasePart") then
 							local destination = randomPart.Position + Vector3.new(0, 200, 0)
 							local tweenInfo = TweenInfo.new(2, Enum.EasingStyle.Linear, Enum.EasingDirection.Out) -- Adjust tweenTime as needed
-							local tween = game.TweenService:Create(player.Character.HumanoidRootPart, tweenInfo, {CFrame = CFrame.new(destination)})
+							local tween = game.TweenService:Create(game.Players.LocalPlayer.Character.HumanoidRootPart, tweenInfo, {CFrame = CFrame.new(destination)})
 							tween:Play()
 							wait(2.5)
 						end
