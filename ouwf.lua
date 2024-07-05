@@ -79,7 +79,6 @@ print("SCRIPT MADE BY realhanif")
 				return nil
 			end
 		end
-end
 	if placeId == 5956785391 then
 
 
