@@ -218,7 +218,7 @@ local function sps()
 					if #parts > 0 then
 						local randomPart = parts[math.random(1, #parts)]
 						if randomPart and randomPart:IsA("BasePart") then
-							local destination = randomPart.Position + Vector3.new(0, 75, 0)
+							local destination = randomPart.Position + Vector3.new(0, 200, 0)
 							local tweenInfo = TweenInfo.new(2, Enum.EasingStyle.Linear, Enum.EasingDirection.Out) -- Adjust tweenTime as needed
 							local tween = game.TweenService:Create(player.Character.HumanoidRootPart, tweenInfo, {CFrame = CFrame.new(destination)})
 							tween:Play()
