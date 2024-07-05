@@ -3,6 +3,9 @@ repeat wait() until game:IsLoaded()
 local KeepSC = true
 wait(1)
 print("SCRIPT MADE BY realhanif")
+		local player = game.Players.LocalPlayer
+		local character = player.Character or player.CharacterAdded:Wait()
+		local root = character:WaitForChild("HumanoidRootPart")
 	local vu = game:GetService("VirtualUser")
         local TeleportService = game:GetService("TeleportService")
 	game:GetService("Players").LocalPlayer.Idled:connect(function()
