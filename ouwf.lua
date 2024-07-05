@@ -215,7 +215,7 @@ local function sps()
 					if #parts > 0 then
 						local randomPart = parts[math.random(1, #parts)]
 						if randomPart and randomPart:IsA("BasePart") then
-						if workspace.Mobs:GetChildren() > 5 then
+						if #workspace.Mobs:GetChildren() > 5 then
 							local destination = randomPart.Position + Vector3.new(0, 200, 0)
 							else
 							local destination = randomPart.Position + Vector3.new(0, 75, 0)
