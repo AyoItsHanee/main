@@ -409,9 +409,10 @@ local rooth = game.Players.LocalPlayer.Character:FindFirstChild("Humanoid")
 						if randomPart and randomPart:IsA("BasePart") then
 						if #workspace.Mobs:GetChildren() > 5 then
 						game.TweenService:Create(game.Players.LocalPlayer.Character.HumanoidRootPart, TweenInfo.new(2, Enum.EasingStyle.Linear, Enum.EasingDirection.Out), {CFrame = CFrame.new(randomPart.Position + Vector3.new(0, 200, 0))}):Play()
+						wait(2.5)
 						end
 						game.TweenService:Create(game.Players.LocalPlayer.Character.HumanoidRootPart, TweenInfo.new(2, Enum.EasingStyle.Linear, Enum.EasingDirection.Out), {CFrame = CFrame.new(randomPart.Position + Vector3.new(0, 75, 0))}):Play()
-							wait(2.5)
+						wait(2.5)
 							for _, orb in ipairs(orbTypes) do
 							for _, v in pairs(Workspace.Map:GetChildren()) do
 							if v:IsA("Model") and v.Name == orb.name then
