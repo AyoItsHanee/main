@@ -434,7 +434,8 @@ local rooth = game.Players.LocalPlayer.Character:FindFirstChild("Humanoid")
 			else
 			spsn = false
 			print("UR DEAD NIGG")
-			wait(10)
+			game.Players.LocalPlayer.Character:FindFirstChild("Humanoid").Health = 0
+			wait(20)
 			game:GetService("ReplicatedStorage"):WaitForChild("TeleportToShop"):FireServer()
 			coroutine.wrap(collectChest)()
 			break
