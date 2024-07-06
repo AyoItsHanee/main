@@ -221,7 +221,7 @@ local function sps()
 							local destination = randomPart.Position + Vector3.new(0, 75, 0)
 							end
 							local tweenInfo = TweenInfo.new(2, Enum.EasingStyle.Linear, Enum.EasingDirection.Out) -- Adjust tweenTime as needed
-							local tween = game.TweenService:Create(game.Players.LocalPlayer.Character.HumanoidRootPart, tweenInfo, {CFrame = CFrame.new(destination)})
+							local tween = game.TweenService:Create(game.Players.LocalPlayer.Character.HumanoidRootPart, tweenInfo, destination)
 							tween:Play()
 							wait(2.5)
 						end
