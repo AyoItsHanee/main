@@ -3,6 +3,7 @@ repeat wait() until game:IsLoaded()
 local KeepSC = true
 wait(1)
 print("SCRIPT MADE BY realhanif")
+	local spawn, wait = task.spawn, task.wait
 	local vu = game:GetService("VirtualUser")
         local TeleportService = game:GetService("TeleportService")
 	game:GetService("Players").LocalPlayer.Idled:connect(function()
@@ -179,7 +180,7 @@ print("SCRIPT MADE BY realhanif")
 
 		local orbTypes = {
 			{name = "HealthRegen", enabled = true},
-			{name = "StaminaRegen", enabled = true},
+			{name = "StaminaRegen", enabled = false},
 			{name = "BloodMoney", enabled = true},
 			{name = "DoublePoints", enabled = true},
 			{name = "InstaKill", enabled = true},
@@ -204,53 +205,14 @@ local rooth = game.Players.LocalPlayer.Character:FindFirstChild("Humanoid")
 
 -- Function to tween the character to a random part within "Spawnpoints"
 	spsn = true
-local function sps()
-	while true do
-		if spsn and rooth.Health > 0 then
-			local roomName = findRoomName()
-			if roomName then
-				local spawnpoints = workspace.Map:FindFirstChild(roomName):FindFirstChild("Spawnpoints")
-				if spawnpoints then
-					local parts = spawnpoints:GetChildren()
-					if #parts > 0 then
-						local randomPart = parts[math.random(1, #parts)]
-						if randomPart and randomPart:IsA("BasePart") then
-							local destination = randomPart.Position + Vector3.new(0, 75, 0)
-							local tweenInfo = TweenInfo.new(2, Enum.EasingStyle.Linear, Enum.EasingDirection.Out) -- Adjust tweenTime as needed
-							local tween = game.TweenService:Create(game.Players.LocalPlayer.Character.HumanoidRootPart, tweenInfo, {CFrame = CFrame.new(destination)})
-							tween:Play()
-							wait(2.5)
-						end
-					else
-						warn("No parts found in Spawnpoints of room: " .. roomName)
-					end
-				else
-					warn("No 'Spawnpoints' found in room: " .. roomName)
-				end
-			else
-				warn("No room with parts found in workspace.Map.")
-			end
-			else
-			spsn = false
-			print("UR DEAD NIGG")
-			wait(10)
-			game:GetService("ReplicatedStorage"):WaitForChild("TeleportToShop"):FireServer()
-			coroutine.wrap(collectChest)()
-				break
-		end
-		task.wait(1) -- Add a wait to prevent the loop from running too fast
-	end
-end
+
 
 		local function orbx()
-			while task.wait() do
 				for _, orb in ipairs(orbTypes) do
 					if orb.enabled then
 						for _, v in pairs(Workspace.Map:GetChildren()) do
 							if v:IsA("Model") and v.Name == orb.name then do
 								if rooth.Health > 0 then
-								tween:Cancel()
-								wait()
 								game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = v:GetModelCFrame()
 								break -- Break out of the inner loop to avoid redundant checks
 								end
@@ -260,7 +222,30 @@ end
 				end
 			end
 		end
+		
+				local function orbv2()
+				for _, orb in ipairs(orbTypes) do
+					if orb.enabled then
+						for _, v in pairs(Workspace.Map:GetChildren()) do
+							if v:IsA("Model") and v.Name == orb.name then
+								game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = v:GetModelCFrame()
+							end
+						end
+				end
+			end
 		end
+		
+			local function msd()
+		if v:IsA("Model") and v.Name == orb.name then
+			coroutine.wrap(sps)()
+			coroutine.wrap(orbx)()
+		else
+			spsn = false
+			print("UR DEAD NIGG")
+			game:GetService("ReplicatedStorage"):WaitForChild("TeleportToShop"):FireServer()
+		end
+	end
+		
 
 		local function wd()
 			while task.wait(3) do
@@ -410,7 +395,50 @@ end
 			coroutine.wrap(preventFall)()
 	
 			coroutine.wrap(loopFunction)()
-			coroutine.wrap(sps)()
+			
+			spawn(function()
+			while true do
+					if spsn and rooth.Health > 0 then
+			local roomName = findRoomName()
+			if roomName then
+				local spawnpoints = workspace.Map:FindFirstChild(roomName):FindFirstChild("Spawnpoints")
+				if spawnpoints then
+					local parts = spawnpoints:GetChildren()
+					if #parts > 0 then
+						local randomPart = parts[math.random(1, #parts)]
+						if randomPart and randomPart:IsA("BasePart") then
+						if #workspace.Mobs:GetChildren() > 5 then
+						game.TweenService:Create(game.Players.LocalPlayer.Character.HumanoidRootPart, TweenInfo.new(2, Enum.EasingStyle.Linear, Enum.EasingDirection.Out), {CFrame = CFrame.new(randomPart.Position + Vector3.new(0, 200, 0))}):Play()
+						end
+						game.TweenService:Create(game.Players.LocalPlayer.Character.HumanoidRootPart, TweenInfo.new(2, Enum.EasingStyle.Linear, Enum.EasingDirection.Out), {CFrame = CFrame.new(randomPart.Position + Vector3.new(0, 75, 0))}):Play()
+							wait(2.5)
+							for _, orb in ipairs(orbTypes) do
+							for _, v in pairs(Workspace.Map:GetChildren()) do
+							if v:IsA("Model") and v.Name == orb.name then
+							spawn(orbv2)
+							end
+							end
+							end
+						end
+					else
+						warn("No parts found in Spawnpoints of room: " .. roomName)
+					end
+				else
+					warn("No 'Spawnpoints' found in room: " .. roomName)
+				end
+			else
+				warn("No room with parts found in workspace.Map.")
+			end
+			else
+			spsn = false
+			print("UR DEAD NIGG")
+			wait(10)
+			game:GetService("ReplicatedStorage"):WaitForChild("TeleportToShop"):FireServer()
+			coroutine.wrap(collectChest)()
+			break
+		end
+		end
+			end)
 			coroutine.wrap(orbx)()
     --[[
 			wait(600)
