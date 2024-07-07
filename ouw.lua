@@ -170,8 +170,8 @@ print("SCRIPT MADE BY realhanif")
 
 		local orbTypes = {
 			{name = "HealthRegen", enabled = true},
-			{name = "StaminaRegen", enabled = true},
-			{name = "BloodMoney", enabled = true},
+			{name = "StaminaRegen", enabled = false},
+			{name = "BloodMoney", enabled = false},
 			{name = "DoublePoints", enabled = true},
 			{name = "InstaKill", enabled = true},
 			{name = "WisteriaPoisoning", enabled = true},
