@@ -442,7 +442,6 @@ local rooth = game.Players.LocalPlayer.Character:FindFirstChild("Humanoid")
 		end
 		end
 			end)
-			coroutine.wrap(orbx)()
     --[[
 			wait(600)
 			local p = game.Players.LocalPlayer
