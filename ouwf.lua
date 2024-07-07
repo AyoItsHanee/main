@@ -204,7 +204,8 @@ local rooth = game.Players.LocalPlayer.Character:FindFirstChild("Humanoid")
 		end
 
 -- Function to tween the character to a random part within "Spawnpoints"
-	spsn = true
+	local spsn = true
+	local canrun = true
 
 
 		local function orbx()
@@ -408,11 +409,15 @@ local rooth = game.Players.LocalPlayer.Character:FindFirstChild("Humanoid")
 						local randomPart = parts[math.random(1, #parts)]
 						if randomPart and randomPart:IsA("BasePart") then
 						if #workspace.Mobs:GetChildren() > 5 then
+						if not canrun then
 						game.TweenService:Create(game.Players.LocalPlayer.Character.HumanoidRootPart, TweenInfo.new(2, Enum.EasingStyle.Linear, Enum.EasingDirection.Out), {CFrame = CFrame.new(randomPart.Position + Vector3.new(0, 200, 0))}):Play()
 						wait(2.5)
+						local canrun = true
+						end
 						else
 						game.TweenService:Create(game.Players.LocalPlayer.Character.HumanoidRootPart, TweenInfo.new(2, Enum.EasingStyle.Linear, Enum.EasingDirection.Out), {CFrame = CFrame.new(randomPart.Position + Vector3.new(0, 75, 0))}):Play()
 						wait(2.5)
+						local canrun = false
 						end
 							for _, orb in ipairs(orbTypes) do
 							for _, v in pairs(Workspace.Map:GetChildren()) do
