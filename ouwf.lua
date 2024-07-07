@@ -181,7 +181,7 @@ print("SCRIPT MADE BY realhanif")
 		local orbTypes = {
 			{name = "HealthRegen", enabled = true},
 			{name = "StaminaRegen", enabled = false},
-			{name = "BloodMoney", enabled = false},
+			{name = "BloodMoney", enabled = true},
 			{name = "DoublePoints", enabled = true},
 			{name = "InstaKill", enabled = true},
 			{name = "WisteriaPoisoning", enabled = true},
@@ -280,10 +280,11 @@ local rooth = game.Players.LocalPlayer.Character:FindFirstChild("Humanoid")
 			TeleportService:Teleport(9321822839)
 		end
 
-		local timeout = 30 -- Set the timeout in seconds (change this as needed)
+		local timeout = 25 -- Set the timeout in seconds (change this as needed)
 		-- Function to check if the Timer GUI is visible
 		local function isTimerGuiVisible()
-			local timerGui = game:GetService("Players").LocalPlayer.PlayerGui:FindFirstChild("top_ui"):FindFirstChild("Timer")
+			local player = game:GetService("Players").LocalPlayer
+			local timerGui = player.PlayerGui:FindFirstChild("top_ui"):FindFirstChild("Timer")
 
 			if timerGui and timerGui.Visible == true then
 				return true
@@ -301,7 +302,9 @@ local rooth = game.Players.LocalPlayer.Character:FindFirstChild("Humanoid")
 				wait(14)
 			end
 		end
-		coroutine.wrap(loopBp)()
+
+		local loopC1 = coroutine.create(loopBp)
+		coroutine.resume(loopC1)
 
 		local function loopFunction()
 			while true do
@@ -405,11 +408,16 @@ local rooth = game.Players.LocalPlayer.Character:FindFirstChild("Humanoid")
 						local randomPart = parts[math.random(1, #parts)]
 						if randomPart and randomPart:IsA("BasePart") then
 						if #workspace.Mobs:GetChildren() > 5 then
+						if is5 then
 						game.TweenService:Create(game.Players.LocalPlayer.Character.HumanoidRootPart, TweenInfo.new(2, Enum.EasingStyle.Linear, Enum.EasingDirection.Out), {CFrame = CFrame.new(randomPart.Position + Vector3.new(0, 200, 0))}):Play()
 						wait(2.5)
+						local is5 = false
 						end
+						else
 						game.TweenService:Create(game.Players.LocalPlayer.Character.HumanoidRootPart, TweenInfo.new(2, Enum.EasingStyle.Linear, Enum.EasingDirection.Out), {CFrame = CFrame.new(randomPart.Position + Vector3.new(0, 75, 0))}):Play()
 						wait(2.5)
+						local is5 = true
+						end
 							for _, orb in ipairs(orbTypes) do
 							for _, v in pairs(Workspace.Map:GetChildren()) do
 							if v:IsA("Model") and v.Name == orb.name then
