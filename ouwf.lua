@@ -280,11 +280,10 @@ local rooth = game.Players.LocalPlayer.Character:FindFirstChild("Humanoid")
 			TeleportService:Teleport(9321822839)
 		end
 
-		local timeout = 25 -- Set the timeout in seconds (change this as needed)
+		local timeout = 30 -- Set the timeout in seconds (change this as needed)
 		-- Function to check if the Timer GUI is visible
 		local function isTimerGuiVisible()
-			local player = game:GetService("Players").LocalPlayer
-			local timerGui = player.PlayerGui:FindFirstChild("top_ui"):FindFirstChild("Timer")
+			local timerGui = game:GetService("Players").LocalPlayer.PlayerGui:FindFirstChild("top_ui"):FindFirstChild("Timer")
 
 			if timerGui and timerGui.Visible == true then
 				return true
@@ -302,9 +301,7 @@ local rooth = game.Players.LocalPlayer.Character:FindFirstChild("Humanoid")
 				wait(14)
 			end
 		end
-
-		local loopC1 = coroutine.create(loopBp)
-		coroutine.resume(loopC1)
+		coroutine.wrap(loopBp)()
 
 		local function loopFunction()
 			while true do
