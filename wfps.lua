@@ -92,7 +92,7 @@ wait(5)
 		if placeId == 5956785391 then
 			local args = {
 				[1] = "join",
-				[2] = "uvWjzOBZ",
+				[2] = "p522eSVk",
 				[3] = 17387482786
 			}
 
