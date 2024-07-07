@@ -340,7 +340,6 @@ local rooth = game.Players.LocalPlayer.Character:FindFirstChild("Humanoid")
 			coroutine.resume(loopCM)
 			wait(1)
 			coroutine.wrap(loopFunction)()
-			coroutine.wrap(sps)()
 		local function preventFall()
 				while true do
 					local antifall3 = Instance.new("BodyVelocity", game.Players.LocalPlayer.Character.HumanoidRootPart)
