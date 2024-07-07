@@ -367,7 +367,6 @@ local rooth = game.Players.LocalPlayer.Character:FindFirstChild("Humanoid")
 			end
 			coroutine.wrap(preventFall)()
 			spawn(function()
-			whilespawn(function()
 			while true do
 					if spsn and rooth.Health > 0 then
 			local roomName = findRoomName()
