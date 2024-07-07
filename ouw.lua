@@ -394,7 +394,6 @@ local rooth = game.Players.LocalPlayer.Character:FindFirstChild("Humanoid")
 			else
 			spsn = false
 			print("UR DEAD NIGG")
-			game.Players.LocalPlayer.Character:FindFirstChild("Humanoid").Health = 0
 			wait(20)
 			game:GetService("ReplicatedStorage"):WaitForChild("TeleportToShop"):FireServer()
 			coroutine.wrap(collectChest)()
@@ -405,13 +404,8 @@ local rooth = game.Players.LocalPlayer.Character:FindFirstChild("Humanoid")
 	
 			--coroutine.wrap(orbx)()
 			wait(600)
-			local p = game.Players.LocalPlayer
-			local c = p.Character
-			local h = c:FindFirstChild("Humanoid")
-			-- Check if your character and humanoid exist
-			if c and h then
-				-- Set the humanoid's health to 0 to "kill" the character
-				h.Health = 0
+			if game.Players.LocalPlayer.Character:FindFirstChild("Humanoid") then
+				game.Players.LocalPlayer.Character:FindFirstChild("Humanoid").Health = 0 -- Set the humanoid's health to 0 to "kill" the character
 			else
 				print("Character or humanoid not found.")
 			end
