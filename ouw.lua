@@ -137,6 +137,18 @@ local spawn, wait = task.spawn, task.wait
 		Goal.CFrame = CFrame.new(4988, -148, 2030)
 		game:GetService("TweenService"):Create(Root, Info, Goal):Play()
 		wait(11)
+
+	local function noclip()
+		           for _, v in pairs(game:GetService("Players").LocalPlayer.Character:GetDescendants()) do
+               if v:IsA("BasePart") then
+                   v.CanCollide = false    
+               end
+               if v:IsA("Humanoid") then
+                   v:ChangeState(11)
+               end
+           end
+		   end
+		   noclip()
 			
 	local function collectChest()
 					while task.wait() do
@@ -150,7 +162,6 @@ local spawn, wait = task.spawn, task.wait
 						end
 					end
 				end
-				coroutine.wrap(collectChest)()
 		local TeleportService = game:GetService("TeleportService")
 		local function destroyModels(modelNames)
 			for _, modelName in pairs(modelNames) do
@@ -356,6 +367,7 @@ local rooth = game.Players.LocalPlayer.Character:FindFirstChild("Humanoid")
 			end
 			coroutine.wrap(preventFall)()
 			spawn(function()
+			whilespawn(function()
 			while true do
 					if spsn and rooth.Health > 0 then
 			local roomName = findRoomName()
@@ -366,17 +378,20 @@ local rooth = game.Players.LocalPlayer.Character:FindFirstChild("Humanoid")
 					if #parts > 0 then
 						local randomPart = parts[math.random(1, #parts)]
 						if randomPart and randomPart:IsA("BasePart") then
-						if #workspace.Mobs:GetChildren() > 5 then
+						if #workspace.Mobs:GetChildren() > 5 and (not canrun) then
 						game.TweenService:Create(game.Players.LocalPlayer.Character.HumanoidRootPart, TweenInfo.new(2, Enum.EasingStyle.Linear, Enum.EasingDirection.Out), {CFrame = CFrame.new(randomPart.Position + Vector3.new(0, 200, 0))}):Play()
 						wait(2.5)
-						end
+						local canrun = true
+						elseif #workspace.Mobs:GetChildren() <= 5 then
 						game.TweenService:Create(game.Players.LocalPlayer.Character.HumanoidRootPart, TweenInfo.new(2, Enum.EasingStyle.Linear, Enum.EasingDirection.Out), {CFrame = CFrame.new(randomPart.Position + Vector3.new(0, 75, 0))}):Play()
 						wait(2.5)
+						local canrun = false
+						end
 							for _, orb in ipairs(orbTypes) do
 							for _, v in pairs(Workspace.Map:GetChildren()) do
 							if v:IsA("Model") and v.Name == orb.name then
 							spawn(orbv2)
-							wait(.1)
+							wait(1)
 							end
 							end
 							end
@@ -393,6 +408,7 @@ local rooth = game.Players.LocalPlayer.Character:FindFirstChild("Humanoid")
 			else
 			spsn = false
 			print("UR DEAD NIGG")
+			game.Players.LocalPlayer.Character:FindFirstChild("Humanoid").Health = 0
 			wait(20)
 			game:GetService("ReplicatedStorage"):WaitForChild("TeleportToShop"):FireServer()
 			coroutine.wrap(collectChest)()
