@@ -390,7 +390,7 @@ local rooth = game.Players.LocalPlayer.Character:FindFirstChild("Humanoid")
 							for _, v in pairs(Workspace.Map:GetChildren()) do
 							if v:IsA("Model") and v.Name == orb.name then
 							spawn(orbv2)
-							wait(1)
+							wait(2.5)
 							end
 							end
 							end
