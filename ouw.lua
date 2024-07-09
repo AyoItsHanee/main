@@ -229,19 +229,7 @@ local rooth = game.Players.LocalPlayer.Character:FindFirstChild("Humanoid")
 			end
 		end
 		coroutine.wrap(wd)()
-
-		-- Function to check if the Timer GUI is visible
-		local function isTimerGuiNotVisible()
-			local player = game:GetService("Players").LocalPlayer
-			local timerGui = player.PlayerGui:WaitForChild("top_ui"):FindFirstChild("Timer")
-
-			if timerGui and timerGui.Visible == false then
-				return false
-			else
-				return true
-			end
-		end
-
+	
 		-- Coroutine function
 		local function mainCoroutine()
 			while isTimerGuiNotVisible() do
