@@ -66,7 +66,7 @@ repeat wait() until game:IsLoaded()
 		end
 		button.MouseButton1Click:Connect(toggleKeepSC)
 
-		queueteleport = (syn and syn.queue_on_teleport) or queue_on_teleport or (fluxus and fluxus.queue_on_teleport) or (vega and vega.queue_on_teleport) or (vegax and vegax.queue_on_teleport)
+		queueteleport = (syn and syn.queue_on_teleport) or queue_on_teleport or (fluxus and fluxus.queue_on_teleport)
 		local TeleportCheck = false
 		game:GetService("Players").LocalPlayer.OnTeleport:Connect(function(State)
 			if KeepSC then
