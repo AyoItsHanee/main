@@ -1,5 +1,6 @@
 repeat wait() until game:IsLoaded()
 local spawn, wait = task.spawn, task.wait
+local rootPart = character:FindFirstChild("HumanoidRootPart")
 local KeepSC = true
 local checkore = true
 local vu = game:GetService("VirtualUser")
@@ -48,6 +49,12 @@ wait(1)
 		button.Position = UDim2.new(0, 0, 0, 0)
 		button.Text = "Toggle KeepSC"
 		button.Parent = framsex
+		-- Create a TextButton
+		local button = Instance.new("TextButton")
+		button.Size = UDim2.new(1, 0, 0.5, 0)
+		button.Position = UDim2.new(0, 0, 0, 0)
+		button.Text = "TP to Buyer"
+		button.Parent = framsex
 
 		-- Create a TextLabel to display the state of KeepSC
 		local label = Instance.new("TextLabel")
@@ -69,6 +76,11 @@ wait(1)
 			})
 		end
 		button.MouseButton1Click:Connect(toggleKeepSC)
+		-- Function to toggle KeepSC and update UI
+		local function TpB()
+		rootPart.CFrame = CFrame.new(Vector3.new(-3634, 708, -1484))
+		end
+		button.MouseButton1Click:Connect(TpB)
 
 		queueteleport = (syn and syn.queue_on_teleport) or queue_on_teleport or (fluxus and fluxus.queue_on_teleport)
 		local TeleportCheck = false
@@ -244,7 +256,6 @@ local cameraOffset = Vector3.new(0, 10, 0)
 
 -- Function to update camera position
 local function updateCamera()
-    local rootPart = character:FindFirstChild("HumanoidRootPart")
     if rootPart then
         game.Workspace.CurrentCamera.CFrame = CFrame.new(rootPart.Position + cameraOffset, rootPart.Position)
     end
