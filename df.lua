@@ -149,13 +149,27 @@ local function pressE()
     VirtualInputManager:SendKeyEvent(false, "E", false, game)
 end
 
+-- Offset from the character to the camera
+local cameraOffset = Vector3.new(0, 10, 0)
+
+-- Function to update camera position
+local function updateCamera()
+    local rootPart = character:FindFirstChild("HumanoidRootPart")
+    if rootPart then
+        game.Workspace.CurrentCamera.CFrame = CFrame.new(rootPart.Position + cameraOffset, rootPart.Position)
+    end
+end
+
+-- Connect the function to RenderStepped to update the camera every frame
+game:GetService("RunService").RenderStepped:Connect(updateCamera)
+
 -- Function to teleport to each position with a check
 local function teleportToPositions(positions)
     for _, pos in ipairs(positions) do
         -- Teleport the character to the target position
         rootPart.CFrame = CFrame.new(pos)
         print("Teleported to position:", pos)
-		wait(1.5)
+		wait(1)
 		pressE()
 		wait(1)
     end
