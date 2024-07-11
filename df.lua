@@ -156,7 +156,7 @@ while wait do
         -- Teleport the character to the target position
         rootPart.CFrame = CFrame.new(pos)
         print("Teleported to position:", pos)
-		wait(3)
+		wait(1.5)
 		pressE()
 		wait(1)
     end
