@@ -151,6 +151,7 @@ end
 
 -- Function to teleport to each position with a check
 local function teleportToPositions(positions)
+while wait do
     for _, pos in ipairs(positions) do
         -- Teleport the character to the target position
         rootPart.CFrame = CFrame.new(pos)
@@ -159,6 +160,7 @@ local function teleportToPositions(positions)
 		pressE()
 		wait(1)
     end
+	end
 end
 
 -- Start teleporting
