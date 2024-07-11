@@ -151,7 +151,6 @@ end
 
 -- Function to teleport to each position with a check
 local function teleportToPositions(positions)
-while wait do
     for _, pos in ipairs(positions) do
         -- Teleport the character to the target position
         rootPart.CFrame = CFrame.new(pos)
@@ -160,7 +159,7 @@ while wait do
 		pressE()
 		wait(1)
     end
-	end
+game:GetService("TeleportService"):Teleport(5094651510)
 end
 
 -- Start teleporting
