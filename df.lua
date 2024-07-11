@@ -73,7 +73,7 @@ repeat wait() until game:IsLoaded()
 				end
 		end
 		end)
-end
+	if game.PlaceId == 5094651510 then
 --loadstring(game:HttpGet("https://raw.githubusercontent.com/caydenthekile/scriptsv2/main/demonfall"))()
 -- Ensure the character is fully loaded
 local player = game.Players.LocalPlayer
@@ -178,3 +178,8 @@ end
 
 -- Start teleporting
 teleportToPositions(positions)
+	else
+		print("wrong game")
+	end
+end
+master()
