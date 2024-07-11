@@ -171,7 +171,7 @@ local function teleportToPositions(positions)
         print("Teleported to position:", pos)
 		wait(1)
 		pressE()
-		wait(1)
+		wait()
     end
 game:GetService("TeleportService"):Teleport(5094651510)
 end
