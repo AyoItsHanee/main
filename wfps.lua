@@ -128,7 +128,7 @@ repeat wait() until game:IsLoaded()
 
 			-- Function to update the Ore value in the UI
 			local function updateOreLabel()
-					oreLabel.Text = "Ore: " .. tostring(oreValue)
+					oreLabel.Text = "Ore: " .. tostring(checkamount())
 			end
 
 			-- Update the Ore value every second
