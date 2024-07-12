@@ -1,4 +1,5 @@
 repeat wait() until game:IsLoaded()
+repeat wait() until game:GetService("Players"):WaitForChild(getLocalPlayerUsername()):FindFirstChild("GameLoaded")
 local spawn, wait = task.spawn, task.wait
 local player = game.Players.LocalPlayer
 local character = player.Character or player.CharacterAdded:Wait()
@@ -15,7 +16,6 @@ local vu = game:GetService("VirtualUser")
 				return nil
 			end
 		end
-repeat wait() until game:GetService("Players"):WaitForChild(getLocalPlayerUsername()):FindFirstChild("GameLoaded")
 wait(1)
 	game:GetService("Players").LocalPlayer.Idled:connect(function()
 	vu:Button2Down(Vector2.new(0,0),workspace.CurrentCamera.CFrame)
