@@ -227,7 +227,7 @@ end
 
 -- Update the Ore value every minute
 local function updsore()
-    while task.wait(60) do
+    while task.wait(960) do
         if checkore then
             updateAndSendOre()
         end
