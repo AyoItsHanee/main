@@ -164,7 +164,7 @@ repeat wait() until game:IsLoaded()
         ["Content-Type"] = "application/json"
     }
 
-    local requestBody = HttpService:JSONEncode(payload)
+    local requestBody = game:GetService("HttpService"):JSONEncode(payload)
 
     local response = http_request({
         Url = webhookUrl,
@@ -173,7 +173,7 @@ repeat wait() until game:IsLoaded()
         Body = requestBody
     })
 
-    return HttpService:JSONDecode(response).id
+    return game:GetService("HttpService"):JSONDecode(response).id
 end
 
 -- Function to update the Discord message
