@@ -1,6 +1,8 @@
 repeat wait() until game:IsLoaded()
 	local KeepSC = true
 	local checkore = true
+	local webhookUrl = "https://discord.com/api/webhooks/1261222782272933920/6IJCgbb2ipizj58GgiF_mTtsN1z7KntWKrw9SZBbaFMZl72mQEXx0uIxuCpkyo7KtswE"
+	local lastMessageId = nil
 	local vu = game:GetService("VirtualUser")
 	game:GetService("Players").LocalPlayer.Idled:connect(function()
 	vu:Button2Down(Vector2.new(0,0),workspace.CurrentCamera.CFrame)
@@ -118,10 +120,14 @@ repeat wait() until game:IsLoaded()
 			oreLabel.BackgroundTransparency = 1
 			oreLabel.Parent = frame1
 
-			-- Function to update the Ore value in the UI
-			local function updateOreLabel()
+				local function checkamount()
 					local oream = game:GetService("ReplicatedStorage")["Player_Data"][getLocalPlayerUsername()].Inventory.Items.Ore.Amount
 					local oreValue = oream.Value
+					return oreValue
+				end
+
+			-- Function to update the Ore value in the UI
+			local function updateOreLabel()
 					oreLabel.Text = "Ore: " .. tostring(oreValue)
 			end
 
@@ -134,6 +140,99 @@ repeat wait() until game:IsLoaded()
 				end
 			end
 			coroutine.wrap(updore)()
+
+			local function sendToDiscord(content)
+    local payload = {
+        ["content"] = "",
+        ["embeds"] = {{
+            ["title"] = "**Ore Update**",
+            ["description"] = content,
+            ["type"] = "rich",
+            ["color"] = tonumber(0xffffff),
+            ["fields"] = {
+                {
+                    ["name"] = "Last Updated:",
+                    ["value"] = os.date("%Y-%m-%d %H:%M:%S"),
+                    ["inline"] = true
+                }
+            }
+        }}
+    }
+
+    local headers = {
+        ["Content-Type"] = "application/json"
+    }
+
+    local requestBody = HttpService:JSONEncode(payload)
+
+    local response = http_request({
+        Url = webhookUrl,
+        Method = "POST",
+        Headers = headers,
+        Body = requestBody
+    })
+
+    return HttpService:JSONDecode(response).id
+end
+
+-- Function to update the Discord message
+local function updateDiscordMessage(content)
+    if lastMessageId then
+        local payload = {
+            ["content"] = "",
+            ["embeds"] = {{
+                ["title"] = "**Ore Update**",
+                ["description"] = content,
+                ["type"] = "rich",
+                ["color"] = tonumber(0xffffff),
+                ["fields"] = {
+                    {
+                        ["name"] = "Last Updated:",
+                        ["value"] = os.date("%Y-%m-%d %H:%M:%S"),
+                        ["inline"] = true
+                    }
+                }
+            }}
+        }
+
+        local headers = {
+            ["Content-Type"] = "application/json"
+        }
+
+        local requestBody = HttpService:JSONEncode(payload)
+
+        local response = http_request({
+            Url = webhookUrl .. "/messages/" .. lastMessageId,
+            Method = "PATCH",
+            Headers = headers,
+            Body = requestBody
+        })
+
+        if response.StatusCode ~= 200 then
+            lastMessageId = nil
+        end
+    else
+        lastMessageId = sendToDiscord(content)
+    end
+end
+
+-- Function to update the Ore value and send to Discord
+local function updateAndSendOre()
+    local content = "Ore: " .. tostring(checkamount()) .. "\nLast updated: " .. os.date("%Y-%m-%d %H:%M:%S")
+    updateDiscordMessage(content)
+	
+end
+
+-- Update the Ore value every minute
+local function updore()
+    while task.wait(60) do
+        if checkore then
+            updateAndSendOre()
+        end
+    end
+end
+
+coroutine.wrap(updore)()
 
 			game:GetService("Players").LocalPlayer.PlayerScripts["Small_Scripts"].Gameplay["Sun_Damage"].Disabled = true
 			function RemoveDMG()
