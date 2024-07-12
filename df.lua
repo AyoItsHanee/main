@@ -1,4 +1,12 @@
 repeat wait() until game:IsLoaded()
+local function getLocalPlayerUsername()
+	local player = game.Players.LocalPlayer
+	if player then
+		return player.Name
+	else
+		return nil
+	end
+end
 repeat wait() until game:GetService("Players"):WaitForChild(getLocalPlayerUsername()):FindFirstChild("GameLoaded")
 local spawn, wait = task.spawn, task.wait
 local player = game.Players.LocalPlayer
@@ -7,15 +15,6 @@ local rootPart = character:WaitForChild("HumanoidRootPart")
 local KeepSC = true
 local checkore = true
 local vu = game:GetService("VirtualUser")
-
-		local function getLocalPlayerUsername()
-			local player = game.Players.LocalPlayer
-			if player then
-				return player.Name
-			else
-				return nil
-			end
-		end
 wait(1)
 	game:GetService("Players").LocalPlayer.Idled:connect(function()
 	vu:Button2Down(Vector2.new(0,0),workspace.CurrentCamera.CFrame)
