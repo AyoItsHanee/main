@@ -257,9 +257,9 @@ local function updateCamera()
         game.Workspace.CurrentCamera.CFrame = CFrame.new(rootPart.Position + cameraOffset, rootPart.Position)
     end
 end
-
+updateCamera()
 -- Connect the function to RenderStepped to update the camera every frame
-game:GetService("RunService").RenderStepped:Connect(updateCamera)
+--game:GetService("RunService").RenderStepped:Connect(updateCamera)
 
 -- Function to teleport to each position with a check
 local function teleportToPositions(positions)
