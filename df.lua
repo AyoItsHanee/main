@@ -82,7 +82,7 @@ print("roblox loaded")
 		end
 		buttonx.MouseButton1Click:Connect(TpB)
 
-		queueteleport = (syn and syn.queue_on_teleport) or queue_on_teleport or (fluxus and fluxus.queue_on_teleport)
+		queueteleport = (delta and delta.queue_on_teleport) or queue_on_teleport or (fluxus and fluxus.queue_on_teleport)
 		local TeleportCheck = false
 		game:GetService("Players").LocalPlayer.OnTeleport:Connect(function(State)
 			if KeepSC then
