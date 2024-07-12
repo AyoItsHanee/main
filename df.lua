@@ -1,6 +1,6 @@
 repeat wait() until game:IsLoaded()
 local spawn, wait = task.spawn, task.wait
-local rootPart = character:FindFirstChild("HumanoidRootPart")
+local rootPart = game.Players.LocalPlayer:FindFirstChild("HumanoidRootPart")
 local KeepSC = true
 local checkore = true
 local vu = game:GetService("VirtualUser")
