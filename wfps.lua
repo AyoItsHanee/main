@@ -57,10 +57,10 @@ repeat wait() until game:IsLoaded()
 
 		-- Create a TextButton
 		local buttonr = Instance.new("TextButton")
-		buttonr.Size = UDim2.new(1, 0, 0.5, 0)
-		buttonr.Position = UDim2.new(0, 0, 0, 0)
+		buttonr.Size = UDim2.new(0, 100, 0, 50)
+		buttonr.Position = UDim2.new(0, 350, 0, 0)
 		buttonr.Text = "Toggle Rotation"
-		buttonr.Parent = label
+		buttonr.Parent = screenGui
 
 		-- Function to toggle KeepSC and update UI
 		local function toggleKeepSC()
