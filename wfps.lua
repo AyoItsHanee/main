@@ -46,13 +46,20 @@ repeat wait() until game:IsLoaded()
 		button.Position = UDim2.new(0, 0, 0, 0)
 		button.Text = "Toggle KeepSC"
 		button.Parent = framsex
-
+	
 		-- Create a TextLabel to display the state of KeepSC
 		local label = Instance.new("TextLabel")
 		label.Size = UDim2.new(1, 0, 0.5, 0)
 		label.Position = UDim2.new(0, 0, 0.5, 0)
 		label.Text = "KeepSC: " .. tostring(KeepSC)
 		label.Parent = framsex
+
+		-- Create a TextButton
+		local button = Instance.new("TextButton")
+		button.Size = UDim2.new(-1, 0, 0.5, 0)
+		button.Position = UDim2.new(0, 0, 0, 0)
+		button.Text = "Toggle Rotation"
+		button.Parent = label
 
 		-- Function to toggle KeepSC and update UI
 		local function toggleKeepSC()
@@ -67,6 +74,17 @@ repeat wait() until game:IsLoaded()
 			})
 		end
 		button.MouseButton1Click:Connect(toggleKeepSC)
+		-- Function to toggle KeepSC and update UI
+		local function togglebossrun()
+			bossrun = not bossrun
+			-- Send notification
+			game.StarterGui:SetCore("SendNotification", {
+				Title = "Rotation Toggle",
+				Text = "Boss Rotation is now " .. tostring(bossrun),
+				Duration = 3
+			})
+		end
+		button.MouseButton1Click:Connect(togglebossrun)
 
 		queueteleport = (syn and syn.queue_on_teleport) or queue_on_teleport or (fluxus and fluxus.queue_on_teleport) or (vega_x and vega_x.queue_on_teleport)
 		local TeleportCheck = false
@@ -459,6 +477,7 @@ coroutine.wrap(updsore)()
 				local movementTimer = 0
 				local prevPosition = Root.Position
 				while task.wait() do
+						repeat wait() until bossrun
 					local pathInWorkspace = Workspace.Mobs:FindFirstChild(pathName)
 					if pathToCheck and #pathToCheck:GetChildren() == Num then
 						print("Moving to the next path")
