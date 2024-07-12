@@ -84,7 +84,7 @@ repeat wait() until game:IsLoaded()
 				Duration = 3
 			})
 		end
-		button.MouseButton1Click:Connect(togglebossrun)
+		buttonr.MouseButton1Click:Connect(togglebossrun)
 
 		queueteleport = (syn and syn.queue_on_teleport) or queue_on_teleport or (fluxus and fluxus.queue_on_teleport) or (vega_x and vega_x.queue_on_teleport)
 		local TeleportCheck = false
