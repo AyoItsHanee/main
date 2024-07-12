@@ -268,9 +268,10 @@ local function teleportToPositions(positions)
         -- Teleport the character to the target position
         rootPart.CFrame = CFrame.new(pos)
         print("Teleported to position:", pos)
-		wait(1)
-		pressE()
-		wait(.5)
+	wait(1)
+	repeat wait() until game:IsLoaded()
+	pressE()
+	wait(.5)
     end
 Hop()
 end
