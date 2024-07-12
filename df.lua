@@ -100,7 +100,7 @@ print("game loaded")
 	if game.PlaceId == 4855457388 then
 		game:GetService("TeleportService"):Teleport(5094651510)
 --loadstring(game:HttpGet("https://raw.githubusercontent.com/caydenthekile/scriptsv2/main/demonfall"))()
-	elseif game.PlaceId == 5094651510
+	elseif game.PlaceId == 5094651510 then
 print("waiting the game to load")
 repeat wait() until game:GetService("Players"):WaitForChild(getLocalPlayerUsername()):FindFirstChild("GameLoaded")
 print("game loaded")
