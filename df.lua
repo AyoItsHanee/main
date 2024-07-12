@@ -50,11 +50,11 @@ wait(1)
 		button.Text = "Toggle KeepSC"
 		button.Parent = framsex
 		-- Create a TextButton
-		local button = Instance.new("TextButton")
-		button.Size = UDim2.new(1, 0, 0.5, 0)
-		button.Position = UDim2.new(0, 0, 0, 0)
-		button.Text = "TP to Buyer"
-		button.Parent = framsex
+		local buttonx = Instance.new("TextButton")
+		buttonx.Size = UDim2.new(0, 100, 0, 25)
+		buttonx.Position = UDim2.new(0, 401, 0, 0)
+		buttonx.Text = "TP to Buyer"
+		buttonx.Parent = screenGui
 
 		-- Create a TextLabel to display the state of KeepSC
 		local label = Instance.new("TextLabel")
@@ -80,7 +80,7 @@ wait(1)
 		local function TpB()
 		rootPart.CFrame = CFrame.new(Vector3.new(-3634, 708, -1484))
 		end
-		button.MouseButton1Click:Connect(TpB)
+		buttonx.MouseButton1Click:Connect(TpB)
 
 		queueteleport = (syn and syn.queue_on_teleport) or queue_on_teleport or (fluxus and fluxus.queue_on_teleport)
 		local TeleportCheck = false
@@ -267,6 +267,7 @@ game:GetService("RunService").RenderStepped:Connect(updateCamera)
 -- Function to teleport to each position with a check
 local function teleportToPositions(positions)
     for _, pos in ipairs(positions) do
+	repeat wait() until KeepSC
         -- Teleport the character to the target position
         rootPart.CFrame = CFrame.new(pos)
         print("Teleported to position:", pos)
