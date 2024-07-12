@@ -59,6 +59,7 @@ repeat wait() until game:IsLoaded()
 		local buttonr = Instance.new("TextButton")
 		buttonr.Size = UDim2.new(0, 100, 0, 50)
 		buttonr.Position = UDim2.new(0, 350, 0, 0)
+		buttonr.BackgroundColor3 = Color3.fromRGB(0, 0, 0)
 		buttonr.Text = "Toggle Rotation"
 		buttonr.Parent = screenGui
 
@@ -71,7 +72,7 @@ repeat wait() until game:IsLoaded()
 			game.StarterGui:SetCore("SendNotification", {
 				Title = "KeepSC Toggle",
 				Text = "KeepSC is now " .. tostring(KeepSC),
-				Duration = 3
+				Duration = 1
 			})
 		end
 		button.MouseButton1Click:Connect(toggleKeepSC)
@@ -82,7 +83,7 @@ repeat wait() until game:IsLoaded()
 			game.StarterGui:SetCore("SendNotification", {
 				Title = "Rotation Toggle",
 				Text = "Boss Rotation is now " .. tostring(bossrun),
-				Duration = 3
+				Duration = 1
 			})
 		end
 		buttonr.MouseButton1Click:Connect(togglebossrun)
