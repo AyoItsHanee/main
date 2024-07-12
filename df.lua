@@ -7,7 +7,9 @@ local function getLocalPlayerUsername()
 		return nil
 	end
 end
+print("waiting the game to load")
 repeat wait() until game:GetService("Players"):WaitForChild(getLocalPlayerUsername()):FindFirstChild("GameLoaded")
+print("game loaded")
 local spawn, wait = task.spawn, task.wait
 local player = game.Players.LocalPlayer
 local character = player.Character or player.CharacterAdded:Wait()
