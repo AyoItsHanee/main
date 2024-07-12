@@ -220,7 +220,7 @@ end
 -- Function to update the Ore value and send to Discord
 local function updateAndSendOre()
 					local upb = checkamount()
-    local content = "Ore: " .. tostring(upb) .. "\nLast updated: " .. os.date("%Y-%m-%d %H:%M:%S")
+    local content = "Ore: " .. tostring(upb)
     updateDiscordMessage(content)
 	
 end
