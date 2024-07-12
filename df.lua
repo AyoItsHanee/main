@@ -1,5 +1,4 @@
 repeat wait() until game:IsLoaded()
-local success, error = pcall(function()
 local spawn, wait = task.spawn, task.wait
 local player = game.Players.LocalPlayer
 local character = player.Character or player.CharacterAdded:Wait()
@@ -283,9 +282,5 @@ teleportToPositions(positions)
 	else
 		print("wrong game")
 	end
-end
-	end)
-if not success then
-	print("An error occurred:", error)
 end
 master()
