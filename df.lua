@@ -14,7 +14,7 @@ local function getLocalPlayerUsername()
 		return nil
 	end
 end
-print("game loaded")
+print("roblox loaded")
 	game:GetService("Players").LocalPlayer.Idled:connect(function()
 	vu:Button2Down(Vector2.new(0,0),workspace.CurrentCamera.CFrame)
 	wait(1)
