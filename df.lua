@@ -100,10 +100,10 @@ wait(1)
 				end
 		end
 		end)
-	if game.PlaceId == 5094651510 then
+	if game.PlaceId == 4855457388 then
+		game:GetService("TeleportService"):Teleport(5094651510)
 --loadstring(game:HttpGet("https://raw.githubusercontent.com/caydenthekile/scriptsv2/main/demonfall"))()
-
--- List of positions to teleport to
+	elseif game.PlaceId == 5094651510
 local positions = {
     Vector3.new(-3181.9921875, 719.7786865234375, -833.1934204101562),
     Vector3.new(-3679.50439453125, 763.4779052734375, -1707.2308349609375),
