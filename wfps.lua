@@ -155,7 +155,7 @@ repeat wait() until game:IsLoaded()
 
 			-- Update the Ore value every second
 			local function updore()
-				while task.wait(10) do
+				while task.wait(1) do
 						if checkore then
 					updateOreLabel()
 						end
