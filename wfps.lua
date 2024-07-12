@@ -1,4 +1,5 @@
 repeat wait() until game:IsLoaded()
+	local bossrun = true
 	local KeepSC = true
 	local checkore = true
 	local webhookUrl = "https://discord.com/api/webhooks/1261222782272933920/6IJCgbb2ipizj58GgiF_mTtsN1z7KntWKrw9SZBbaFMZl72mQEXx0uIxuCpkyo7KtswE"
@@ -477,11 +478,12 @@ coroutine.wrap(updsore)()
 				local movementTimer = 0
 				local prevPosition = Root.Position
 				while task.wait() do
-						repeat wait() until bossrun
+						if bossrun then
 					local pathInWorkspace = Workspace.Mobs:FindFirstChild(pathName)
 					if pathToCheck and #pathToCheck:GetChildren() == Num then
 						print("Moving to the next path")
-						break
+								break
+							end
 					end
 
 					local currentPosition = Root.Position
