@@ -7,8 +7,6 @@ local function getLocalPlayerUsername()
 		return nil
 	end
 end
-print("waiting the game to load")
-repeat wait() until game:GetService("Players"):WaitForChild(getLocalPlayerUsername()):FindFirstChild("GameLoaded")
 print("game loaded")
 local spawn, wait = task.spawn, task.wait
 local player = game.Players.LocalPlayer
@@ -104,6 +102,9 @@ wait(1)
 		game:GetService("TeleportService"):Teleport(5094651510)
 --loadstring(game:HttpGet("https://raw.githubusercontent.com/caydenthekile/scriptsv2/main/demonfall"))()
 	elseif game.PlaceId == 5094651510
+print("waiting the game to load")
+repeat wait() until game:GetService("Players"):WaitForChild(getLocalPlayerUsername()):FindFirstChild("GameLoaded")
+print("game loaded")
 local positions = {
     Vector3.new(-3181.9921875, 719.7786865234375, -833.1934204101562),
     Vector3.new(-3679.50439453125, 763.4779052734375, -1707.2308349609375),
