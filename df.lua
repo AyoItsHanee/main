@@ -1,4 +1,11 @@
 repeat wait() until game:IsLoaded()
+local spawn, wait = task.spawn, task.wait
+local player = game.Players.LocalPlayer
+local character = player.Character or player.CharacterAdded:Wait()
+local rootPart = character:WaitForChild("HumanoidRootPart")
+local KeepSC = true
+local checkore = true
+local vu = game:GetService("VirtualUser")
 local function getLocalPlayerUsername()
 	local player = game.Players.LocalPlayer
 	if player then
@@ -8,14 +15,6 @@ local function getLocalPlayerUsername()
 	end
 end
 print("game loaded")
-local spawn, wait = task.spawn, task.wait
-local player = game.Players.LocalPlayer
-local character = player.Character or player.CharacterAdded:Wait()
-local rootPart = character:WaitForChild("HumanoidRootPart")
-local KeepSC = true
-local checkore = true
-local vu = game:GetService("VirtualUser")
-wait(1)
 	game:GetService("Players").LocalPlayer.Idled:connect(function()
 	vu:Button2Down(Vector2.new(0,0),workspace.CurrentCamera.CFrame)
 	wait(1)
