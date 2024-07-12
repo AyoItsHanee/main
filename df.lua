@@ -1,6 +1,8 @@
 repeat wait() until game:IsLoaded()
 local spawn, wait = task.spawn, task.wait
-local rootPart = game:GetService("Players").LocalPlayer:FindFirstChild("HumanoidRootPart")
+local player = game.Players.LocalPlayer
+local character = player.Character or player.CharacterAdded:Wait()
+local rootPart = character:WaitForChild("HumanoidRootPart")
 local KeepSC = true
 local checkore = true
 local vu = game:GetService("VirtualUser")
@@ -99,10 +101,6 @@ wait(1)
 		end)
 	if game.PlaceId == 5094651510 then
 --loadstring(game:HttpGet("https://raw.githubusercontent.com/caydenthekile/scriptsv2/main/demonfall"))()
--- Ensure the character is fully loaded
-local player = game.Players.LocalPlayer
-local character = player.Character or player.CharacterAdded:Wait()
-local rootPart = character:WaitForChild("HumanoidRootPart")
 
 -- List of positions to teleport to
 local positions = {
