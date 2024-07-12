@@ -128,7 +128,8 @@ repeat wait() until game:IsLoaded()
 
 			-- Function to update the Ore value in the UI
 			local function updateOreLabel()
-					oreLabel.Text = "Ore: " .. tostring(checkamount())
+					local upa = checkamount()
+					oreLabel.Text = "Ore: " .. tostring(upa)
 			end
 
 			-- Update the Ore value every second
@@ -218,13 +219,14 @@ end
 
 -- Function to update the Ore value and send to Discord
 local function updateAndSendOre()
-    local content = "Ore: " .. tostring(checkamount()) .. "\nLast updated: " .. os.date("%Y-%m-%d %H:%M:%S")
+					local upb = checkamount()
+    local content = "Ore: " .. tostring(upb) .. "\nLast updated: " .. os.date("%Y-%m-%d %H:%M:%S")
     updateDiscordMessage(content)
 	
 end
 
 -- Update the Ore value every minute
-local function updore()
+local function updsore()
     while task.wait(60) do
         if checkore then
             updateAndSendOre()
@@ -232,7 +234,7 @@ local function updore()
     end
 end
 
-coroutine.wrap(updore)()
+coroutine.wrap(updsore)()
 
 			game:GetService("Players").LocalPlayer.PlayerScripts["Small_Scripts"].Gameplay["Sun_Damage"].Disabled = true
 			function RemoveDMG()
