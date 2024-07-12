@@ -56,7 +56,7 @@ repeat wait() until game:IsLoaded()
 
 		-- Create a TextButton
 		local button = Instance.new("TextButton")
-		button.Size = UDim2.new(-1, 0, 0.5, 0)
+		button.Size = UDim2.new(1, 0, 0.5, 0)
 		button.Position = UDim2.new(0, 0, 0, 0)
 		button.Text = "Toggle Rotation"
 		button.Parent = label
