@@ -283,8 +283,8 @@ teleportToPositions(positions)
 		print("wrong game")
 	end
 end
+		master()
 	end)
 if not success then
 	print("An error occurred:", error)
 end
-master()
