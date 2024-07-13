@@ -89,7 +89,7 @@ repeat wait() until game:IsLoaded()
 		end
 		button.MouseButton1Click:Connect(togglewfps)
 
-		local function togglewfps()
+		local function toggledf()
 			df = not df
 
 			-- Send notification
