@@ -20,6 +20,7 @@ repeat wait() until game:IsLoaded()
 	end)
 
 	local function master()
+		print("Boss Rotation v0.2.2")
 		print("executed true sc")
 		local function getLocalPlayerUsername()
 			local player = game.Players.LocalPlayer
@@ -241,7 +242,8 @@ end
 -- Function to update the Ore value and send to Discord
 local function updateAndSendOre()
 					local upb = checkamount()
-    local content = "Ore: " .. tostring(upb)
+    local content = "Ore: " .. tostring(upb) .. "\n" ..
+			"Items: " .. game.Players.LocalPlayer.PlayerGui.MainGuis.Items.Categories.All.Text
     updateDiscordMessage(content)
 	
 end
