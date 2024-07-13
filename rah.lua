@@ -1,129 +1,127 @@
 repeat wait() until game:IsLoaded()
-	wait(5)
-	local KeepSc = false
-	local wfps = false
-	local df = false
-	local vu = game:GetService("VirtualUser")
-	game:GetService("Players").LocalPlayer.Idled:connect(function()
-	vu:Button2Down(Vector2.new(0,0),workspace.CurrentCamera.CFrame)
-	wait(1)
-	vu:Button2Up(Vector2.new(0,0),workspace.CurrentCamera.CFrame)
-	end)
-	game.NetworkClient.ChildRemoved:Connect(function()
-	game:GetService("TeleportService"):Teleport(5956785391)
-	end)
-	game:GetService("CoreGui").RobloxPromptGui.promptOverlay.ChildAdded:Connect(function(child)
-	if child.Name == 'ErrorPrompt' and child:FindFirstChild('MessageArea') and child.MessageArea:FindFirstChild("ErrorFrame") then
-		game:GetService("TeleportService"):Teleport(5956785391)
-	end
-	end)
-		print("executed false sc")
-		-- Create a ScreenGui
-		local screenGui = Instance.new("ScreenGui")
-		screenGui.Parent = game.Players.LocalPlayer:WaitForChild("PlayerGui")
 
-		-- Create a Frame
-		local frame = Instance.new("Frame")
-		frame.Size = UDim2.new(0, 100, 0, 50)
-		frame.Position = UDim2.new(0, 500, 0, 0)
-		frame.BackgroundColor3 = Color3.fromRGB(0, 0, 0)
-		frame.BackgroundTransparency = 0.5
-		frame.Parent = screenGui
+local KeepSc = false
+local wfps = true
+local df = true
+local vu = game:GetService("VirtualUser")
 
-		-- Create a TextLabel to display the state of KeepSC
-		local label = Instance.new("TextLabel")
-		label.Size = UDim2.new(1, 0, 0.5, 0)
-		label.Position = UDim2.new(0, 0, 0.5, 0)
-		label.Text = "KeepSC: " .. tostring(KeepSC)
-		label.Parent = frame
+game:GetService("Players").LocalPlayer.Idled:connect(function()
+    vu:Button2Down(Vector2.new(0,0), workspace.CurrentCamera.CFrame)
+    wait(1)
+    vu:Button2Up(Vector2.new(0,0), workspace.CurrentCamera.CFrame)
+end)
 
-		-- Create a TextButton
-		local button = Instance.new("TextButton")
-		button.Size = UDim2.new(1, 0, 0.5, 0)
-		button.Position = UDim2.new(0, 0, 0, 0)
-		button.Text = "Toggle KeepSC"
-		button.Parent = frame
+game.NetworkClient.ChildRemoved:Connect(function()
+    game:GetService("TeleportService"):Teleport(5956785391)
+end)
 
-		-- Create a TextButton
-		local button = Instance.new("TextButton")
-		button.Size = UDim2.new(1, 0, 0.5, 0)
-		button.Position = UDim2.new(0, 0, 0, 0)
-		button.Text = "Toggle wfps"
-		button.Parent = frame
+game:GetService("CoreGui").RobloxPromptGui.promptOverlay.ChildAdded:Connect(function(child)
+    if child.Name == 'ErrorPrompt' and child:FindFirstChild('MessageArea') and child.MessageArea:FindFirstChild("ErrorFrame") then
+        game:GetService("TeleportService"):Teleport(5956785391)
+    end
+end)
 
-		-- Create a TextButton
-		local button = Instance.new("TextButton")
-		button.Size = UDim2.new(1, 0, 0.5, 0)
-		button.Position = UDim2.new(0, 0, 0, 0)
-		button.Text = "Toggle df"
-		button.Parent = frame
+print("executed false sc")
 
-		-- Function to toggle KeepSC and update UI
-		local function toggleKeepSC()
-			KeepSC = not KeepSC
-			label.Text = "KeepSC: " .. tostring(KeepSC)
+-- Create a ScreenGui
+local screenGui = Instance.new("ScreenGui")
+screenGui.Parent = game.Players.LocalPlayer:WaitForChild("PlayerGui")
 
-			-- Send notification
-			game.StarterGui:SetCore("SendNotification", {
-				Title = "KeepSC Toggle",
-				Text = "KeepSC is now " .. tostring(KeepSC),
-				Duration = 3
-			})
-		end
-		button.MouseButton1Click:Connect(toggleKeepSC)
+-- Create a Frame
+local frame = Instance.new("Frame")
+frame.Size = UDim2.new(0, 200, 0, 100)
+frame.Position = UDim2.new(0, 300, 0, 0)
+frame.BackgroundColor3 = Color3.fromRGB(0, 0, 0)
+frame.BackgroundTransparency = 0.5
+frame.Parent = screenGui
 
-		local function togglewfps()
-			wfps = not wfps
+-- Create a TextLabel to display the state of KeepSC
+local label = Instance.new("TextLabel")
+label.Size = UDim2.new(1, 0, 0.2, 0)
+label.Position = UDim2.new(0, 0, 0.2, 0)
+label.Text = "KeepSC: " .. tostring(KeepSc)
+label.Parent = frame
 
-			-- Send notification
-			game.StarterGui:SetCore("SendNotification", {
-				Title = "PJS Rotation Toggle",
-			if wfps then
-				local wfpsntf = "Executing PJS Rotation in next game"
-			elseif not wfps then
-				local wfpsntf = "Canceled PJS Rotation in next game"
-			end
-				Text = wfpsntf,
-				Duration = 3
-			})
-		end
-		button.MouseButton1Click:Connect(togglewfps)
+-- Create a TextButton for KeepSC
+local buttonKeepSC = Instance.new("TextButton")
+buttonKeepSC.Size = UDim2.new(1, 0, 0.2, 0)
+buttonKeepSC.Position = UDim2.new(0, 0, 0, 0)
+buttonKeepSC.Text = "Toggle KeepSC"
+buttonKeepSC.Parent = frame
 
-		local function toggledf()
-			df = not df
+-- Create a TextButton for wfps
+local buttonWfps = Instance.new("TextButton")
+buttonWfps.Size = UDim2.new(1, 0, 0.2, 0)
+buttonWfps.Position = UDim2.new(0, 0, 0.4, 0)
+buttonWfps.Text = "Toggle wfps"
+buttonWfps.Parent = frame
 
-			-- Send notification
-			if df then
-				local dfntf = "Executing DF Trinkets in next game"
-			elseif not df then
-				local dfntf = "Canceled DF Trinkets in next game"
-			end
-			game.StarterGui:SetCore("SendNotification", {
-				Title = "DF Trinkets Toggle",
-				Text = dfntf,
-				Duration = 3
-			})
-		end
-		button.MouseButton1Click:Connect(toggledf)
+-- Create a TextButton for df
+local buttonDf = Instance.new("TextButton")
+buttonDf.Size = UDim2.new(1, 0, 0.2, 0)
+buttonDf.Position = UDim2.new(0, 0, 0.6, 0)
+buttonDf.Text = "Toggle df"
+buttonDf.Parent = frame
 
-		queueteleport = (syn and syn.queue_on_teleport) or queue_on_teleport or (fluxus and fluxus.queue_on_teleport)
-		local TeleportCheck = false
-		game:GetService("Players").LocalPlayer.OnTeleport:Connect(function(State)
-			if KeepSC and wfps then
-		if (not TeleportCheck) and queueteleport then
-			TeleportCheck = true
-			queueteleport("loadstring(game:HttpGet('https://raw.githubusercontent.com/AyoItsHanee/main/main/wfps.lua'))()")
-				end
-		elseif KeepSC and df then
-			if (not TeleportCheck) and queueteleport then	
-			TeleportCheck = true
-			queueteleport("loadstring(game:HttpGet('https://raw.githubusercontent.com/AyoItsHanee/main/main/df.lua'))()")
-				end
-		else
-			if (not TeleportCheck) and queueteleport then	
-			TeleportCheck = true
-			queueteleport("loadstring(game:HttpGet('https://raw.githubusercontent.com/AyoItsHanee/main/main/rah.lua'))()")
-				end
-		end
-		end)
-  
+-- Function to toggle KeepSC and update UI
+local function toggleKeepSC()
+    KeepSc = not KeepSc
+    label.Text = "KeepSC: " .. tostring(KeepSc)
+
+    -- Send notification
+    game.StarterGui:SetCore("SendNotification", {
+        Title = "KeepSC Toggle",
+        Text = "KeepSC is now " .. tostring(KeepSc),
+        Duration = 3
+    })
+end
+buttonKeepSC.MouseButton1Click:Connect(toggleKeepSC)
+
+-- Function to toggle wfps and update UI
+local function toggleWfps()
+    wfps = not wfps
+
+    -- Send notification
+    local wfpsntf = wfps and "Canceled PJS Rotation in next game" or "Executing PJS Rotation in next game"
+    game.StarterGui:SetCore("SendNotification", {
+        Title = "PJS Rotation Toggle",
+        Text = wfpsntf,
+        Duration = 3
+    })
+end
+buttonWfps.MouseButton1Click:Connect(toggleWfps)
+
+-- Function to toggle df and update UI
+local function toggleDf()
+    df = not df
+
+    -- Send notification
+    local dfntf = df and "Canceled DF Trinkets in next game" or "Executing DF Trinkets in next game"
+    game.StarterGui:SetCore("SendNotification", {
+        Title = "DF Trinkets Toggle",
+        Text = dfntf,
+        Duration = 3
+    })
+end
+buttonDf.MouseButton1Click:Connect(toggleDf)
+
+local queueteleport = (delta and delta.queue_on_teleport) or (syn and syn.queue_on_teleport) or queue_on_teleport or (fluxus and fluxus.queue_on_teleport)
+local TeleportCheck = false
+game:GetService("Players").LocalPlayer.OnTeleport:Connect(function(State)
+    if KeepSc and (not wfps) then
+        if (not TeleportCheck) and queueteleport then
+            TeleportCheck = true
+            queueteleport("loadstring(game:HttpGet('https://raw.githubusercontent.com/AyoItsHanee/main/main/wfps.lua'))()")
+        end
+    elseif KeepSc and (not df) then
+        if (not TeleportCheck) and queueteleport then	
+            TeleportCheck = true
+            queueteleport("loadstring(game:HttpGet('https://raw.githubusercontent.com/AyoItsHanee/main/main/df.lua'))()")
+        end
+    else
+        if (not TeleportCheck) and queueteleport then	
+            TeleportCheck = true
+            queueteleport("loadstring(game:HttpGet('https://raw.githubusercontent.com/AyoItsHanee/main/main/rah.lua'))()")
+        end
+    end
+end)
