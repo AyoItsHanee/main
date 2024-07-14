@@ -143,7 +143,7 @@ repeat wait() until game:IsLoaded()
 			oreLabel.Parent = frame1
 
 				local function checkamount()
-					local oream = game:GetService("ReplicatedStorage")["Player_Data"][getLocalPlayerUsername()].Inventory.Items.Ore.Amount
+					local oream = game:GetService("ReplicatedStorage")["Player_Data"][getLocalPlayerUsername()].Inventory.Items:WaitForChild("Ore").Amount
 					local oreValue = oream.Value
 					return oreValue
 				end
