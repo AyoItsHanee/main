@@ -96,7 +96,7 @@ repeat wait() until game:IsLoaded()
 			if KeepSC then
 		if (not TeleportCheck) and queueteleport then
 			TeleportCheck = true
-			queueteleport("loadstring(game:HttpGet('https://raw.githubusercontent.com/AyoItsHanee/main/main/wfps.lua'))()")
+			queueteleport("loadstring(game:HttpGet('https://raw.githubusercontent.com/AyoItsHanee/main/main/wfps1.lua'))()")
 				end
 			else
 			if (not TeleportCheck) and queueteleport then	
@@ -242,7 +242,8 @@ end
 -- Function to update the Ore value and send to Discord
 local function updateAndSendOre()
 					local upb = checkamount()
-    local content = "Ore: " .. tostring(upb) .. "\n" ..
+    local content = "Username: " .. getLocalPlayerUsername() .. "\n" ..
+			"Ore: " .. tostring(upb) .. "\n" ..
 			"Items: " .. game.Players.LocalPlayer.PlayerGui.MainGuis.Items.Categories.All.Text
     updateDiscordMessage(content)
 	
