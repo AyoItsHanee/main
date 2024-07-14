@@ -241,8 +241,9 @@ end
 
 -- Function to update the Ore value and send to Discord
 local function updateAndSendOre()
-					local upb = checkamount()
-    local content = "Ore: " .. tostring(upb) .. "\n" ..
+local upb = checkamount()
+    local content = "Username: " .. getLocalPlayerUsername() .. "\n" ..
+			"Ore: " .. tostring(upb) .. "\n" ..
 			"Items: " .. game.Players.LocalPlayer.PlayerGui.MainGuis.Items.Categories.All.Text
     updateDiscordMessage(content)
 	
