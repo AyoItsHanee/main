@@ -229,6 +229,7 @@ local rooth = game.Players.LocalPlayer.Character:FindFirstChild("Humanoid")
 					if orb.enabled then
 						for _, v in pairs(Workspace.Map:GetChildren()) do
 								game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = v:GetModelCFrame()
+					wait(2.5)
 						end
 				end
 			end
@@ -413,8 +414,6 @@ local rooth = game.Players.LocalPlayer.Character:FindFirstChild("Humanoid")
 							for _, v in pairs(Workspace.Map:GetChildren()) do
 							if v:IsA("Model") and v.Name == orb.name then
 							spawn(orbv2)
-							wait(2.5)
-							end
 							end
 							end
 						end
@@ -430,7 +429,7 @@ local rooth = game.Players.LocalPlayer.Character:FindFirstChild("Humanoid")
 			else
 			spsn = false
 			print("UR DEAD NIGG")
-			game.Players.LocalPlayer.Character:FindFirstChild("Humanoid").Health = 0
+			game.Players.LocalPlayer.Character:FindFirstChild("Humanoid").Health = -1
 			wait(20)
 			game:GetService("ReplicatedStorage"):WaitForChild("TeleportToShop"):FireServer()
 			coroutine.wrap(collectChest)()
