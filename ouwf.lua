@@ -229,25 +229,15 @@ local rooth = game.Players.LocalPlayer.Character:FindFirstChild("Humanoid")
 				for _, orb in ipairs(orbTypes) do
 					if orb.enabled then
 						for _, v in pairs(Workspace.Map:GetChildren()) do
+								if v:IsA("Model") and v.Name == orb.name then
 								game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = v:GetModelCFrame()
 					wait(2.5)
+								end
 						end
 				end
 			end
 		end
 		
-			local function msd()
-		if v:IsA("Model") and v.Name == orb.name then
-			coroutine.wrap(sps)()
-			coroutine.wrap(orbx)()
-		else
-			spsn = false
-			print("UR DEAD NIGG")
-			game:GetService("ReplicatedStorage"):WaitForChild("TeleportToShop"):FireServer()
-		end
-	end
-		
-
 		local function wd()
 			while task.wait(3) do
 				local args = {
@@ -409,12 +399,7 @@ local rooth = game.Players.LocalPlayer.Character:FindFirstChild("Humanoid")
 						local canrun = true
 						elseif #workspace.Mobs:GetChildren() <= 5 then
 						game.TweenService:Create(game.Players.LocalPlayer.Character.HumanoidRootPart, TweenInfo.new(2, Enum.EasingStyle.Linear, Enum.EasingDirection.Out), {CFrame = CFrame.new(randomPart.Position + Vector3.new(0, 75, 0))}):Play()
-						wait(2.5)
-							for _, v in pairs(Workspace.Map:GetChildren()) do
-							if v:IsA("Model") and v.Name == orb.name then
 							spawn(orbv2)
-							end
-							end
 						local canrun = false
 						end
 						end
