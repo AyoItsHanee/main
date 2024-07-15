@@ -427,13 +427,13 @@ local rooth = game.Players.LocalPlayer.Character:FindFirstChild("Humanoid")
 				warn("No room with parts found in workspace.Map.")
 			end
 			else
+						break
 			spsn = false
 			print("UR DEAD NIGG")
-			game.Players.LocalPlayer.Character:FindFirstChild("Humanoid").Health = -1
+			game.Players.LocalPlayer.Character:FindFirstChildOfClass("Humanoid"):ChangeState(Enum.HumanoidStateType.Dead)
 			wait(20)
 			game:GetService("ReplicatedStorage"):WaitForChild("TeleportToShop"):FireServer()
 			coroutine.wrap(collectChest)()
-			break
 		end
 		end
 			end)
