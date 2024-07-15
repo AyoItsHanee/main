@@ -357,7 +357,7 @@ coroutine.wrap(updsore)()
 							end
 						end
 					end
-						wait(1)
+						wait(.1)
 				end
 			end
 
