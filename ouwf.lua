@@ -439,8 +439,8 @@ local rooth = game.Players.LocalPlayer.Character:FindFirstChild("Humanoid")
 			coroutine.wrap(collectChest)()
 			break
 		end
+					wait()
 		end
-				wait()
 			end)
     --[[
 			wait(600)
