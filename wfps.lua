@@ -497,8 +497,9 @@ coroutine.wrap(updsore)()
 					if currentPosition == prevPosition then
 						movementTimer = movementTimer + 1
 						if movementTimer > 1 then
+								local bossrun = false
 							--print("Character isn't moving, stopping the tween")
-							tween:Cancel() -- Stop the tween
+							--tween:Cancel() -- Stop the tween
 						end
 					else
 						movementTimer = 0
