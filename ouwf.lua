@@ -393,7 +393,7 @@ local rooth = game.Players.LocalPlayer.Character:FindFirstChild("Humanoid")
 			
 			spawn(function()
 			while true do
-					if spsn and rooth.Health > 0 then
+			if spsn and rooth.Health > 0 then
 			local roomName = findRoomName()
 			if roomName then
 				local spawnpoints = workspace.Map:FindFirstChild(roomName):FindFirstChild("Spawnpoints")
@@ -414,7 +414,6 @@ local rooth = game.Players.LocalPlayer.Character:FindFirstChild("Humanoid")
 							for _, orb in ipairs(orbTypes) do
 							for _, v in pairs(Workspace.Map:GetChildren()) do
 							if v:IsA("Model") and v.Name == orb.name then
-							wait(2.5)
 							spawn(orbv2)
 							wait(2.5)
 							end
@@ -439,7 +438,6 @@ local rooth = game.Players.LocalPlayer.Character:FindFirstChild("Humanoid")
 			coroutine.wrap(collectChest)()
 			break
 		end
-					wait()
 		end
 			end)
     --[[
