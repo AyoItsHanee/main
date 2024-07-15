@@ -268,13 +268,12 @@ local rooth = game.Players.LocalPlayer.Character:FindFirstChild("Humanoid")
 			-- Timer GUI is not visible, so teleport to the desired game
 			TeleportService:Teleport(9321822839)
 		end
-
+	
+		local player = game.Players.LocalPlayer
+		local timerGui = player.PlayerGui:WaitForChild("top_ui"):FindFirstChild("Timer")
 		local timeout = 60 -- Set the timeout in seconds (change this as needed)
 		-- Function to check if the Timer GUI is visible
 			local function isTimerGuiNotVisible()
-			local player = game:GetService("Players").LocalPlayer
-			local timerGui = player.PlayerGui:WaitForChild("top_ui"):FindFirstChild("Timer")
-
 			if timerGui and timerGui.Visible == false then
 				return false
 			else
@@ -282,9 +281,6 @@ local rooth = game.Players.LocalPlayer.Character:FindFirstChild("Humanoid")
 			end
 		end
 		local function isTimerGuiVisible()
-			local player = game:GetService("Players").LocalPlayer
-			local timerGui = player.PlayerGui:FindFirstChild("top_ui"):FindFirstChild("Timer")
-
 			if timerGui and timerGui.Visible == true then
 				return true
 			else
