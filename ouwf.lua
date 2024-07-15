@@ -228,9 +228,7 @@ local rooth = game.Players.LocalPlayer.Character:FindFirstChild("Humanoid")
 				for _, orb in ipairs(orbTypes) do
 					if orb.enabled then
 						for _, v in pairs(Workspace.Map:GetChildren()) do
-							if v:IsA("Model") and v.Name == orb.name then
 								game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = v:GetModelCFrame()
-							end
 						end
 				end
 			end
@@ -412,7 +410,6 @@ local rooth = game.Players.LocalPlayer.Character:FindFirstChild("Humanoid")
 						wait(2.5)
 						local canrun = false
 						end
-							for _, orb in ipairs(orbTypes) do
 							for _, v in pairs(Workspace.Map:GetChildren()) do
 							if v:IsA("Model") and v.Name == orb.name then
 							spawn(orbv2)
