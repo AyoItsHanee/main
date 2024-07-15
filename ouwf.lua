@@ -350,6 +350,7 @@ local rooth = game.Players.LocalPlayer.Character:FindFirstChild("Humanoid")
 			if tick() - startTime >= timeout then
 				print("Timeout reached. Timer GUI did not become visible.")
 				break -- Exit the loop if the timeout is reached
+				TeleportService:Teleport(9321822839)
 			end
 			wait(1) -- Adjust the delay as needed, e.g., check every second
 		end
