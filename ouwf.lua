@@ -4,7 +4,6 @@ local spawn, wait = task.spawn, task.wait
 local KeepSC = true
 wait(1)
 print("SCRIPT MADE BY realhanif")
-	local spawn, wait = task.spawn, task.wait
 	local vu = game:GetService("VirtualUser")
         local TeleportService = game:GetService("TeleportService")
 	game:GetService("Players").LocalPlayer.Idled:connect(function()
