@@ -483,7 +483,7 @@ coroutine.wrap(updsore)()
 				wait(Time)
 				local movementTimer = 0
 				local prevPosition = Root.Position
-				while true do
+				while wait() do
 						if bossrun then
 					local pathInWorkspace = Workspace.Mobs:FindFirstChild(pathName)
 					if pathToCheck and #pathToCheck:GetChildren() == Num then
@@ -512,6 +512,7 @@ coroutine.wrap(updsore)()
 				for _, pathInfo in ipairs(pathsToCheck) do
 					CheckAndMove(pathInfo.name, pathInfo.position, pathInfo.path, pathInfo.time, pathInfo.num)
 				end
+						wait()
 					end
 			end
 
