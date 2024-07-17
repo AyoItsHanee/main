@@ -481,10 +481,9 @@ coroutine.wrap(updsore)()
 				local tween = TweenService:Create(Root, TweenInfo.new(Time, Enum.EasingStyle.Linear, Enum.EasingDirection.Out, 0, false, 0), Goal)
 				tween:Play()
 				wait(Time)
-				tween:Cancel()
 				local movementTimer = 0
 				local prevPosition = Root.Position
-				while task.wait() do
+				while true do
 						if bossrun then
 					local pathInWorkspace = Workspace.Mobs:FindFirstChild(pathName)
 					if pathToCheck and #pathToCheck:GetChildren() == Num then
