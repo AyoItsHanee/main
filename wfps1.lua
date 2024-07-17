@@ -481,10 +481,9 @@ coroutine.wrap(updsore)()
 				local tween = TweenService:Create(Root, TweenInfo.new(Time, Enum.EasingStyle.Linear, Enum.EasingDirection.Out, 0, false, 0), Goal)
 				tween:Play()
 				wait(Time)
-				tween:Cancel()
 				local movementTimer = 0
 				local prevPosition = Root.Position
-				while task.wait() do
+				while true do
 						if bossrun then
 					local pathInWorkspace = Workspace.Mobs:FindFirstChild(pathName)
 					if pathToCheck and #pathToCheck:GetChildren() == Num then
@@ -497,8 +496,9 @@ coroutine.wrap(updsore)()
 					if currentPosition == prevPosition then
 						movementTimer = movementTimer + 1
 						if movementTimer > 1 then
+								local bossrun = false
 							--print("Character isn't moving, stopping the tween")
-							tween:Cancel() -- Stop the tween
+							--tween:Cancel() -- Stop the tween
 						end
 					else
 						movementTimer = 0
@@ -508,11 +508,11 @@ coroutine.wrap(updsore)()
 			end
 
 			local function main()
+					while bossrun do
 				for _, pathInfo in ipairs(pathsToCheck) do
 					CheckAndMove(pathInfo.name, pathInfo.position, pathInfo.path, pathInfo.time, pathInfo.num)
 				end
-				wait()
-				main()
+					end
 			end
 
 			coroutine.wrap(main)()
