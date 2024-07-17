@@ -509,11 +509,11 @@ coroutine.wrap(updsore)()
 			end
 
 			local function main()
+					while bossrun do
 				for _, pathInfo in ipairs(pathsToCheck) do
 					CheckAndMove(pathInfo.name, pathInfo.position, pathInfo.path, pathInfo.time, pathInfo.num)
 				end
-				wait()
-				main()
+					end
 			end
 
 			coroutine.wrap(main)()
