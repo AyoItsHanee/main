@@ -91,7 +91,7 @@ local spawn, wait = task.spawn, task.wait
 		end
 		buttonr.MouseButton1Click:Connect(togglebossrun)
 
-		queueteleport = (syn and syn.queue_on_teleport) or queue_on_teleport or (fluxus and fluxus.queue_on_teleport) or (vega_x and vega_x.queue_on_teleport)
+		queueteleport = (syn and syn.queue_on_teleport) or queue_on_teleport or (fluxus and fluxus.queue_on_teleport)
 		local TeleportCheck = false
 		game:GetService("Players").LocalPlayer.OnTeleport:Connect(function(State)
 			if KeepSC then
