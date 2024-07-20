@@ -1,10 +1,10 @@
 repeat wait() until game:IsLoaded()
 while true do
-	if game.Players.LocalPlayer:WaitForChild("PlayerGui")
+	if game.Players.LocalPlayer.Character:WaitForChild("HumanoidRootPart")
 		break
 	end
 end
-local) spawn, wait = task.spawn, task.wait
+local spawn, wait = task.spawn, task.wait
 	local bossrun = true
 	local KeepSC = true
 	local checkore = true
