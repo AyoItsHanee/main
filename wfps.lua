@@ -1,6 +1,6 @@
 repeat wait() until game:IsLoaded()
 while true do
-	if game.Players.LocalPlayer.Character:WaitForChild("HumanoidRootPart")
+	if game.Players.LocalPlayer:WaitForChild("PlayerGui")
 		break
 	end
 end
@@ -26,7 +26,7 @@ local spawn, wait = task.spawn, task.wait
 	end)
 
 	local function master()
-		print("Boss Rotation v0.2.2")
+		print("Boss Rotation v0.3.2")
 		print("executed true sc")
 		local function getLocalPlayerUsername()
 			local player = game.Players.LocalPlayer
