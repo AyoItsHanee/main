@@ -237,18 +237,6 @@ local rooth = game.Players.LocalPlayer.Character:FindFirstChild("Humanoid")
 			end
 		end
 		
-			local function msd()
-		if v:IsA("Model") and v.Name == orb.name then
-			coroutine.wrap(sps)()
-			coroutine.wrap(orbx)()
-		else
-			spsn = false
-			print("UR DEAD NIGG")
-			game:GetService("ReplicatedStorage"):WaitForChild("TeleportToShop"):FireServer()
-		end
-	end
-		
-
 		local function wd()
 			while task.wait(3) do
 				local args = {
