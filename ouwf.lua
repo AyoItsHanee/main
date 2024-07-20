@@ -216,7 +216,6 @@ local rooth = game.Players.LocalPlayer.Character:FindFirstChild("Humanoid")
 							if v:IsA("Model") and v.Name == orb.name then do
 								if rooth.Health > 0 then
 								game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = v:GetModelCFrame()
-								break -- Break out of the inner loop to avoid redundant checks
 								end
 							end
 						end
@@ -229,8 +228,10 @@ local rooth = game.Players.LocalPlayer.Character:FindFirstChild("Humanoid")
 				for _, orb in ipairs(orbTypes) do
 					if orb.enabled then
 						for _, v in pairs(Workspace.Map:GetChildren()) do
+								if v:IsA("Model") and v.Name == orb.name then do
 								game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = v:GetModelCFrame()
 					wait(2.5)
+									end
 						end
 				end
 			end
@@ -410,11 +411,7 @@ local rooth = game.Players.LocalPlayer.Character:FindFirstChild("Humanoid")
 						elseif #workspace.Mobs:GetChildren() <= 5 then
 						game.TweenService:Create(game.Players.LocalPlayer.Character.HumanoidRootPart, TweenInfo.new(2, Enum.EasingStyle.Linear, Enum.EasingDirection.Out), {CFrame = CFrame.new(randomPart.Position + Vector3.new(0, 75, 0))}):Play()
 						wait(2.5)
-							for _, v in pairs(Workspace.Map:GetChildren()) do
-							if v:IsA("Model") and v.Name == orb.name then
-							spawn(orbv2)
-							end
-							end
+						spawn(orbv2)
 						local canrun = false
 						end
 						end
