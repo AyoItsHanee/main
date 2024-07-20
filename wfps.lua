@@ -1,6 +1,6 @@
 repeat wait() until game:IsLoaded()
 while true do
-	if game.Players.LocalPlayer.Character:WaitForChild("HumanoidRootPart")
+	if game.Players.LocalPlayer:WaitForChild("PlayerGui")
 		break
 	end
 end
