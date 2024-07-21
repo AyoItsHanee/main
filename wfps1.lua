@@ -33,7 +33,7 @@ if not game:IsLoaded() then
     game.Loaded:Wait()
 end
 print("Roblox loaded")
-repeat wait() until game.Players.LocalPlayer:WaitForChild("Character"):WaitForChild("HumanoidRootPart")
+repeat wait() until game.Players.LocalPlayer.Character:WaitForChild("HumanoidRootPart")
 print("Game loaded")
 
 	local vu = game:GetService("VirtualUser")
