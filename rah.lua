@@ -1,7 +1,14 @@
-repeat wait() until game:IsLoaded()
+if not game:IsLoaded() then
+    game.Loaded:Wait()
+end
+print("Roblox loaded")
+repeat wait() until game.Players.LocalPlayer.Character:WaitForChild("HumanoidRootPart")
+print("Game loaded")
 
 local KeepSc = false
 local wfps = true
+local wfps1 = true
+local wfps2 = true
 local df = true
 local vu = game:GetService("VirtualUser")
 
@@ -56,10 +63,24 @@ buttonWfps.Position = UDim2.new(0, 0, 0.4, 0)
 buttonWfps.Text = "Toggle wfps"
 buttonWfps.Parent = frame
 
+-- Create a TextButton for wfps
+local buttonWfps1 = Instance.new("TextButton")
+buttonWfps1.Size = UDim2.new(1, 0, 0.2, 0)
+buttonWfps1.Position = UDim2.new(0, 0, 0.6, 0)
+buttonWfps1.Text = "Toggle wfps1"
+buttonWfps1.Parent = frame
+
+-- Create a TextButton for wfps
+local buttonWfps2 = Instance.new("TextButton")
+buttonWfps2.Size = UDim2.new(1, 0, 0.2, 0)
+buttonWfps2.Position = UDim2.new(0, 0, 0.8, 0)
+buttonWfps2.Text = "Toggle wfps2"
+buttonWfps2.Parent = frame
+
 -- Create a TextButton for df
 local buttonDf = Instance.new("TextButton")
 buttonDf.Size = UDim2.new(1, 0, 0.2, 0)
-buttonDf.Position = UDim2.new(0, 0, 0.6, 0)
+buttonDf.Position = UDim2.new(0, 0, 1, 0)
 buttonDf.Text = "Toggle df"
 buttonDf.Parent = frame
 
@@ -91,6 +112,34 @@ local function toggleWfps()
 end
 buttonWfps.MouseButton1Click:Connect(toggleWfps)
 
+-- Function to toggle wfps and update UI
+local function toggleWfps1()
+    wfps1 = not wfps1
+
+    -- Send notification
+    local wfpsntf1 = wfps1 and "Canceled PJS Rotation in next game" or "Executing PJS Rotation in next game"
+    game.StarterGui:SetCore("SendNotification", {
+        Title = "PJS Rotation Toggle",
+        Text = wfpsntf1,
+        Duration = 3
+    })
+end
+buttonWfps1.MouseButton1Click:Connect(toggleWfps1)
+
+-- Function to toggle wfps and update UI
+local function toggleWfps2()
+    wfps2 = not wfps2
+
+    -- Send notification
+    local wfpsntf2 = wfps2 and "Canceled PJS Rotation in next game" or "Executing PJS Rotation in next game"
+    game.StarterGui:SetCore("SendNotification", {
+        Title = "PJS Rotation Toggle",
+        Text = wfpsntf2,
+        Duration = 3
+    })
+end
+buttonWfps2.MouseButton1Click:Connect(toggleWfps2)
+
 -- Function to toggle df and update UI
 local function toggleDf()
     df = not df
@@ -112,6 +161,16 @@ game:GetService("Players").LocalPlayer.OnTeleport:Connect(function(State)
         if (not TeleportCheck) and queueteleport then
             TeleportCheck = true
             queueteleport("loadstring(game:HttpGet('https://raw.githubusercontent.com/AyoItsHanee/main/main/wfps.lua'))()")
+        end
+    elseif KeepSc and (not wfps1) then
+        if (not TeleportCheck) and queueteleport then	
+            TeleportCheck = true
+            queueteleport("loadstring(game:HttpGet('https://raw.githubusercontent.com/AyoItsHanee/main/main/wfps1.lua'))()")
+        end
+    elseif KeepSc and (not wfps2) then
+        if (not TeleportCheck) and queueteleport then	
+            TeleportCheck = true
+            queueteleport("loadstring(game:HttpGet('https://raw.githubusercontent.com/AyoItsHanee/main/main/wfps2.lua'))()")
         end
     elseif KeepSc and (not df) then
         if (not TeleportCheck) and queueteleport then	
