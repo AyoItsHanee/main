@@ -19,7 +19,7 @@ local spawn, wait = task.spawn, task.wait
 			if KeepSC then
 		if (not TeleportCheck) and queueteleport then
 			TeleportCheck = true
-			queueteleport("loadstring(game:HttpGet('https://raw.githubusercontent.com/AyoItsHanee/main/main/wfps.lua'))()")
+			queueteleport("loadstring(game:HttpGet('https://raw.githubusercontent.com/AyoItsHanee/main/main/wfps1.lua'))()")
 				end
 			else
 			if (not TeleportCheck) and queueteleport then	
