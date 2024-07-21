@@ -392,7 +392,7 @@ coroutine.wrap(updsore)()
 				]]--
 				spawn(function()
 						while true do
-				        for i,v in pairs(game.Workspace.Map:GetChildren()) do
+				        for _,v in pairs(game.Workspace.Map:GetChildren()) do
            					v:Destroy()
 					end
 							wait()
