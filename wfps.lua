@@ -133,7 +133,6 @@ print("game loaded")
 		local ReplicatedStorage = game:GetService("ReplicatedStorage")
 		local Workspace = game:GetService("Workspace")
 		local placeId = game.PlaceId
-		local TeleportService = game:GetService("TeleportService")
 			
 		if game.PlaceId == 5956785391 then
 			local args = {
@@ -543,9 +542,7 @@ coroutine.wrap(updsore)()
 			--game:GetService("RunService"):Set3dRenderingEnabled(false)
 			wait(300)
 			local isLooping = false
-
 			wait(3600)
-			local TeleportService = game:GetService("TeleportService")
 			game:GetService("TeleportService"):Teleport(5956785391)
 
 		elseif game.PlaceId == 9321822839 then
