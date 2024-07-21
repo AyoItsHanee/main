@@ -1,9 +1,10 @@
 --loadstring(game:HttpGet("https://raw.githubusercontent.com/EdgeIY/infiniteyield/master/source", true))()
 repeat wait() until game:IsLoaded()
-local spawn, wait = task.spawn, task.wait
+spsn = true
 local KeepSC = true
 wait(1)
 print("SCRIPT MADE BY realhanif")
+local spawn, wait = task.spawn, task.wait
 	local vu = game:GetService("VirtualUser")
         local TeleportService = game:GetService("TeleportService")
 	game:GetService("Players").LocalPlayer.Idled:connect(function()
@@ -66,7 +67,7 @@ print("SCRIPT MADE BY realhanif")
 		game:GetService("Players").LocalPlayer.OnTeleport:Connect(function(State)
 		if KeepSC and (not TeleportCheck) and queueteleport then
 			TeleportCheck = true
-			queueteleport("loadstring(game:HttpGet('https://raw.githubusercontent.com/AyoItsHanee/main/main/ouwf.lua'))()")
+			queueteleport("loadstring(game:HttpGet('https://raw.githubusercontent.com/AyoItsHanee/main/main/ouw.lua'))()")
 		end
 		end)
 
@@ -77,18 +78,15 @@ print("SCRIPT MADE BY realhanif")
 				return nil
 			end
 		end
+
 	if placeId == 5956785391 then
 
-
-		local TeleportService = game:GetService("TeleportService")
 		wait()
 		TeleportService:Teleport(9321822839)
 
-
 	elseif placeId == 9321822839 then
 
-
-		local myUsername = getLocalPlayerUsername() -- Replace with your actual username
+		local myUsername = getLocalPlayerUsername()
 		local function findUsername(folder, username)
 			for _, child in pairs(folder:GetChildren()) do
 				local playerFolder = child:FindFirstChild(username)
@@ -124,11 +122,10 @@ print("SCRIPT MADE BY realhanif")
 		else
 			print("Username not found in ReplicatedStorage.parties")
 		end
-		wait(10)
-
+		wait(20)
+	TeleportService:Teleport(9321822839)
 
 	elseif placeId == 11468075017 then
-
 
 		wait(1)
 		local Info = TweenInfo.new(1, Enum.EasingStyle.Cubic, Enum.EasingDirection.Out, 0, false, 0)
@@ -140,8 +137,8 @@ print("SCRIPT MADE BY realhanif")
 		Goal.CFrame = CFrame.new(4988, -148, 2030)
 		game:GetService("TweenService"):Create(Root, Info, Goal):Play()
 		wait(11)
-		
-		local function noclip()
+
+	local function noclip()
 		           for _, v in pairs(game:GetService("Players").LocalPlayer.Character:GetDescendants()) do
                if v:IsA("BasePart") then
                    v.CanCollide = false    
@@ -152,7 +149,7 @@ print("SCRIPT MADE BY realhanif")
            end
 		   end
 		   noclip()
-		
+			
 	local function collectChest()
 					while task.wait() do
 						for _, chest in pairs(Workspace.Debree:GetChildren()) do
@@ -165,7 +162,7 @@ print("SCRIPT MADE BY realhanif")
 						end
 					end
 				end
-		local TeleportService = game:GetService("TeleportService")
+
 		local function destroyModels(modelNames)
 			for _, modelName in pairs(modelNames) do
 				if Workspace.Map:FindFirstChild(modelName) then
@@ -178,16 +175,33 @@ print("SCRIPT MADE BY realhanif")
 			end
 		end
 
+		local player = game.Players.LocalPlayer
+		local character = player.Character or player.CharacterAdded:Wait()
+		local root = character:WaitForChild("HumanoidRootPart")
+		local toggleTeleport = false
+		local tweenTime = 1 -- Change this value to adjust tween duration (in seconds)
+
 		local orbTypes = {
 			{name = "HealthRegen", enabled = true},
 			{name = "StaminaRegen", enabled = false},
-			{name = "BloodMoney", enabled = true},
+			{name = "BloodMoney", enabled = false},
 			{name = "DoublePoints", enabled = true},
 			{name = "InstaKill", enabled = true},
 			{name = "WisteriaPoisoning", enabled = true},
 			{name = "MobCamouflage", enabled = true}
 		}
 local rooth = game.Players.LocalPlayer.Character:FindFirstChild("Humanoid")
+				local function orbv2()
+				for _, orb in ipairs(orbTypes) do
+					if orb.enabled then
+						for _, v in pairs(Workspace.Map:GetChildren()) do
+							if v:IsA("Model") and v.Name == orb.name then
+								game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = v:GetModelCFrame()
+							end
+						end
+				end
+			end
+		end
 
 		-- Function to find the correct room name
 		local function findRoomName()
@@ -204,37 +218,7 @@ local rooth = game.Players.LocalPlayer.Character:FindFirstChild("Humanoid")
 		end
 
 -- Function to tween the character to a random part within "Spawnpoints"
-	local spsn = true
 
-
-		local function orbx()
-				for _, orb in ipairs(orbTypes) do
-					if orb.enabled then
-						for _, v in pairs(Workspace.Map:GetChildren()) do
-							if v:IsA("Model") and v.Name == orb.name then do
-								if rooth.Health > 0 then
-								game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = v:GetModelCFrame()
-								end
-							end
-						end
-					end
-				end
-			end
-		end
-		
-				local function orbv2()
-				for _, orb in ipairs(orbTypes) do
-					if orb.enabled then
-						for _, v in pairs(Workspace.Map:GetChildren()) do
-								if v:IsA("Model") and v.Name == orb.name then do
-								game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = v:GetModelCFrame()
-								wait(2.5)
-								end
-						end
-				end
-			end
-		end
-		
 		local function wd()
 			while task.wait(3) do
 				local args = {
@@ -255,12 +239,13 @@ local rooth = game.Players.LocalPlayer.Character:FindFirstChild("Humanoid")
 			-- Timer GUI is not visible, so teleport to the desired game
 			TeleportService:Teleport(9321822839)
 		end
-	
-		local player = game.Players.LocalPlayer
-		local timerGui = player.PlayerGui:WaitForChild("top_ui"):FindFirstChild("Timer")
+
 		local timeout = 60 -- Set the timeout in seconds (change this as needed)
 		-- Function to check if the Timer GUI is visible
 			local function isTimerGuiNotVisible()
+			local player = game:GetService("Players").LocalPlayer
+			local timerGui = player.PlayerGui:WaitForChild("top_ui"):FindFirstChild("Timer")
+
 			if timerGui and timerGui.Visible == false then
 				return false
 			else
@@ -268,6 +253,9 @@ local rooth = game.Players.LocalPlayer.Character:FindFirstChild("Humanoid")
 			end
 		end
 		local function isTimerGuiVisible()
+			local player = game:GetService("Players").LocalPlayer
+			local timerGui = player.PlayerGui:FindFirstChild("top_ui"):FindFirstChild("Timer")
+
 			if timerGui and timerGui.Visible == true then
 				return true
 			else
@@ -336,8 +324,7 @@ local rooth = game.Players.LocalPlayer.Character:FindFirstChild("Humanoid")
 		while not isTimerGuiVisible() do
 			if tick() - startTime >= timeout then
 				print("Timeout reached. Timer GUI did not become visible.")
-				TeleportService:Teleport(9321822839)
-						break -- Exit the loop if the timeout is reached
+				break -- Exit the loop if the timeout is reached
 			end
 			wait(1) -- Adjust the delay as needed, e.g., check every second
 		end
@@ -361,8 +348,9 @@ local rooth = game.Players.LocalPlayer.Character:FindFirstChild("Humanoid")
 			local loopCM = coroutine.create(mainCoroutine)
 			coroutine.resume(loopCM)
 			wait(1)
-					local function preventFall()
-				while task.wait() do
+			coroutine.wrap(loopFunction)()
+		local function preventFall()
+				while true do
 					local antifall3 = Instance.new("BodyVelocity", game.Players.LocalPlayer.Character.HumanoidRootPart)
 					antifall3.Velocity = Vector3.new(0, 0, 0)
 					antifall3.MaxForce = Vector3.new(9e9, 9e9, 9e9)
@@ -376,12 +364,9 @@ local rooth = game.Players.LocalPlayer.Character:FindFirstChild("Humanoid")
 				end
 			end
 			coroutine.wrap(preventFall)()
-	
-			coroutine.wrap(loopFunction)()
-			
 			spawn(function()
 			while true do
-			if spsn and rooth.Health > 0 then
+					if spsn and rooth.Health > 0 then
 			local roomName = findRoomName()
 			if roomName then
 				local spawnpoints = workspace.Map:FindFirstChild(roomName):FindFirstChild("Spawnpoints")
@@ -397,9 +382,16 @@ local rooth = game.Players.LocalPlayer.Character:FindFirstChild("Humanoid")
 						elseif #workspace.Mobs:GetChildren() <= 5 then
 						game.TweenService:Create(game.Players.LocalPlayer.Character.HumanoidRootPart, TweenInfo.new(2, Enum.EasingStyle.Linear, Enum.EasingDirection.Out), {CFrame = CFrame.new(randomPart.Position + Vector3.new(0, 75, 0))}):Play()
 						wait(2.5)
-						orbv2()
 						local canrun = false
 						end
+							for _, orb in ipairs(orbTypes) do
+							for _, v in pairs(Workspace.Map:GetChildren()) do
+							if v:IsA("Model") and v.Name == orb.name then
+							spawn(orbv2)
+							wait(2.5)
+							end
+							end
+							end
 						end
 					else
 						warn("No parts found in Spawnpoints of room: " .. roomName)
@@ -413,33 +405,32 @@ local rooth = game.Players.LocalPlayer.Character:FindFirstChild("Humanoid")
 			else
 			spsn = false
 			print("UR DEAD NIGG")
-			game.Players.LocalPlayer.Character:FindFirstChildOfClass("Humanoid"):ChangeState(Enum.HumanoidStateType.Dead)
-			wait(20)
+			game.Players.LocalPlayer.Character:FindFirstChild("Humanoid").Health = -1
+						wait()
+			--game.Players.LocalPlayer.Character:FindFirstChild("Humanoid"):Destroy()
+			repeat wait() until game.Players.LocalPlayer.Character:FindFirstChild("Humanoid").Health > 0
 			game:GetService("ReplicatedStorage"):WaitForChild("TeleportToShop"):FireServer()
 			coroutine.wrap(collectChest)()
 			break
 		end
 		end
 			end)
-    --[[
+
+		--[[
+			--coroutine.wrap(orbx)()
 			wait(600)
-			local p = game.Players.LocalPlayer
-			local c = p.Character
-			local h = c:FindFirstChild("Humanoid")
-			-- Check if your character and humanoid exist
-			if c and h then
-				-- Set the humanoid's health to 0 to "kill" the character
-				h.Health = 0
+			if game.Players.LocalPlayer.Character:FindFirstChild("Humanoid") then
+				game.Players.LocalPlayer.Character:FindFirstChild("Humanoid").Health = 0 -- Set the humanoid's health to 0 to "kill" the character
 			else
 				print("Character or humanoid not found.")
 			end
-			wait(5)
+			wait(10)
 			game:GetService("ReplicatedStorage"):WaitForChild("TeleportToShop"):FireServer()
-			wait(30)
+			wait(10)
 			TeleportService:Teleport(9321822839)
-    ]]--
+		]]--
 		end
-		--TeleportService:Teleport(9321822839)
+		TeleportService:Teleport(9321822839)
 	else
 		print("Place ID doesn't match")
 	end
