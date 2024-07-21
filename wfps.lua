@@ -33,8 +33,9 @@ if not game:IsLoaded() then
     game.Loaded:Wait()
 end
 print("Roblox loaded")
-repeat wait() until game.Players.LocalPlayer.Character:WaitForChild("HumanoidRootPart")
-print("Game loaded")
+-- Wait for the LocalPlayer to be loaded
+game:GetService("Players").LocalPlayer:WaitForChild("doneloadinggamepasses")
+print("game loaded")
 
 	local vu = game:GetService("VirtualUser")
 	game:GetService("Players").LocalPlayer.Idled:connect(function()
@@ -45,7 +46,7 @@ print("Game loaded")
 
 
 	local function master()
-		print("Boss Rotation v0.3.2")
+		print("Boss Rotation v0.3.5")
 		print("executed true sc")
 		local function getLocalPlayerUsername()
 			local player = game.Players.LocalPlayer
