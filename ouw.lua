@@ -20,6 +20,30 @@ local spawn, wait = task.spawn, task.wait
 		game:GetService("TeleportService"):Teleport(9321822839)
 	end
 	end)
+
+		queueteleport = (syn and syn.queue_on_teleport) or queue_on_teleport or (fluxus and fluxus.queue_on_teleport) or (delta and delta.queue_on_teleport)
+		local TeleportCheck = false
+		game:GetService("Players").LocalPlayer.OnTeleport:Connect(function(State)
+			if KeepSC then
+		if (not TeleportCheck) and queueteleport then
+			TeleportCheck = true
+			queueteleport("loadstring(game:HttpGet('https://raw.githubusercontent.com/AyoItsHanee/main/main/wfps.lua'))()")
+				end
+			else
+			if (not TeleportCheck) and queueteleport then	
+			TeleportCheck = true
+			queueteleport("loadstring(game:HttpGet('https://raw.githubusercontent.com/AyoItsHanee/main/main/rah.lua'))()")
+				end
+		end
+		end)
+
+if not game:IsLoaded() then
+    game.Loaded:Wait()
+end
+print("Roblox loaded")
+-- Wait for the LocalPlayer to be loaded
+game:GetService("Players").LocalPlayer:WaitForChild("doneloadinggamepasses")
+print("game loaded")
 	local placeId = game.PlaceId
 	local Workspace = game:GetService("Workspace")
 		-- Create a ScreenGui
@@ -61,15 +85,6 @@ local spawn, wait = task.spawn, task.wait
 			})
 		end
 		button.MouseButton1Click:Connect(toggleKeepSC)
-
-		queueteleport = (delta and delta.queue_on_teleport) or (syn and syn.queue_on_teleport) or queue_on_teleport or (fluxus and fluxus.queue_on_teleport)
-		local TeleportCheck = false
-		game:GetService("Players").LocalPlayer.OnTeleport:Connect(function(State)
-		if KeepSC and (not TeleportCheck) and queueteleport then
-			TeleportCheck = true
-			queueteleport("loadstring(game:HttpGet('https://raw.githubusercontent.com/AyoItsHanee/main/main/ouw.lua'))()")
-		end
-		end)
 
 		local function getLocalPlayerUsername()
 			if game.Players.LocalPlayer then
@@ -336,7 +351,7 @@ local rooth = game.Players.LocalPlayer.Character:FindFirstChild("Humanoid")
 			coroutine.wrap(orbx)()
 		else
 			spsn = false
-			print("UR DEAD NIGG")
+			print("UR DEAD")
 			game:GetService("ReplicatedStorage"):WaitForChild("TeleportToShop"):FireServer()
 		end
 	end
@@ -404,7 +419,7 @@ local rooth = game.Players.LocalPlayer.Character:FindFirstChild("Humanoid")
 			end
 			else
 			spsn = false
-			print("UR DEAD NIGG")
+			print("UR DEAD")
 			game.Players.LocalPlayer.Character:FindFirstChild("Humanoid").Health = -1
 						wait()
 			--game.Players.LocalPlayer.Character:FindFirstChild("Humanoid"):Destroy()
