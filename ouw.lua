@@ -26,7 +26,7 @@ local spawn, wait = task.spawn, task.wait
 			if KeepSC then
 		if (not TeleportCheck) and queueteleport then
 			TeleportCheck = true
-			queueteleport("loadstring(game:HttpGet('https://raw.githubusercontent.com/AyoItsHanee/main/main/wfps.lua'))()")
+			queueteleport("loadstring(game:HttpGet('https://raw.githubusercontent.com/AyoItsHanee/main/main/ouw.lua'))()")
 				end
 			else
 			if (not TeleportCheck) and queueteleport then	
@@ -152,7 +152,7 @@ print("game loaded")
 		game:GetService("TweenService"):Create(Root, Info, Goal):Play()
 		wait(11)
 
-	local function noclip()
+		spawn(function()
 		           for _, v in pairs(game:GetService("Players").LocalPlayer.Character:GetDescendants()) do
                if v:IsA("BasePart") then
                    v.CanCollide = false    
@@ -161,10 +161,9 @@ print("game loaded")
                    v:ChangeState(11)
                end
            end
-		   end
-		   noclip()
+		   end)
 			
-	local function collectChest()
+		   spawn(function()
 					while task.wait() do
 						for _, chest in pairs(Workspace.Debree:GetChildren()) do
 							if chest.Name == "Loot_Chest" then
@@ -175,7 +174,7 @@ print("game loaded")
 							end
 						end
 					end
-				end
+				end)
 
 		local function destroyModels(modelNames)
 			for _, modelName in pairs(modelNames) do
@@ -233,7 +232,7 @@ local rooth = game.Players.LocalPlayer.Character:FindFirstChild("Humanoid")
 
 -- Function to tween the character to a random part within "Spawnpoints"
 
-		local function wd()
+		spawn(function()
 			while task.wait(3) do
 				local args = {
 					[1] = true
@@ -241,8 +240,7 @@ local rooth = game.Players.LocalPlayer.Character:FindFirstChild("Humanoid")
 
 				game:GetService("ReplicatedStorage"):WaitForChild("Remotes"):WaitForChild("war_Drums_remote"):FireServer(unpack(args))
 			end
-		end
-		coroutine.wrap(wd)()
+		end)
 	
 		-- Coroutine function
 		local function mainCoroutine()
@@ -279,18 +277,18 @@ local rooth = game.Players.LocalPlayer.Character:FindFirstChild("Humanoid")
 		print("Farming Ouw for 10 Minutes..")
 
 		-- Execute SH V2
-		local function loopBp()
+		spawn(function()
 			while true do
 				local Handle_Initiate_S_ = game.ReplicatedStorage.Remotes.To_Server.Handle_Initiate_S_
 				Handle_Initiate_S_:InvokeServer("skil_ting_asd", game.Players.LocalPlayer, "arrow_knock_back", 5)
 				wait(14)
 			end
-		end
+		end)
 
 		local loopC1 = coroutine.create(loopBp)
 		coroutine.resume(loopC1)
 
-		local function loopFunction()
+		spawn(function()
 			while true do
 				local success, error = pcall(function()
 				local hitCounter = {} -- Counter for each model
@@ -331,7 +329,7 @@ local rooth = game.Players.LocalPlayer.Character:FindFirstChild("Humanoid")
 				-- Add a delay between iterations to prevent excessive server load
 				wait(.1) -- Adjust the delay time as desired
 			end
-		end
+		end)
 
 		local startTime = tick() -- Record the start time
 		-- Wait until the Timer GUI is visible or until the timeout is reached
@@ -362,8 +360,7 @@ local rooth = game.Players.LocalPlayer.Character:FindFirstChild("Humanoid")
 			local loopCM = coroutine.create(mainCoroutine)
 			coroutine.resume(loopCM)
 			wait(1)
-			coroutine.wrap(loopFunction)()
-		local function preventFall()
+			spawn(function()
 				while true do
 					local antifall3 = Instance.new("BodyVelocity", game.Players.LocalPlayer.Character.HumanoidRootPart)
 					antifall3.Velocity = Vector3.new(0, 0, 0)
@@ -376,8 +373,8 @@ local rooth = game.Players.LocalPlayer.Character:FindFirstChild("Humanoid")
 				if antifall3 then
 					antifall3:Destroy()
 				end
-			end
-			coroutine.wrap(preventFall)()
+			end)
+
 			spawn(function()
 			while true do
 					if spsn and rooth.Health > 0 then
@@ -422,9 +419,8 @@ local rooth = game.Players.LocalPlayer.Character:FindFirstChild("Humanoid")
 			game.Players.LocalPlayer.Character:FindFirstChild("Humanoid").Health = -1
 						wait()
 			--game.Players.LocalPlayer.Character:FindFirstChild("Humanoid"):Destroy()
-			repeat wait() until game.Players.LocalPlayer.Character:FindFirstChild("Humanoid").Health > 0
+			repeat wait() until game.Players.LocalPlayer.Character:FindFirstChild("Humanoid").Health >= 0
 			game:GetService("ReplicatedStorage"):WaitForChild("TeleportToShop"):FireServer()
-			coroutine.wrap(collectChest)()
 			break
 		end
 		end
@@ -433,7 +429,7 @@ local rooth = game.Players.LocalPlayer.Character:FindFirstChild("Humanoid")
 			--coroutine.wrap(orbx)()
 			wait(600)
 			if game.Players.LocalPlayer.Character:FindFirstChild("Humanoid") then
-				game.Players.LocalPlayer.Character:FindFirstChild("Humanoid").Health = 0 -- Set the humanoid's health to 0 to "kill" the character
+				game.Players.LocalPlayer.Character:FindFirstChild("Humanoid").Health = -1 -- Set the humanoid's health to 0 to "kill" the character
 			else
 				print("Character or humanoid not found.")
 			end
