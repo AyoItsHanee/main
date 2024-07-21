@@ -1,6 +1,5 @@
 --loadstring(game:HttpGet("https://raw.githubusercontent.com/EdgeIY/infiniteyield/master/source", true))()
-repeat wait() until game:IsLoaded()
-spsn = true
+local spsn = true
 local KeepSC = true
 wait(1)
 print("SCRIPT MADE BY realhanif")
