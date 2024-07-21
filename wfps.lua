@@ -32,7 +32,9 @@ local spawn, wait = task.spawn, task.wait
 if not game:IsLoaded() then
     game.Loaded:Wait()
 end
-repeat wait() until game:GetService("Players"):WaitForChild("LocalPlayer"):WaitForChild("Character"):WaitForChild("HumanoidRootPart")
+print("Roblox loaded")
+repeat wait() until game.Players.LocalPlayer.Character:WaitForChild("HumanoidRootPart")
+print("Game loaded")
 
 	local vu = game:GetService("VirtualUser")
 	game:GetService("Players").LocalPlayer.Idled:connect(function()
@@ -40,6 +42,7 @@ repeat wait() until game:GetService("Players"):WaitForChild("LocalPlayer"):WaitF
 	wait(1)
 	vu:Button2Up(Vector2.new(0,0),workspace.CurrentCamera.CFrame)
 	end)
+
 
 	local function master()
 		print("Boss Rotation v0.3.2")
