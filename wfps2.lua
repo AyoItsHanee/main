@@ -342,7 +342,7 @@ coroutine.wrap(updsore)()
 					wait(14)
 				end
 			end
-			coroutine.wrap(initiateSkill)()
+			spawn(initiateSkill)
 
 			-- Loop to attack mobs
 			local function attackMobs()
@@ -370,7 +370,7 @@ coroutine.wrap(updsore)()
 				end
 			end
 
-			task.spawn(attackMobs)
+			spawn(attackMobs)
 
 
 			-- Loop to delete specific parts
