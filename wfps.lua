@@ -32,7 +32,7 @@ local spawn, wait = task.spawn, task.wait
 if not game:IsLoaded() then
     game.Loaded:Wait()
 end
-repeat wait() until game.Players.LocalPlayer.Character:WaitForChild("HumanoidRootPart")
+repeat wait() until game:GetService("Players"):WaitForChild("LocalPlayer"):WaitForChild("Character"):WaitForChild("HumanoidRootPart")
 
 	local vu = game:GetService("VirtualUser")
 	game:GetService("Players").LocalPlayer.Idled:connect(function()
