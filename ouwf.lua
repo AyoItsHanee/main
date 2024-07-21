@@ -432,7 +432,7 @@ local rooth = game.Players.LocalPlayer.Character:FindFirstChild("Humanoid")
 			end)
 
 		--[[
-			--coroutine.wrap(orbx)()
+			--coroutine.wrap(orbx)()s
 			wait(600)
 			if game.Players.LocalPlayer.Character:FindFirstChild("Humanoid") then
 				game.Players.LocalPlayer.Character:FindFirstChild("Humanoid").Health = 0 -- Set the humanoid's health to 0 to "kill" the character
