@@ -138,7 +138,7 @@ print("game loaded")
 		if game.PlaceId == 5956785391 then
 			local args = {
 				[1] = "join",
-				[2] = "p522eSVk",
+				[2] = "YxGTB984",
 				[3] = 17387482786
 			}
 
