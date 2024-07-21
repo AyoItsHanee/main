@@ -543,7 +543,7 @@ coroutine.wrap(updsore)()
 			wait(300)
 			local isLooping = false
 			wait(3600)
-			game:GetService("TeleportService"):Teleport(5956785391)
+			game:GetService("TeleportService"):Teleport(5956785391, game.Players.LocalPlayer)
 
 		elseif game.PlaceId == 9321822839 then
 			game:GetService("TeleportService"):Teleport(5956785391)
