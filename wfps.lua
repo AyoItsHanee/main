@@ -6,11 +6,23 @@ local spawn, wait = task.spawn, task.wait
 	local webhookUrl = "https://discord.com/api/webhooks/1261222782272933920/6IJCgbb2ipizj58GgiF_mTtsN1z7KntWKrw9SZBbaFMZl72mQEXx0uIxuCpkyo7KtswE"
 	local lastMessageId = nil
 	game.NetworkClient.ChildRemoved:Connect(function()
-	game:GetService("TeleportService"):Teleport(5956785391)
+		if game.PlaceId == 5956785391 then
+			game:GetService("TeleportService"):Teleport(9321822839)
+		elseif game.PlaceId == 13883059853 then
+			game:GetService("TeleportService"):Teleport(5956785391)
+		elseif game.PlaceId == 9321822839 then
+			game:GetService("TeleportService"):Teleport(5956785391)
+		end
 	end)
 	game:GetService("CoreGui").RobloxPromptGui.promptOverlay.ChildAdded:Connect(function(child)
 	if child.Name == 'ErrorPrompt' and child:FindFirstChild('MessageArea') and child.MessageArea:FindFirstChild("ErrorFrame") then
-		game:GetService("TeleportService"):Teleport(5956785391)
+		if game.PlaceId == 5956785391 then
+			game:GetService("TeleportService"):Teleport(9321822839)
+		elseif game.PlaceId == 13883059853 then
+			game:GetService("TeleportService"):Teleport(5956785391)
+		elseif game.PlaceId == 9321822839 then
+			game:GetService("TeleportService"):Teleport(5956785391)
+		end
 	end
 	end)
 		queueteleport = (syn and syn.queue_on_teleport) or queue_on_teleport or (fluxus and fluxus.queue_on_teleport) or (delta and delta.queue_on_teleport)
@@ -123,7 +135,7 @@ print("game loaded")
 		local placeId = game.PlaceId
 		local TeleportService = game:GetService("TeleportService")
 			
-		if placeId == 5956785391 then
+		if game.PlaceId == 5956785391 then
 			local args = {
 				[1] = "join",
 				[2] = "p522eSVk",
@@ -134,7 +146,7 @@ print("game loaded")
 				wait(30)
 				game:GetService("TeleportService"):Teleport(5956785391)
 
-		elseif placeId == 13883059853 then
+		elseif game.PlaceId == 13883059853 then
 
 			-- Create a Frame
 			local frame1 = Instance.new("Frame")
@@ -536,6 +548,8 @@ coroutine.wrap(updsore)()
 			local TeleportService = game:GetService("TeleportService")
 			game:GetService("TeleportService"):Teleport(5956785391)
 
+		elseif game.PlaceId == 9321822839 then
+			game:GetService("TeleportService"):Teleport(5956785391)
 		else
 			print("Wrong game")
 		end
