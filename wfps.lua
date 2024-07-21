@@ -1,20 +1,10 @@
 --repeat wait() until game:IsLoaded()
-if not game:IsLoaded() then
-    game.Loaded:Wait()
-end
-repeat wait() until game.Players.LocalPlayer.Character:WaitForChild("HumanoidRootPart")
 local spawn, wait = task.spawn, task.wait
 	local bossrun = true
 	local KeepSC = true
 	local checkore = true
 	local webhookUrl = "https://discord.com/api/webhooks/1261222782272933920/6IJCgbb2ipizj58GgiF_mTtsN1z7KntWKrw9SZBbaFMZl72mQEXx0uIxuCpkyo7KtswE"
 	local lastMessageId = nil
-	local vu = game:GetService("VirtualUser")
-	game:GetService("Players").LocalPlayer.Idled:connect(function()
-	vu:Button2Down(Vector2.new(0,0),workspace.CurrentCamera.CFrame)
-	wait(1)
-	vu:Button2Up(Vector2.new(0,0),workspace.CurrentCamera.CFrame)
-	end)
 	game.NetworkClient.ChildRemoved:Connect(function()
 	game:GetService("TeleportService"):Teleport(5956785391)
 	end)
@@ -22,6 +12,33 @@ local spawn, wait = task.spawn, task.wait
 	if child.Name == 'ErrorPrompt' and child:FindFirstChild('MessageArea') and child.MessageArea:FindFirstChild("ErrorFrame") then
 		game:GetService("TeleportService"):Teleport(5956785391)
 	end
+	end)
+		queueteleport = (syn and syn.queue_on_teleport) or queue_on_teleport or (fluxus and fluxus.queue_on_teleport) or (delta and delta.queue_on_teleport)
+		local TeleportCheck = false
+		game:GetService("Players").LocalPlayer.OnTeleport:Connect(function(State)
+			if KeepSC then
+		if (not TeleportCheck) and queueteleport then
+			TeleportCheck = true
+			queueteleport("loadstring(game:HttpGet('https://raw.githubusercontent.com/AyoItsHanee/main/main/wfps.lua'))()")
+				end
+			else
+			if (not TeleportCheck) and queueteleport then	
+			TeleportCheck = true
+			queueteleport("loadstring(game:HttpGet('https://raw.githubusercontent.com/AyoItsHanee/main/main/rah.lua'))()")
+				end
+		end
+		end)
+
+if not game:IsLoaded() then
+    game.Loaded:Wait()
+end
+repeat wait() until game.Players.LocalPlayer.Character:WaitForChild("HumanoidRootPart")
+
+	local vu = game:GetService("VirtualUser")
+	game:GetService("Players").LocalPlayer.Idled:connect(function()
+	vu:Button2Down(Vector2.new(0,0),workspace.CurrentCamera.CFrame)
+	wait(1)
+	vu:Button2Up(Vector2.new(0,0),workspace.CurrentCamera.CFrame)
 	end)
 
 	local function master()
@@ -95,21 +112,6 @@ local spawn, wait = task.spawn, task.wait
 		end
 		buttonr.MouseButton1Click:Connect(togglebossrun)
 
-		queueteleport = (syn and syn.queue_on_teleport) or queue_on_teleport or (fluxus and fluxus.queue_on_teleport) or (delta and delta.queue_on_teleport)
-		local TeleportCheck = false
-		game:GetService("Players").LocalPlayer.OnTeleport:Connect(function(State)
-			if KeepSC then
-		if (not TeleportCheck) and queueteleport then
-			TeleportCheck = true
-			queueteleport("loadstring(game:HttpGet('https://raw.githubusercontent.com/AyoItsHanee/main/main/wfps.lua'))()")
-				end
-			else
-			if (not TeleportCheck) and queueteleport then	
-			TeleportCheck = true
-			queueteleport("loadstring(game:HttpGet('https://raw.githubusercontent.com/AyoItsHanee/main/main/rah.lua'))()")
-				end
-		end
-		end)
 		local success, error = pcall(function()
 		local Players = game:GetService("Players")
 		local ReplicatedStorage = game:GetService("ReplicatedStorage")
