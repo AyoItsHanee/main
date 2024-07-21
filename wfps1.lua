@@ -32,7 +32,9 @@ local spawn, wait = task.spawn, task.wait
 if not game:IsLoaded() then
     game.Loaded:Wait()
 end
+print("Roblox loaded")
 repeat wait() until game:GetService("Players"):WaitForChild("LocalPlayer"):WaitForChild("Character"):WaitForChild("HumanoidRootPart")
+print("Game loaded")
 
 	local vu = game:GetService("VirtualUser")
 	game:GetService("Players").LocalPlayer.Idled:connect(function()
