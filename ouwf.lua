@@ -1,7 +1,7 @@
 --loadstring(game:HttpGet("https://raw.githubusercontent.com/EdgeIY/infiniteyield/master/source", true))()
 repeat wait() until game:IsLoaded()
+local success, error = pcall(function()
 local function bigboss()
-	local success, error = pcall(function()
 local spawn, wait = task.spawn, task.wait
 local KeepSC = true
 wait(1)
@@ -445,9 +445,9 @@ local rooth = game.Players.LocalPlayer.Character:FindFirstChild("Humanoid")
 	else
 		print("Place ID doesn't match")
 	end
-		end)
+end
+end)
 	if not success then
 		print("An error occurred:", error)
 	end
-end
 bigboss()
