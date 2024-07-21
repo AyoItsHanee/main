@@ -1,4 +1,7 @@
-repeat wait() until game:IsLoaded()
+--repeat wait() until game:IsLoaded()
+if not game:IsLoaded() then
+    game.Loaded:Wait()
+end
 repeat wait() until game.Players.LocalPlayer.Character:WaitForChild("HumanoidRootPart")
 local spawn, wait = task.spawn, task.wait
 	local bossrun = true
