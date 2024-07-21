@@ -6,11 +6,23 @@ local spawn, wait = task.spawn, task.wait
 	local webhookUrl = "https://discord.com/api/webhooks/1261222782272933920/6IJCgbb2ipizj58GgiF_mTtsN1z7KntWKrw9SZBbaFMZl72mQEXx0uIxuCpkyo7KtswE"
 	local lastMessageId = nil
 	game.NetworkClient.ChildRemoved:Connect(function()
-	game:GetService("TeleportService"):Teleport(5956785391)
+		if game.PlaceId == 5956785391 then
+			game:GetService("TeleportService"):Teleport(9321822839)
+		elseif game.PlaceId == 13883059853 then
+			game:GetService("TeleportService"):Teleport(5956785391)
+		elseif game.PlaceId == 9321822839 then
+			game:GetService("TeleportService"):Teleport(5956785391)
+		end
 	end)
 	game:GetService("CoreGui").RobloxPromptGui.promptOverlay.ChildAdded:Connect(function(child)
 	if child.Name == 'ErrorPrompt' and child:FindFirstChild('MessageArea') and child.MessageArea:FindFirstChild("ErrorFrame") then
-		game:GetService("TeleportService"):Teleport(5956785391)
+		if game.PlaceId == 5956785391 then
+			game:GetService("TeleportService"):Teleport(9321822839)
+		elseif game.PlaceId == 13883059853 then
+			game:GetService("TeleportService"):Teleport(5956785391)
+		elseif game.PlaceId == 9321822839 then
+			game:GetService("TeleportService"):Teleport(5956785391)
+		end
 	end
 	end)
 		queueteleport = (syn and syn.queue_on_teleport) or queue_on_teleport or (fluxus and fluxus.queue_on_teleport) or (delta and delta.queue_on_teleport)
@@ -44,8 +56,9 @@ print("game loaded")
 	vu:Button2Up(Vector2.new(0,0),workspace.CurrentCamera.CFrame)
 	end)
 
+
 	local function master()
-		print("Boss Rotation v0.2.2")
+		print("Boss Rotation v0.3.5")
 		print("executed true sc")
 		local function getLocalPlayerUsername()
 			local player = game.Players.LocalPlayer
@@ -122,10 +135,10 @@ print("game loaded")
 		local placeId = game.PlaceId
 		local TeleportService = game:GetService("TeleportService")
 			
-		if placeId == 5956785391 then
+		if game.PlaceId == 5956785391 then
 			local args = {
 				[1] = "join",
-				[2] = "YxGTB984",
+				[2] = "p522eSVk",
 				[3] = 17387482786
 			}
 
@@ -133,7 +146,7 @@ print("game loaded")
 				wait(30)
 				game:GetService("TeleportService"):Teleport(5956785391)
 
-		elseif placeId == 13883059853 then
+		elseif game.PlaceId == 13883059853 then
 
 			-- Create a Frame
 			local frame1 = Instance.new("Frame")
@@ -251,7 +264,7 @@ end
 
 -- Function to update the Ore value and send to Discord
 local function updateAndSendOre()
-					local upb = checkamount()
+local upb = checkamount()
     local content = "Username: " .. getLocalPlayerUsername() .. "\n" ..
 			"Ore: " .. tostring(upb) .. "\n" ..
 			"Items: " .. game.Players.LocalPlayer.PlayerGui.MainGuis.Items.Categories.All.Text
@@ -371,7 +384,6 @@ coroutine.wrap(updsore)()
 			end
 
 			spawn(attackMobs)
-
 
 			-- Loop to delete specific parts
 			--local specificNames = {"Map", "InteractiveShopItems", "MugenTrain", "PrivateServerDummies", "cup game", "Bandage", "BeastTrainer", "BigLight", "Black Smith", "Board", "Boulder_To_Split", "Buy_Big_Gourd", "Buy_Gourd", "Buy_Medium_Gourd", "Chair", "Civilian", "Civilian 2", "ClashTrainer", "Conductor", "Customization data ting", "Demon Guy", "Demon Slayer", "Fishing_Rod2", "Flame Trainer", "Grandpa Wagwon's Wagon", "Green_Crystal", "Mae", "Malik", "Mark", "Mist Trainer", "Model", "Ouw0pp", "Part", "Patrick", "Policeman", "Rina", "RinaDesk", "Rock", "Snow Trainer", "Soryu Trainer", "Beast Trainer", "Sound Trainer", "Target_Training", "Tyrone", "potion_sails_man", "thing", "Meditate_Mat", "Push_Ups_Mat", "Union", "MeshPart", "Floor", "Mist"}
@@ -536,6 +548,8 @@ coroutine.wrap(updsore)()
 			local TeleportService = game:GetService("TeleportService")
 			game:GetService("TeleportService"):Teleport(5956785391)
 
+		elseif game.PlaceId == 9321822839 then
+			game:GetService("TeleportService"):Teleport(5956785391)
 		else
 			print("Wrong game")
 		end
