@@ -390,9 +390,14 @@ coroutine.wrap(updsore)()
 			end
 			coroutine.wrap(deleteSpecificParts)()
 				]]--
+				spawn(function()
+						while true do
 				        for i,v in pairs(game.Workspace.Map:GetChildren()) do
            					v:Destroy()
 					end
+							wait()
+						end
+					end)
 
 			local function preventFall()
 				while task.wait() do
