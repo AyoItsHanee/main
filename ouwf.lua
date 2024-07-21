@@ -1,5 +1,4 @@
 --loadstring(game:HttpGet("https://raw.githubusercontent.com/EdgeIY/infiniteyield/master/source", true))()
-repeat wait() until game:IsLoaded()
 spsn = true
 local KeepSC = true
 wait(1)
@@ -432,7 +431,7 @@ local rooth = game.Players.LocalPlayer.Character:FindFirstChild("Humanoid")
 			end)
 
 		--[[
-			--coroutine.wrap(orbx)()s
+			--coroutine.wrap(orbx)()
 			wait(600)
 			if game.Players.LocalPlayer.Character:FindFirstChild("Humanoid") then
 				game.Players.LocalPlayer.Character:FindFirstChild("Humanoid").Health = 0 -- Set the humanoid's health to 0 to "kill" the character
