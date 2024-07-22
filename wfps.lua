@@ -378,11 +378,12 @@ end)
 			local isLooping = true
 			spawn(function()
 				while isLooping do
-					if isLooping then
+					--if isLooping then
 						for i,v in pairs(game.Workspace.Map:GetChildren()) do
            				 		v:Destroy()
         					end
-					end
+					--end
+				wait(1)
 				end
 			end)
 
