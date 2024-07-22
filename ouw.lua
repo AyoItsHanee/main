@@ -14,11 +14,13 @@ local spawn, wait = task.spawn, task.wait
 	game.NetworkClient.ChildRemoved:Connect(function()
 	game:GetService("TeleportService"):Teleport(9321822839)
 	end)
+--[[
 	game:GetService("CoreGui").RobloxPromptGui.promptOverlay.ChildAdded:Connect(function(child)
 	if child.Name == 'ErrorPrompt' and child:FindFirstChild('MessageArea') and child.MessageArea:FindFirstChild("ErrorFrame") then
 		game:GetService("TeleportService"):Teleport(9321822839)
 	end
 	end)
+]]--
 
 		queueteleport = (syn and syn.queue_on_teleport) or queue_on_teleport or (fluxus and fluxus.queue_on_teleport) or (delta and delta.queue_on_teleport)
 		local TeleportCheck = false
