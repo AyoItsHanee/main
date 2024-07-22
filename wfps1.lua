@@ -374,7 +374,7 @@ wait(1)
 							end
 						end
 					end
-						wait(.1)
+						wait(0.1)
 				end
 			end)
 
@@ -491,7 +491,10 @@ wait(1)
 				Goal.CFrame = CFrame.new(position)
 				local tween = TweenService:Create(Root, TweenInfo.new(Time, Enum.EasingStyle.Linear, Enum.EasingDirection.Out, 0, false, 0), Goal)
 				tween:Play()
-				wait(Time)
+				--wait(Time)
+				while (Root.Position - position).magnitude > 1 do
+        				wait(0.1) -- Check every 0.1 seconds
+    				end
 				local movementTimer = 0
 				local prevPosition = Root.Position
 				while true do
