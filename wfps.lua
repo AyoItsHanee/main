@@ -56,8 +56,6 @@ print("game loaded")
 	vu:Button2Up(Vector2.new(0,0),workspace.CurrentCamera.CFrame)
 	end)
 
-
-	local function master()
 		print("Boss Rotation v0.3.5")
 		print("executed true sc")
 		local function getLocalPlayerUsername()
@@ -128,7 +126,6 @@ print("game loaded")
 		end
 		buttonr.MouseButton1Click:Connect(togglebossrun)
 
-		local success, error = pcall(function()
 		local Players = game:GetService("Players")
 		local ReplicatedStorage = game:GetService("ReplicatedStorage")
 		local Workspace = game:GetService("Workspace")
@@ -177,14 +174,13 @@ print("game loaded")
 			end
 
 			-- Update the Ore value every second
-			local function updore()
+			spawn(function()
 				while task.wait(1) do
 						if checkore then
 					updateOreLabel()
 						end
 				end
-			end
-			coroutine.wrap(updore)()
+			end)
 
 			local function sendToDiscord(content)
     local payload = {
@@ -272,15 +268,13 @@ local upb = checkamount()
 end
 
 -- Update the Ore value every minute
-local function updsore()
+spawn(function()
     while task.wait(960) do
         if checkore then
             updateAndSendOre()
         end
     end
-end
-
-coroutine.wrap(updsore)()
+end)
 
 			game:GetService("Players").LocalPlayer.PlayerScripts["Small_Scripts"].Gameplay["Sun_Damage"].Disabled = true
 			function RemoveDMG()
@@ -319,17 +313,16 @@ coroutine.wrap(updsore)()
 				end
 			end
 
-			local function wd()
+			spawn(function()
 				local args = {
 					[1] = true
 				}
 
 				game:GetService("ReplicatedStorage"):WaitForChild("Remotes"):WaitForChild("war_Drums_remote"):FireServer(unpack(args))
 				wait(3)
-			end
-			coroutine.wrap(wd)()
+			end)
 			-- Auto collect chest
-			local function collectChest()
+			spawn(function()
 				while task.wait(1) do
 					for _, chest in pairs(Workspace.Debree:GetChildren()) do
 						if chest.Name == "Loot_Chest" then
@@ -343,21 +336,19 @@ coroutine.wrap(updsore)()
 						end
 					end
 				end
-			end
-			coroutine.wrap(collectChest)()
+			end)
 
 			-- Loop to initiate a skill
-			local function initiateSkill()
+			spawn(function()
 				while task.wait() do
 					local Handle_Initiate_S_ = ReplicatedStorage.Remotes.To_Server.Handle_Initiate_S_
 					Handle_Initiate_S_:InvokeServer("skil_ting_asd", Players.LocalPlayer, "arrow_knock_back", 5)
 					wait(14)
 				end
-			end
-			coroutine.wrap(initiateSkill)()
+			end)
 
 			-- Loop to attack mobs
-			local function attackMobs()
+			spawn(function()
 				while task.wait() do
 					local hitCounter = {}
 					for _, mob in pairs(Workspace.Mobs:GetDescendants()) do
@@ -380,25 +371,22 @@ coroutine.wrap(updsore)()
 					end
 						wait(.1)
 				end
-			end
-
-			coroutine.wrap(attackMobs)()
+			end)
 
 			-- Loop to delete specific parts
 			--local specificNames = {"Map", "InteractiveShopItems", "MugenTrain", "PrivateServerDummies", "cup game", "Bandage", "BeastTrainer", "BigLight", "Black Smith", "Board", "Boulder_To_Split", "Buy_Big_Gourd", "Buy_Gourd", "Buy_Medium_Gourd", "Chair", "Civilian", "Civilian 2", "ClashTrainer", "Conductor", "Customization data ting", "Demon Guy", "Demon Slayer", "Fishing_Rod2", "Flame Trainer", "Grandpa Wagwon's Wagon", "Green_Crystal", "Mae", "Malik", "Mark", "Mist Trainer", "Model", "Ouw0pp", "Part", "Patrick", "Policeman", "Rina", "RinaDesk", "Rock", "Snow Trainer", "Soryu Trainer", "Beast Trainer", "Sound Trainer", "Target_Training", "Tyrone", "potion_sails_man", "thing", "Meditate_Mat", "Push_Ups_Mat", "Union", "MeshPart", "Floor", "Mist"}
 			local isLooping = true
-			local function deleteSpecificParts()
-				while task.wait() do
+			spawn(function()
+				while isLooping do
 					if isLooping then
 						for i,v in pairs(game.Workspace.Map:GetChildren()) do
            				 		v:Destroy()
         					end
 					end
 				end
-			end
-			coroutine.wrap(deleteSpecificParts)()
+			end)
 
-			local function preventFall()
+			spawn(function()
 				while task.wait() do
 					local antifall3 = Instance.new("BodyVelocity", Players.LocalPlayer.Character.HumanoidRootPart)
 					antifall3.Velocity = Vector3.new(0, 0, 0)
@@ -411,8 +399,7 @@ coroutine.wrap(updsore)()
 				if antifall3 then
 					antifall3:Destroy()
 				end
-			end
-			coroutine.wrap(preventFall)()
+			end)
 
 			local TweenService = game:GetService("TweenService")
 			local Root = game.Players.LocalPlayer.Character.HumanoidRootPart
@@ -525,16 +512,15 @@ coroutine.wrap(updsore)()
 				end
 			end
 
-			local function main()
+			spawn(function()
 					while bossrun do
 				for _, pathInfo in ipairs(pathsToCheck) do
 					CheckAndMove(pathInfo.name, pathInfo.position, pathInfo.path, pathInfo.time, pathInfo.num)
 				end
 						wait()
 					end
-			end
+			end)
 
-			coroutine.wrap(main)()
 			wait()
 			RemoveDMG()
 			wait()
@@ -550,9 +536,3 @@ coroutine.wrap(updsore)()
 		else
 			print("Wrong game")
 		end
-		end)
-		if not success then
-			print("An error occurred:", error)
-		end
-	end
-	master()
