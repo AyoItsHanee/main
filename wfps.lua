@@ -388,7 +388,7 @@ wait(1)
            				 		v:Destroy()
         					end
 					end
-				wait(1)
+				wait()
 				end
 			end)
 
