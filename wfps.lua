@@ -370,11 +370,12 @@ wait(1)
 									local Handle_Initiate_S_ = ReplicatedStorage.Remotes.To_Server.Handle_Initiate_S_
 									Handle_Initiate_S_:InvokeServer("arrow_knock_back_damage", Players.LocalPlayer.Character, mob.HumanoidRootPart.CFrame, mob, 500, 500)
 									hitCounter[modelId] = hitCounter[modelId] + 1
+									wait(0.5)
 								end
 							end
 						end
 					end
-						wait(0.1)
+						wait()
 				end
 			end)
 
