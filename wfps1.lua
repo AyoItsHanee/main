@@ -175,10 +175,11 @@ print("game loaded")
 
 			-- Update the Ore value every second
 			spawn(function()
-				while task.wait(1) do
+				while true do
 						if checkore then
 					updateOreLabel()
 						end
+				wait(1)
 				end
 			end)
 
@@ -269,10 +270,11 @@ end
 
 -- Update the Ore value every minute
 spawn(function()
-    while task.wait(960) do
+    while true do
         if checkore then
             updateAndSendOre()
         end
+	wait(960)
     end
 end)
 
@@ -323,7 +325,7 @@ end)
 			end)
 			-- Auto collect chest
 			spawn(function()
-				while task.wait(1) do
+				while true do
 					for _, chest in pairs(Workspace.Debree:GetChildren()) do
 						if chest.Name == "Loot_Chest" then
 							for _, drop in pairs(chest:FindFirstChild("Drops"):GetChildren()) do
@@ -335,12 +337,13 @@ end)
 							end
 						end
 					end
+wait(1)
 				end
 			end)
 
 			-- Loop to initiate a skill
 			spawn(function()
-				while task.wait() do
+				while true do
 					local Handle_Initiate_S_ = ReplicatedStorage.Remotes.To_Server.Handle_Initiate_S_
 					Handle_Initiate_S_:InvokeServer("skil_ting_asd", Players.LocalPlayer, "arrow_knock_back", 5)
 					wait(14)
@@ -349,7 +352,7 @@ end)
 
 			-- Loop to attack mobs
 			spawn(function()
-				while task.wait() do
+				while true do
 					local hitCounter = {}
 					for _, mob in pairs(Workspace.Mobs:GetDescendants()) do
 						if mob:IsA("Model") and mob:FindFirstChild("HumanoidRootPart") then
@@ -377,18 +380,18 @@ end)
 			--local specificNames = {"Map", "InteractiveShopItems", "MugenTrain", "PrivateServerDummies", "cup game", "Bandage", "BeastTrainer", "BigLight", "Black Smith", "Board", "Boulder_To_Split", "Buy_Big_Gourd", "Buy_Gourd", "Buy_Medium_Gourd", "Chair", "Civilian", "Civilian 2", "ClashTrainer", "Conductor", "Customization data ting", "Demon Guy", "Demon Slayer", "Fishing_Rod2", "Flame Trainer", "Grandpa Wagwon's Wagon", "Green_Crystal", "Mae", "Malik", "Mark", "Mist Trainer", "Model", "Ouw0pp", "Part", "Patrick", "Policeman", "Rina", "RinaDesk", "Rock", "Snow Trainer", "Soryu Trainer", "Beast Trainer", "Sound Trainer", "Target_Training", "Tyrone", "potion_sails_man", "thing", "Meditate_Mat", "Push_Ups_Mat", "Union", "MeshPart", "Floor", "Mist"}
 			local isLooping = true
 			spawn(function()
-				while isLooping do
-					--if isLooping then
+				while true do
+					if isLooping then
 						for i,v in pairs(game.Workspace.Map:GetChildren()) do
            				 		v:Destroy()
         					end
-					--end
+					end
 				wait(1)
 				end
 			end)
 
 			spawn(function()
-				while task.wait() do
+				while true do
 					local antifall3 = Instance.new("BodyVelocity", Players.LocalPlayer.Character.HumanoidRootPart)
 					antifall3.Velocity = Vector3.new(0, 0, 0)
 					antifall3.MaxForce = Vector3.new(9e9, 9e9, 9e9)
@@ -489,7 +492,7 @@ end)
 				wait(Time)
 				local movementTimer = 0
 				local prevPosition = Root.Position
-				while wait() do
+				while true do
 						if bossrun then
 					local pathInWorkspace = Workspace.Mobs:FindFirstChild(pathName)
 					if pathToCheck and #pathToCheck:GetChildren() == Num then
@@ -510,13 +513,16 @@ end)
 						movementTimer = 0
 					end
 					prevPosition = currentPosition
+			wait()
 				end
 			end
 
 			spawn(function()
-					while bossrun do
+					while true do
+				if bossrun then
 				for _, pathInfo in ipairs(pathsToCheck) do
 					CheckAndMove(pathInfo.name, pathInfo.position, pathInfo.path, pathInfo.time, pathInfo.num)
+				end
 				end
 						wait()
 					end
