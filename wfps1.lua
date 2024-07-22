@@ -535,7 +535,7 @@ wait(1)
 			--game:GetService("RunService"):Set3dRenderingEnabled(false)
 			wait(300)
 			local isLooping = false
-			wait(3600)
+			wait(1800)
 			game:GetService("TeleportService"):Teleport(5956785391, game.Players.LocalPlayer)
 
 		elseif game.PlaceId == 9321822839 then
