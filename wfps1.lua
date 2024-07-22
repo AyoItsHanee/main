@@ -146,6 +146,17 @@ print("game loaded")
 
 		elseif game.PlaceId == 13883059853 then
 
+			spawn(function()
+		           for _, v in pairs(game:GetService("Players").LocalPlayer.Character:GetDescendants()) do
+               if v:IsA("BasePart") then
+                   v.CanCollide = false    
+               end
+               if v:IsA("Humanoid") then
+                   v:ChangeState(11)
+               end
+           end
+		   end)
+
 			-- Create a Frame
 			local frame1 = Instance.new("Frame")
 			frame1.Size = UDim2.new(0, 100, 0, 25)
