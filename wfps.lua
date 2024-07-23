@@ -554,7 +554,42 @@ wait(1)
 			wait(300)
 			local isLooping = false
 			wait(1800)
-			game:GetService("TeleportService"):Teleport(5956785391, game.Players.LocalPlayer)
+game:GetService("Players").LocalPlayer.PlayerGui.MainGuis.Settings2.Visible = true
+wait()
+-- Wait for the game services to load
+local Players = game:GetService("Players")
+local VirtualInputManager = game:GetService("VirtualInputManager")
+
+-- Get the local player and their PlayerGui
+local player = Players.LocalPlayer
+local playerGui = player:WaitForChild("PlayerGui")
+
+-- Get the specific ImageButton
+local screenGui = playerGui:WaitForChild("MainGuis")
+local Settings = screenGui:WaitForChild("Settings2")
+local button = Settings:WaitForChild("TextButton")
+
+-- Function to simulate a click on the button
+local function simulateButtonClick()
+    -- Get the button's position and size
+    local buttonPosition = button.AbsolutePosition
+    local buttonSize = button.AbsoluteSize
+
+    -- Calculate the center position of the button
+    local clickPosition = Vector2.new(
+        buttonPosition.X + buttonSize.X / 2,
+        buttonPosition.Y + buttonSize.Y / 2
+    )
+
+    -- Simulate the button click
+    VirtualInputManager:SendMouseButtonEvent(clickPosition.X, clickPosition.Y + 25, 0, true, game, 0)
+    wait(0.1)
+    VirtualInputManager:SendMouseButtonEvent(clickPosition.X, clickPosition.Y + 25, 0, false, game, 0)
+end
+
+-- Call the function to simulate the button click
+simulateButtonClick()
+			--game:GetService("TeleportService"):Teleport(5956785391, game.Players.LocalPlayer)
 
 		elseif game.PlaceId == 9321822839 then
 			game:GetService("TeleportService"):Teleport(5956785391)
