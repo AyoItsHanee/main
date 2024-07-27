@@ -205,6 +205,12 @@ print("game loaded")
 			end
 		end
 
+	local function cdorb()
+		local hellyes = true
+		wait(10)
+		local hellyes = false
+	end
+
 		local player = game.Players.LocalPlayer
 		local character = player.Character or player.CharacterAdded:Wait()
 		local root = character:WaitForChild("HumanoidRootPart")
@@ -234,12 +240,6 @@ local rooth = game.Players.LocalPlayer.Character:FindFirstChild("Humanoid")
 				end
 			end
 		end
-
-	local function cdorb()
-		local hellyes = true
-		wait(10)
-		local hellyes = false
-	end
 
 		-- Function to find the correct room name
 		local function findRoomName()
