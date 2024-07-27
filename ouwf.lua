@@ -179,8 +179,7 @@ print("game loaded")
                end
            end
 		   end
-		   noclip()
-			
+
 	local function collectChest()
 					while task.wait() do
 						for _, chest in pairs(Workspace.Debree:GetChildren()) do
@@ -379,6 +378,7 @@ local rooth = game.Players.LocalPlayer.Character:FindFirstChild("Humanoid")
 			wait()
 			local loopCM = coroutine.create(mainCoroutine)
 			coroutine.resume(loopCM)
+			noclip()
 			wait(1)
 			coroutine.wrap(loopFunction)()
 			spawn(function()
