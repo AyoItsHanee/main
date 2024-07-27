@@ -234,7 +234,6 @@ local rooth = game.Players.LocalPlayer.Character:FindFirstChild("Humanoid")
 						for _, v in pairs(Workspace.Map:GetChildren()) do
 							if v:IsA("Model") and v.Name == orb.name then
 								game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = v:GetModelCFrame()
-								wait(2.5)
 								spawn(cdorb)
 							end
 						end
@@ -401,14 +400,21 @@ local rooth = game.Players.LocalPlayer.Character:FindFirstChild("Humanoid")
 						local randomPart = parts[math.random(1, #parts)]
 						if randomPart and randomPart:IsA("BasePart") then
 						if #workspace.Mobs:GetChildren() > 10 and (not canrun) then
+						local canrun = true
 						game.TweenService:Create(game.Players.LocalPlayer.Character.HumanoidRootPart, TweenInfo.new(2, Enum.EasingStyle.Linear, Enum.EasingDirection.Out), {CFrame = CFrame.new(randomPart.Position + Vector3.new(0, 200, 0))}):Play()
 						wait(2.5)
-						local canrun = true
 						elseif #workspace.Mobs:GetChildren() <= 10 then
+						local canrun = false
 						game.TweenService:Create(game.Players.LocalPlayer.Character.HumanoidRootPart, TweenInfo.new(2, Enum.EasingStyle.Linear, Enum.EasingDirection.Out), {CFrame = CFrame.new(randomPart.Position + Vector3.new(0, 75, 0))}):Play()
 						wait(2.5)
+													for _, orb in ipairs(orbTypes) do
+							for _, v in pairs(Workspace.Map:GetChildren()) do
+							if v:IsA("Model") and v.Name == orb.name then
 						spawn(orbv2)
-						local canrun = false
+												wait(2.5)
+													end
+												end
+											end
 						end
 						end
 					else
