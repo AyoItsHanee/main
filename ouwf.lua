@@ -221,18 +221,25 @@ print("game loaded")
 			{name = "MobCamouflage", enabled = true}
 		}
 local rooth = game.Players.LocalPlayer.Character:FindFirstChild("Humanoid")
+	local hellyes = false
 				local function orbv2()
 				for _, orb in ipairs(orbTypes) do
-					if orb.enabled then
+					if orb.enabled and (not hellyes) then
 						for _, v in pairs(Workspace.Map:GetChildren()) do
 							if v:IsA("Model") and v.Name == orb.name then
 								game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = v:GetModelCFrame()
-								wait(2.5)
+								spawn(cdorb)
 							end
 						end
 				end
 			end
 		end
+
+	local function cdorb()
+		local hellyes = true
+		wait(10)
+		local hellyes = false
+	end
 
 		-- Function to find the correct room name
 		local function findRoomName()
