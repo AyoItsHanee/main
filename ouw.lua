@@ -154,16 +154,16 @@ print("game loaded")
 		game:GetService("TweenService"):Create(Root, Info, Goal):Play()
 		wait(11)
 
-		spawn(function()
-		           for _, v in pairs(game:GetService("Players").LocalPlayer.Character:GetDescendants()) do
-               if v:IsA("BasePart") then
-                   v.CanCollide = false    
-               end
-               if v:IsA("Humanoid") then
-                   v:ChangeState(11)
-               end
-           end
-		   end)
+			spawn(function()
+			while true do
+				for _, v in pairs(game:GetService("Players").LocalPlayer.Character:GetDescendants()) do
+               				if v:IsA("BasePart") and v.CanCollide then
+                   				v.CanCollide = false 
+					end
+               			end
+				wait(0.1)
+			end
+			end)
 			
 		   spawn(function()
 					while task.wait() do
