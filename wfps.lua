@@ -148,9 +148,6 @@ print("game loaded")
 		elseif game.PlaceId == 13883059853 then
 
 			spawn(function()
-			if v:IsA("Humanoid") then
-                   		v:ChangeState(11)
-               		end
 			while true do
 				for _, v in pairs(game:GetService("Players").LocalPlayer.Character:GetDescendants()) do
                				if v:IsA("BasePart") and v.CanCollide then
