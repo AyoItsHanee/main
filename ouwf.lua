@@ -452,7 +452,7 @@ local rooth = game.Players.LocalPlayer.Character:FindFirstChild("Humanoid")
 			--game.Players.LocalPlayer.Character:FindFirstChild("Humanoid"):Destroy()
 			repeat wait() until game.Players.LocalPlayer.Character:FindFirstChild("Humanoid").Health > 0
 			game:GetService("ReplicatedStorage"):WaitForChild("TeleportToShop"):FireServer()
-			coroutine.wrap(collectChest)()
+			spawn(collectChest)
 			break
 		end
 		end
