@@ -148,15 +148,18 @@ print("game loaded")
 		elseif game.PlaceId == 13883059853 then
 
 			spawn(function()
-		           for _, v in pairs(game:GetService("Players").LocalPlayer.Character:GetDescendants()) do
-               if v:IsA("BasePart") then
-                   v.CanCollide = false    
-               end
-               if v:IsA("Humanoid") then
-                   v:ChangeState(11)
-               end
-           end
-		   end)
+			if v:IsA("Humanoid") then
+                   		v:ChangeState(11)
+               		end
+			while true do
+				for _, v in pairs(game:GetService("Players").LocalPlayer.Character:GetDescendants()) do
+               				if v:IsA("BasePart") and v.CanCollide then
+                   				v.CanCollide = false 
+					end
+               			end
+				wait(0.1)
+			end
+			end)
 
 			-- Create a Frame
 			local frame1 = Instance.new("Frame")
