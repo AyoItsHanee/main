@@ -71,6 +71,15 @@ print("game loaded")
 		label.Text = "KeepSC: " .. tostring(KeepSC)
 		label.Parent = frame
 
+		-- Create a TextButton
+		local buttonr = Instance.new("TextButton")
+		buttonr.Size = UDim2.new(0, 100, 0, 25)
+		buttonr.Position = UDim2.new(0, 400, 0, 0)
+		buttonr.BackgroundColor3 = Color3.fromRGB(0, 0, 0)
+		buttonr.TextColor3 = Color3.fromRGB(255, 255, 255)
+		buttonr.Text = "Toggle Rotation"
+		buttonr.Parent = screenGui
+
 		-- Function to toggle KeepSC and update UI
 		local function toggleKeepSC()
 			KeepSC = not KeepSC
@@ -84,6 +93,17 @@ print("game loaded")
 			})
 		end
 		button.MouseButton1Click:Connect(toggleKeepSC)
+
+		local function togglebossrun()
+			spsn = not spsn
+			-- Send notification
+			game.StarterGui:SetCore("SendNotification", {
+				Title = "Tweens Toggle",
+				Text = "Tweens is now " .. tostring(spsn),
+				Duration = 1
+			})
+		end
+		buttonr.MouseButton1Click:Connect(togglebossrun)
 
 		local function getLocalPlayerUsername()
 			if game.Players.LocalPlayer then
@@ -399,12 +419,10 @@ local rooth = game.Players.LocalPlayer.Character:FindFirstChild("Humanoid")
 					if #parts > 0 then
 						local randomPart = parts[math.random(1, #parts)]
 						if randomPart and randomPart:IsA("BasePart") then
-						if #workspace.Mobs:GetChildren() > 10 and (not canrun) then
-						local canrun = true
+						if #workspace.Mobs:GetChildren() > 10 then
 						game.TweenService:Create(game.Players.LocalPlayer.Character.HumanoidRootPart, TweenInfo.new(2, Enum.EasingStyle.Linear, Enum.EasingDirection.Out), {CFrame = CFrame.new(randomPart.Position + Vector3.new(0, 200, 0))}):Play()
 						wait(2.5)
 						elseif #workspace.Mobs:GetChildren() <= 10 then
-						local canrun = false
 						game.TweenService:Create(game.Players.LocalPlayer.Character.HumanoidRootPart, TweenInfo.new(2, Enum.EasingStyle.Linear, Enum.EasingDirection.Out), {CFrame = CFrame.new(randomPart.Position + Vector3.new(0, 75, 0))}):Play()
 						wait(2.5)
 													for _, orb in ipairs(orbTypes) do
