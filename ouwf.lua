@@ -402,13 +402,14 @@ local rooth = game.Players.LocalPlayer.Character:FindFirstChild("Humanoid")
 						if randomPart and randomPart:IsA("BasePart") then
 						if #workspace.Mobs:GetChildren() > 10 and (not canrun) then
 						game.TweenService:Create(game.Players.LocalPlayer.Character.HumanoidRootPart, TweenInfo.new(2, Enum.EasingStyle.Linear, Enum.EasingDirection.Out), {CFrame = CFrame.new(randomPart.Position + Vector3.new(0, 200, 0))}):Play()
+						wait(2.5)
 						local canrun = true
 						elseif #workspace.Mobs:GetChildren() <= 10 then
 						game.TweenService:Create(game.Players.LocalPlayer.Character.HumanoidRootPart, TweenInfo.new(2, Enum.EasingStyle.Linear, Enum.EasingDirection.Out), {CFrame = CFrame.new(randomPart.Position + Vector3.new(0, 75, 0))}):Play()
-							spawn(orbv2)
+						wait(2.5)
+						spawn(orbv2)
 						local canrun = false
 						end
-							wait(2.5)
 						end
 					else
 						warn("No parts found in Spawnpoints of room: " .. roomName)
