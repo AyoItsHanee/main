@@ -172,7 +172,10 @@ print("game loaded")
 	local function noclip()
 		           for _, v in pairs(game:GetService("Players").LocalPlayer.Character:GetDescendants()) do
                if v:IsA("BasePart") then
-                   v.CanCollide = false    
+				while true do
+                   v.CanCollide = false 
+					wait()
+				end
                end
                if v:IsA("Humanoid") then
                    v:ChangeState(11)
@@ -378,7 +381,7 @@ local rooth = game.Players.LocalPlayer.Character:FindFirstChild("Humanoid")
 			wait()
 			local loopCM = coroutine.create(mainCoroutine)
 			coroutine.resume(loopCM)
-			noclip()
+			spawn(noclip)
 			wait(1)
 			coroutine.wrap(loopFunction)()
 			spawn(function()
