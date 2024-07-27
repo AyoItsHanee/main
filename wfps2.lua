@@ -14,6 +14,7 @@ local spawn, wait = task.spawn, task.wait
 			game:GetService("TeleportService"):Teleport(5956785391)
 		end
 	end)
+--[[
 	game:GetService("CoreGui").RobloxPromptGui.promptOverlay.ChildAdded:Connect(function(child)
 	if child.Name == 'ErrorPrompt' and child:FindFirstChild('MessageArea') and child.MessageArea:FindFirstChild("ErrorFrame") then
 		if game.PlaceId == 5956785391 then
@@ -25,13 +26,14 @@ local spawn, wait = task.spawn, task.wait
 		end
 	end
 	end)
+
 		queueteleport = (syn and syn.queue_on_teleport) or queue_on_teleport or (fluxus and fluxus.queue_on_teleport) or (delta and delta.queue_on_teleport)
 		local TeleportCheck = false
 		game:GetService("Players").LocalPlayer.OnTeleport:Connect(function(State)
 			if KeepSC then
 		if (not TeleportCheck) and queueteleport then
 			TeleportCheck = true
-			queueteleport("loadstring(game:HttpGet('https://raw.githubusercontent.com/AyoItsHanee/main/main/wfps2.lua'))()")
+			queueteleport("loadstring(game:HttpGet('https://raw.githubusercontent.com/AyoItsHanee/main/main/wfps.lua'))()")
 				end
 			else
 			if (not TeleportCheck) and queueteleport then	
@@ -40,6 +42,7 @@ local spawn, wait = task.spawn, task.wait
 				end
 		end
 		end)
+]]--
 
 if not game:IsLoaded() then
     game.Loaded:Wait()
@@ -56,8 +59,6 @@ print("game loaded")
 	vu:Button2Up(Vector2.new(0,0),workspace.CurrentCamera.CFrame)
 	end)
 
-
-	local function master()
 		print("Boss Rotation v0.3.5")
 		print("executed true sc")
 		local function getLocalPlayerUsername()
@@ -128,12 +129,10 @@ print("game loaded")
 		end
 		buttonr.MouseButton1Click:Connect(togglebossrun)
 
-		local success, error = pcall(function()
 		local Players = game:GetService("Players")
 		local ReplicatedStorage = game:GetService("ReplicatedStorage")
 		local Workspace = game:GetService("Workspace")
 		local placeId = game.PlaceId
-		local TeleportService = game:GetService("TeleportService")
 			
 		if game.PlaceId == 5956785391 then
 			local args = {
@@ -147,6 +146,17 @@ print("game loaded")
 				game:GetService("TeleportService"):Teleport(5956785391)
 
 		elseif game.PlaceId == 13883059853 then
+
+			spawn(function()
+			while true do
+				for _, v in pairs(game:GetService("Players").LocalPlayer.Character:GetDescendants()) do
+               				if v:IsA("BasePart") and v.CanCollide then
+                   				v.CanCollide = false 
+					end
+               			end
+				wait(0.1)
+			end
+			end)
 
 			-- Create a Frame
 			local frame1 = Instance.new("Frame")
@@ -178,14 +188,14 @@ print("game loaded")
 			end
 
 			-- Update the Ore value every second
-			local function updore()
-				while task.wait(1) do
+			spawn(function()
+				while true do
 						if checkore then
 					updateOreLabel()
 						end
+				wait(1)
 				end
-			end
-			coroutine.wrap(updore)()
+			end)
 
 			local function sendToDiscord(content)
     local payload = {
@@ -273,15 +283,14 @@ local upb = checkamount()
 end
 
 -- Update the Ore value every minute
-local function updsore()
-    while task.wait(960) do
+spawn(function()
+    while true do
         if checkore then
             updateAndSendOre()
         end
+	wait(960)
     end
-end
-
-coroutine.wrap(updsore)()
+end)
 
 			game:GetService("Players").LocalPlayer.PlayerScripts["Small_Scripts"].Gameplay["Sun_Damage"].Disabled = true
 			function RemoveDMG()
@@ -320,18 +329,17 @@ coroutine.wrap(updsore)()
 				end
 			end
 
-			local function wd()
+			spawn(function()
 				local args = {
 					[1] = true
 				}
 
 				game:GetService("ReplicatedStorage"):WaitForChild("Remotes"):WaitForChild("war_Drums_remote"):FireServer(unpack(args))
 				wait(3)
-			end
-			coroutine.wrap(wd)()
+			end)
 			-- Auto collect chest
-			local function collectChest()
-				while task.wait(1) do
+			spawn(function()
+				while true do
 					for _, chest in pairs(Workspace.Debree:GetChildren()) do
 						if chest.Name == "Loot_Chest" then
 							for _, drop in pairs(chest:FindFirstChild("Drops"):GetChildren()) do
@@ -343,23 +351,22 @@ coroutine.wrap(updsore)()
 							end
 						end
 					end
+wait(1)
 				end
-			end
-			coroutine.wrap(collectChest)()
+			end)
 
 			-- Loop to initiate a skill
-			local function initiateSkill()
-				while task.wait() do
+			spawn(function()
+				while true do
 					local Handle_Initiate_S_ = ReplicatedStorage.Remotes.To_Server.Handle_Initiate_S_
 					Handle_Initiate_S_:InvokeServer("skil_ting_asd", Players.LocalPlayer, "arrow_knock_back", 5)
 					wait(14)
 				end
-			end
-			coroutine.wrap(initiateSkill)()
+			end)
 
 			-- Loop to attack mobs
-			local function attackMobs()
-				while task.wait() do
+			spawn(function()
+				while true do
 					local hitCounter = {}
 					for _, mob in pairs(Workspace.Mobs:GetDescendants()) do
 						if mob:IsA("Model") and mob:FindFirstChild("HumanoidRootPart") then
@@ -375,32 +382,31 @@ coroutine.wrap(updsore)()
 									local Handle_Initiate_S_ = ReplicatedStorage.Remotes.To_Server.Handle_Initiate_S_
 									Handle_Initiate_S_:InvokeServer("arrow_knock_back_damage", Players.LocalPlayer.Character, mob.HumanoidRootPart.CFrame, mob, 500, 500)
 									hitCounter[modelId] = hitCounter[modelId] + 1
+									wait(0.5)
 								end
 							end
 						end
 					end
-						wait(.1)
+						wait()
 				end
-			end
-
-			coroutine.wrap(attackMobs)()
+			end)
 
 			-- Loop to delete specific parts
 			--local specificNames = {"Map", "InteractiveShopItems", "MugenTrain", "PrivateServerDummies", "cup game", "Bandage", "BeastTrainer", "BigLight", "Black Smith", "Board", "Boulder_To_Split", "Buy_Big_Gourd", "Buy_Gourd", "Buy_Medium_Gourd", "Chair", "Civilian", "Civilian 2", "ClashTrainer", "Conductor", "Customization data ting", "Demon Guy", "Demon Slayer", "Fishing_Rod2", "Flame Trainer", "Grandpa Wagwon's Wagon", "Green_Crystal", "Mae", "Malik", "Mark", "Mist Trainer", "Model", "Ouw0pp", "Part", "Patrick", "Policeman", "Rina", "RinaDesk", "Rock", "Snow Trainer", "Soryu Trainer", "Beast Trainer", "Sound Trainer", "Target_Training", "Tyrone", "potion_sails_man", "thing", "Meditate_Mat", "Push_Ups_Mat", "Union", "MeshPart", "Floor", "Mist"}
 			local isLooping = true
-			local function deleteSpecificParts()
-				while task.wait() do
+			spawn(function()
+				while true do
 					if isLooping then
 						for i,v in pairs(game.Workspace.Map:GetChildren()) do
            				 		v:Destroy()
         					end
 					end
+				wait()
 				end
-			end
-			coroutine.wrap(deleteSpecificParts)()
+			end)
 
-			local function preventFall()
-				while task.wait() do
+			spawn(function()
+				while true do
 					local antifall3 = Instance.new("BodyVelocity", Players.LocalPlayer.Character.HumanoidRootPart)
 					antifall3.Velocity = Vector3.new(0, 0, 0)
 					antifall3.MaxForce = Vector3.new(9e9, 9e9, 9e9)
@@ -412,8 +418,7 @@ coroutine.wrap(updsore)()
 				if antifall3 then
 					antifall3:Destroy()
 				end
-			end
-			coroutine.wrap(preventFall)()
+			end)
 
 			local TweenService = game:GetService("TweenService")
 			local Root = game.Players.LocalPlayer.Character.HumanoidRootPart
@@ -499,10 +504,13 @@ coroutine.wrap(updsore)()
 				Goal.CFrame = CFrame.new(position)
 				local tween = TweenService:Create(Root, TweenInfo.new(Time, Enum.EasingStyle.Linear, Enum.EasingDirection.Out, 0, false, 0), Goal)
 				tween:Play()
-				wait(Time)
+				--wait(Time)
+				while (Root.Position - position).magnitude > 1 do
+        				wait(0.1) -- Check every 0.1 seconds
+    				end
 				local movementTimer = 0
 				local prevPosition = Root.Position
-				while wait() do
+				while true do
 						if bossrun then
 					local pathInWorkspace = Workspace.Mobs:FindFirstChild(pathName)
 					if pathToCheck and #pathToCheck:GetChildren() == Num then
@@ -523,39 +531,68 @@ coroutine.wrap(updsore)()
 						movementTimer = 0
 					end
 					prevPosition = currentPosition
+			wait()
 				end
 			end
 
-			local function main()
-					while bossrun do
+			spawn(function()
+					while true do
+				if bossrun then
 				for _, pathInfo in ipairs(pathsToCheck) do
 					CheckAndMove(pathInfo.name, pathInfo.position, pathInfo.path, pathInfo.time, pathInfo.num)
 				end
+				end
 						wait()
 					end
-			end
+			end)
 
-			coroutine.wrap(main)()
 			wait()
 			RemoveDMG()
 			wait()
 			RemovePARTICLES()
-			game:GetService("RunService"):Set3dRenderingEnabled(false)
+			--game:GetService("RunService"):Set3dRenderingEnabled(false)
 			wait(300)
 			local isLooping = false
+			wait(1800)
+game:GetService("Players").LocalPlayer.PlayerGui.MainGuis.Settings2.Visible = true
+wait()
+-- Wait for the game services to load
+local Players = game:GetService("Players")
+local VirtualInputManager = game:GetService("VirtualInputManager")
 
-			wait(3600)
-			local TeleportService = game:GetService("TeleportService")
-			game:GetService("TeleportService"):Teleport(5956785391)
+-- Get the local player and their PlayerGui
+local player = Players.LocalPlayer
+local playerGui = player:WaitForChild("PlayerGui")
+
+-- Get the specific ImageButton
+local screenGui = playerGui:WaitForChild("MainGuis")
+local Settings = screenGui:WaitForChild("Settings2")
+local button = Settings:WaitForChild("TextButton")
+
+-- Function to simulate a click on the button
+local function simulateButtonClick()
+    -- Get the button's position and size
+    local buttonPosition = button.AbsolutePosition
+    local buttonSize = button.AbsoluteSize
+
+    -- Calculate the center position of the button
+    local clickPosition = Vector2.new(
+        buttonPosition.X + buttonSize.X / 2,
+        buttonPosition.Y + buttonSize.Y / 2
+    )
+
+    -- Simulate the button click
+    VirtualInputManager:SendMouseButtonEvent(clickPosition.X, clickPosition.Y + 25, 0, true, game, 0)
+    wait(0.1)
+    VirtualInputManager:SendMouseButtonEvent(clickPosition.X, clickPosition.Y + 25, 0, false, game, 0)
+end
+
+-- Call the function to simulate the button click
+simulateButtonClick()
+			--game:GetService("TeleportService"):Teleport(5956785391, game.Players.LocalPlayer)
 
 		elseif game.PlaceId == 9321822839 then
 			game:GetService("TeleportService"):Teleport(5956785391)
 		else
 			print("Wrong game")
 		end
-		end)
-		if not success then
-			print("An error occurred:", error)
-		end
-	end
-	master()
