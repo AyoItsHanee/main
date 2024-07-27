@@ -142,6 +142,23 @@ print("game loaded")
 	elseif placeId == 11468075017 then
 
 		wait(1)
+
+		local function preventFall()
+				while true do
+					local antifall3 = Instance.new("BodyVelocity", game.Players.LocalPlayer.Character.HumanoidRootPart)
+					antifall3.Velocity = Vector3.new(0, 0, 0)
+					antifall3.MaxForce = Vector3.new(9e9, 9e9, 9e9)
+
+					wait() -- It's a good idea to yield control periodically to prevent performance issues
+				end
+
+				-- This part should be outside the while loop
+				if antifall3 then
+					antifall3:Destroy()
+				end
+			end
+			coroutine.wrap(preventFall)()
+	
 		local Info = TweenInfo.new(1, Enum.EasingStyle.Cubic, Enum.EasingDirection.Out, 0, false, 0)
 		local Goal = {}
 		local Root = game.Players.LocalPlayer.Character.HumanoidRootPart
@@ -363,21 +380,6 @@ local rooth = game.Players.LocalPlayer.Character:FindFirstChild("Humanoid")
 			coroutine.resume(loopCM)
 			wait(1)
 			coroutine.wrap(loopFunction)()
-		local function preventFall()
-				while true do
-					local antifall3 = Instance.new("BodyVelocity", game.Players.LocalPlayer.Character.HumanoidRootPart)
-					antifall3.Velocity = Vector3.new(0, 0, 0)
-					antifall3.MaxForce = Vector3.new(9e9, 9e9, 9e9)
-
-					wait() -- It's a good idea to yield control periodically to prevent performance issues
-				end
-
-				-- This part should be outside the while loop
-				if antifall3 then
-					antifall3:Destroy()
-				end
-			end
-			coroutine.wrap(preventFall)()
 			spawn(function()
 			while true do
 					if spsn and rooth.Health > 0 then
