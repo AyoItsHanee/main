@@ -541,6 +541,7 @@ wait(1)
 				for _, pathInfo in ipairs(pathsToCheck) do
 					CheckAndMove(pathInfo.name, pathInfo.position, pathInfo.path, pathInfo.time, pathInfo.num)
 				end
+					wait(10)
 				end
 						wait()
 					end
