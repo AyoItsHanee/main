@@ -170,18 +170,18 @@ print("game loaded")
 		wait(11)
 
 	local function noclip()
-		           for _, v in pairs(game:GetService("Players").LocalPlayer.Character:GetDescendants()) do
-               if v:IsA("BasePart") then
-				while true do
-                   v.CanCollide = false 
-					wait()
-				end
-               end
-               if v:IsA("Humanoid") then
+		if v:IsA("Humanoid") then
                    v:ChangeState(11)
-               end
-           end
-		   end
+               	end
+		while true do
+			for _, v in pairs(game:GetService("Players").LocalPlayer.Character:GetDescendants()) do
+               			if v:IsA("BasePart") and v.CanCollide then
+                   			v.CanCollide = false 
+				end
+               		end
+			wait(0.1)
+		end
+	end
 
 	local function collectChest()
 					while task.wait() do
