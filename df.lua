@@ -24,11 +24,6 @@ repeat wait() until game:IsLoaded()
 	game.NetworkClient.ChildRemoved:Connect(function()
 	game:GetService("TeleportService"):Teleport(5094651510)
 	end)
-	game:GetService("CoreGui").RobloxPromptGui.promptOverlay.ChildAdded:Connect(function(child)
-	if child.Name == 'ErrorPrompt' and child:FindFirstChild('MessageArea') and child.MessageArea:FindFirstChild("ErrorFrame") then
-		game:GetService("TeleportService"):Teleport(5094651510)
-	end
-	end)
 
 	local function master()
 		print("executed df farm v0.0.2")
