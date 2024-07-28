@@ -1,5 +1,5 @@
 --loadstring(game:HttpGet("https://raw.githubusercontent.com/EdgeIY/infiniteyield/master/source", true))()
-local spsn = true
+spsn = true
 local KeepSC = true
 wait(1)
 print("SCRIPT MADE BY realhanif")
@@ -14,13 +14,11 @@ local spawn, wait = task.spawn, task.wait
 	game.NetworkClient.ChildRemoved:Connect(function()
 	game:GetService("TeleportService"):Teleport(9321822839)
 	end)
---[[
 	game:GetService("CoreGui").RobloxPromptGui.promptOverlay.ChildAdded:Connect(function(child)
 	if child.Name == 'ErrorPrompt' and child:FindFirstChild('MessageArea') and child.MessageArea:FindFirstChild("ErrorFrame") then
 		game:GetService("TeleportService"):Teleport(9321822839)
 	end
 	end)
-]]--
 
 		queueteleport = (syn and syn.queue_on_teleport) or queue_on_teleport or (fluxus and fluxus.queue_on_teleport) or (delta and delta.queue_on_teleport)
 		local TeleportCheck = false
@@ -73,6 +71,15 @@ print("game loaded")
 		label.Text = "KeepSC: " .. tostring(KeepSC)
 		label.Parent = frame
 
+		-- Create a TextButton
+		local buttonr = Instance.new("TextButton")
+		buttonr.Size = UDim2.new(0, 100, 0, 25)
+		buttonr.Position = UDim2.new(0, 400, 0, 0)
+		buttonr.BackgroundColor3 = Color3.fromRGB(0, 0, 0)
+		buttonr.TextColor3 = Color3.fromRGB(255, 255, 255)
+		buttonr.Text = "Toggle Rotation"
+		buttonr.Parent = screenGui
+
 		-- Function to toggle KeepSC and update UI
 		local function toggleKeepSC()
 			KeepSC = not KeepSC
@@ -86,6 +93,17 @@ print("game loaded")
 			})
 		end
 		button.MouseButton1Click:Connect(toggleKeepSC)
+
+		local function togglebossrun()
+			spsn = not spsn
+			-- Send notification
+			game.StarterGui:SetCore("SendNotification", {
+				Title = "Tweens Toggle",
+				Text = "Tweens is now " .. tostring(spsn),
+				Duration = 1
+			})
+		end
+		buttonr.MouseButton1Click:Connect(togglebossrun)
 
 		local function getLocalPlayerUsername()
 			if game.Players.LocalPlayer then
@@ -144,6 +162,23 @@ print("game loaded")
 	elseif placeId == 11468075017 then
 
 		wait(1)
+
+		local function preventFall()
+				while true do
+					local antifall3 = Instance.new("BodyVelocity", game.Players.LocalPlayer.Character.HumanoidRootPart)
+					antifall3.Velocity = Vector3.new(0, 0, 0)
+					antifall3.MaxForce = Vector3.new(9e9, 9e9, 9e9)
+
+					wait() -- It's a good idea to yield control periodically to prevent performance issues
+				end
+
+				-- This part should be outside the while loop
+				if antifall3 then
+					antifall3:Destroy()
+				end
+			end
+			coroutine.wrap(preventFall)()
+	
 		local Info = TweenInfo.new(1, Enum.EasingStyle.Cubic, Enum.EasingDirection.Out, 0, false, 0)
 		local Goal = {}
 		local Root = game.Players.LocalPlayer.Character.HumanoidRootPart
@@ -154,18 +189,18 @@ print("game loaded")
 		game:GetService("TweenService"):Create(Root, Info, Goal):Play()
 		wait(11)
 
-			spawn(function()
-			while true do
-				for _, v in pairs(game:GetService("Players").LocalPlayer.Character:GetDescendants()) do
-               				if v:IsA("BasePart") and v.CanCollide then
-                   				v.CanCollide = false 
-					end
-               			end
-				wait(0.1)
-			end
-			end)
-			
-		   spawn(function()
+	local function noclip()
+		while true do
+			for _, v in pairs(game:GetService("Players").LocalPlayer.Character:GetDescendants()) do
+               			if v:IsA("BasePart") and v.CanCollide then
+                   			v.CanCollide = false 
+				end
+               		end
+			wait(0.1)
+		end
+	end
+
+	local function collectChest()
 					while task.wait() do
 						for _, chest in pairs(Workspace.Debree:GetChildren()) do
 							if chest.Name == "Loot_Chest" then
@@ -176,7 +211,7 @@ print("game loaded")
 							end
 						end
 					end
-				end)
+				end
 
 		local function destroyModels(modelNames)
 			for _, modelName in pairs(modelNames) do
@@ -189,6 +224,12 @@ print("game loaded")
 				end
 			end
 		end
+
+	local function cdorb()
+		local hellyes = true
+		wait(10)
+		local hellyes = false
+	end
 
 		local player = game.Players.LocalPlayer
 		local character = player.Character or player.CharacterAdded:Wait()
@@ -206,12 +247,14 @@ print("game loaded")
 			{name = "MobCamouflage", enabled = true}
 		}
 local rooth = game.Players.LocalPlayer.Character:FindFirstChild("Humanoid")
+	local hellyes = false
 				local function orbv2()
 				for _, orb in ipairs(orbTypes) do
-					if orb.enabled then
+					if orb.enabled and (not hellyes) then
 						for _, v in pairs(Workspace.Map:GetChildren()) do
 							if v:IsA("Model") and v.Name == orb.name then
 								game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = v:GetModelCFrame()
+								spawn(cdorb)
 							end
 						end
 				end
@@ -234,7 +277,7 @@ local rooth = game.Players.LocalPlayer.Character:FindFirstChild("Humanoid")
 
 -- Function to tween the character to a random part within "Spawnpoints"
 
-		spawn(function()
+		local function wd()
 			while task.wait(3) do
 				local args = {
 					[1] = true
@@ -242,7 +285,8 @@ local rooth = game.Players.LocalPlayer.Character:FindFirstChild("Humanoid")
 
 				game:GetService("ReplicatedStorage"):WaitForChild("Remotes"):WaitForChild("war_Drums_remote"):FireServer(unpack(args))
 			end
-		end)
+		end
+		coroutine.wrap(wd)()
 	
 		-- Coroutine function
 		local function mainCoroutine()
@@ -279,18 +323,18 @@ local rooth = game.Players.LocalPlayer.Character:FindFirstChild("Humanoid")
 		print("Farming Ouw for 10 Minutes..")
 
 		-- Execute SH V2
-		spawn(function()
+		local function loopBp()
 			while true do
 				local Handle_Initiate_S_ = game.ReplicatedStorage.Remotes.To_Server.Handle_Initiate_S_
 				Handle_Initiate_S_:InvokeServer("skil_ting_asd", game.Players.LocalPlayer, "arrow_knock_back", 5)
 				wait(14)
 			end
-		end)
+		end
 
 		local loopC1 = coroutine.create(loopBp)
 		coroutine.resume(loopC1)
 
-		spawn(function()
+		local function loopFunction()
 			while true do
 				local success, error = pcall(function()
 				local hitCounter = {} -- Counter for each model
@@ -331,7 +375,7 @@ local rooth = game.Players.LocalPlayer.Character:FindFirstChild("Humanoid")
 				-- Add a delay between iterations to prevent excessive server load
 				wait(.1) -- Adjust the delay time as desired
 			end
-		end)
+		end
 
 		local startTime = tick() -- Record the start time
 		-- Wait until the Timer GUI is visible or until the timeout is reached
@@ -350,7 +394,7 @@ local rooth = game.Players.LocalPlayer.Character:FindFirstChild("Humanoid")
 			coroutine.wrap(orbx)()
 		else
 			spsn = false
-			print("UR DEAD")
+			print("UR DEAD NIGG")
 			game:GetService("ReplicatedStorage"):WaitForChild("TeleportToShop"):FireServer()
 		end
 	end
@@ -361,22 +405,9 @@ local rooth = game.Players.LocalPlayer.Character:FindFirstChild("Humanoid")
 			wait()
 			local loopCM = coroutine.create(mainCoroutine)
 			coroutine.resume(loopCM)
+			spawn(noclip)
 			wait(1)
-			spawn(function()
-				while true do
-					local antifall3 = Instance.new("BodyVelocity", game.Players.LocalPlayer.Character.HumanoidRootPart)
-					antifall3.Velocity = Vector3.new(0, 0, 0)
-					antifall3.MaxForce = Vector3.new(9e9, 9e9, 9e9)
-
-					wait() -- It's a good idea to yield control periodically to prevent performance issues
-				end
-
-				-- This part should be outside the while loop
-				if antifall3 then
-					antifall3:Destroy()
-				end
-			end)
-
+			coroutine.wrap(loopFunction)()
 			spawn(function()
 			while true do
 					if spsn and rooth.Health > 0 then
@@ -388,23 +419,21 @@ local rooth = game.Players.LocalPlayer.Character:FindFirstChild("Humanoid")
 					if #parts > 0 then
 						local randomPart = parts[math.random(1, #parts)]
 						if randomPart and randomPart:IsA("BasePart") then
-						if #workspace.Mobs:GetChildren() > 5 and (not canrun) then
+						if #workspace.Mobs:GetChildren() > 10 then
 						game.TweenService:Create(game.Players.LocalPlayer.Character.HumanoidRootPart, TweenInfo.new(2, Enum.EasingStyle.Linear, Enum.EasingDirection.Out), {CFrame = CFrame.new(randomPart.Position + Vector3.new(0, 200, 0))}):Play()
 						wait(2.5)
-						local canrun = true
-						elseif #workspace.Mobs:GetChildren() <= 5 then
+						elseif #workspace.Mobs:GetChildren() <= 10 then
 						game.TweenService:Create(game.Players.LocalPlayer.Character.HumanoidRootPart, TweenInfo.new(2, Enum.EasingStyle.Linear, Enum.EasingDirection.Out), {CFrame = CFrame.new(randomPart.Position + Vector3.new(0, 75, 0))}):Play()
 						wait(2.5)
-						local canrun = false
-						end
-							for _, orb in ipairs(orbTypes) do
+													for _, orb in ipairs(orbTypes) do
 							for _, v in pairs(Workspace.Map:GetChildren()) do
 							if v:IsA("Model") and v.Name == orb.name then
-							spawn(orbv2)
-							wait(2.5)
-							end
-							end
-							end
+						spawn(orbv2)
+												wait(2.5)
+													end
+												end
+											end
+						end
 						end
 					else
 						warn("No parts found in Spawnpoints of room: " .. roomName)
@@ -417,17 +446,18 @@ local rooth = game.Players.LocalPlayer.Character:FindFirstChild("Humanoid")
 			end
 			else
 			spsn = false
-			print("UR DEAD")
+			print("UR DEAD NIGG")
 			game.Players.LocalPlayer.Character:FindFirstChild("Humanoid").Health = -1
 						wait()
 			--game.Players.LocalPlayer.Character:FindFirstChild("Humanoid"):Destroy()
-			repeat wait() until game.Players.LocalPlayer.Character:FindFirstChild("Humanoid").Health >= 0
+			repeat wait() until game.Players.LocalPlayer.Character:FindFirstChild("Humanoid").Health > 0
 			game:GetService("ReplicatedStorage"):WaitForChild("TeleportToShop"):FireServer()
+			spawn(collectChest)
 			break
 		end
 		end
 			end)
-	
+
 			--coroutine.wrap(orbx)()
 			wait(600)
 			if game.Players.LocalPlayer.Character:FindFirstChild("Humanoid") then
@@ -440,7 +470,7 @@ local rooth = game.Players.LocalPlayer.Character:FindFirstChild("Humanoid")
 			wait(10)
 			TeleportService:Teleport(9321822839)
 		end
-		TeleportService:Teleport(9321822839)
+		--TeleportService:Teleport(9321822839)
 	else
 		print("Place ID doesn't match")
 	end
