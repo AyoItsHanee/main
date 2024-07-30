@@ -212,6 +212,7 @@ print("game loaded")
 						end
 					end
 				end
+				spawn(collectChest)
 
 		local function destroyModels(modelNames)
 			for _, modelName in pairs(modelNames) do
@@ -471,7 +472,6 @@ local rooth = game.Players.LocalPlayer.Character:FindFirstChild("Humanoid")
 			--game.Players.LocalPlayer.Character:FindFirstChild("Humanoid"):Destroy()
 			repeat wait() until game.Players.LocalPlayer.Character:FindFirstChild("Humanoid").Health > 0
 			game:GetService("ReplicatedStorage"):WaitForChild("TeleportToShop"):FireServer()
-			spawn(collectChest)
 			break
 		end
 		end
