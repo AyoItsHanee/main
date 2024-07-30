@@ -213,7 +213,7 @@ print("game loaded")
 					end
 				end
 			end
-wait(1)
+wait()
 		end
 				end
 				spawn(collectChest)
