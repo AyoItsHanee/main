@@ -387,18 +387,35 @@ local rooth = game.Players.LocalPlayer.Character:FindFirstChild("Humanoid")
 			wait(1) -- Adjust the delay as needed, e.g., check every second
 		end
 
-	--[[
-	local function mst()
-		if rooth.Health > 0 then
-			coroutine.wrap(sps)()
-			coroutine.wrap(orbx)()
-		else
-			spsn = false
-			print("UR DEAD NIGG")
-			game:GetService("ReplicatedStorage"):WaitForChild("TeleportToShop"):FireServer()
-		end
-	end
-	]]--
+		_G.TweenSpeed = 300 
+
+		local function GetDistance(Endpoint)
+			if typeof(Endpoint) == "Instance" then
+			Endpoint = Vector3.new(Endpoint.Position.X, game.Players.LocalPlayer.Character.HumanoidRootPart.Position.Y, Endpoint.Position.Z)
+			elseif typeof(Endpoint) == "CFrame" then
+			Endpoint = Vector3.new(Endpoint.Position.X, game.Players.LocalPlayer.Character.HumanoidRootPart.Position.Y, Endpoint.Position.Z)
+			end
+			local Magnitude = (Endpoint - game.Players.LocalPlayer.Character.HumanoidRootPart.Position).Magnitude
+			return Magnitude
+		 end
+		 
+		 
+		 function Tween(Endpoint)
+			if typeof(Endpoint) == "Instance" then
+			Endpoint = Endpoint.CFrame
+			end
+			local TweenFunc = {}
+			local Distance = GetDistance(Endpoint)
+			local TweenInfo = game:GetService("TweenService"):Create(game.Players.LocalPlayer.Character.HumanoidRootPart, TweenInfo.new(Distance/_G.TweenSpeed, Enum.EasingStyle.Linear), {CFrame = Endpoint * CFrame.fromAxisAngle(Vector3.new(1,0,0), math.rad(0))})
+			TweenInfo:Play()
+			wait(Distance/_G.TweenSpeed)
+			function TweenFunc:Cancel()
+			TweenInfo:Cancel()
+			return false
+			end
+			return TweenFunc
+		 end
+
 		-- Check if the Timer GUI became visible or not
 		if isTimerGuiVisible() then
 			print("Timer GUI is now visible, continuing with the script...")
@@ -420,11 +437,13 @@ local rooth = game.Players.LocalPlayer.Character:FindFirstChild("Humanoid")
 						local randomPart = parts[math.random(1, #parts)]
 						if randomPart and randomPart:IsA("BasePart") then
 						if #workspace.Mobs:GetChildren() > 10 then
-						game.TweenService:Create(game.Players.LocalPlayer.Character.HumanoidRootPart, TweenInfo.new(2, Enum.EasingStyle.Linear, Enum.EasingDirection.Out), {CFrame = CFrame.new(randomPart.Position + Vector3.new(0, 200, 0))}):Play()
-						wait(2.5)
+							local endpointCFrame = CFrame.new(randomPart.Position + Vector3.new(0, 200, 0))
+							local tween = Tween(endpointCFrame)
+						--game.TweenService:Create(game.Players.LocalPlayer.Character.HumanoidRootPart, TweenInfo.new(Distance(randomPart.Position + Vector3.new(0, 200, 0)) / _G.TweenSpeed, Enum.EasingStyle.Linear, Enum.EasingDirection.Out), {CFrame = CFrame.new(randomPart.Position + Vector3.new(0, 200, 0))}):Play()
 						elseif #workspace.Mobs:GetChildren() <= 10 then
-						game.TweenService:Create(game.Players.LocalPlayer.Character.HumanoidRootPart, TweenInfo.new(2, Enum.EasingStyle.Linear, Enum.EasingDirection.Out), {CFrame = CFrame.new(randomPart.Position + Vector3.new(0, 75, 0))}):Play()
-						wait(2.5)
+							local endpointCFrame = CFrame.new(randomPart.Position + Vector3.new(0, 75, 0))
+							local tween = Tween(endpointCFrame)
+						--game.TweenService:Create(game.Players.LocalPlayer.Character.HumanoidRootPart, TweenInfo.new(Distance(randomPart.Position + Vector3.new(0, 75, 0)) / _G.TweenSpeed, Enum.EasingStyle.Linear, Enum.EasingDirection.Out), {CFrame = CFrame.new(randomPart.Position + Vector3.new(0, 75, 0))}):Play()
 													for _, orb in ipairs(orbTypes) do
 							for _, v in pairs(Workspace.Map:GetChildren()) do
 							if v:IsA("Model") and v.Name == orb.name then
@@ -446,7 +465,7 @@ local rooth = game.Players.LocalPlayer.Character:FindFirstChild("Humanoid")
 			end
 			else
 			spsn = false
-			print("UR DEAD NIGG")
+			print("UR DEAD")
 			game.Players.LocalPlayer.Character:FindFirstChild("Humanoid").Health = -1
 						wait()
 			--game.Players.LocalPlayer.Character:FindFirstChild("Humanoid"):Destroy()
