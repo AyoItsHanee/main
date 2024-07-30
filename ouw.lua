@@ -201,16 +201,20 @@ print("game loaded")
 	end
 
 	local function collectChest()
-					while task.wait() do
-						for _, chest in pairs(Workspace.Debree:GetChildren()) do
-							if chest.Name == "Loot_Chest" then
-								for _, drop in pairs(chest:FindFirstChild("Drops"):GetChildren()) do
-									chest.Add_To_Inventory:InvokeServer(drop.Name)
-									drop:Destroy()
-								end
-							end
+		while true do
+			for _, chest in pairs(Workspace.Debree:GetChildren()) do
+				if chest.Name == "Loot_Chest" then
+					for _, drop in pairs(chest:FindFirstChild("Drops"):GetChildren()) do
+						chest.Add_To_Inventory:InvokeServer(drop.Name)
+						drop:Destroy()
+						if #chest.Drops:GetChildren() == 0 then
+							chest:Destroy()
 						end
 					end
+				end
+			end
+wait(1)
+		end
 				end
 				spawn(collectChest)
 
