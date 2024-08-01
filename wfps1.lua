@@ -26,6 +26,7 @@ local spawn, wait = task.spawn, task.wait
 		end
 	end
 	end)
+]]--
 
 		queueteleport = (syn and syn.queue_on_teleport) or queue_on_teleport or (fluxus and fluxus.queue_on_teleport) or (delta and delta.queue_on_teleport)
 		local TeleportCheck = false
@@ -33,7 +34,7 @@ local spawn, wait = task.spawn, task.wait
 			if KeepSC then
 		if (not TeleportCheck) and queueteleport then
 			TeleportCheck = true
-			queueteleport("loadstring(game:HttpGet('https://raw.githubusercontent.com/AyoItsHanee/main/main/wfps.lua'))()")
+			queueteleport("loadstring(game:HttpGet('https://raw.githubusercontent.com/AyoItsHanee/main/main/wfps1.lua'))()")
 				end
 			else
 			if (not TeleportCheck) and queueteleport then	
@@ -42,7 +43,6 @@ local spawn, wait = task.spawn, task.wait
 				end
 		end
 		end)
-]]--
 
 if not game:IsLoaded() then
     game.Loaded:Wait()
