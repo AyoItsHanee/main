@@ -250,24 +250,6 @@ wait()
 			{name = "MobCamouflage", enabled = true}
 		}
 local rooth = game.Players.LocalPlayer.Character:FindFirstChild("Humanoid")
-	local hellyes = false
-	local letsdo = true
-
-				local function orbv2()
-				for _, orb in ipairs(orbTypes) do
-					if orb.enabled and (not hellyes) then
-						for _, v in pairs(Workspace.Map:GetChildren()) do
-							if v:IsA("Model") and v.Name == orb.name then
-								game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = v:GetModelCFrame()
-								spawn(cdorb)
-								local letsdo = false
-								wait(2.5)
-								local letsdo = true
-							end
-						end
-				end
-			end
-		end
 
 		-- Function to find the correct room name
 		local function findRoomName()
@@ -452,13 +434,6 @@ local rooth = game.Players.LocalPlayer.Character:FindFirstChild("Humanoid")
 							local endpointCFrame = CFrame.new(randomPart.Position + Vector3.new(0, 75, 0))
 							local tween = Tween(endpointCFrame)
 						--game.TweenService:Create(game.Players.LocalPlayer.Character.HumanoidRootPart, TweenInfo.new(Distance(randomPart.Position + Vector3.new(0, 75, 0)) / _G.TweenSpeed, Enum.EasingStyle.Linear, Enum.EasingDirection.Out), {CFrame = CFrame.new(randomPart.Position + Vector3.new(0, 75, 0))}):Play()
-							for _, orb in ipairs(orbTypes) do
-							for _, v in pairs(Workspace.Map:GetChildren()) do
-							if v:IsA("Model") and v.Name == orb.name then
-						spawn(orbv2)
-													end
-												end
-											end
 						end
 						end
 					else
