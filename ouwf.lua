@@ -247,6 +247,7 @@ local rooth = game.Players.LocalPlayer.Character:FindFirstChild("Humanoid")
 	local hellyes = false
 	local letsdo = true
 				local function orbv2()
+					while true do
 				for _, orb in ipairs(orbTypes) do
 					if orb.enabled and (not hellyes) then
 						for _, v in pairs(Workspace.Map:GetChildren()) do
@@ -261,6 +262,8 @@ local rooth = game.Players.LocalPlayer.Character:FindFirstChild("Humanoid")
 						end
 				end
 			end
+			wait()
+		end
 		end
 
 		-- Function to find the correct room name
