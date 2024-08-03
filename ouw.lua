@@ -1,3 +1,4 @@
+repeat wait() until game:IsLoaded()
 --loadstring(game:HttpGet("https://raw.githubusercontent.com/EdgeIY/infiniteyield/master/source", true))()
 spsn = true
 local KeepSC = true
@@ -26,7 +27,7 @@ local spawn, wait = task.spawn, task.wait
 			if KeepSC then
 		if (not TeleportCheck) and queueteleport then
 			TeleportCheck = true
-			queueteleport("loadstring(game:HttpGet('https://raw.githubusercontent.com/AyoItsHanee/main/main/wfps.lua'))()")
+			queueteleport("loadstring(game:HttpGet('https://raw.githubusercontent.com/AyoItsHanee/main/main/ouw.lua'))()")
 				end
 			else
 			if (not TeleportCheck) and queueteleport then	
@@ -36,9 +37,6 @@ local spawn, wait = task.spawn, task.wait
 		end
 		end)
 
-if not game:IsLoaded() then
-    game.Loaded:Wait()
-end
 print("Roblox loaded")
 -- Wait for the LocalPlayer to be loaded
 game:GetService("Players").LocalPlayer:WaitForChild("doneloadinggamepasses")
