@@ -251,6 +251,7 @@ wait()
 		}
 local rooth = game.Players.LocalPlayer.Character:FindFirstChild("Humanoid")
 	local hellyes = false
+	local letsdo = true
 
 				local function orbv2()
 				for _, orb in ipairs(orbTypes) do
@@ -259,6 +260,9 @@ local rooth = game.Players.LocalPlayer.Character:FindFirstChild("Humanoid")
 							if v:IsA("Model") and v.Name == orb.name then
 								game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = v:GetModelCFrame()
 								spawn(cdorb)
+								local letsdo = false
+								wait(2.5)
+								local letsdo = true
 							end
 						end
 				end
@@ -430,7 +434,7 @@ local rooth = game.Players.LocalPlayer.Character:FindFirstChild("Humanoid")
 			wait(1)
 			coroutine.wrap(loopFunction)()
 			spawn(function()
-			while true do
+			while letsdo do
 					if spsn and rooth.Health > 0 then
 			local roomName = findRoomName()
 			if roomName then
@@ -452,7 +456,6 @@ local rooth = game.Players.LocalPlayer.Character:FindFirstChild("Humanoid")
 							for _, v in pairs(Workspace.Map:GetChildren()) do
 							if v:IsA("Model") and v.Name == orb.name then
 						spawn(orbv2)
-														wait(2.5)
 													end
 												end
 											end
