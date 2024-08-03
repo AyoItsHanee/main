@@ -97,6 +97,40 @@ if game.PlaceId == 4855457388 then
 	game:GetService("TeleportService"):Teleport(5094651510)
 	--loadstring(game:HttpGet("https://raw.githubusercontent.com/caydenthekile/scriptsv2/main/demonfall"))()
 elseif game.PlaceId == 5094651510 then
+	wait()
+-- Wait for the game services to load
+local Players = game:GetService("Players")
+local VirtualInputManager = game:GetService("VirtualInputManager")
+
+-- Get the local player and their PlayerGui
+local player = Players.LocalPlayer
+local playerGui = game:GetService("ReplicatedStorage")
+
+-- Get the specific ImageButton
+local screenGui0 = playerGui:WaitForChild("LoadingScreen")
+local screenGui = screenGui0:WaitForChild("Background")
+local Settings = screenGui:WaitForChild("Loading")
+local button = Settings:WaitForChild("Skip")
+
+-- Function to simulate a click on the button
+local function simulateButtonClick()
+    -- Get the button's position and size
+    local buttonPosition = button.AbsolutePosition
+    local buttonSize = button.AbsoluteSize
+
+    -- Calculate the center position of the button
+    local clickPosition = Vector2.new(
+        buttonPosition.X + buttonSize.X / 2,
+        buttonPosition.Y + buttonSize.Y / 2
+    )
+
+    -- Simulate the button click
+    VirtualInputManager:SendMouseButtonEvent(clickPosition.X, clickPosition.Y + 30, 0, true, game, 0)
+    wait(0.1)
+    VirtualInputManager:SendMouseButtonEvent(clickPosition.X, clickPosition.Y + 30, 0, false, game, 0)
+end
+simulateButtonClick()
+
 	print("waiting the game to load")
 	repeat wait() until game:GetService("Players"):WaitForChild(getLocalPlayerUsername()):FindFirstChild("GameLoaded")
 		print("game loaded")
