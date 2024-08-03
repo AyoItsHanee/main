@@ -251,9 +251,9 @@ local rooth = game.Players.LocalPlayer.Character:FindFirstChild("Humanoid")
 					if orb.enabled and (not hellyes) then
 						for _, v in pairs(Workspace.Map:GetChildren()) do
 							if v:IsA("Model") and v.Name == orb.name then
+								local letsdo = false
 								tween.Completed:Wait()
 								game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = v:GetModelCFrame()
-								local letsdo = false
 								wait(2.5)
 								local letsdo = true
 								spawn(cdorb)
