@@ -106,6 +106,24 @@ print("game loaded")
 		buttonr.Text = "Toggle Rotation"
 		buttonr.Parent = screenGui
 
+        -- Create a TextButton
+		local buttonsi = Instance.new("TextButton")
+		buttonsi.Size = UDim2.new(0, 100, 0, 25)
+		buttonsi.Position = UDim2.new(0, 400, 0, 25)
+		buttonsi.BackgroundColor3 = Color3.fromRGB(0, 0, 0)
+		buttonsi.TextColor3 = Color3.fromRGB(255, 255, 255)
+		buttonsi.Text = "Sell Items"
+		buttonsi.Parent = screenGui
+
+        -- Create a TextButton
+		local buttonsw = Instance.new("TextButton")
+		buttonsw.Size = UDim2.new(0, 100, 0, 25)
+		buttonsw.Position = UDim2.new(0, 400, 0, 50)
+		buttonsw.BackgroundColor3 = Color3.fromRGB(0, 0, 0)
+		buttonsw.TextColor3 = Color3.fromRGB(255, 255, 255)
+		buttonsw.Text = "Sell Weapons"
+		buttonsw.Parent = screenGui
+
 		-- Function to toggle KeepSC and update UI
 		local function toggleKeepSC()
 			KeepSC = not KeepSC
@@ -130,6 +148,26 @@ print("game loaded")
 			})
 		end
 		buttonr.MouseButton1Click:Connect(togglebossrun)
+        -- Function to toggle KeepSC and update UI
+		local function sellis()
+			-- Send notification
+			game.StarterGui:SetCore("SendNotification", {
+				Title = "Selling All Items..",
+				Duration = 1
+			})
+            loadstring(game:HttpGet('https://raw.githubusercontent.com/AyoItsHanee/main/main/sellitem.lua'))()
+		end
+		buttonr.MouseButton1Click:Connect(sellis)
+        -- Function to toggle KeepSC and update UI
+		local function selliw()
+			-- Send notification
+			game.StarterGui:SetCore("SendNotification", {
+				Title = "Selling All Weapons..",
+				Duration = 1
+			})
+            loadstring(game:HttpGet('https://raw.githubusercontent.com/AyoItsHanee/main/main/sellitems.lua'))()
+		end
+		buttonr.MouseButton1Click:Connect(selliw)
 
 		local Players = game:GetService("Players")
 		local ReplicatedStorage = game:GetService("ReplicatedStorage")
@@ -148,7 +186,6 @@ print("game loaded")
 				game:GetService("TeleportService"):Teleport(5956785391)
 
 		elseif game.PlaceId == 13883059853 then
-
 			spawn(function()
 			while true do
 				for _, v in pairs(game:GetService("Players").LocalPlayer.Character:GetDescendants()) do
