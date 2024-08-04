@@ -109,7 +109,7 @@ print("game loaded")
         -- Create a TextButton
 		local buttonsi = Instance.new("TextButton")
 		buttonsi.Size = UDim2.new(0, 100, 0, 25)
-		buttonsi.Position = UDim2.new(0, 500, 0, 0)
+		buttonsi.Position = UDim2.new(0, 400, 0, 25)
 		buttonsi.BackgroundColor3 = Color3.fromRGB(0, 0, 0)
 		buttonsi.TextColor3 = Color3.fromRGB(255, 255, 255)
 		buttonsi.Text = "Sell Items"
@@ -118,7 +118,7 @@ print("game loaded")
         -- Create a TextButton
 		local buttonsw = Instance.new("TextButton")
 		buttonsw.Size = UDim2.new(0, 100, 0, 25)
-		buttonsw.Position = UDim2.new(0, 600, 0, 0)
+		buttonsw.Position = UDim2.new(0, 400, 0, 50)
 		buttonsw.BackgroundColor3 = Color3.fromRGB(0, 0, 0)
 		buttonsw.TextColor3 = Color3.fromRGB(255, 255, 255)
 		buttonsw.Text = "Sell Weapons"
