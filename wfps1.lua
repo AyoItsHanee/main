@@ -155,9 +155,9 @@ print("game loaded")
 				Title = "Selling All Items..",
 				Duration = 1
 			})
-            loadstring(game:HttpGet('https://raw.githubusercontent.com/AyoItsHanee/main/main/sellitem.lua'))()
+            loadstring(game:HttpGet('https://raw.githubusercontent.com/AyoItsHanee/main/main/sellitems.lua'))()
 		end
-		buttonr.MouseButton1Click:Connect(sellis)
+		buttonsi.MouseButton1Click:Connect(sellis)
         -- Function to toggle KeepSC and update UI
 		local function selliw()
 			-- Send notification
@@ -165,9 +165,9 @@ print("game loaded")
 				Title = "Selling All Weapons..",
 				Duration = 1
 			})
-            loadstring(game:HttpGet('https://raw.githubusercontent.com/AyoItsHanee/main/main/sellitems.lua'))()
+            loadstring(game:HttpGet('https://raw.githubusercontent.com/AyoItsHanee/main/main/sellitem.lua'))()
 		end
-		buttonr.MouseButton1Click:Connect(selliw)
+		buttonsw.MouseButton1Click:Connect(selliw)
 
 		local Players = game:GetService("Players")
 		local ReplicatedStorage = game:GetService("ReplicatedStorage")
