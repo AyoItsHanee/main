@@ -1,6 +1,4 @@
-if not game:IsLoaded() then
-    game.Loaded:Wait()
-end
+repeat wait() until game:IsLoaded()
 print("Roblox loaded")
 repeat wait() until game.Players.LocalPlayer.Character:WaitForChild("HumanoidRootPart")
 print("Game loaded")
