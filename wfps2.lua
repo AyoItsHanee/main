@@ -1,4 +1,5 @@
---repeat wait() until game:IsLoaded()
+repeat wait() until game:IsLoaded()
+print("Roblox loaded")
 local spawn, wait = task.spawn, task.wait
 	local bossrun = true
 	local KeepSC = true
@@ -26,6 +27,7 @@ local spawn, wait = task.spawn, task.wait
 		end
 	end
 	end)
+]]--
 
 		queueteleport = (syn and syn.queue_on_teleport) or queue_on_teleport or (fluxus and fluxus.queue_on_teleport) or (delta and delta.queue_on_teleport)
 		local TeleportCheck = false
@@ -33,7 +35,7 @@ local spawn, wait = task.spawn, task.wait
 			if KeepSC then
 		if (not TeleportCheck) and queueteleport then
 			TeleportCheck = true
-			queueteleport("loadstring(game:HttpGet('https://raw.githubusercontent.com/AyoItsHanee/main/main/wfps.lua'))()")
+			queueteleport("loadstring(game:HttpGet('https://raw.githubusercontent.com/AyoItsHanee/main/main/wfps2.lua'))()")
 				end
 			else
 			if (not TeleportCheck) and queueteleport then	
@@ -42,12 +44,12 @@ local spawn, wait = task.spawn, task.wait
 				end
 		end
 		end)
-]]--
 
+--[[
 if not game:IsLoaded() then
     game.Loaded:Wait()
 end
-print("Roblox loaded")
+]]--
 -- Wait for the LocalPlayer to be loaded
 game:GetService("Players").LocalPlayer:WaitForChild("doneloadinggamepasses")
 print("game loaded")
@@ -104,6 +106,24 @@ print("game loaded")
 		buttonr.Text = "Toggle Rotation"
 		buttonr.Parent = screenGui
 
+        -- Create a TextButton
+		local buttonsi = Instance.new("TextButton")
+		buttonsi.Size = UDim2.new(0, 100, 0, 25)
+		buttonsi.Position = UDim2.new(0, 400, 0, 25)
+		buttonsi.BackgroundColor3 = Color3.fromRGB(0, 0, 0)
+		buttonsi.TextColor3 = Color3.fromRGB(255, 255, 255)
+		buttonsi.Text = "Sell Items"
+		buttonsi.Parent = screenGui
+
+        -- Create a TextButton
+		local buttonsw = Instance.new("TextButton")
+		buttonsw.Size = UDim2.new(0, 100, 0, 25)
+		buttonsw.Position = UDim2.new(0, 400, 0, 50)
+		buttonsw.BackgroundColor3 = Color3.fromRGB(0, 0, 0)
+		buttonsw.TextColor3 = Color3.fromRGB(255, 255, 255)
+		buttonsw.Text = "Sell Weapons"
+		buttonsw.Parent = screenGui
+
 		-- Function to toggle KeepSC and update UI
 		local function toggleKeepSC()
 			KeepSC = not KeepSC
@@ -128,6 +148,26 @@ print("game loaded")
 			})
 		end
 		buttonr.MouseButton1Click:Connect(togglebossrun)
+        -- Function to toggle KeepSC and update UI
+		local function sellis()
+			-- Send notification
+			game.StarterGui:SetCore("SendNotification", {
+				Title = "Selling All Items..",
+				Duration = 1
+			})
+            loadstring(game:HttpGet('https://raw.githubusercontent.com/AyoItsHanee/main/main/sellitems.lua'))()
+		end
+		buttonsi.MouseButton1Click:Connect(sellis)
+        -- Function to toggle KeepSC and update UI
+		local function selliw()
+			-- Send notification
+			game.StarterGui:SetCore("SendNotification", {
+				Title = "Selling All Weapons..",
+				Duration = 1
+			})
+            loadstring(game:HttpGet('https://raw.githubusercontent.com/AyoItsHanee/main/main/sellitem.lua'))()
+		end
+		buttonsw.MouseButton1Click:Connect(selliw)
 
 		local Players = game:GetService("Players")
 		local ReplicatedStorage = game:GetService("ReplicatedStorage")
@@ -146,7 +186,6 @@ print("game loaded")
 				game:GetService("TeleportService"):Teleport(5956785391)
 
 		elseif game.PlaceId == 13883059853 then
-
 			spawn(function()
 			while true do
 				for _, v in pairs(game:GetService("Players").LocalPlayer.Character:GetDescendants()) do
@@ -382,12 +421,12 @@ wait(1)
 									local Handle_Initiate_S_ = ReplicatedStorage.Remotes.To_Server.Handle_Initiate_S_
 									Handle_Initiate_S_:InvokeServer("arrow_knock_back_damage", Players.LocalPlayer.Character, mob.HumanoidRootPart.CFrame, mob, 500, 500)
 									hitCounter[modelId] = hitCounter[modelId] + 1
-									wait(0.5)
+									wait(0.1)
 								end
 							end
 						end
 					end
-						wait()
+						wait(0.1)
 				end
 			end)
 
@@ -499,52 +538,71 @@ wait(1)
 				-- Add other paths here similarly
 			}
 
-			local function CheckAndMove(pathName, position, pathToCheck, Time, Num)
-				print("Going to " .. pathName)
-				Goal.CFrame = CFrame.new(position)
-				local tween = TweenService:Create(Root, TweenInfo.new(Time, Enum.EasingStyle.Linear, Enum.EasingDirection.Out, 0, false, 0), Goal)
-				tween:Play()
-				--wait(Time)
-				while (Root.Position - position).magnitude > 1 do
-        				wait(0.1) -- Check every 0.1 seconds
-    				end
-				local movementTimer = 0
-				local prevPosition = Root.Position
-				while true do
-						if bossrun then
-					local pathInWorkspace = Workspace.Mobs:FindFirstChild(pathName)
-					if pathToCheck and #pathToCheck:GetChildren() == Num then
-						print("Moving to the next path")
-								break
-							end
-					end
-
-					local currentPosition = Root.Position
-					if currentPosition == prevPosition then
-						movementTimer = movementTimer + 1
-						if movementTimer > 1 then
-								local bossrun = false
-							--print("Character isn't moving, stopping the tween")
-							--tween:Cancel() -- Stop the tween
-						end
-					else
-						movementTimer = 0
-					end
-					prevPosition = currentPosition
-			wait()
-				end
-			end
-
-			spawn(function()
-					while true do
-				if bossrun then
-				for _, pathInfo in ipairs(pathsToCheck) do
-					CheckAndMove(pathInfo.name, pathInfo.position, pathInfo.path, pathInfo.time, pathInfo.num)
-				end
-				end
-						wait()
-					end
-			end)
+            _G.TweenSpeed = 300            
+            local function GetDistance(Endpoint)
+                if typeof(Endpoint) == "Instance" then
+                    Endpoint = Vector3.new(Endpoint.Position.X, Root.Position.Y, Endpoint.Position.Z)
+                elseif typeof(Endpoint) == "CFrame" then
+                    Endpoint = Vector3.new(Endpoint.Position.X, Root.Position.Y, Endpoint.Position.Z)
+                end
+                local Magnitude = (Endpoint - Root.Position).Magnitude
+                return Magnitude
+            end
+            
+            function Tween(Endpoint)
+                if typeof(Endpoint) == "Instance" then
+                    Endpoint = Endpoint.CFrame
+                end
+                local TweenFunc = {}
+                local Distance = GetDistance(Endpoint)
+                local tweenInfo = TweenInfo.new(Distance / _G.TweenSpeed, Enum.EasingStyle.Linear)
+                local tween = TweenService:Create(Root, tweenInfo, {CFrame = Endpoint})
+            
+                -- Play the tween
+                tween:Play()
+            
+                -- Function to cancel the tween
+                function TweenFunc:Cancel()
+                    tween:Cancel()
+                    return false
+                end
+            
+                return TweenFunc
+            end
+            
+            local function CheckAndMove(pathName, position, pathToCheck, Time, Num)
+                print("Going to " .. pathName)
+                local endpointCFrame = CFrame.new(position)
+                local tween = Tween(endpointCFrame)
+            
+                -- Wait until the player reaches the position
+                while (Root.Position - position).Magnitude > 1 do
+                    wait(0.1) -- Check every 0.1 seconds
+                end
+            
+                while true do
+                    if bossrun then
+                        local pathInWorkspace = Workspace.Mobs:FindFirstChild(pathName)
+                        if pathToCheck and #pathToCheck:GetChildren() == Num then
+                            print("Moving to the next path")
+                            break
+                        end
+                    end
+                    wait()
+                end
+            end
+            
+            spawn(function()
+                while true do
+                    if bossrun then
+                        for _, pathInfo in ipairs(pathsToCheck) do
+                            CheckAndMove(pathInfo.name, pathInfo.position, pathInfo.path, pathInfo.time, pathInfo.num)
+                        end
+                    end
+                    wait()
+                end
+            end)
+            
 
 			wait()
 			RemoveDMG()
