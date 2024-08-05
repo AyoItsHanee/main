@@ -611,7 +611,7 @@ wait(1)
 			--game:GetService("RunService"):Set3dRenderingEnabled(false)
 			wait(300)
 			local isLooping = false
-			wait(1800)
+			wait(3600)
 	--[[
 game:GetService("Players").LocalPlayer.PlayerGui.MainGuis.Settings2.Visible = true
 wait()
