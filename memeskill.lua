@@ -1,12 +1,12 @@
 local spawn, wait = task.spawn, task.wait
 local function cdz()
     local ass = true
-    wait(8)
+    wait(7)
     local ass = false
 end
 local function cdx()
     local assx = true
-    wait(10.5)
+    wait(10)
     local assx = false
 end
 
