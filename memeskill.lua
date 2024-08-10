@@ -15,7 +15,7 @@ local function pressx()
 end
 while true do
     spawn(pressz)
-    wait(3)
+    wait(4)
     spawn(pressx)
     wait()
 end
