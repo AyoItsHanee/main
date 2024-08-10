@@ -15,7 +15,7 @@ local spawn, wait = task.spawn, task.wait
 			game:GetService("TeleportService"):Teleport(5956785391)
 		end
 	end)
---[[
+--[[s
 	game:GetService("CoreGui").RobloxPromptGui.promptOverlay.ChildAdded:Connect(function(child)
 	if child.Name == 'ErrorPrompt' and child:FindFirstChild('MessageArea') and child.MessageArea:FindFirstChild("ErrorFrame") then
 		if game.PlaceId == 5956785391 then
