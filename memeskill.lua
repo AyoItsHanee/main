@@ -30,5 +30,5 @@ while true do
     spawn(pressz)
     wait(0.5)
     spawn(pressx)
-    wait()
+    wait(0.5)
 end
