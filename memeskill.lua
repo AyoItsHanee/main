@@ -10,9 +10,12 @@ local function pressx()
 	local VirtualInputManager = game:GetService('VirtualInputManager')
 
 	VirtualInputManager:SendKeyEvent(true, "X", false, game)
-	wait(0.1) -- Simulate key press duration
+	wait(0.5) -- Simulate key press duration
 	VirtualInputManager:SendKeyEvent(false, "X", false, game)
 end
-spawn(pressz)
-wait()
-spawn(pressx)
+while true do
+    spawn(pressz)
+    wait()
+    spawn(pressx)
+    wait()
+end
