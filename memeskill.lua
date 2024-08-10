@@ -17,6 +17,8 @@ local function pressz()
 	VirtualInputManager:SendKeyEvent(true, "Z", false, game)
 	wait(3) -- Simulate key press duration
 	VirtualInputManager:SendKeyEvent(false, "Z", false, game)
+    wait()
+    spawn(cdz)
     end
 end
 local function pressx()
@@ -26,11 +28,12 @@ local function pressx()
 	VirtualInputManager:SendKeyEvent(true, "X", false, game)
 	wait(0.1) -- Simulate key press duration
 	VirtualInputManager:SendKeyEvent(false, "X", false, game)
+    wait()
+    spawn(cdx)
     end
 end
 while true do
     spawn(pressz)
-    wait(3.5)
     spawn(pressx)
-    wait(1)
+    wait()
 end
