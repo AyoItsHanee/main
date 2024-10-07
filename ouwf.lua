@@ -415,9 +415,9 @@ local rooth = game.Players.LocalPlayer.Character:FindFirstChild("Humanoid")
 			TweenInfo:Play()
 			local assw = Distance/_G.TweenSpeed
 			if assw <= 1 then
-			wait(assw + 1)
+			wait((assw) + 1.5)
 			else
-			wait(assw + 0.5)
+			wait((assw) + 0.5)
 			end
 			function TweenFunc:Cancel()
 			TweenInfo:Cancel()
