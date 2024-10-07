@@ -414,7 +414,12 @@ local rooth = game.Players.LocalPlayer.Character:FindFirstChild("Humanoid")
 			local TweenInfo = game:GetService("TweenService"):Create(game.Players.LocalPlayer.Character.HumanoidRootPart, TweenInfo.new(Distance/_G.TweenSpeed, Enum.EasingStyle.Linear), {CFrame = Endpoint * CFrame.fromAxisAngle(Vector3.new(1,0,0), math.rad(0))})
 			TweenInfo:Play()
 			local assw = Distance/_G.TweenSpeed
-			wait(assw + 0.5)
+			if assw <= 1 then
+			local assf = (assw + 1)
+			else
+			local assf = (assw + 0.5)
+			end
+			wait(assf)
 			function TweenFunc:Cancel()
 			TweenInfo:Cancel()
 			return false
