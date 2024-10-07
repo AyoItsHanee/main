@@ -448,7 +448,7 @@ local rooth = game.Players.LocalPlayer.Character:FindFirstChild("Humanoid")
 						local randomPart = parts[math.random(1, #parts)]
 						if randomPart and randomPart:IsA("BasePart") then
 						if #workspace.Mobs:GetChildren() > 10 then
-							local endpointCFrame = CFrame.new(randomPart.Position + Vector3.new(0, 200, 0))
+							local endpointCFrame = CFrame.new(randomPart.Position + Vector3.new(0, 100, 0))
 							local tween = Tween(endpointCFrame)
 						--game.TweenService:Create(game.Players.LocalPlayer.Character.HumanoidRootPart, TweenInfo.new(Distance(randomPart.Position + Vector3.new(0, 200, 0)) / _G.TweenSpeed, Enum.EasingStyle.Linear, Enum.EasingDirection.Out), {CFrame = CFrame.new(randomPart.Position + Vector3.new(0, 200, 0))}):Play()
 						elseif #workspace.Mobs:GetChildren() <= 10 then
