@@ -474,6 +474,22 @@ local rooth = game.Players.LocalPlayer.Character:FindFirstChild("Humanoid")
 			--game.Players.LocalPlayer.Character:FindFirstChild("Humanoid"):Destroy()
 			repeat wait() until game.Players.LocalPlayer.Character:FindFirstChild("Humanoid").Health > 0
 			game:GetService("ReplicatedStorage"):WaitForChild("TeleportToShop"):FireServer()
+			spawn(function()
+				while true do
+					for _, chest in pairs(Workspace.Debree:GetChildren()) do
+						if chest.Name == "Loot_Chest" then
+							for _, drop in pairs(chest:FindFirstChild("Drops"):GetChildren()) do
+								chest.Add_To_Inventory:InvokeServer(drop.Name)
+								drop:Destroy()
+								if #chest.Drops:GetChildren() == 0 then
+									chest:Destroy()
+								end
+							end
+						end
+					end
+				wait(1)
+				end
+			end)
 			break
 		end
 		end
