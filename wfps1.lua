@@ -228,7 +228,7 @@ print("game loaded")
 
 			-- Update the Ore value every second
 			spawn(function()
-				while true do
+				while task.wait() do
 						if checkore then
 					updateOreLabel()
 						end
