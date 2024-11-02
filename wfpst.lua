@@ -443,9 +443,17 @@ wait(1)
 			end)
 
 			spawn(function()
+				while task.wait() do
 					local antifall3 = Instance.new("BodyVelocity", Players.LocalPlayer.Character.HumanoidRootPart)
 					antifall3.Velocity = Vector3.new(0, 0, 0)
 					antifall3.MaxForce = Vector3.new(9e9, 9e9, 9e9)
+					wait(.1)
+				end
+
+				-- This part should be outside the while loop
+				if antifall3 then
+					antifall3:Destroy()
+				end
 			end)
 
 			local TweenService = game:GetService("TweenService")
