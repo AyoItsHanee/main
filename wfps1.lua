@@ -609,7 +609,7 @@ wait(1)
 			--game:GetService("RunService"):Set3dRenderingEnabled(false)
 			wait(300)
 			local isLooping = false
-			--wait(3600)
+			wait(3600)
 	--[[
 game:GetService("Players").LocalPlayer.PlayerGui.MainGuis.Settings2.Visible = true
 wait()
@@ -647,7 +647,7 @@ end
 -- Call the function to simulate the button click
 simulateButtonClick()
 	]]--
-			--game:GetService("TeleportService"):Teleport(5956785391)
+			game:GetService("TeleportService"):Teleport(5956785391)
 
 		elseif game.PlaceId == 9321822839 then
 			game:GetService("TeleportService"):Teleport(5956785391)
