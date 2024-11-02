@@ -187,7 +187,7 @@ print("game loaded")
 
 		elseif game.PlaceId == 13883059853 then
 			spawn(function()
-			while true do
+			while task.wait() do
 				for _, v in pairs(game:GetService("Players").LocalPlayer.Character:GetDescendants()) do
                				if v:IsA("BasePart") and v.CanCollide then
                    				v.CanCollide = false 
@@ -228,7 +228,7 @@ print("game loaded")
 
 			-- Update the Ore value every second
 			spawn(function()
-				while true do
+				while task.wait() do
 						if checkore then
 					updateOreLabel()
 						end
@@ -323,7 +323,7 @@ end
 
 -- Update the Ore value every minute
 spawn(function()
-    while true do
+    while task.wait() do
         if checkore then
             updateAndSendOre()
         end
@@ -378,7 +378,7 @@ end)
 			end)
 			-- Auto collect chest
 			spawn(function()
-				while true do
+				while task.wait() do
 					for _, chest in pairs(Workspace.Debree:GetChildren()) do
 						if chest.Name == "Loot_Chest" then
 							for _, drop in pairs(chest:FindFirstChild("Drops"):GetChildren()) do
@@ -390,13 +390,13 @@ end)
 							end
 						end
 					end
-wait(1)
+				wait(1)
 				end
 			end)
 
 			-- Loop to initiate a skill
 			spawn(function()
-				while true do
+				while task.wait() do
 					local Handle_Initiate_S_ = ReplicatedStorage.Remotes.To_Server.Handle_Initiate_S_
 					Handle_Initiate_S_:InvokeServer("skil_ting_asd", Players.LocalPlayer, "arrow_knock_back", 5)
 					wait(14)
@@ -405,7 +405,7 @@ wait(1)
 
 			-- Loop to attack mobs
 			spawn(function()
-				while true do
+				while task.wait() do
 					local hitCounter = {}
 					for _, mob in pairs(Workspace.Mobs:GetDescendants()) do
 						if mob:IsA("Model") and mob:FindFirstChild("HumanoidRootPart") then
@@ -434,23 +434,21 @@ wait(1)
 			--local specificNames = {"Map", "InteractiveShopItems", "MugenTrain", "PrivateServerDummies", "cup game", "Bandage", "BeastTrainer", "BigLight", "Black Smith", "Board", "Boulder_To_Split", "Buy_Big_Gourd", "Buy_Gourd", "Buy_Medium_Gourd", "Chair", "Civilian", "Civilian 2", "ClashTrainer", "Conductor", "Customization data ting", "Demon Guy", "Demon Slayer", "Fishing_Rod2", "Flame Trainer", "Grandpa Wagwon's Wagon", "Green_Crystal", "Mae", "Malik", "Mark", "Mist Trainer", "Model", "Ouw0pp", "Part", "Patrick", "Policeman", "Rina", "RinaDesk", "Rock", "Snow Trainer", "Soryu Trainer", "Beast Trainer", "Sound Trainer", "Target_Training", "Tyrone", "potion_sails_man", "thing", "Meditate_Mat", "Push_Ups_Mat", "Union", "MeshPart", "Floor", "Mist"}
 			local isLooping = true
 			spawn(function()
-				while true do
-					if isLooping then
+				while isLooping do
 						for i,v in pairs(game.Workspace.Map:GetChildren()) do
            				 		v:Destroy()
         					end
-					end
 				wait()
 				end
 			end)
 
 			spawn(function()
-				while true do
+				while task.wait() do
 					local antifall3 = Instance.new("BodyVelocity", Players.LocalPlayer.Character.HumanoidRootPart)
 					antifall3.Velocity = Vector3.new(0, 0, 0)
-					antifall3.MaxForce = Vector3.new(9e9, 9e9, 9e9)
-
-					wait() -- It's a good idea to yield control periodically to prevent performance issues
+					antifall3.MaxForce = Vector3.new(100000, 100000, 100000)
+					--antifall3.MaxForce = Vector3.new(9e9, 9e9, 9e9)
+					wait(.1)
 				end
 
 				-- This part should be outside the while loop
@@ -580,7 +578,7 @@ wait(1)
                     wait(0.1) -- Check every 0.1 seconds
                 end
             
-                while true do
+                while task.wait() do
                     if bossrun then
                         local pathInWorkspace = Workspace.Mobs:FindFirstChild(pathName)
                         if pathToCheck and #pathToCheck:GetChildren() == Num then
@@ -593,7 +591,7 @@ wait(1)
             end
             
             spawn(function()
-                while true do
+                while task.wait() do
                     if bossrun then
                         for _, pathInfo in ipairs(pathsToCheck) do
                             CheckAndMove(pathInfo.name, pathInfo.position, pathInfo.path, pathInfo.time, pathInfo.num)
