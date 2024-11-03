@@ -13,7 +13,7 @@ local TeleportCheck = false
 game:GetService("Players").LocalPlayer.OnTeleport:Connect(function(State)
 if (not TeleportCheck) and queueteleport then
     TeleportCheck = true
-    queueteleport("loadstring(game:HttpGet('https://raw.githubusercontent.com/AyoItsHanee/main/main/fscx.lua'))()")
+    queueteleport("loadstring(game:HttpGet('https://raw.githubusercontent.com/AyoItsHanee/main/refs/heads/main/fscx.lua'))()")
     end
 end)
 
