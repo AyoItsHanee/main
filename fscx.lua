@@ -24,7 +24,6 @@ local function simulateCenterClick()
     -- Simulate mouse up to complete the click
     VirtualInputManager:SendMouseButtonEvent(centerPosition.X, centerPosition.Y, 0, false, game, 0)
 end
-
 simulateCenterClick()
 
 queueteleport = (syn and syn.queue_on_teleport) or queue_on_teleport or (fluxus and fluxus.queue_on_teleport) or (delta and delta.queue_on_teleport)
@@ -39,3 +38,5 @@ end)
 loadstring(game:HttpGet("https://raw.githubusercontent.com/EdgeIY/infiniteyield/master/source", true))()
 wait(5)
 loadstring(game:HttpGet("https://bonkhubloader.netlify.app",true))()
+repeat wait() until game:GetService("CoreGui").ScreenGui
+game:GetService("CoreGui").ScreenGui.Enabled = false
