@@ -2,7 +2,7 @@ repeat wait() until game:IsLoaded()
 print("Roblox loaded")
 local player = game.Players.LocalPlayer
 local character = player.Character or player.CharacterAdded:Wait()
-wait(10)
+wait(20)
 
 game.NetworkClient.ChildRemoved:Connect(function()
     if game.PlaceId == 16732694052 then
