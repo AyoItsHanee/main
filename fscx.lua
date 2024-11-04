@@ -1,5 +1,7 @@
 repeat wait() until game:IsLoaded()
 print("Roblox loaded")
+local player = game.Players.LocalPlayer
+local character = player.Character or player.CharacterAdded:Wait()
 wait(30)
 
 game.NetworkClient.ChildRemoved:Connect(function()
@@ -35,8 +37,20 @@ if (not TeleportCheck) and queueteleport then
     end
 end)
 
-loadstring(game:HttpGet("https://raw.githubusercontent.com/EdgeIY/infiniteyield/master/source", true))()
-wait(5)
+-- Coordinates to teleport to
+local teleportPosition = Vector3.new(-112, -699, 1210)
+
+-- Function to teleport the player
+local function teleportPlayer()
+    -- Wait until the character's HumanoidRootPart is available
+    local humanoidRootPart = character:WaitForChild("HumanoidRootPart")
+    humanoidRootPart.CFrame = CFrame.new(teleportPosition)
+end
+
+-- Run the teleport function
+teleportPlayer()
+
+repeat wait() until game:IsLoaded()
 loadstring(game:HttpGet("https://bonkhubloader.netlify.app",true))()
 repeat wait() until game:GetService("CoreGui").ScreenGui
 game:GetService("CoreGui").ScreenGui.Enabled = false
