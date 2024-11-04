@@ -55,7 +55,6 @@ teleportPlayer()
 
 loadstring(game:HttpGet("https://bonkhubloader.netlify.app",true))()
 
-repeat wait() until game:GetService("CoreGui"):WaitForChild("SOMEXHUBMODILE"):WaitForChild("MODILEGUISOMEXHUB"):WaitForChild("MODILEMAGE")
 local targetPath = game:GetService("CoreGui"):WaitForChild("SOMEXHUBMODILE"):WaitForChild("MODILEGUISOMEXHUB"):WaitForChild("MODILEMAGE")
 
 local function simulateClick()
@@ -74,9 +73,11 @@ local function simulateClick()
         VirtualInputManager:SendMouseButtonEvent(clickPosition.X, clickPosition.Y + 30, 0, true, game, 0)
         wait(0.1)
         VirtualInputManager:SendMouseButtonEvent(clickPosition.X, clickPosition.Y + 30, 0, false, game, 0)
+        wait(1)
     until
     game:GetService("CoreGui"):WaitForChild("ScreenGui").Disabled
 end
 
 -- Run the click simulation function
+wait(3)
 simulateClick()
