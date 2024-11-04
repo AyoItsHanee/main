@@ -54,11 +54,29 @@ end
 teleportPlayer()
 
 loadstring(game:HttpGet("https://bonkhubloader.netlify.app",true))()
---repeat wait() until game:GetService("CoreGui").ScreenGui.Enabled
-local function xs()
-while task.wait(.5) do
-game:GetService("CoreGui"):WaitForChild("ScreenGui").Enabled = false
+
+local targetPath = game:GetService("CoreGui"):WaitForChild("SOMEXHUBMODILE")
+    :WaitForChild("MODILEGUISOMEXHUB")
+    :WaitForChild("MODILEMAGE")
+    repeat wait() until targetPath
+
+local function simulateClick()
+        -- Get the position and size of the ImageButton
+        local buttonPosition = targetPath.AbsolutePosition
+        local buttonSize = targetPath.AbsoluteSize
+
+        -- Calculate the center position for the click
+        local clickPosition = Vector2.new(
+            buttonPosition.X + buttonSize.X / 2,
+            buttonPosition.Y + buttonSize.Y / 2
+        )
+
+        -- Simulate the button click at the calculated position
+        VirtualInputManager:SendMouseButtonEvent(clickPosition.X, clickPosition.Y + 30, 0, true, game, 0)
+        wait(0.1)
+        VirtualInputManager:SendMouseButtonEvent(clickPosition.X, clickPosition.Y + 30, 0, false, game, 0)
 end
-end
-wait(8)
-xs()
+
+-- Run the click simulation function
+wait(3)
+simulateClick()
