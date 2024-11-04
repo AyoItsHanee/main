@@ -76,7 +76,7 @@ local function simulateClick()
         wait(0.1)
         VirtualInputManager:SendMouseButtonEvent(clickPosition.X, clickPosition.Y + 30, 0, false, game, 0)
     until
-    targetPath.Disabled
+    game:GetService("CoreGui"):WaitForChild("ScreenGui").Disabled
 end
 
 -- Run the click simulation function
