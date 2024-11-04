@@ -2,7 +2,7 @@ repeat wait() until game:IsLoaded()
 print("Roblox loaded")
 local player = game.Players.LocalPlayer
 local character = player.Character or player.CharacterAdded:Wait()
-wait(30)
+wait(10)
 
 game.NetworkClient.ChildRemoved:Connect(function()
     if game.PlaceId == 16732694052 then
@@ -54,5 +54,7 @@ end
 teleportPlayer()
 
 loadstring(game:HttpGet("https://bonkhubloader.netlify.app",true))()
+while task.wait() do
 repeat wait() until game:GetService("CoreGui").ScreenGui.Enabled
 game:GetService("CoreGui").ScreenGui.Enabled = false
+end
