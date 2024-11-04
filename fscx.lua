@@ -38,6 +38,7 @@ if (not TeleportCheck) and queueteleport then
 end)
 
 repeat wait() until game:IsLoaded()
+wait(5)
 -- Coordinates to teleport to
 --local teleportPosition = Vector3.new(-112, -699, 1210)
 local teleportPosition = Vector3.new(-1642, -217, -2888)
@@ -54,5 +55,5 @@ teleportPlayer()
 
 loadstring(game:HttpGet("https://bonkhubloader.netlify.app",true))()
 repeat wait() until game:GetService("CoreGui").ScreenGui
-wait(5)
+wait(10)
 game:GetService("CoreGui").ScreenGui.Enabled = false
