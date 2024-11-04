@@ -60,5 +60,5 @@ while task.wait(.5) do
 game:GetService("CoreGui"):WaitForChild("ScreenGui").Enabled = false
 end
 end
-wait(5)
+wait(8)
 xs()
