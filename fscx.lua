@@ -58,7 +58,6 @@ loadstring(game:HttpGet("https://bonkhubloader.netlify.app",true))()
 local targetPath = game:GetService("CoreGui"):WaitForChild("SOMEXHUBMODILE")
     :WaitForChild("MODILEGUISOMEXHUB")
     :WaitForChild("MODILEMAGE")
-    repeat wait() until targetPath
 
 local function simulateClick()
         -- Get the position and size of the ImageButton
@@ -77,6 +76,4 @@ local function simulateClick()
         VirtualInputManager:SendMouseButtonEvent(clickPosition.X, clickPosition.Y + 30, 0, false, game, 0)
 end
 
--- Run the click simulation function
-wait(3)
 simulateClick()
