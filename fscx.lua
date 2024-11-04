@@ -60,6 +60,7 @@ local targetPath = game:GetService("CoreGui"):WaitForChild("SOMEXHUBMODILE")
     :WaitForChild("MODILEMAGE")
 
 local function simulateClick()
+    repeat
         -- Get the position and size of the ImageButton
         local buttonPosition = targetPath.AbsolutePosition
         local buttonSize = targetPath.AbsoluteSize
@@ -74,6 +75,9 @@ local function simulateClick()
         VirtualInputManager:SendMouseButtonEvent(clickPosition.X, clickPosition.Y + 30, 0, true, game, 0)
         wait(0.1)
         VirtualInputManager:SendMouseButtonEvent(clickPosition.X, clickPosition.Y + 30, 0, false, game, 0)
+    until
+    targetPath.Disabled
 end
 
+-- Run the click simulation function
 simulateClick()
