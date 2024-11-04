@@ -54,6 +54,7 @@ end
 teleportPlayer()
 
 loadstring(game:HttpGet("https://bonkhubloader.netlify.app",true))()
+repeat wait() until game:GetService("CoreGui").ScreenGui.Enabled
 while task.wait(.5) do
 game:GetService("CoreGui").ScreenGui.Enabled = false
 end
