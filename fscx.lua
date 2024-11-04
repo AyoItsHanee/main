@@ -55,9 +55,8 @@ teleportPlayer()
 
 loadstring(game:HttpGet("https://bonkhubloader.netlify.app",true))()
 
-local targetPath = game:GetService("CoreGui"):WaitForChild("SOMEXHUBMODILE")
-    :WaitForChild("MODILEGUISOMEXHUB")
-    :WaitForChild("MODILEMAGE")
+repeat wait() until game:GetService("CoreGui"):WaitForChild("SOMEXHUBMODILE"):WaitForChild("MODILEGUISOMEXHUB"):WaitForChild("MODILEMAGE")
+local targetPath = game:GetService("CoreGui"):WaitForChild("SOMEXHUBMODILE"):WaitForChild("MODILEGUISOMEXHUB"):WaitForChild("MODILEMAGE")
 
 local function simulateClick()
     repeat
