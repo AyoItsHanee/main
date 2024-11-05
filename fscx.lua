@@ -1,7 +1,5 @@
 repeat wait() until game:IsLoaded()
 print("Roblox loaded")
-local player = game.Players.LocalPlayer
-local character = player.Character or player.CharacterAdded:Wait()
 wait(30)
 
 game.NetworkClient.ChildRemoved:Connect(function()
@@ -38,7 +36,7 @@ if (not TeleportCheck) and queueteleport then
 end)
 
 repeat wait() until game:IsLoaded()
-wait(5)
+wait(7)
 -- Coordinates to teleport to
 --local teleportPosition = Vector3.new(-112, -699, 1210)
 local teleportPosition = Vector3.new(-1642, -217, -2888)
