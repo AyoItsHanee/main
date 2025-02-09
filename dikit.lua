@@ -1,3 +1,6 @@
+repeat wait() until game:IsLoaded()
+print("Roblox loaded")
+
 game.NetworkClient.ChildRemoved:Connect(function()
 	if game.PlaceId == 76455837887178 then
 		game:GetService("TeleportService"):Teleport(76455837887178)
@@ -10,7 +13,6 @@ end)
 		if (not TeleportCheck) and queueteleport then
 			TeleportCheck = true
 			queueteleport("loadstring(game:HttpGet('https://raw.githubusercontent.com/AyoItsHanee/main/main/dikit.lua'))()")
-				end
 		end
 		end)
 
