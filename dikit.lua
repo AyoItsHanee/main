@@ -9,7 +9,7 @@ end)
 		game:GetService("Players").LocalPlayer.OnTeleport:Connect(function(State)
 		if (not TeleportCheck) and queueteleport then
 			TeleportCheck = true
-			queueteleport("loadstring(game:HttpGet("loadstring(game:HttpGet('https://raw.githubusercontent.com/AyoItsHanee/main/main/dikit.lua'))()")
+			queueteleport("loadstring(game:HttpGet('https://raw.githubusercontent.com/AyoItsHanee/main/main/dikit.lua")
 				end
 		end
 		end)
