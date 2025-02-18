@@ -18,6 +18,8 @@ end)
 local function clickMenuFrame()
     local Players = game:GetService("Players")
     local player = Players.LocalPlayer
+	local character = player.Character or player.CharacterAdded:Wait()
+	local humanoidRootPart = character:WaitForChild("HumanoidRootPart")
     local vu = game:GetService("VirtualInputManager")
 
     -- 2. Wait for "MenuFrame" to become visible and keep clicking until it disappears
@@ -37,6 +39,7 @@ local function clickMenuFrame()
 	until not menuFramePath.Visible or not menuFramePath
 end
 clickMenuFrame()
-    
     print("MenuFrame is no longer visible, proceeding...")
 loadstring(game:HttpGet("https://raw.githubusercontent.com/alyssagithub/Scripts/refs/heads/main/FrostByte/Initiate.lua"))()
+task.wait(1)
+humanoidRootPart.CFrame = CFrame.new(704, 6, 457)
