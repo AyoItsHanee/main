@@ -1,6 +1,6 @@
 repeat wait() until game:IsLoaded()
 print("Roblox loaded")
-
+print("v0.1")
 game.NetworkClient.ChildRemoved:Connect(function()
 	if game.PlaceId == 76455837887178 then
 		game:GetService("TeleportService"):Teleport(76455837887178)
@@ -25,9 +25,7 @@ local function clickMenuFrame()
         :WaitForChild("Start")
         :WaitForChild("MenuFrame")
     
-    while not menuFramePath.Visible do
-        task.wait(0.1)
-    end
+    repeat task.wait() until menuFramePath.Visible.true
     
     print("MenuFrame is visible, clicking until it disappears...")
     
@@ -36,7 +34,7 @@ local function clickMenuFrame()
         task.wait(0.1)
         vu:SendMouseButtonEvent(0, 0, 0, false, game, 1)
         task.wait(0.5) -- Short delay before checking again
-	until not menuFramePath.Visible
+	until menuFramePath.Visible.false
 end
 clickMenuFrame()
     
