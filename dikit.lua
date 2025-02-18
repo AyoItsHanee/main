@@ -34,7 +34,7 @@ local function clickMenuFrame()
         task.wait(0.1)
         vu:SendMouseButtonEvent(0, 0, 0, false, game, 1)
         task.wait(1) -- Short delay before checking again
-	until not menuFramePath.Visible
+	until not menuFramePath.Visible or not menuFramePath
 end
 clickMenuFrame()
     
