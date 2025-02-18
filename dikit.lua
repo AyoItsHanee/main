@@ -31,12 +31,12 @@ local function clickMenuFrame()
     
     print("MenuFrame is visible, clicking until it disappears...")
     
-    while menuFramePath.Visible do
+    	repeat
         vu:SendMouseButtonEvent(0, 0, 0, true, game, 1)
         task.wait(0.1)
         vu:SendMouseButtonEvent(0, 0, 0, false, game, 1)
         task.wait(0.5) -- Short delay before checking again
-    end
+	until not menuFramePath.Visible
 end
 clickMenuFrame()
     
