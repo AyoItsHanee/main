@@ -15,6 +15,7 @@ end)
 			queueteleport("loadstring(game:HttpGet('https://raw.githubusercontent.com/AyoItsHanee/main/main/dikit.lua'))()")
 		end
 		end)
+local function clickMenuFrame()
     local Players = game:GetService("Players")
     local player = Players.LocalPlayer
     local vu = game:GetService("VirtualInputManager")
@@ -36,6 +37,8 @@ end)
         vu:SendMouseButtonEvent(0, 0, 0, false, game, 1)
         task.wait(0.5) -- Short delay before checking again
     end
+end
+clickMenuFrame()
     
     print("MenuFrame is no longer visible, proceeding...")
 loadstring(game:HttpGet("https://raw.githubusercontent.com/alyssagithub/Scripts/refs/heads/main/FrostByte/Initiate.lua"))()
