@@ -26,6 +26,9 @@ local function clickMenuFrame()
     local menuFramePath = player:WaitForChild("PlayerGui")
         :WaitForChild("Start")
         :WaitForChild("MenuFrame")
+	local core = player:WaitForChild("PlayerGui")
+	:WaitForChild("Main")
+	:WaitForChild("Core")
     
     repeat task.wait() until menuFramePath.Visible
     
@@ -34,7 +37,7 @@ local function clickMenuFrame()
         vu:SendMouseButtonEvent(0, 0, 0, true, game, 1)
         task.wait(0.1)
         vu:SendMouseButtonEvent(0, 0, 0, false, game, 1)
-	until player.PlayerGui.Main.WaitForChild("Core"):Visible
+	until core.Visible
 end
 clickMenuFrame()
     print("MenuFrame is no longer visible, proceeding...")
