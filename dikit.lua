@@ -37,7 +37,7 @@ local function clickMenuFrame()
         vu:SendMouseButtonEvent(0, 0, 0, true, game, 1)
         task.wait(0.1)
         vu:SendMouseButtonEvent(0, 0, 0, false, game, 1)
-	until core.Visible
+	until not menuFramePath.Visible
 end
 clickMenuFrame()
     print("MenuFrame is no longer visible, proceeding...")
