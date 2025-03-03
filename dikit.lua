@@ -1,4 +1,10 @@
 repeat wait() until game:IsLoaded()
+local Players = game:GetService("Players")
+local player = Players.LocalPlayer
+local character = player.Character or player.CharacterAdded:Wait()
+local humanoidRootPart = character:WaitForChild("HumanoidRootPart")
+local vu = game:GetService("VirtualInputManager")
+local VirtualInputManager = game:GetService('VirtualInputManager')
 print("Roblox loaded")
 print("v0.1")
 game.NetworkClient.ChildRemoved:Connect(function()
@@ -16,13 +22,6 @@ end)
 		end
 		end)
 local function clickMenuFrame()
-local Players = game:GetService("Players")
-local player = Players.LocalPlayer
-local character = player.Character or player.CharacterAdded:Wait()
-local humanoidRootPart = character:WaitForChild("HumanoidRootPart")
-local vu = game:GetService("VirtualInputManager")
-local VirtualInputManager = game:GetService('VirtualInputManager')
-
     -- 2. Wait for "MenuFrame" to become visible and keep clicking until it disappears
     local menuFramePath = player:WaitForChild("PlayerGui")
         :WaitForChild("Start")
