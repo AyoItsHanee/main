@@ -31,7 +31,7 @@ local function clickMenuFrame()
 	:WaitForChild("Core")
     
     --repeat task.wait() until menuFramePath.Visible
-    wait(10)
+    wait(15)
     print("MenuFrame is visible, clicking until it disappears...")
         vu:SendMouseButtonEvent(0, 0, 0, true, game, 1)
         task.wait(0.1)
