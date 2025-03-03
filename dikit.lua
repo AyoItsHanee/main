@@ -23,9 +23,7 @@ end)
 		end)
 local function clickMenuFrame()
     -- 2. Wait for "MenuFrame" to become visible and keep clicking until it disappears
-    local menuFramePath = player:WaitForChild("PlayerGui")
-        :Start
-        .MenuFrame
+    local menuFramePath = player:WaitForChild("PlayerGui"):Start.MenuFrame
 	local core = player:WaitForChild("PlayerGui")
 	:WaitForChild("Main")
 	:WaitForChild("Core")
