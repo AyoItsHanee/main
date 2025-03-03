@@ -16,11 +16,12 @@ end)
 		end
 		end)
 local function clickMenuFrame()
-    local Players = game:GetService("Players")
-    local player = Players.LocalPlayer
-	local character = player.Character or player.CharacterAdded:Wait()
-	local humanoidRootPart = character:WaitForChild("HumanoidRootPart")
-    local vu = game:GetService("VirtualInputManager")
+local Players = game:GetService("Players")
+local player = Players.LocalPlayer
+local character = player.Character or player.CharacterAdded:Wait()
+local humanoidRootPart = character:WaitForChild("HumanoidRootPart")
+local vu = game:GetService("VirtualInputManager")
+local VirtualInputManager = game:GetService('VirtualInputManager')
 
     -- 2. Wait for "MenuFrame" to become visible and keep clicking until it disappears
     local menuFramePath = player:WaitForChild("PlayerGui")
@@ -30,17 +31,20 @@ local function clickMenuFrame()
 	:WaitForChild("Main")
 	:WaitForChild("Core")
     
-    repeat task.wait() until menuFramePath.Visible
-    
+    --repeat task.wait() until menuFramePath.Visible
+    wait(10)
     print("MenuFrame is visible, clicking until it disappears...")
-	repeat
         vu:SendMouseButtonEvent(0, 0, 0, true, game, 1)
         task.wait(0.1)
         vu:SendMouseButtonEvent(0, 0, 0, false, game, 1)
-	until not menuFramePath.Visible
 end
 clickMenuFrame()
     print("MenuFrame is no longer visible, proceeding...")
 loadstring(game:HttpGet("https://raw.githubusercontent.com/alyssagithub/Scripts/refs/heads/main/FrostByte/Initiate.lua"))()
 task.wait(1)
-humanoidRootPart.CFrame = CFrame.new(704, 6, 457)
+humanoidRootPart.CFrame = CFrame.new(1974, -408, 1526)
+wait(1)
+VirtualInputManager:SendKeyEvent(true, "One", false, game)
+wait(0.1) -- Simulate key press duration
+VirtualInputManager:SendKeyEvent(false, "One", false, game)
+--humanoidRootPart.CFrame = CFrame.new(704, 6, 457)
