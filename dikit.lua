@@ -38,12 +38,25 @@ local VirtualInputManager = game:GetService('VirtualInputManager')
         task.wait(0.1)
         vu:SendMouseButtonEvent(0, 0, 0, false, game, 1)
 end
+spawn(function()
+	while task.wait(1) do
+	local args = {
+    [1] = {
+        ["Command"] = "Deposit",
+        ["Amount"] = 10000000000000000000
+    }
+}
+
+game:GetService("ReplicatedStorage").Source.Network.RemoteFunctions.Ronks:InvokeServer(unpack(args))
+	end
+
+end)
 clickMenuFrame()
-    print("MenuFrame is no longer visible, proceeding...")
+print("MenuFrame is no longer visible, proceeding...")
 loadstring(game:HttpGet("https://raw.githubusercontent.com/alyssagithub/Scripts/refs/heads/main/FrostByte/Initiate.lua"))()
 task.wait(1)
 humanoidRootPart.CFrame = CFrame.new(1974, -408, 1526)
-wait(1)
+wait(2)
 VirtualInputManager:SendKeyEvent(true, "One", false, game)
 wait(0.1) -- Simulate key press duration
 VirtualInputManager:SendKeyEvent(false, "One", false, game)
