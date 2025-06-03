@@ -27,7 +27,7 @@ local spawn, wait = task.spawn, task.wait
 			if KeepSC then
 		if (not TeleportCheck) and queueteleport then
 			TeleportCheck = true
-			queueteleport("loadstring(game:HttpGet('https://raw.githubusercontent.com/AyoItsHanee/main/main/ouwf.lua'))()")
+			queueteleport("loadstring(game:HttpGet('https://raw.githubusercontent.com/AyoItsHanee/main/main/ouw.lua'))()")
 				end
 			else
 			if (not TeleportCheck) and queueteleport then	
@@ -36,6 +36,7 @@ local spawn, wait = task.spawn, task.wait
 				end
 		end
 		end)
+
 print("Roblox loaded")
 -- Wait for the LocalPlayer to be loaded
 game:GetService("Players").LocalPlayer:WaitForChild("doneloadinggamepasses")
@@ -198,17 +199,22 @@ print("game loaded")
 	end
 
 	local function collectChest()
-					while task.wait() do
-						for _, chest in pairs(Workspace.Debree:GetChildren()) do
-							if chest.Name == "Loot_Chest" then
-								for _, drop in pairs(chest:FindFirstChild("Drops"):GetChildren()) do
-									chest.Add_To_Inventory:InvokeServer(drop.Name)
-									drop:Destroy()
-								end
-							end
+		while true do
+			for _, chest in pairs(Workspace.Debree:GetChildren()) do
+				if chest.Name == "Loot_Chest" then
+					for _, drop in pairs(chest:FindFirstChild("Drops"):GetChildren()) do
+						chest.Add_To_Inventory:InvokeServer(drop.Name)
+						drop:Destroy()
+						if #chest.Drops:GetChildren() == 0 then
+							chest:Destroy()
 						end
 					end
 				end
+			end
+wait()
+		end
+				end
+				spawn(collectChest)
 
 		local function destroyModels(modelNames)
 			for _, modelName in pairs(modelNames) do
@@ -244,27 +250,6 @@ print("game loaded")
 			{name = "MobCamouflage", enabled = true}
 		}
 local rooth = game.Players.LocalPlayer.Character:FindFirstChild("Humanoid")
-	local hellyes = false
-	local letsdo = true
-				local function orbv2()
-					while true do
-				for _, orb in ipairs(orbTypes) do
-					if orb.enabled and (not hellyes) then
-						for _, v in pairs(Workspace.Map:GetChildren()) do
-							if v:IsA("Model") and v.Name == orb.name then
-								local letsdo = false
-								wait(2.5)
-								game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = v:GetModelCFrame()
-								wait(2.5)
-								local letsdo = true
-								spawn(cdorb)
-							end
-						end
-				end
-			end
-			wait()
-		end
-		end
 
 		-- Function to find the correct room name
 		local function findRoomName()
@@ -413,12 +398,7 @@ local rooth = game.Players.LocalPlayer.Character:FindFirstChild("Humanoid")
 			local Distance = GetDistance(Endpoint)
 			local TweenInfo = game:GetService("TweenService"):Create(game.Players.LocalPlayer.Character.HumanoidRootPart, TweenInfo.new(Distance/_G.TweenSpeed, Enum.EasingStyle.Linear), {CFrame = Endpoint * CFrame.fromAxisAngle(Vector3.new(1,0,0), math.rad(0))})
 			TweenInfo:Play()
-			local assw = Distance/_G.TweenSpeed
-			if assw <= 1 then
-			wait((assw) + 1.5)
-			else
-			wait((assw) + 0.5)
-			end
+			wait(Distance/_G.TweenSpeed)
 			function TweenFunc:Cancel()
 			TweenInfo:Cancel()
 			return false
@@ -435,9 +415,8 @@ local rooth = game.Players.LocalPlayer.Character:FindFirstChild("Humanoid")
 			spawn(noclip)
 			wait(1)
 			coroutine.wrap(loopFunction)()
-			spawn(orbv2)
 			spawn(function()
-			while letsdo do
+			while true do
 					if spsn and rooth.Health > 0 then
 			local roomName = findRoomName()
 			if roomName then
@@ -448,7 +427,7 @@ local rooth = game.Players.LocalPlayer.Character:FindFirstChild("Humanoid")
 						local randomPart = parts[math.random(1, #parts)]
 						if randomPart and randomPart:IsA("BasePart") then
 						if #workspace.Mobs:GetChildren() > 10 then
-							local endpointCFrame = CFrame.new(randomPart.Position + Vector3.new(0, 100, 0))
+							local endpointCFrame = CFrame.new(randomPart.Position + Vector3.new(0, 200, 0))
 							local tween = Tween(endpointCFrame)
 						--game.TweenService:Create(game.Players.LocalPlayer.Character.HumanoidRootPart, TweenInfo.new(Distance(randomPart.Position + Vector3.new(0, 200, 0)) / _G.TweenSpeed, Enum.EasingStyle.Linear, Enum.EasingDirection.Out), {CFrame = CFrame.new(randomPart.Position + Vector3.new(0, 200, 0))}):Play()
 						elseif #workspace.Mobs:GetChildren() <= 10 then
@@ -474,40 +453,11 @@ local rooth = game.Players.LocalPlayer.Character:FindFirstChild("Humanoid")
 			--game.Players.LocalPlayer.Character:FindFirstChild("Humanoid"):Destroy()
 			repeat wait() until game.Players.LocalPlayer.Character:FindFirstChild("Humanoid").Health > 0
 			game:GetService("ReplicatedStorage"):WaitForChild("TeleportToShop"):FireServer()
-			spawn(function()
-				while true do
-					for _, chest in pairs(Workspace.Debree:GetChildren()) do
-						if chest.Name == "Loot_Chest" then
-							for _, drop in pairs(chest:FindFirstChild("Drops"):GetChildren()) do
-								chest.Add_To_Inventory:InvokeServer(drop.Name)
-								drop:Destroy()
-								if #chest.Drops:GetChildren() == 0 then
-									chest:Destroy()
-								end
-							end
-						end
-					end
-				wait(0.1)
-				end
-			end)
 			break
 		end
 		end
 			end)
-
-		--[[
 			--coroutine.wrap(orbx)()
-			wait(600)
-			if game.Players.LocalPlayer.Character:FindFirstChild("Humanoid") then
-				game.Players.LocalPlayer.Character:FindFirstChild("Humanoid").Health = 0 -- Set the humanoid's health to 0 to "kill" the character
-			else
-				print("Character or humanoid not found.")
-			end
-			wait(10)
-			game:GetService("ReplicatedStorage"):WaitForChild("TeleportToShop"):FireServer()
-			wait(10)
-			TeleportService:Teleport(9321822839)
-		]]--
 		end
 		--TeleportService:Teleport(9321822839)
 	else
