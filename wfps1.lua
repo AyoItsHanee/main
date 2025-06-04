@@ -518,86 +518,98 @@ end)
 			local Root = game.Players.LocalPlayer.Character.HumanoidRootPart
 			local Goal = {}
 
-			-- Function to teleport to specific paths
-			local pathsToCheck = {
+local BossesFolder = Workspace.Mobs.Bosses
+local function findBossPath(bossName)
+	for _, folder in pairs(BossesFolder:GetDescendants()) do
+		if folder:IsA("Model") or folder:IsA("Folder") then
+			if folder.Name == bossName or folder.Name:find(bossName) then
+				return folder
+			end
+		end
+	end
+	return nil -- Not found
+end
+
+local pathsToCheck = {
 	{
 		name = "Sabito",
 		position = Vector3.new(1257.60046, 275.351685, -2834.26611),
-		path = Workspace.Mobs.Bosses.Sabito,
+		path = findBossPath("Sabito"),
 		time = 3,
 		num = 2
 	},
 	{
 		name = "Susamaru",
 		position = Vector3.new(1415.65686, 315.908813, -4571.56445),
-		path = Workspace.Mobs.Bosses.Susamaru,
+		path = findBossPath("Susamaru"),
 		time = 3,
 		num = 2
 	},
 	{
 		name = "Zanegutsu Kuuchie",
 		position = Vector3.new(-336.3461, 425.857422, -2271.75513),
-		path = Workspace.Mobs.Bosses["Zanegutsu Kuuchie"],
+		path = findBossPath("Zanegutsu Kuuchie"),
 		time = 3,
 		num = 2
 	},
 	{
 		name = "Yahaba",
 		position = Vector3.new(1415.65686, 315.908813, -4571.56445),
-		path = Workspace.Mobs.Bosses.Yahaba,
+		path = findBossPath("Yahaba"),
 		time = 3,
 		num = 2
 	},
 	{
 		name = "Bandit Kaden",
 		position = Vector3.new(-569.584351, 304.46698, -2827.55371),
-		path = Workspace.Mobs.Bosses["Bandit Kaden"],
+		path = findBossPath("Bandit Kaden"),
 		time = 3,
 		num = 2
 	},
 	{
 		name = "Bandit Zoku",
 		position = Vector3.new(174.656708, 283.257355, -1969.98572),
-		path = Workspace.Mobs.Bosses["Bandit Zoku"],
+		path = findBossPath("Bandit Zoku"),
 		time = 3,
 		num = 2
 	},
 	{
 		name = "Shiron",
 		position = Vector3.new(3203.10229, 370.884155, -3953.36035),
-		path = Workspace.Mobs.Bosses.Shiron,
+		path = findBossPath("Shiron"),
 		time = 3,
 		num = 2
 	},
 	{
 		name = "Nezuko",
 		position = Vector3.new(3549.86816, 342.214478, -4595.73145),
-		path = Workspace.Mobs.Bosses.Nezuko,
+		path = findBossPath("Nezuko"),
 		time = 3,
 		num = 2
 	},
 	{
 		name = "Slasher",
 		position = Vector3.new(4355.59082, 342.214478, -4386.90527),
-		path = Workspace.Mobs.Bosses.Slasher,
+		path = findBossPath("Slasher"),
 		time = 3,
 		num = 2
 	},
 	{
 		name = "Giyu",
 		position = Vector3.new(3013.30884, 316.95871, -2916.32202),
-		path = Workspace.Mobs.Bosses.Giyu,
+		path = findBossPath("Giyu"),
 		time = 3,
 		num = 2
 	},
 	{
 		name = "Sanemi",
 		position = Vector3.new(1619.91357, 348.461884, -3717.00464),
-		path = Workspace.Mobs.Bosses.Sanemi,
+		path = findBossPath("Sanemi"),
 		time = 3,
 		num = 2
 	}
 }
+
 
             _G.TweenSpeed = 300            
             local function GetDistance(Endpoint)
