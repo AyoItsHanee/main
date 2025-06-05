@@ -552,7 +552,10 @@ end)
                     Endpoint = Endpoint.CFrame
                 end
                 local TweenFunc = {}
-                local Distance = GetDistance(Endpoint)
+		local function Distance()
+                	local Distance = GetDistance(Endpoint)
+			return Distance
+		end
                 local tweenInfo = TweenInfo.new(Distance / _G.TweenSpeed, Enum.EasingStyle.Linear)
                 local tween = TweenService:Create(Root, tweenInfo, {CFrame = Endpoint})
             
@@ -565,14 +568,8 @@ end)
                 -- Function to cancel the tween
                 function TweenFunc:Cancel()
                     tween:Cancel()
-			local track = true
-			print("Track status: ")
-			print(track)
                     return false
                 end
-		local track = true
-            		print("Track status: ")
-			print(track)
                 return TweenFunc
             end
             
@@ -603,6 +600,7 @@ end)
                     if bossrun then
                         for _, pathInfo in ipairs(pathsToCheck) do
                             CheckAndMove(pathInfo.name, pathInfo.position, pathInfo.path, pathInfo.time, pathInfo.num)
+						print(Distance / _G.TweenSpeed)
                         end
                     end
                     wait()
