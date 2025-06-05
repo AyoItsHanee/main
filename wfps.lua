@@ -570,7 +570,9 @@ end)
 			print(track)
                     return false
                 end
-            
+		local track = true
+            		print("Track status: ")
+			print(track)
                 return TweenFunc
             end
             
