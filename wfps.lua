@@ -559,13 +559,15 @@ end)
                 -- Play the tween
 		local track = false
                 tween:Play()
-            	print("Waiting for " .. Distance/_G.TweenSpeed + 1)
-		print("Track status: " .. track)
+            	print(Distance/_G.TweenSpeed + 1)
+		print("Track status: ")
+		print(track)
                 -- Function to cancel the tween
                 function TweenFunc:Cancel()
                     tween:Cancel()
 			local track = true
-			print("Track status: " .. track)
+			print("Track status: ")
+			print(track)
                     return false
                 end
             
