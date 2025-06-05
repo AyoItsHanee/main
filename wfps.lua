@@ -552,11 +552,7 @@ end)
                     Endpoint = Endpoint.CFrame
                 end
                 local TweenFunc = {}
-		local function sistance(Endpoint)
-                	local Distance = GetDistance(Endpoint)
-			return Distance
-		end
-		sistance(Endpoint)
+                local Distance = GetDistance(Endpoint)
                 local tweenInfo = TweenInfo.new(Distance / _G.TweenSpeed, Enum.EasingStyle.Linear)
                 local tween = TweenService:Create(Root, tweenInfo, {CFrame = Endpoint})
             
@@ -601,8 +597,7 @@ end)
                     if bossrun then
                         for _, pathInfo in ipairs(pathsToCheck) do
                             CheckAndMove(pathInfo.name, pathInfo.position, pathInfo.path, pathInfo.time, pathInfo.num)
-						sistance(Endpoint)
-						print(sistance)
+						print(Distance)
                         end
                     end
                     wait()
