@@ -595,6 +595,7 @@ end)
                     if bossrun then
                         for _, pathInfo in ipairs(pathsToCheck) do
                             CheckAndMove(pathInfo.name, pathInfo.position, pathInfo.path, pathInfo.time, pathInfo.num)
+						print(Distance/_G.TweenSpeed + 1)
                         end
                     end
                     wait()
