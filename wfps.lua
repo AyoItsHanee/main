@@ -557,8 +557,9 @@ end)
                 local tween = TweenService:Create(Root, tweenInfo, {CFrame = Endpoint})
             
                 -- Play the tween
+		local track = false
                 tween:Play()
-            	print(Distance/_G.TweenSpeed + 1)
+            	print("Waiting for " .. Distance/_G.TweenSpeed + 1 .. " | And track status: " .. track)
                 -- Function to cancel the tween
                 function TweenFunc:Cancel()
                     tween:Cancel()
@@ -566,6 +567,8 @@ end)
                 end
             
                 return TweenFunc
+		local track = true
+		print("Track status: " .. track)
             end
             
             local function CheckAndMove(pathName, position, pathToCheck, Time, Num)
