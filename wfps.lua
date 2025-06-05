@@ -558,7 +558,7 @@ end)
             
                 -- Play the tween
                 tween:Play()
-            
+            	print(Distance/_G.TweenSpeed + 1)
                 -- Function to cancel the tween
                 function TweenFunc:Cancel()
                     tween:Cancel()
@@ -595,7 +595,6 @@ end)
                     if bossrun then
                         for _, pathInfo in ipairs(pathsToCheck) do
                             CheckAndMove(pathInfo.name, pathInfo.position, pathInfo.path, pathInfo.time, pathInfo.num)
-						print(Distance/_G.TweenSpeed + 1)
                         end
                     end
                     wait()
