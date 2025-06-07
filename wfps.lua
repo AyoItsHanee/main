@@ -557,7 +557,6 @@ end)
                 local tween = TweenService:Create(Root, tweenInfo, {CFrame = Endpoint})
             
                 -- Play the tween
-		local track = false
                 tween:Play()
                 -- Function to cancel the tween
                 function TweenFunc:Cancel()
@@ -599,13 +598,7 @@ end)
                     wait()
                 end
             end)
-
-	spawn(function()
-			while task.wait(1) do
-				print(Distance / _G.TweenSpeed)
-		end)
-            
-
+	
 			wait()
 			RemoveDMG()
 			wait()
