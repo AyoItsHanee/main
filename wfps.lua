@@ -4,7 +4,7 @@ local spawn, wait = task.spawn, task.wait
 	local bossrun = true
 	local KeepSC = true
 	local checkore = true
-	local webhookUrl = "https://discord.com/api/webhooks/1261222782272933920/6IJCgbb2ipizj58GgiF_mTtsN1z7KntWKrw9SZBbaFMZl72mQEXx0uIxuCpkyo7KtswE"
+	local webhookUrl = "https://discord.com/api/webhooks/1380761144448258170/i9-4wR0_e-P5KvnEfYGXTeBR9ZJY6WRCX2kB4gEtV-l6yswMQHGtTnQ96l3la7Q-z217"
 	local lastMessageId = nil
 	game.NetworkClient.ChildRemoved:Connect(function()
 		if game.PlaceId == 5956785391 then
