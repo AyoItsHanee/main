@@ -6,8 +6,9 @@ local itemsFolder = inventoryPath:WaitForChild("Items")
 
 -- Define a whitelist of item names and their prices
 local whitelist = {
+    ["War Fans"] = 3500,
     ["Flame Katana"] = 3500,
-    --["Beast Katanas"] = 3500,
+    ["Beast Katanas"] = 3500,
     ["Giyu's Water Katana"] = 500,
     ["Insect Katana"] = 3500,
     ["Lightning Katana"] = 500,
