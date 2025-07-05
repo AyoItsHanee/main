@@ -527,13 +527,6 @@ end)
 					num = 2
 				},
 				{
-					name = "Slasher",
-					position = Vector3.new(901, 479, -1356),
-					path = Workspace.Mobs.Bosses.Slasher,
-					time = 2,
-					num = 3
-				},
-				{
 					name = "Rengoku",
 					position = Vector3.new(3659, 680, -355),
 					path = Workspace.Mobs.Bosses.Rengoku,
