@@ -478,6 +478,13 @@ end)
 					num = 3
 				},
 				{
+					name = "Snow Trainee",
+					position = Vector3.new(247, 526, -2987),
+					path = Workspace.Mobs.Bosses.Snow_Trainee["Snow Trainee"],
+					time = 2,
+					num = 3
+				},
+				{
 					name = "Douma",
 					position = Vector3.new(-2, 519, -1690),
 					path = Workspace.Mobs.Bosses.Douma,
@@ -518,6 +525,13 @@ end)
 					path = Workspace.Mobs.Bosses.Enmu,
 					time = 3,
 					num = 2
+				},
+				{
+					name = "Slasher",
+					position = Vector3.new(901, 479, -1356),
+					path = Workspace.Mobs.Bosses.Slasher,
+					time = 2,
+					num = 3
 				},
 				{
 					name = "Rengoku",
