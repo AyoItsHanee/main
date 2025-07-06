@@ -1,6 +1,6 @@
 repeat wait() until game:IsLoaded()
 --loadstring(game:HttpGet("https://raw.githubusercontent.com/EdgeIY/infiniteyield/master/source", true))()
-spsn = true
+local spsn = true
 local KeepSC = true
 wait(1)
 print("SCRIPT MADE BY realhanif")
@@ -155,7 +155,7 @@ print("game loaded")
 			print("Username not found in ReplicatedStorage.parties")
 		end
 		wait(20)
-	TeleportService:Teleport(9321822839)
+	TeleportService:Teleport(5956785391)
 
 	elseif placeId == 11468075017 then
 
@@ -468,7 +468,7 @@ local rooth = game.Players.LocalPlayer.Character:FindFirstChild("Humanoid")
 			wait(10)
 			game:GetService("ReplicatedStorage"):WaitForChild("TeleportToShop"):FireServer()
 			wait(10)
-			TeleportService:Teleport(9321822839)
+			TeleportService:Teleport(5956785391)
 		end
 		--TeleportService:Teleport(9321822839)
 	else
