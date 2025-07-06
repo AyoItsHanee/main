@@ -6,6 +6,7 @@ print("Game loaded")
 local KeepSc = false
 local wfps = true
 local wfps1 = true
+local wfps1a = true
 local wfps2 = true
 local df = true
 local vu = game:GetService("VirtualUser")
@@ -81,6 +82,14 @@ buttonDf.Position = UDim2.new(0, 0, 1, 0)
 buttonDf.Text = "Toggle df"
 buttonDf.Parent = frame
 
+-- Create a TextButton for wfps
+local buttonWfps1a = Instance.new("TextButton")
+buttonWfps1a.Size = UDim2.new(1, 0, 0.2, 0)
+buttonWfps1a.Position = UDim2.new(0, 0, 1.2, 0)
+buttonWfps1a.Text = "Toggle wfps1a"
+buttonWfps1a.Parent = frame
+
+--[[
 -- Create a Title Bar
 local titleBar = Instance.new("Frame")
 titleBar.Size = UDim2.new(1, 0, 0, 30)
@@ -95,6 +104,7 @@ titleLabel.BackgroundTransparency = 1
 titleLabel.Text = "My Draggable UI"
 titleLabel.TextColor3 = Color3.fromRGB(255, 255, 255)
 titleLabel.Parent = titleBar
+]]--
 
 -- Create a Minimize Button
 local minimizeButton = Instance.new("TextButton")
@@ -103,7 +113,7 @@ minimizeButton.Position = UDim2.new(1, -30, 0, 0)
 minimizeButton.Text = "-"
 minimizeButton.TextColor3 = Color3.fromRGB(255, 255, 255)
 minimizeButton.BackgroundColor3 = Color3.fromRGB(100, 100, 100)
-minimizeButton.Parent = titleBar
+minimizeButton.Parent = screenGui
 
 -- Function to make the frame draggable
 local dragging
@@ -116,6 +126,7 @@ local function update(input)
 	frame.Position = UDim2.new(startPos.X.Scale, startPos.X.Offset + delta.X, startPos.Y.Scale, startPos.Y.Offset + delta.Y)
 end
 
+--[[
 titleBar.InputBegan:Connect(function(input)
 	if input.UserInputType == Enum.UserInputType.MouseButton1 then
 		dragging = true
@@ -135,6 +146,7 @@ titleBar.InputChanged:Connect(function(input)
 		dragInput = input
 	end
 end)
+]]--
 
 game:GetService("UserInputService").InputChanged:Connect(function(input)
 	if input == dragInput and dragging then
@@ -144,15 +156,14 @@ end)
 
 -- Minimize functionality
 local isMinimized = false
-local originalSize = frame.Size
 
 minimizeButton.MouseButton1Click:Connect(function()
 	if isMinimized then
-		frame.Size = originalSize
+		frame.Visible = true
 	else
-		frame.Size = UDim2.new(originalSize.X.Scale, originalSize.X.Offset, 0, 30)
+		frame.Visible = false
 	end
-	isMinimized = not isMinimized
+    isMinimized = not isMinimized
 end)
 
 -- Function to toggle KeepSC and update UI
@@ -198,6 +209,20 @@ end
 buttonWfps1.MouseButton1Click:Connect(toggleWfps1)
 
 -- Function to toggle wfps and update UI
+local function toggleWfps1a()
+    wfps1a = not wfps1a
+
+    -- Send notification
+    local wfpsntf1a = wfps1a and "Canceled PJS Rotation in next game" or "Executing PJS Rotation in next game"
+    game.StarterGui:SetCore("SendNotification", {
+        Title = "PJS Rotation Toggle",
+        Text = wfpsntf1a,
+        Duration = 3
+    })
+end
+buttonWfps1.MouseButton1Click:Connect(toggleWfps1a)
+
+-- Function to toggle wfps and update UI
 local function toggleWfps2()
     wfps2 = not wfps2
 
@@ -237,6 +262,11 @@ game:GetService("Players").LocalPlayer.OnTeleport:Connect(function(State)
         if (not TeleportCheck) and queueteleport then	
             TeleportCheck = true
             queueteleport("loadstring(game:HttpGet('https://raw.githubusercontent.com/AyoItsHanee/main/main/wfps1.lua'))()")
+        end
+    elseif KeepSc and (not wfps1a) then
+        if (not TeleportCheck) and queueteleport then	
+            TeleportCheck = true
+            queueteleport("loadstring(game:HttpGet('https://raw.githubusercontent.com/AyoItsHanee/main/main/wfps1a.lua'))()")
         end
     elseif KeepSc and (not wfps2) then
         if (not TeleportCheck) and queueteleport then	
