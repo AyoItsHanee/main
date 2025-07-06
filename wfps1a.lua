@@ -592,7 +592,7 @@ local pathsToCheck = {
                 while task.wait() do
                     if bossrun then
                         local pathInWorkspace = Workspace.Mobs:FindFirstChild(pathName)
-                        if pathToCheck and #pathToCheck:GetChildren() <= Num or pathInfo.path = nil then
+                        if pathToCheck and #pathToCheck:GetChildren() <= Num or pathToCheck = nil then
                             print("Moving to the next path")
                             break
                         end
