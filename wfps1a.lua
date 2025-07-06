@@ -236,7 +236,6 @@ print("game loaded")
 				end
 			end)
 
-	--[[
 			local function sendToDiscord(content)
     local payload = {
         ["content"] = "",
@@ -331,7 +330,7 @@ spawn(function()
 	wait(960)
     end
 end)
-]]--
+
 			game:GetService("Players").LocalPlayer.PlayerScripts["Small_Scripts"].Gameplay["Sun_Damage"].Disabled = true
 			function RemoveDMG()
 				local part  =  game:GetService("StarterPlayer").StarterPlayerScripts.Client_Modules.Modules.Extra.Damage_Text
@@ -478,77 +477,77 @@ local pathsToCheck = {
 	{
 		name = "Sabito",
 		position = Vector3.new(1257.60046, 275.351685, -2834.26611),
-		path = findBossPath("Sabito"),
+		path = Workspace.Mobs.Bosses.Sabito,
 		time = 3,
 		num = 2
 	},
 	{
 		name = "Susamaru",
 		position = Vector3.new(1415.65686, 315.908813, -4571.56445),
-		path = findBossPath("Susamaru"),
+		path = Workspace.Mobs.Bosses.Susamaru,
 		time = 3,
 		num = 2
 	},
 	{
 		name = "Zanegutsu Kuuchie",
 		position = Vector3.new(-336.3461, 425.857422, -2271.75513),
-		path = findBossPath("Zanegutsu Kuuchie"),
+		path = Workspace.Mobs.Bosses.Zanegutsu_Kuuchie["Zanegutsu Kuuchie"],
 		time = 3,
 		num = 2
 	},
 	{
 		name = "Yahaba",
 		position = Vector3.new(1415.65686, 315.908813, -4571.56445),
-		path = findBossPath("Yahaba"),
+		path = Workspace.Mobs.Bosses.Yahaba,
 		time = 3,
 		num = 2
 	},
 	{
 		name = "Bandit Kaden",
 		position = Vector3.new(-569.584351, 304.46698, -2827.55371),
-		path = findBossPath("Bandit Kaden"),
+		path = Workspace.Mobs.Bosses.Bandit_Kaden["Bandit Kaden"],
 		time = 3,
 		num = 2
 	},
 	{
 		name = "Bandit Zoku",
 		position = Vector3.new(174.656708, 283.257355, -1969.98572),
-		path = findBossPath("Bandit Zoku"),
+		path = Workspace.Mobs.Bosses.Bandit_Zoku["Bandit Zoku"],
 		time = 3,
 		num = 2
 	},
 	{
 		name = "Shiron",
 		position = Vector3.new(3203.10229, 370.884155, -3953.36035),
-		path = findBossPath("Shiron"),
+		path = Workspace.Mobs.Bosses.Shiron,
 		time = 3,
 		num = 2
 	},
 	{
 		name = "Nezuko",
 		position = Vector3.new(3549.86816, 342.214478, -4595.73145),
-		path = findBossPath("Nezuko"),
+		path = Workspace.Mobs.Bosses.Nezuko,
 		time = 3,
 		num = 2
 	},
 	{
 		name = "Slasher",
 		position = Vector3.new(4355.59082, 342.214478, -4386.90527),
-		path = findBossPath("Slasher"),
+		path = Workspace.Mobs.Bosses.Slasher,
 		time = 3,
 		num = 2
 	},
 	{
 		name = "Giyu",
 		position = Vector3.new(3013.30884, 316.95871, -2916.32202),
-		path = findBossPath("Giyu"),
+		path = Workspace.Mobs.Bosses.Giyu,
 		time = 3,
 		num = 2
 	},
 	{
 		name = "Sanemi",
 		position = Vector3.new(1619.91357, 348.461884, -3717.00464),
-		path = findBossPath("Sanemi"),
+		path = Workspace.Mobs.Bosses.Sanemi,
 		time = 3,
 		num = 2
 	}
