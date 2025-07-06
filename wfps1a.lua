@@ -236,6 +236,7 @@ print("game loaded")
 				end
 			end)
 
+	--[[
 			local function sendToDiscord(content)
     local payload = {
         ["content"] = "",
@@ -330,7 +331,7 @@ spawn(function()
 	wait(960)
     end
 end)
-
+]]--
 			game:GetService("Players").LocalPlayer.PlayerScripts["Small_Scripts"].Gameplay["Sun_Damage"].Disabled = true
 			function RemoveDMG()
 				local part  =  game:GetService("StarterPlayer").StarterPlayerScripts.Client_Modules.Modules.Extra.Damage_Text
