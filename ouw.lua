@@ -122,7 +122,7 @@ print("game loaded")
 		TeleportService:Teleport(9321822839)
 
 	elseif placeId == 9321822839 then
-
+		wait(3)
 		local myUsername = getLocalPlayerUsername()
 		local function findUsername(folder, username)
 			for _, child in pairs(folder:GetChildren()) do
