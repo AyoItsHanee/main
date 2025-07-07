@@ -5,16 +5,21 @@ local KeepSC = true
 wait(1)
 print("SCRIPT MADE BY realhanif")
 local spawn, wait = task.spawn, task.wait
-	local vu = game:GetService("VirtualUser")
-        local TeleportService = game:GetService("TeleportService")
+local vu = game:GetService("VirtualUser")
+local TeleportService = game:GetService("TeleportService")
+
 	game:GetService("Players").LocalPlayer.Idled:connect(function()
 	vu:Button2Down(Vector2.new(0,0),workspace.CurrentCamera.CFrame)
 	wait(1)
 	vu:Button2Up(Vector2.new(0,0),workspace.CurrentCamera.CFrame)
 	end)
+
+	--[[
 	game.NetworkClient.ChildRemoved:Connect(function()
 	game:GetService("TeleportService"):Teleport(9321822839)
 	end)
+	]]--
+
 	game:GetService("CoreGui").RobloxPromptGui.promptOverlay.ChildAdded:Connect(function(child)
 	if child.Name == 'ErrorPrompt' and child:FindFirstChild('MessageArea') and child.MessageArea:FindFirstChild("ErrorFrame") then
 		game:GetService("TeleportService"):Teleport(9321822839)
@@ -155,7 +160,7 @@ print("game loaded")
 			print("Username not found in ReplicatedStorage.parties")
 		end
 		wait(20)
-	TeleportService:Teleport(5956785391)
+	TeleportService:Teleport(9321822839)
 
 	elseif placeId == 11468075017 then
 
@@ -398,7 +403,7 @@ local rooth = game.Players.LocalPlayer.Character:FindFirstChild("Humanoid")
 			local Distance = GetDistance(Endpoint)
 			local TweenInfo = game:GetService("TweenService"):Create(game.Players.LocalPlayer.Character.HumanoidRootPart, TweenInfo.new(Distance/_G.TweenSpeed, Enum.EasingStyle.Linear), {CFrame = Endpoint * CFrame.fromAxisAngle(Vector3.new(1,0,0), math.rad(0))})
 			TweenInfo:Play()
-			wait(Distance/_G.TweenSpeed + 1)
+			wait(Distance/_G.TweenSpeed)
 			function TweenFunc:Cancel()
 			TweenInfo:Cancel()
 			return false
@@ -446,10 +451,10 @@ local rooth = game.Players.LocalPlayer.Character:FindFirstChild("Humanoid")
 				warn("No room with parts found in workspace.Map.")
 			end
 			else
-			spsn = false
+			local spsn = false
 			print("UR DEAD")
 			game.Players.LocalPlayer.Character:FindFirstChild("Humanoid").Health = -1
-						wait()
+			wait()
 			--game.Players.LocalPlayer.Character:FindFirstChild("Humanoid"):Destroy()
 			repeat wait() until game.Players.LocalPlayer.Character:FindFirstChild("Humanoid").Health > 0
 			game:GetService("ReplicatedStorage"):WaitForChild("TeleportToShop"):FireServer()
@@ -468,7 +473,7 @@ local rooth = game.Players.LocalPlayer.Character:FindFirstChild("Humanoid")
 			wait(10)
 			game:GetService("ReplicatedStorage"):WaitForChild("TeleportToShop"):FireServer()
 			wait(10)
-			TeleportService:Teleport(5956785391)
+			TeleportService:Teleport(9321822839)
 		end
 		--TeleportService:Teleport(9321822839)
 	else
