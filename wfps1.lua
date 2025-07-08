@@ -29,7 +29,7 @@ local spawn, wait = task.spawn, task.wait
 		end
 	end
 	end)
-]]--
+
 
 		queueteleport = (syn and syn.queue_on_teleport) or queue_on_teleport or (fluxus and fluxus.queue_on_teleport) or (delta and delta.queue_on_teleport)
 		local TeleportCheck = false
@@ -46,7 +46,7 @@ local spawn, wait = task.spawn, task.wait
 				end
 		end
 		end)
-
+]]--
 --[[
 if not game:IsLoaded() then
     game.Loaded:Wait()
@@ -610,7 +610,7 @@ local pathsToCheck = {
 	}
 }
 
-
+			local FarmModes = CFrame.new(0,getgenv().Distance,0) * CFrame.Angles(math.rad(-90),0,0) 
             _G.TweenSpeed = 300            
             local function GetDistance(Endpoint)
                 if typeof(Endpoint) == "Instance" then
@@ -633,13 +633,11 @@ local pathsToCheck = {
             
                 -- Play the tween
                 tween:Play()
-				wait(Distance/_G.TweenSpeed + 1)
                 -- Function to cancel the tween
                 function TweenFunc:Cancel()
                     tween:Cancel()
                     return false
                 end
-            
                 return TweenFunc
             end
             
@@ -656,7 +654,7 @@ local pathsToCheck = {
                 while task.wait() do
                     if bossrun then
                         local pathInWorkspace = Workspace.Mobs:FindFirstChild(pathName)
-                        if pathToCheck and #pathToCheck:GetChildren() == Num then
+                        if (pathToCheck and #(pathToCheck:GetChildren()) <= Num) then
                             print("Moving to the next path")
                             break
                         end
@@ -675,6 +673,47 @@ local pathsToCheck = {
                     wait()
                 end
             end)
+
+local function GetNearestBoss()
+
+   local Bosses = game:GetService("Workspace").Mobs:GetDescendants()
+   local BossesTable = {}
+
+   for i,v in pairs(Bosses) do
+       if table.find(BossessTable, v.Name) and v:IsA("Model") and v:FindFirstChild("Humanoid") then
+           if v.Humanoid.Health > 0 then
+               table.insert(BossesTable, v)
+           end
+       end
+   end
+
+   local NearestBoss = nil
+   local NearestBossDistance = math.huge
+
+   for i,v in pairs(BossesTable) do
+       local Distance = GetDistance(v:GetModelCFrame() * FarmModes)
+       if Distance < NearestBossDistance then
+           NearestBoss = v
+           NearestBossDistance = Distance
+       end
+   end
+
+   return NearestBoss
+end
+
+-- // AUTO ALL BOSSES - FARM
+
+spawn(function()
+   while task.wait() do
+                   local v = GetNearestBoss()
+                               repeat task.wait()                                      
+                                   if GetDistance(v:GetModelCFrame() * FarmModes) < 25 and GetDistance(v:GetModelCFrame() * FarmModes) < 150 then
+                                       Root.CFrame = v:GetModelCFrame() * FarmModes
+                                   end
+                               until not v.Parent or v.Humanoid.Health <= 0 or not v:IsDescendantOf(workspace)
+               end
+   end
+end)
             
 
 			wait()
