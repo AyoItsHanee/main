@@ -167,7 +167,7 @@ print("game loaded")
 		wait(1)
 
 		local function preventFall()
-				while true do
+				while spsn do
 					local antifall3 = Instance.new("BodyVelocity", game.Players.LocalPlayer.Character.HumanoidRootPart)
 					antifall3.Velocity = Vector3.new(0, 0, 0)
 					antifall3.MaxForce = Vector3.new(9e9, 9e9, 9e9)
