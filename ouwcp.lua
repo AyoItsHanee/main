@@ -32,7 +32,7 @@ local TeleportService = game:GetService("TeleportService")
 			if KeepSC then
 		if (not TeleportCheck) and queueteleport then
 			TeleportCheck = true
-			queueteleport("loadstring(game:HttpGet('https://raw.githubusercontent.com/AyoItsHanee/main/main/ouw.lua'))()")
+			queueteleport("loadstring(game:HttpGet('https://raw.githubusercontent.com/AyoItsHanee/main/main/ouwcp.lua'))()")
 				end
 			else
 			if (not TeleportCheck) and queueteleport then	
