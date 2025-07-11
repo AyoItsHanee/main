@@ -330,7 +330,7 @@ local rooth = game.Players.LocalPlayer.Character:FindFirstChild("Humanoid")
 		coroutine.resume(loopC1)
 
 		local function loopFunction()
-			while true do
+			while spsn do
 				local success, error = pcall(function()
 				local hitCounter = {} -- Counter for each model
 				for i, v in next, workspace.Mobs:GetDescendants() do
