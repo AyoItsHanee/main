@@ -421,8 +421,8 @@ local rooth = game.Players.LocalPlayer.Character:FindFirstChild("Humanoid")
 			wait(1)
 			coroutine.wrap(loopFunction)()
 			spawn(function()
-			while true do
-					if spsn and rooth.Health > 0 then
+			while spsn do
+					if rooth.Health > 0 then
 			local roomName = findRoomName()
 			if roomName then
 				local spawnpoints = workspace.Map:FindFirstChild(roomName):FindFirstChild("Spawnpoints")
