@@ -172,8 +172,6 @@ print("game loaded")
 						local antifall3 = Instance.new("BodyVelocity", game.Players.LocalPlayer.Character.HumanoidRootPart)
 						antifall3.Velocity = Vector3.new(0, 0, 0)
 						antifall3.MaxForce = Vector3.new(9e9, 9e9, 9e9)
-					else
-						antifall3:Destroy()
 					end
 				end
 
@@ -415,7 +413,7 @@ local rooth = game.Players.LocalPlayer.Character:FindFirstChild("Humanoid")
 		-- Check if the Timer GUI became visible or not
 		if isTimerGuiVisible() then
 			print("Timer GUI is now visible, continuing with the script...")
-			wait()
+			wait(30)
 			local loopCM = coroutine.create(mainCoroutine)
 			coroutine.resume(loopCM)
 			spawn(noclip)
