@@ -185,12 +185,6 @@ print("game loaded")
 		local Info = TweenInfo.new(1, Enum.EasingStyle.Cubic, Enum.EasingDirection.Out, 0, false, 0)
 		local Goal = {}
 		local Root = game.Players.LocalPlayer.Character.HumanoidRootPart
-		Goal.CFrame = CFrame.new(5250, -148, 2030)
-		game:GetService("TweenService"):Create(Root, Info, Goal):Play()
-		wait(1)
-		Goal.CFrame = CFrame.new(5277, -148, 2030)
-		game:GetService("TweenService"):Create(Root, Info, Goal):Play()
-		wait(11)
 
 	local function noclip()
 		while task.wait() do
@@ -215,7 +209,7 @@ print("game loaded")
 					end
 				end
 			end
-wait()
+		wait()
 		end
 				end
 				spawn(collectChest)
@@ -421,7 +415,7 @@ local rooth = game.Players.LocalPlayer.Character:FindFirstChild("Humanoid")
 			coroutine.wrap(loopFunction)()
 			spawn(function()
 			while spsn do
-					if rooth.Health > 0 then
+			if rooth.Health > 0 then
 			local roomName = findRoomName()
 			if roomName then
 				local spawnpoints = workspace.Map:FindFirstChild(roomName):FindFirstChild("Spawnpoints")
@@ -458,6 +452,13 @@ local rooth = game.Players.LocalPlayer.Character:FindFirstChild("Humanoid")
 			repeat wait() until game.Players.LocalPlayer.Character:FindFirstChild("Humanoid").Health > 0
 			game:GetService("ReplicatedStorage"):WaitForChild("TeleportToShop"):FireServer()
 			break
+		else
+		Goal.CFrame = CFrame.new(5250, -148, 2030)
+		game:GetService("TweenService"):Create(Root, Info, Goal):Play()
+		wait(1)
+		Goal.CFrame = CFrame.new(5277, -148, 2030)
+		game:GetService("TweenService"):Create(Root, Info, Goal):Play()
+		wait(11)
 		end
 		end
 			end)
