@@ -206,6 +206,12 @@ elseif placeId == 11468075017 then
     local Info = TweenInfo.new(1, Enum.EasingStyle.Cubic, Enum.EasingDirection.Out, 0, false, 0)
     local Goal = {}
     local Root = game.Players.LocalPlayer.Character.HumanoidRootPart
+	Goal.CFrame = CFrame.new(5250, -148, 2030)
+	game:GetService("TweenService"):Create(Root, Info, Goal):Play()
+	wait(1)
+	Goal.CFrame = CFrame.new(5277, -148, 2030)
+	game:GetService("TweenService"):Create(Root, Info, Goal):Play()
+	wait(11)
 
     local function noclip()
         while task.wait() do
@@ -521,13 +527,6 @@ elseif placeId == 11468075017 then
         game:GetService("ReplicatedStorage"):WaitForChild("TeleportToShop"):FireServer()
         wait(10)
         TeleportService:Teleport(5956785391)
-	else
-		Goal.CFrame = CFrame.new(5250, -148, 2030)
-		game:GetService("TweenService"):Create(Root, Info, Goal):Play()
-		wait(1)
-		Goal.CFrame = CFrame.new(5277, -148, 2030)
-		game:GetService("TweenService"):Create(Root, Info, Goal):Play()
-		wait(11)
     end
 else
     print("Place ID doesn't match")
