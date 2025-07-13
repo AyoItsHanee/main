@@ -519,7 +519,9 @@ elseif placeId == 11468075017 then
 	        while task.wait() do
 			    for _, v in pairs(game:GetService("Workspace").Map:GetChildren()) do
 				    if v:IsA("Model") and v.Name == "DoublePoints" then
-                        v:GetModelCFrame() = Root.CFrame
+                        repeat
+                        Root.CFrame = v:GetModelCFrame()
+                        until not v:IsDescendantOf(workspace)
 					end
 				end
 			end
