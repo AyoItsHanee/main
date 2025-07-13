@@ -517,7 +517,6 @@ elseif placeId == 11468075017 then
             end
         )
 
-        --[[
         spawn(function()
 	        while task.wait() do
 			    for _, v in pairs(game:GetService("Workspace").Map:GetChildren()) do
@@ -528,11 +527,12 @@ elseif placeId == 11468075017 then
                             wait(.1)
                         end
                         repeat task.wait() until not v:IsDescendantOf(workspace)
-                        local spsn = true
 					end
 				end
+                local spsn = true
 			end
         end)
+        --[[
         wait(900)
         if game.Players.LocalPlayer.Character:FindFirstChild("Humanoid") then
             game.Players.LocalPlayer.Character:FindFirstChild("Humanoid").Health = -1 -- Set the humanoid's health to 0 to "kill" the character
