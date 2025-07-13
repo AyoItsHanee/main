@@ -527,6 +527,7 @@ elseif placeId == 11468075017 then
                                 Root.CFrame = v:GetModelCFrame()
                                 wait(.1)
                             end
+                            spsn = not spsn
                         end
 					end
 				end
