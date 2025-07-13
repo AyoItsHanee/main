@@ -351,7 +351,8 @@ elseif placeId == 11468075017 then
     coroutine.resume(loopC1)
 
     local function loopFunction()
-        while spsn do
+        while task.wait() do
+            if spsn then
             local success, error =
                 pcall(
                 function()
@@ -399,6 +400,7 @@ elseif placeId == 11468075017 then
             if not success then
                 print("An error occurred:", error)
             end
+        end
             -- Add a delay between iterations to prevent excessive server load
             wait(.1) -- Adjust the delay time as desired
         end
