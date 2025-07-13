@@ -17,15 +17,13 @@ game:GetService("Players").LocalPlayer.Idled:connect(
         vu:Button2Up(Vector2.new(0, 0), workspace.CurrentCamera.CFrame)
     end
 )
- --
 
 --[[
 	game.NetworkClient.ChildRemoved:Connect(function()
 	game:GetService("TeleportService"):Teleport(9321822839)
 	end)
-	]] game:GetService(
-    "CoreGui"
-).RobloxPromptGui.promptOverlay.ChildAdded:Connect(
+]]--
+game:GetService("CoreGui").RobloxPromptGui.promptOverlay.ChildAdded:Connect(
     function(child)
         if
             child.Name == "ErrorPrompt" and child:FindFirstChild("MessageArea") and
@@ -224,7 +222,7 @@ elseif placeId == 11468075017 then
     end
 
     local function collectChest()
-        while true do
+        while task.wait() do
             for _, chest in pairs(Workspace.Debree:GetChildren()) do
                 if chest.Name == "Loot_Chest" then
                     for _, drop in pairs(chest:FindFirstChild("Drops"):GetChildren()) do
@@ -342,7 +340,7 @@ elseif placeId == 11468075017 then
 
     -- Execute SH V2
     local function loopBp()
-        while true do
+        while task.wait() do
             local Handle_Initiate_S_ = game.ReplicatedStorage.Remotes.To_Server.Handle_Initiate_S_
             Handle_Initiate_S_:InvokeServer("skil_ting_asd", game.Players.LocalPlayer, "arrow_knock_back", 5)
             wait(14)
