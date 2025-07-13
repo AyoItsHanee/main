@@ -531,7 +531,6 @@ elseif placeId == 11468075017 then
                         end
 					end
 				end
-                local spsn = true
 			end
         end)
         --[[
