@@ -274,6 +274,9 @@ elseif placeId == 11468075017 then
         {name = "WisteriaPoisoning", enabled = true},
         {name = "MobCamouflage", enabled = true}
     }
+    local function orbx(
+        
+    )
     local rooth = game.Players.LocalPlayer.Character:FindFirstChild("Humanoid")
 
     -- Function to find the correct room name
@@ -516,7 +519,16 @@ elseif placeId == 11468075017 then
             end
         )
 
-        --[[coroutine.wrap(orbx)()
+        spawn(function()
+	        while task.wait() do
+			    for _, v in pairs(game:GetService("Workspace").Map:GetChildren()) do
+				    if v:IsA("Model") and v.Name == "DoublePoints" then do
+                        Root.CFrame = v:GetModelCFrame()
+					end
+				end
+			end
+        end)
+        --[[
         wait(900)
         if game.Players.LocalPlayer.Character:FindFirstChild("Humanoid") then
             game.Players.LocalPlayer.Character:FindFirstChild("Humanoid").Health = -1 -- Set the humanoid's health to 0 to "kill" the character
