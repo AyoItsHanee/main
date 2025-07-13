@@ -518,7 +518,7 @@ elseif placeId == 11468075017 then
         spawn(function()
 	        while task.wait() do
 			    for _, v in pairs(game:GetService("Workspace").Map:GetChildren()) do
-				    if v:IsA("Model") and v.Name == "DoublePoints" then
+				    if (v:IsA("Model") and v.Name == "DoublePoints") or (v:IsA("Model") and v.Name == "HealthRegen") or (v:IsA("Model") and v.Name == "BloodMoney") or (v:IsA("Model") and v.Name == "StaminaRegen") or (v:IsA("Model") and v.Name == "InstaKill") or (v:IsA("Model") and v.Name == "WisteriaPoisoning") or (v:IsA("Model") and v.Name == "MobCamouflage") then
                         local spsn = false
                         repeat
                         Root.CFrame = v:GetModelCFrame()
