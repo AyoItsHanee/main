@@ -521,6 +521,7 @@ elseif placeId == 11468075017 then
 				    if v:IsA("Model") and v.Name == "DoublePoints" then
                         repeat
                         Root.CFrame = v:GetModelCFrame()
+                        wait(.1)
                         until not v:IsDescendantOf(workspace)
 					end
 				end
