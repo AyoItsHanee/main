@@ -522,11 +522,10 @@ elseif placeId == 11468075017 then
 			    for _, v in pairs(game:GetService("Workspace").Map:GetChildren()) do
 				    if (v:IsA("Model") and v.Name == "DoublePoints") or (v:IsA("Model") and v.Name == "HealthRegen") or (v:IsA("Model") and v.Name == "BloodMoney") or (v:IsA("Model") and v.Name == "StaminaRegen") or (v:IsA("Model") and v.Name == "InstaKill") or (v:IsA("Model") and v.Name == "WisteriaPoisoning") or (v:IsA("Model") and v.Name == "MobCamouflage") then
                         local spsn = false
-                        wait(5)
-                        repeat
-                        Root.CFrame = v:GetModelCFrame()
-                        wait(1)
-                        until not v:IsDescendantOf(workspace)
+                        while v:IsDescendantOf(workspace) do
+                            Root.CFrame = v:GetModelCFrame()
+                            wait(.1)
+                        end
                         local spsn = true
 					end
 				end
