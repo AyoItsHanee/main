@@ -522,7 +522,7 @@ elseif placeId == 11468075017 then
                         local spsn = false
                         repeat
                         Root.CFrame = v:GetModelCFrame()
-                        wait(1)
+                        wait(.1)
                         until not v:IsDescendantOf(workspace)
                         local spsn = true
 					end
