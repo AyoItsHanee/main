@@ -274,9 +274,7 @@ elseif placeId == 11468075017 then
         {name = "WisteriaPoisoning", enabled = true},
         {name = "MobCamouflage", enabled = true}
     }
-    local function orbx(
-        
-    )
+
     local rooth = game.Players.LocalPlayer.Character:FindFirstChild("Humanoid")
 
     -- Function to find the correct room name
@@ -522,7 +520,7 @@ elseif placeId == 11468075017 then
         spawn(function()
 	        while task.wait() do
 			    for _, v in pairs(game:GetService("Workspace").Map:GetChildren()) do
-				    if v:IsA("Model") and v.Name == "DoublePoints" then do
+				    if v:IsA("Model") and v.Name == "DoublePoints" then
                         Root.CFrame = v:GetModelCFrame()
 					end
 				end
