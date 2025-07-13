@@ -516,7 +516,7 @@ elseif placeId == 11468075017 then
             end
         )
 
-        --coroutine.wrap(orbx)()
+        --[[coroutine.wrap(orbx)()
         wait(900)
         if game.Players.LocalPlayer.Character:FindFirstChild("Humanoid") then
             game.Players.LocalPlayer.Character:FindFirstChild("Humanoid").Health = -1 -- Set the humanoid's health to 0 to "kill" the character
@@ -527,6 +527,7 @@ elseif placeId == 11468075017 then
         game:GetService("ReplicatedStorage"):WaitForChild("TeleportToShop"):FireServer()
         wait(10)
         TeleportService:Teleport(5956785391)
+		]]--
     end
 else
     print("Place ID doesn't match")
