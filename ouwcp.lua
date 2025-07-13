@@ -523,6 +523,7 @@ elseif placeId == 11468075017 then
 				    if (v:IsA("Model") and v.Name == "DoublePoints") or (v:IsA("Model") and v.Name == "HealthRegen") or (v:IsA("Model") and v.Name == "BloodMoney") or (v:IsA("Model") and v.Name == "StaminaRegen") or (v:IsA("Model") and v.Name == "InstaKill") or (v:IsA("Model") and v.Name == "WisteriaPoisoning") or (v:IsA("Model") and v.Name == "MobCamouflage") then
                         local spsn = false
                         while v:IsDescendantOf(workspace) do
+                            local spsn = false
                             Root.CFrame = v:GetModelCFrame()
                             wait(.1)
                         end
