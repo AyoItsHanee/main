@@ -480,12 +480,12 @@ elseif placeId == 11468075017 then
                                 if #parts > 0 then
                                     local randomPart = parts[math.random(1, #parts)]
                                     if randomPart and randomPart:IsA("BasePart") then
-                                        if #workspace.Mobs:GetChildren() > 10 then
+                                        if #workspace.Mobs:GetChildren() > 10 and spsn then
                                             --game.TweenService:Create(game.Players.LocalPlayer.Character.HumanoidRootPart, TweenInfo.new(Distance(randomPart.Position + Vector3.new(0, 200, 0)) / _G.TweenSpeed, Enum.EasingStyle.Linear, Enum.EasingDirection.Out), {CFrame = CFrame.new(randomPart.Position + Vector3.new(0, 200, 0))}):Play()
                                             local endpointCFrame =
                                                 CFrame.new(randomPart.Position + Vector3.new(0, 200, 0))
                                             local tween = Tween(endpointCFrame)
-                                        elseif #workspace.Mobs:GetChildren() <= 10 then
+                                        elseif #workspace.Mobs:GetChildren() <= 10 and spsn then
                                             local endpointCFrame =
                                                 CFrame.new(randomPart.Position + Vector3.new(0, 75, 0))
                                             local tween = Tween(endpointCFrame)
