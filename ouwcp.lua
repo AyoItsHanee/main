@@ -471,7 +471,7 @@ elseif placeId == 11468075017 then
         spawn(
             function()
                 while task.wait() do
-                    if rooth.Health > 0 and spsn then
+                    if rooth.Health > 0 then
                         local roomName = findRoomName()
                         if roomName and spsn then
                             local spawnpoints = workspace.Map:FindFirstChild(roomName):FindFirstChild("Spawnpoints")
