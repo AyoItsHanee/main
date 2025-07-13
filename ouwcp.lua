@@ -450,7 +450,7 @@ elseif placeId == 11468075017 then
             {CFrame = Endpoint * CFrame.fromAxisAngle(Vector3.new(1, 0, 0), math.rad(0))}
         )
         TweenInfo:Play()
-        wait(Distance / _G.TweenSpeed + 1)
+        wait(Distance / _G.TweenSpeed)
         function TweenFunc:Cancel()
             TweenInfo:Cancel()
             return false
