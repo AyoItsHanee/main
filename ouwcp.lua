@@ -526,7 +526,7 @@ elseif placeId == 11468075017 then
                             Root.CFrame = v:GetModelCFrame()
                             wait(.1)
                         end
-                        repeat wait until not v:IsDescendantOf(workspace)
+                        repeat task.wait() until not v:IsDescendantOf(workspace)
                         local spsn = true
 					end
 				end
