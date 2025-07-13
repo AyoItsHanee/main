@@ -448,11 +448,13 @@ elseif placeId == 11468075017 then
             TweenInfo.new(Distance / _G.TweenSpeed, Enum.EasingStyle.Linear),
             {CFrame = Endpoint * CFrame.fromAxisAngle(Vector3.new(1, 0, 0), math.rad(0))}
         )
-        TweenInfo:Play()
-        wait(Distance / _G.TweenSpeed)
-        function TweenFunc:Cancel()
-            TweenInfo:Cancel()
-            return false
+        if spsn then
+            weenInfo:Play()
+            wait(Distance / _G.TweenSpeed)
+            function TweenFunc:Cancel()
+                TweenInfo:Cancel()
+                return false
+            end
         end
         return TweenFunc
     end
