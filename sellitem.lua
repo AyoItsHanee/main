@@ -14,6 +14,7 @@ local whitelist = {
     ["Lightning Katana"] = 500,
     ["Mist Katana"] = 3500,
     ["Scythe"] = 3500,
+    ["Claws"] = 3500,
     ["Water Katana"] = 500,
     ["Wind Katana"] = 500,
     ["Snow Katana"] = 3500
