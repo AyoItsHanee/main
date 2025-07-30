@@ -482,7 +482,7 @@ end)
 					position = Vector3.new(247, 526, -2987),
 					path = Workspace.Mobs.Bosses.Snow_Trainee["Snow Trainee"],
 					time = 2,
-					num = 3
+					num = 2
 				},
 				{
 					name = "Douma",
