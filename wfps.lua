@@ -482,7 +482,7 @@ end)
 					position = Vector3.new(247, 526, -2987),
 					path = Workspace.Mobs.Bosses.Snow_Trainee["Snow Trainee"],
 					time = 2,
-					num = 1
+					num = 2
 				},
 				{
 					name = "Douma",
@@ -586,7 +586,7 @@ end)
                 while task.wait() do
                     if bossrun then
                         local pathInWorkspace = Workspace.Mobs:FindFirstChild(pathName)
-                        if pathToCheck and #pathToCheck:GetChildren() == Num then
+                        if pathToCheck and #pathToCheck:GetChildren() =< Num then
                             print("Moving to the next path")
                             break
                         end
