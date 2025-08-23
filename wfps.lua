@@ -586,7 +586,7 @@ end)
                 while task.wait() do
                     if bossrun then
                         local pathInWorkspace = Workspace.Mobs:FindFirstChild(pathName)
-                        if pathToCheck and #pathToCheck:GetChildren() =< Num then
+                        if pathToCheck and #pathToCheck:GetChildren() <= Num then
                             print("Moving to the next path")
                             break
                         end
