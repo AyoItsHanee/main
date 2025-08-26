@@ -451,9 +451,9 @@ local rooth = game.Players.LocalPlayer.Character:FindFirstChild("Humanoid")
 			local spsn = false
 			print("UR DEAD")
 			game.Players.LocalPlayer.Character:FindFirstChild("Humanoid").Health = -1
-			wait()
+			wait(7)
 			--game.Players.LocalPlayer.Character:FindFirstChild("Humanoid"):Destroy()
-			repeat wait() until game.Players.LocalPlayer.Character:FindFirstChild("Humanoid").Health > 0
+			--repeat wait() until game.Players.LocalPlayer.Character:FindFirstChild("Humanoid").Health > 0
 			game:GetService("ReplicatedStorage"):WaitForChild("TeleportToShop"):FireServer()
 			break
 		end
