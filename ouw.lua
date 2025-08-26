@@ -470,7 +470,7 @@ local rooth = game.Players.LocalPlayer.Character:FindFirstChild("Humanoid")
 			wait(10)
 			game:GetService("ReplicatedStorage"):WaitForChild("TeleportToShop"):FireServer()
 			wait(10)
-			TeleportService:Teleport(5956785391)
+			game:GetService("TeleportService"):Teleport(9321822839)
 		end
 		--TeleportService:Teleport(9321822839)
 	else
