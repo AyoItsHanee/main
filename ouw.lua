@@ -451,9 +451,9 @@ local rooth = game.Players.LocalPlayer.Character:FindFirstChild("Humanoid")
 			local spsn = false
 			print("UR DEAD")
 			game.Players.LocalPlayer.Character:FindFirstChild("Humanoid").Health = -1
-			wait(7)
+			wait()
 			--game.Players.LocalPlayer.Character:FindFirstChild("Humanoid"):Destroy()
-			--repeat wait() until game.Players.LocalPlayer.Character:FindFirstChild("Humanoid").Health > 0
+			repeat wait() until game.Players.LocalPlayer.Character:FindFirstChild("Humanoid").Health > 0
 			game:GetService("ReplicatedStorage"):WaitForChild("TeleportToShop"):FireServer()
 			break
 		end
@@ -467,7 +467,7 @@ local rooth = game.Players.LocalPlayer.Character:FindFirstChild("Humanoid")
 			else
 				print("Character or humanoid not found.")
 			end
-			wait(10)
+			repeat wait() until game.Players.LocalPlayer.Character:FindFirstChild("Humanoid").Health > 0
 			game:GetService("ReplicatedStorage"):WaitForChild("TeleportToShop"):FireServer()
 			wait(10)
 			game:GetService("TeleportService"):Teleport(9321822839)
