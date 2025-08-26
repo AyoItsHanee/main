@@ -161,10 +161,10 @@ print("game loaded")
 
 	elseif placeId == 11468075017 then
 
-		wait(1)
+		repeat wait() until game.Players.LocalPlayer.Character:FindFirstChild("Humanoid")
 
 		local function preventFall()
-				while true do
+				while task.wait() do
 					local antifall3 = Instance.new("BodyVelocity", game.Players.LocalPlayer.Character:FindFirstChild("Humanoid"))
 					antifall3.Velocity = Vector3.new(0, 0, 0)
 					antifall3.MaxForce = Vector3.new(9e9, 9e9, 9e9)
@@ -190,7 +190,7 @@ print("game loaded")
 		wait(11)
 
 	local function noclip()
-		while true do
+		while task.wait() do
 			for _, v in pairs(game:GetService("Players").LocalPlayer.Character:GetDescendants()) do
                			if v:IsA("BasePart") and v.CanCollide then
                    			v.CanCollide = false 
@@ -201,7 +201,7 @@ print("game loaded")
 	end
 
 	local function collectChest()
-		while true do
+		while task.wait() do
 			for _, chest in pairs(Workspace.Debree:GetChildren()) do
 				if chest.Name == "Loot_Chest" then
 					for _, drop in pairs(chest:FindFirstChild("Drops"):GetChildren()) do
@@ -316,7 +316,7 @@ local rooth = game.Players.LocalPlayer.Character:FindFirstChild("Humanoid")
 
 		-- Execute SH V2
 		local function loopBp()
-			while true do
+			while task.wait() do
 				local Handle_Initiate_S_ = game.ReplicatedStorage.Remotes.To_Server.Handle_Initiate_S_
 				Handle_Initiate_S_:InvokeServer("skil_ting_asd", game.Players.LocalPlayer, "arrow_knock_back", 5)
 				wait(14)
@@ -327,7 +327,7 @@ local rooth = game.Players.LocalPlayer.Character:FindFirstChild("Humanoid")
 		coroutine.resume(loopC1)
 
 		local function loopFunction()
-			while true do
+			while task.wait() do
 				local success, error = pcall(function()
 				local hitCounter = {} -- Counter for each model
 				for i, v in next, workspace.Mobs:GetDescendants() do
@@ -418,7 +418,7 @@ local rooth = game.Players.LocalPlayer.Character:FindFirstChild("Humanoid")
 			wait(1)
 			coroutine.wrap(loopFunction)()
 			spawn(function()
-			while true do
+			while task.wait() do
 					if spsn and rooth.Health > 0 then
 			local roomName = findRoomName()
 			if roomName then
