@@ -14,11 +14,9 @@ local TeleportService = game:GetService("TeleportService")
 	vu:Button2Up(Vector2.new(0,0),workspace.CurrentCamera.CFrame)
 	end)
 
-	--[[
 	game.NetworkClient.ChildRemoved:Connect(function()
 	game:GetService("TeleportService"):Teleport(9321822839)
 	end)
-	]]--
 
 	game:GetService("CoreGui").RobloxPromptGui.promptOverlay.ChildAdded:Connect(function(child)
 	if child.Name == 'ErrorPrompt' and child:FindFirstChild('MessageArea') and child.MessageArea:FindFirstChild("ErrorFrame") then
@@ -118,8 +116,7 @@ print("game loaded")
 
 	if placeId == 5956785391 then
 
-		wait()
-		TeleportService:Teleport(9321822839)
+		game:GetService("TeleportService"):Teleport(9321822839)
 
 	elseif placeId == 9321822839 then
 		wait(3)
