@@ -15,6 +15,7 @@ local spawn, wait = task.spawn, task.wait
 			game:GetService("TeleportService"):Teleport(5956785391)
 		end
 	end)
+	--[[
 	game:GetService("CoreGui").RobloxPromptGui.promptOverlay.ChildAdded:Connect(function(child)
 	if child.Name == 'ErrorPrompt' and child:FindFirstChild('MessageArea') and child.MessageArea:FindFirstChild("ErrorFrame") then
 		if game.PlaceId == 5956785391 then
@@ -26,6 +27,7 @@ local spawn, wait = task.spawn, task.wait
 		end
 	end
 	end)
+	]]--
 
 		queueteleport = (syn and syn.queue_on_teleport) or queue_on_teleport or (fluxus and fluxus.queue_on_teleport) or (delta and delta.queue_on_teleport)
 		local TeleportCheck = false
@@ -480,7 +482,7 @@ end)
 					position = Vector3.new(247, 526, -2987),
 					path = Workspace.Mobs.Bosses.Snow_Trainee["Snow Trainee"],
 					time = 2,
-					num = 1
+					num = 2
 				},
 				{
 					name = "Douma",
