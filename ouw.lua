@@ -165,7 +165,7 @@ print("game loaded")
 
 		local function preventFall()
 				while true do
-					local antifall3 = Instance.new("BodyVelocity", game.Players.LocalPlayer.Character.HumanoidRootPart)
+					local antifall3 = Instance.new("BodyVelocity", game.Players.LocalPlayer.Character:FindFirstChild("Humanoid"))
 					antifall3.Velocity = Vector3.new(0, 0, 0)
 					antifall3.MaxForce = Vector3.new(9e9, 9e9, 9e9)
 
@@ -181,7 +181,7 @@ print("game loaded")
 	
 		local Info = TweenInfo.new(1, Enum.EasingStyle.Cubic, Enum.EasingDirection.Out, 0, false, 0)
 		local Goal = {}
-		local Root = game.Players.LocalPlayer.Character.HumanoidRootPart
+		local Root = game.Players.LocalPlayer.Character:FindFirstChild("Humanoid")
 		Goal.CFrame = CFrame.new(5022, -148, 2032)
 		game:GetService("TweenService"):Create(Root, Info, Goal):Play()
 		wait(1)
