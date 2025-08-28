@@ -1,6 +1,6 @@
 repeat wait() until game:IsLoaded()
 print("Roblox loaded")
-if hanee and then
+if hanee then
     error("Autofarm is already running!", 0)
     return
 end
