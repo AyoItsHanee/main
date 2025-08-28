@@ -1,6 +1,10 @@
 repeat wait() until game:IsLoaded()
 print("Roblox loaded")
-if not hanee then
+if hanee and then
+    error("Autofarm is already running!", 0)
+    return
+end
+pcall(function() getgenv().hanee = true end)
 local spawn, wait = task.spawn, task.wait
 	local bossrun = true
 	local KeepSC = true
@@ -661,7 +665,3 @@ simulateButtonClick()
 		else
 			print("Wrong game")
 		end
-pcall(function() getgenv().hanee = true end)
-else
-	print("script is already running")
-end
