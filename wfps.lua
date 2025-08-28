@@ -1,10 +1,5 @@
 repeat wait() until game:IsLoaded()
 print("Roblox loaded")
-if hanee then
-    print("Script is aleady running")
-    return
-end
-pcall(function() getgenv().hanee = true end)
 local spawn, wait = task.spawn, task.wait
 	local bossrun = true
 	local KeepSC = true
