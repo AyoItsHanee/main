@@ -1,5 +1,7 @@
 repeat wait() until game:IsLoaded()
 print("Roblox loaded")
+pcall(function() getgenv().hanee = true end)
+if not hanee then
 local spawn, wait = task.spawn, task.wait
 	local bossrun = true
 	local KeepSC = true
@@ -658,3 +660,6 @@ simulateButtonClick()
 		else
 			print("Wrong game")
 		end
+else
+	print("script is already running")
+end
