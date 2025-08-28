@@ -1,5 +1,10 @@
 repeat wait() until game:IsLoaded()
 print("Roblox loaded")
+if hanee then
+    print("Script is aleady running")
+    return
+end
+pcall(function() getgenv().hanee = true end)
 local spawn, wait = task.spawn, task.wait
 	local bossrun = true
 	local KeepSC = true
@@ -35,14 +40,12 @@ local spawn, wait = task.spawn, task.wait
 			if KeepSC then
 		if (not TeleportCheck) and queueteleport then
 			TeleportCheck = true
-			queueteleport("loadstring(game:HttpGet('https://raw.githubusercontent.com/AyoItsHanee/main/main/wfps.lua'))()
-			pcall(function() getgenv().hanee = false end)")
+			queueteleport("loadstring(game:HttpGet('https://raw.githubusercontent.com/AyoItsHanee/main/main/wfps.lua'))() pcall(function() getgenv().hanee = false end)")
 				end
 			else
 			if (not TeleportCheck) and queueteleport then	
 			TeleportCheck = true
-			queueteleport("loadstring(game:HttpGet('https://raw.githubusercontent.com/AyoItsHanee/main/main/rah.lua'))()
-			pcall(function() getgenv().hanee = false end)")
+			queueteleport("loadstring(game:HttpGet('https://raw.githubusercontent.com/AyoItsHanee/main/main/rah.lua'))() pcall(function() getgenv().hanee = false end)")
 				end
 		end
 		end)
