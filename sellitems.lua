@@ -152,3 +152,10 @@ print("Selling Items in 1 seconds")
 
 -- Run the action with the generated args
 game:GetService("ReplicatedStorage"):WaitForChild("Sell_Items_tang"):InvokeServer(unpack(args))
+
+wait(3)
+local args = {
+    [1] = 1
+}
+
+game:GetService("ReplicatedStorage").Remotes.Load_Loadout:FireServer(unpack(args))
