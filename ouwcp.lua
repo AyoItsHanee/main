@@ -17,13 +17,15 @@ game:GetService("Players").LocalPlayer.Idled:connect(
         vu:Button2Up(Vector2.new(0, 0), workspace.CurrentCamera.CFrame)
     end
 )
+ --
 
 --[[
 	game.NetworkClient.ChildRemoved:Connect(function()
 	game:GetService("TeleportService"):Teleport(9321822839)
 	end)
-]]--
-game:GetService("CoreGui").RobloxPromptGui.promptOverlay.ChildAdded:Connect(
+]] game:GetService(
+    "CoreGui"
+).RobloxPromptGui.promptOverlay.ChildAdded:Connect(
     function(child)
         if
             child.Name == "ErrorPrompt" and child:FindFirstChild("MessageArea") and
@@ -204,12 +206,12 @@ elseif placeId == 11468075017 then
     local Info = TweenInfo.new(1, Enum.EasingStyle.Cubic, Enum.EasingDirection.Out, 0, false, 0)
     local Goal = {}
     local Root = game.Players.LocalPlayer.Character.HumanoidRootPart
-	Goal.CFrame = CFrame.new(5250, -148, 2030)
-	game:GetService("TweenService"):Create(Root, Info, Goal):Play()
-	wait(1)
-	Goal.CFrame = CFrame.new(5277, -148, 2030)
-	game:GetService("TweenService"):Create(Root, Info, Goal):Play()
-	wait(11)
+    Goal.CFrame = CFrame.new(5250, -148, 2030)
+    game:GetService("TweenService"):Create(Root, Info, Goal):Play()
+    wait(1)
+    Goal.CFrame = CFrame.new(5277, -148, 2030)
+    game:GetService("TweenService"):Create(Root, Info, Goal):Play()
+    wait(11)
 
     local function noclip()
         while task.wait() do
@@ -352,7 +354,6 @@ elseif placeId == 11468075017 then
 
     local function loopFunction()
         while task.wait() do
-            if spsn then
             local success, error =
                 pcall(
                 function()
@@ -400,7 +401,6 @@ elseif placeId == 11468075017 then
             if not success then
                 print("An error occurred:", error)
             end
-        end
             -- Add a delay between iterations to prevent excessive server load
             wait(.1) -- Adjust the delay time as desired
         end
@@ -519,23 +519,33 @@ elseif placeId == 11468075017 then
             end
         )
 
-        spawn(function()
-	        while task.wait() do
-			    for _, v in pairs(game:GetService("Workspace").Map:GetChildren()) do
-				    if (v:IsA("Model") and v.Name == "DoublePoints") or (v:IsA("Model") and v.Name == "HealthRegen") or (v:IsA("Model") and v.Name == "BloodMoney") or (v:IsA("Model") and v.Name == "StaminaRegen") or (v:IsA("Model") and v.Name == "InstaKill") or (v:IsA("Model") and v.Name == "WisteriaPoisoning") or (v:IsA("Model") and v.Name == "MobCamouflage") then
-                        spsn = not spsn
-                        if not spsn then
-                            while v:IsDescendantOf(workspace) do
-                                Root.CFrame = v:GetModelCFrame()
-                                wait(.1)
-                            end
+        spawn(
+            function()
+                while task.wait() do
+                    for _, v in pairs(game:GetService("Workspace").Map:GetChildren()) do
+                        if
+                            (v:IsA("Model") and v.Name == "DoublePoints") or
+                                (v:IsA("Model") and v.Name == "HealthRegen") or
+                                (v:IsA("Model") and v.Name == "BloodMoney") or
+                                (v:IsA("Model") and v.Name == "StaminaRegen") or
+                                (v:IsA("Model") and v.Name == "InstaKill") or
+                                (v:IsA("Model") and v.Name == "WisteriaPoisoning") or
+                                (v:IsA("Model") and v.Name == "MobCamouflage")
+                         then
                             spsn = not spsn
+                            if not spsn then
+                                while v:IsDescendantOf(workspace) do
+                                    Root.CFrame = v:GetModelCFrame()
+                                    wait(.1)
+                                end
+                                spsn = not spsn
+                            end
                         end
-					end
-				end
-			end
-        end)
-        --[[
+                    end
+                end
+            end
+        )
+    --[[
         wait(900)
         if game.Players.LocalPlayer.Character:FindFirstChild("Humanoid") then
             game.Players.LocalPlayer.Character:FindFirstChild("Humanoid").Health = -1 -- Set the humanoid's health to 0 to "kill" the character
@@ -546,7 +556,8 @@ elseif placeId == 11468075017 then
         game:GetService("ReplicatedStorage"):WaitForChild("TeleportToShop"):FireServer()
         wait(10)
         TeleportService:Teleport(5956785391)
-		]]--
+		]]
+     --
     end
 else
     print("Place ID doesn't match")
