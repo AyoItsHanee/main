@@ -116,9 +116,10 @@ local result = math.floor(totalItemPrice / 25000)
 
 args[2] = result
 
---[[
+
 -- Print the result without a comma
 print("Total Price of Found Items (Divided by 25000):", result)
+--[[
 -- Create a ScreenGui
 local screenGui = Instance.new("ScreenGui")
 screenGui.Parent = game.Players.LocalPlayer:WaitForChild("PlayerGui")
