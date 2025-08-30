@@ -181,7 +181,7 @@ print("game loaded")
 	
 		local Info = TweenInfo.new(1, Enum.EasingStyle.Cubic, Enum.EasingDirection.Out, 0, false, 0)
 		local Goal = {}
-		local Root = game.Players.LocalPlayer.Character:FindFirstChild("Humanoid")
+		local Root = game.Players.LocalPlayer.Character:FindFirstChild("HumanoidRootPart")
 		Goal.CFrame = CFrame.new(5022, -148, 2032)
 		game:GetService("TweenService"):Create(Root, Info, Goal):Play()
 		wait(1)
