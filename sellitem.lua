@@ -67,8 +67,9 @@ local result = math.floor(totalItemPrice / 25000)
 args[2] = result
 
 -- Print the result without a comma
-print("Total Price of Found Items (Divided by 25000):", result)
+print("Total Price of Found Weapons (Divided by 25000):", result)
 
+--[[
 -- Create a ScreenGui
 local screenGui = Instance.new("ScreenGui")
 screenGui.Parent = game.Players.LocalPlayer:WaitForChild("PlayerGui")
@@ -86,6 +87,13 @@ label.Size = UDim2.new(1, 0, 0.5, 0)
 label.Position = UDim2.new(0, 0, 0, 0, 0)
 label.Text = "Total Price of Found Items (Divided by 25000): " .. tostring(result)
 label.Parent = framest
+]]--
+-- Send notification
+game.StarterGui:SetCore("SendNotification", {
+    Title = "Sell Weapons",
+    Text = "Total Ores: " .. tostring(result),
+    Duration = 30
+})
 
 print("Selling Items in 20 seconds")
 wait(10)
