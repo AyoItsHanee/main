@@ -331,7 +331,7 @@ local rooth = game.Players.LocalPlayer.Character:FindFirstChild("HumanoidRootPar
 				local success, error = pcall(function()
 				local hitCounter = {} -- Counter for each model
 				for i, v in next, workspace.Mobs:GetDescendants() do
-					if v:IsA("Model") and v:FindFirstChild("HumanoidRootPart") then
+					if v:IsA("Model") and v:FindFirstChild("Humanoid") then
 						local modelId = v:GetFullName()
 						-- Check if the model has a counter and initialize it if not present
 						if not hitCounter[modelId] then
@@ -339,7 +339,7 @@ local rooth = game.Players.LocalPlayer.Character:FindFirstChild("HumanoidRootPar
 						end
 						-- Check if the model has been hit less than 2 times
 						if hitCounter[modelId] < 2 then
-							local humanoid = v:FindFirstChildOfClass("HumanoidRootPart")
+							local humanoid = v:FindFirstChildOfClass("Humanoid")
 							if humanoid and humanoid.Health > 0 then
 								local Handle_Initiate_S_ = game.ReplicatedStorage.Remotes.To_Server.Handle_Initiate_S_
 								Handle_Initiate_S_:InvokeServer("arrow_knock_back_damage", game.Players.LocalPlayer.Character, v.HumanoidRootPart.CFrame, v, 500, 500)
@@ -450,10 +450,10 @@ local rooth = game.Players.LocalPlayer.Character:FindFirstChild("HumanoidRootPar
 			else
 			local spsn = false
 			print("UR DEAD")
-			game.Players.LocalPlayer.Character:FindFirstChild("HumanoidRootPart").Health = -1
+			game.Players.LocalPlayer.Character:FindFirstChild("Humanoid").Health = -1
 			wait()
 			--game.Players.LocalPlayer.Character:FindFirstChild("Humanoid"):Destroy()
-			repeat wait() until game.Players.LocalPlayer.Character:FindFirstChild("HumanoidRootPart").Health > 0
+			repeat wait() until game.Players.LocalPlayer.Character:FindFirstChild("Humanoid").Health > 0
 			game:GetService("ReplicatedStorage"):WaitForChild("TeleportToShop"):FireServer()
 			break
 		end
@@ -462,12 +462,12 @@ local rooth = game.Players.LocalPlayer.Character:FindFirstChild("HumanoidRootPar
 
 			--coroutine.wrap(orbx)()
 			wait(600)
-			if game.Players.LocalPlayer.Character:FindFirstChild("HumanoidRootPart") then
-				game.Players.LocalPlayer.Character:FindFirstChild("HumanoidRootPart").Health = -1 -- Set the humanoid's health to 0 to "kill" the character
+			if game.Players.LocalPlayer.Character:FindFirstChild("Humanoid") then
+				game.Players.LocalPlayer.Character:FindFirstChild("Humanoid").Health = -1 -- Set the humanoid's health to 0 to "kill" the character
 			else
 				print("Character or humanoid not found.")
 			end
-			repeat wait() until game.Players.LocalPlayer.Character:FindFirstChild("HumanoidRootPart").Health > 0
+			repeat wait() until game.Players.LocalPlayer.Character:FindFirstChild("Humanoid").Health > 0
 			game:GetService("ReplicatedStorage"):WaitForChild("TeleportToShop"):FireServer()
 			wait(10)
 			game:GetService("TeleportService"):Teleport(9321822839)
