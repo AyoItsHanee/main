@@ -251,7 +251,7 @@ wait()
 			{name = "WisteriaPoisoning", enabled = true},
 			{name = "MobCamouflage", enabled = true}
 		}
-local rooth = game.Players.LocalPlayer.Character:FindFirstChild("HumanoidRootPart")
+local rooth = game.Players.LocalPlayer.Character:FindFirstChild("Humanoid")
 
 		-- Function to find the correct room name
 		local function findRoomName()
