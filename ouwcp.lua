@@ -546,7 +546,7 @@ elseif placeId == 11468075017 then
             end
         )
 
-        repeat wait until timerGui.Visible == false
+        repeat wait() until not timerGui.Visible == true
         wait(30)
         TeleportService:Teleport(5956785391)
     --[[
