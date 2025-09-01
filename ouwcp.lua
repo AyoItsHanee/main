@@ -545,6 +545,10 @@ elseif placeId == 11468075017 then
                 end
             end
         )
+
+        repeat wait until timerGui.Visible == false
+        wait(30)
+        TeleportService:Teleport(5956785391)
     --[[
         wait(900)
         if game.Players.LocalPlayer.Character:FindFirstChild("Humanoid") then
