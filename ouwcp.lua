@@ -317,9 +317,9 @@ elseif placeId == 11468075017 then
 
     local timeout = 60 -- Set the timeout in seconds (change this as needed)
     -- Function to check if the Timer GUI is visible
+    local player = game:GetService("Players").LocalPlayer
+    local timerGui = player.PlayerGui:WaitForChild("top_ui"):FindFirstChild("Timer")
     local function isTimerGuiNotVisible()
-        local player = game:GetService("Players").LocalPlayer
-        local timerGui = player.PlayerGui:WaitForChild("top_ui"):FindFirstChild("Timer")
 
         if timerGui and timerGui.Visible == false then
             return false
@@ -546,9 +546,9 @@ elseif placeId == 11468075017 then
             end
         )
 
-        --repeat wait() until not timerGui.Visible == true
+        repeat wait() until not timerGui.Visible = true
         wait(30)
-        --TeleportService:Teleport(5956785391)
+        TeleportService:Teleport(5956785391)
     --[[
         wait(900)
         if game.Players.LocalPlayer.Character:FindFirstChild("Humanoid") then
