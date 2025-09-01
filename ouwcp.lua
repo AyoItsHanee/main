@@ -525,12 +525,12 @@ elseif placeId == 11468075017 then
                     for _, v in pairs(game:GetService("Workspace").Map:GetChildren()) do
                         if
                             (v:IsA("Model") and v.Name == "DoublePoints") or
-                                --(v:IsA("Model") and v.Name == "HealthRegen") or
-                                --(v:IsA("Model") and v.Name == "BloodMoney") or
-                                --(v:IsA("Model") and v.Name == "StaminaRegen") or
+                                (v:IsA("Model") and v.Name == "HealthRegen") or
+                                (v:IsA("Model") and v.Name == "BloodMoney") or
+                                (v:IsA("Model") and v.Name == "StaminaRegen") or
                                 (v:IsA("Model") and v.Name == "InstaKill") or
                                 (v:IsA("Model") and v.Name == "WisteriaPoisoning")
-                                --(v:IsA("Model") and v.Name == "MobCamouflage")
+                                (v:IsA("Model") and v.Name == "MobCamouflage")
                          then
                             spsn = not spsn
                             if not spsn then
