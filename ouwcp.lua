@@ -489,7 +489,7 @@ elseif placeId == 11468075017 then
                                             local tween = Tween(endpointCFrame)
                                         elseif #workspace.Mobs:GetChildren() <= 10 and spsn then
                                             local endpointCFrame =
-                                                CFrame.new(randomPart.Position + Vector3.new(0, 75, 0))
+                                                CFrame.new(randomPart.Position + Vector3.new(0, 25, 0))
                                             local tween = Tween(endpointCFrame)
                                         --game.TweenService:Create(game.Players.LocalPlayer.Character.HumanoidRootPart, TweenInfo.new(Distance(randomPart.Position + Vector3.new(0, 75, 0)) / _G.TweenSpeed, Enum.EasingStyle.Linear, Enum.EasingDirection.Out), {CFrame = CFrame.new(randomPart.Position + Vector3.new(0, 75, 0))}):Play()
                                         end
