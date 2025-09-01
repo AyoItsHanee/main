@@ -529,7 +529,7 @@ elseif placeId == 11468075017 then
                                 (v:IsA("Model") and v.Name == "BloodMoney") or
                                 (v:IsA("Model") and v.Name == "StaminaRegen") or
                                 (v:IsA("Model") and v.Name == "InstaKill") or
-                                (v:IsA("Model") and v.Name == "WisteriaPoisoning")
+                                (v:IsA("Model") and v.Name == "WisteriaPoisoning") or
                                 (v:IsA("Model") and v.Name == "MobCamouflage")
                          then
                             spsn = not spsn
@@ -546,6 +546,9 @@ elseif placeId == 11468075017 then
             end
         )
 
+        repeat wait() until timerGui.Visible == false
+        wait(30)
+        TeleportService:Teleport(5956785391)
     --[[
         wait(900)
         if game.Players.LocalPlayer.Character:FindFirstChild("Humanoid") then
