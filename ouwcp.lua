@@ -201,7 +201,6 @@ elseif placeId == 11468075017 then
             antifall3:Destroy()
         end
     end
-    coroutine.wrap(preventFall)()
 
     local Info = TweenInfo.new(1, Enum.EasingStyle.Cubic, Enum.EasingDirection.Out, 0, false, 0)
     local Goal = {}
@@ -465,6 +464,7 @@ elseif placeId == 11468075017 then
     if isTimerGuiVisible() then
         print("Timer GUI is now visible, continuing with the script...")
         wait(30)
+        coroutine.wrap(preventFall)()
         local loopCM = coroutine.create(mainCoroutine)
         coroutine.resume(loopCM)
         spawn(noclip)
