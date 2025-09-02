@@ -97,7 +97,7 @@ if game.PlaceId == 4855457388 then
 	game:GetService("TeleportService"):Teleport(5094651510)
 	--loadstring(game:HttpGet("https://raw.githubusercontent.com/caydenthekile/scriptsv2/main/demonfall"))()
 elseif game.PlaceId == 5094651510 then
-	wait()
+	wait(3)
 -- Wait for the game services to load
 local Players = game:GetService("Players")
 local VirtualInputManager = game:GetService("VirtualInputManager")
