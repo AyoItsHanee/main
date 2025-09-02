@@ -106,6 +106,7 @@ local VirtualInputManager = game:GetService("VirtualInputManager")
 local player = Players.LocalPlayer
 local playerGui = game:GetService("ReplicatedStorage")
 
+--[[
 -- Get the specific ImageButton
 local screenGui0 = playerGui:WaitForChild("LoadingScreen")
 local screenGui = screenGui0:WaitForChild("Background")
@@ -130,6 +131,14 @@ local function simulateButtonClick()
     VirtualInputManager:SendMouseButtonEvent(clickPosition.X, clickPosition.Y + 30, 0, false, game, 0)
 end
 simulateButtonClick()
+]]--
+local args = {
+    [1] = "Player",
+    [2] = "SpawnCharacter"
+}
+
+game:GetService("ReplicatedStorage").Remotes.Sync:InvokeServer(unpack(args))
+
 
 	print("waiting the game to load")
 	repeat wait() until game:GetService("Players"):WaitForChild(getLocalPlayerUsername()):FindFirstChild("GameLoaded")
