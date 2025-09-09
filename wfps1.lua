@@ -1,35 +1,38 @@
 repeat wait() until game:IsLoaded()
 print("Roblox loaded")
+if hanee then
+    print("Script is aleady running")
+    return
+end
+pcall(function() getgenv().hanee = true end)
 local spawn, wait = task.spawn, task.wait
-	local client = game:GetService("Players").LocalPlayer
-	getgenv().KillAura = true
 	local bossrun = true
 	local KeepSC = true
 	local checkore = true
-	local webhookUrl = "https://discord.com/api/webhooks/1261222782272933920/6IJCgbb2ipizj58GgiF_mTtsN1z7KntWKrw9SZBbaFMZl72mQEXx0uIxuCpkyo7KtswE"
+	local webhookUrl = "https://discord.com/api/webhooks/1380761144448258170/i9-4wR0_e-P5KvnEfYGXTeBR9ZJY6WRCX2kB4gEtV-l6yswMQHGtTnQ96l3la7Q-z217"
 	local lastMessageId = nil
 	game.NetworkClient.ChildRemoved:Connect(function()
 		if game.PlaceId == 5956785391 then
 			game:GetService("TeleportService"):Teleport(9321822839)
-		elseif game.PlaceId == 13883279773 then
+		elseif game.PlaceId == 13883059853 then
 			game:GetService("TeleportService"):Teleport(5956785391)
 		elseif game.PlaceId == 9321822839 then
 			game:GetService("TeleportService"):Teleport(5956785391)
 		end
 	end)
---[[
+	--[[
 	game:GetService("CoreGui").RobloxPromptGui.promptOverlay.ChildAdded:Connect(function(child)
 	if child.Name == 'ErrorPrompt' and child:FindFirstChild('MessageArea') and child.MessageArea:FindFirstChild("ErrorFrame") then
 		if game.PlaceId == 5956785391 then
 			game:GetService("TeleportService"):Teleport(9321822839)
-		elseif game.PlaceId == 13883279773 then
+		elseif game.PlaceId == 13883059853 then
 			game:GetService("TeleportService"):Teleport(5956785391)
 		elseif game.PlaceId == 9321822839 then
 			game:GetService("TeleportService"):Teleport(5956785391)
 		end
 	end
 	end)
-
+	]]--
 
 		queueteleport = (syn and syn.queue_on_teleport) or queue_on_teleport or (fluxus and fluxus.queue_on_teleport) or (delta and delta.queue_on_teleport)
 		local TeleportCheck = false
@@ -37,16 +40,16 @@ local spawn, wait = task.spawn, task.wait
 			if KeepSC then
 		if (not TeleportCheck) and queueteleport then
 			TeleportCheck = true
-			queueteleport("loadstring(game:HttpGet('https://raw.githubusercontent.com/AyoItsHanee/main/main/wfps1.lua'))()")
+			queueteleport("loadstring(game:HttpGet('https://raw.githubusercontent.com/AyoItsHanee/main/main/wfps.lua'))() pcall(function() getgenv().hanee = false end)")
 				end
 			else
 			if (not TeleportCheck) and queueteleport then	
 			TeleportCheck = true
-			queueteleport("loadstring(game:HttpGet('https://raw.githubusercontent.com/AyoItsHanee/main/main/rah.lua'))()")
+			queueteleport("loadstring(game:HttpGet('https://raw.githubusercontent.com/AyoItsHanee/main/main/rah.lua'))() pcall(function() getgenv().hanee = false end)")
 				end
 		end
 		end)
-]]--
+
 --[[
 if not game:IsLoaded() then
     game.Loaded:Wait()
@@ -179,15 +182,15 @@ print("game loaded")
 		if game.PlaceId == 5956785391 then
 			local args = {
 				[1] = "join",
-				[2] = "1UPARKiu",
-				[3] = 17387475546
+				[2] = "p522eSVk",
+				[3] = 17387482786
 			}
 
 			game:GetService("ReplicatedStorage"):WaitForChild("handle_privateserver"):InvokeServer(unpack(args))
 				wait(30)
 				game:GetService("TeleportService"):Teleport(5956785391)
 
-		elseif game.PlaceId == 13883279773 then
+		elseif game.PlaceId == 13883059853 then
 			spawn(function()
 			while task.wait() do
 				for _, v in pairs(game:GetService("Players").LocalPlayer.Character:GetDescendants()) do
@@ -396,8 +399,7 @@ end)
 				end
 			end)
 
-			if game:GetService("ReplicatedStorage")["Player_Data"][getLocalPlayerUsername()].Demon_Art.Value == Arrow then
-							-- Loop to initiate a skill
+			-- Loop to initiate a skill
 			spawn(function()
 				while task.wait() do
 					local Handle_Initiate_S_ = ReplicatedStorage.Remotes.To_Server.Handle_Initiate_S_
@@ -432,60 +434,6 @@ end)
 						wait(0.1)
 				end
 			end)
-			else
-				local function attack(method) 
-
-    wait()
-game:GetService("ReplicatedStorage").Remotes.To_Server.Handle_Initiate_S:FireServer(method, client, client.Character, client.Character.HumanoidRootPart, client.Character.Humanoid, 919, "ground_slash")
-wait()
-game:GetService("ReplicatedStorage").Remotes.To_Server.Handle_Initiate_S:FireServer(method, client, client.Character, client.Character.HumanoidRootPart, client.Character.Humanoid, math.huge, "ground_slash")
-wait()
-game:GetService("ReplicatedStorage").Remotes.To_Server.Handle_Initiate_S:FireServer(method, client, client.Character, client.Character.HumanoidRootPart, client.Character.Humanoid, 919, "ground_slash")
-wait()
-game:GetService("ReplicatedStorage").Remotes.To_Server.Handle_Initiate_S:FireServer(method, client, client.Character, client.Character.HumanoidRootPart, client.Character.Humanoid, math.huge, "ground_slash")
-wait()
-game:GetService("ReplicatedStorage").Remotes.To_Server.Handle_Initiate_S:FireServer(method, client, client.Character, client.Character.HumanoidRootPart, client.Character.Humanoid, 919, "ground_slash")
-wait()
-game:GetService("ReplicatedStorage").Remotes.To_Server.Handle_Initiate_S:FireServer(method, client, client.Character, client.Character.HumanoidRootPart, client.Character.Humanoid, math.huge, "ground_slash")
-wait()
-game:GetService("ReplicatedStorage").Remotes.To_Server.Handle_Initiate_S:FireServer(method, client, client.Character, client.Character.HumanoidRootPart, client.Character.Humanoid, 919, "ground_slash")
-wait()
-game:GetService("ReplicatedStorage").Remotes.To_Server.Handle_Initiate_S:FireServer(method, client, client.Character, client.Character.HumanoidRootPart, client.Character.Humanoid, math.huge, "ground_slash")
-wait()
-game:GetService("ReplicatedStorage").Remotes.To_Server.Handle_Initiate_S:FireServer(method, client, client.Character, client.Character.HumanoidRootPart, client.Character.Humanoid, 919, "ground_slash")
-wait()
-game:GetService("ReplicatedStorage").Remotes.To_Server.Handle_Initiate_S:FireServer(method, client, client.Character, client.Character.HumanoidRootPart, client.Character.Humanoid, math.huge, "ground_slash")
-wait()
-game:GetService("ReplicatedStorage").Remotes.To_Server.Handle_Initiate_S:FireServer(method, client, client.Character, client.Character.HumanoidRootPart, client.Character.Humanoid, 919, "ground_slash")
-wait()
-game:GetService("ReplicatedStorage").Remotes.To_Server.Handle_Initiate_S:FireServer(method, client, client.Character, client.Character.HumanoidRootPart, client.Character.Humanoid, math.huge, "ground_slash")
-wait()
-game:GetService("ReplicatedStorage").Remotes.To_Server.Handle_Initiate_S:FireServer(method, client, client.Character, client.Character.HumanoidRootPart, client.Character.Humanoid, 919, "ground_slash")
-wait()
-game:GetService("ReplicatedStorage").Remotes.To_Server.Handle_Initiate_S:FireServer(method, client, client.Character, client.Character.HumanoidRootPart, client.Character.Humanoid, math.huge, "ground_slash")
-wait()
-game:GetService("ReplicatedStorage").Remotes.To_Server.Handle_Initiate_S:FireServer(method, client, client.Character, client.Character.HumanoidRootPart, client.Character.Humanoid, 919, "ground_slash")
-wait()
-game:GetService("ReplicatedStorage").Remotes.To_Server.Handle_Initiate_S:FireServer(method, client, client.Character, client.Character.HumanoidRootPart, client.Character.Humanoid, math.huge, "ground_slash")
-
-end
-
-local killAuraWait = 1.25  -- Initial value for Kill Aura wait time
-
-task.spawn(function()
-    while task.wait() do
-        pcall(function()
-            if getgenv().KillAura then
-                attack('fist_combat')
-                task.wait(killAuraWait)  -- Use the updated Kill Aura wait time
-                repeat
-                    wait()
-                until game.Players.LocalPlayer:WaitForChild("combotangasd123").Value == 0
-            end
-        end)
-    end
-end)
-			end
 
 			-- Loop to delete specific parts
 			--local specificNames = {"Map", "InteractiveShopItems", "MugenTrain", "PrivateServerDummies", "cup game", "Bandage", "BeastTrainer", "BigLight", "Black Smith", "Board", "Boulder_To_Split", "Buy_Big_Gourd", "Buy_Gourd", "Buy_Medium_Gourd", "Chair", "Civilian", "Civilian 2", "ClashTrainer", "Conductor", "Customization data ting", "Demon Guy", "Demon Slayer", "Fishing_Rod2", "Flame Trainer", "Grandpa Wagwon's Wagon", "Green_Crystal", "Mae", "Malik", "Mark", "Mist Trainer", "Model", "Ouw0pp", "Part", "Patrick", "Policeman", "Rina", "RinaDesk", "Rock", "Snow Trainer", "Soryu Trainer", "Beast Trainer", "Sound Trainer", "Target_Training", "Tyrone", "potion_sails_man", "thing", "Meditate_Mat", "Push_Ups_Mat", "Union", "MeshPart", "Floor", "Mist"}
@@ -518,99 +466,88 @@ end)
 			local Root = game.Players.LocalPlayer.Character.HumanoidRootPart
 			local Goal = {}
 
-local BossesFolder = Workspace.Mobs.Bosses
-local function findBossPath(bossName)
-	for _, folder in pairs(BossesFolder:GetDescendants()) do
-		if folder:IsA("Model") or folder:IsA("Folder") then
-			if folder.Name == bossName or folder.Name:find(bossName) then
-				return folder
-			end
-		end
-	end
-	return nil -- Not found
-end
+			-- Function to teleport to specific paths
+			local pathsToCheck = {
+				{
+					name = "Sound Trainee",
+					position = Vector3.new(1859, 670, -2801),
+					path = Workspace.Mobs.Bosses.Sound_Trainee["Sound Trainee"],
+					time = 12,
+					num = 2
+				},
+				{
+					name = "Tengen",
+					position = Vector3.new(1463, 493, -3118),
+					path = Workspace.Mobs.Bosses.Tengen,
+					time = 2,
+					num = 3
+				},
+				{
+					name = "Snow Trainee",
+					position = Vector3.new(247, 526, -2987),
+					path = Workspace.Mobs.Bosses.Snow_Trainee["Snow Trainee"],
+					time = 2,
+					num = 2
+				},
+				{
+					name = "Douma",
+					position = Vector3.new(-2, 519, -1690),
+					path = Workspace.Mobs.Bosses.Douma,
+					time = 7,
+					num = 3
+				},
+				{
+					name = "Renpeke",
+					position = Vector3.new(-1289, 607, -664),
+					path = Workspace.Mobs.Bosses["Flame Trainee"],
+					time = 7,
+					num = 2
+				},
+				{
+					name = "Swampy",
+					position = Vector3.new(-1349, 607, -205),
+					path = Workspace.Mobs.Bosses.Swampy,
+					time = 2,
+					num = 2
+				},
+				{
+					name = "Akaza",
+					position = Vector3.new(2008, 563, -107),
+					path = Workspace.Mobs.Bosses.Akaza,
+					time = 12,
+					num = 3
+				},
+				{
+					name = "Inosuke",
+					position = Vector3.new(1596, 307, -394),
+					path = Workspace.Mobs.Bosses.Inosuke,
+					time = 3,
+					num = 2
+				},
+				{
+					name = "Enmu",
+					position = Vector3.new(1580, 490, -667),
+					path = Workspace.Mobs.Bosses.Enmu,
+					time = 3,
+					num = 2
+				},
+				{
+					name = "Rengoku",
+					position = Vector3.new(3659, 680, -355),
+					path = Workspace.Mobs.Bosses.Rengoku,
+					time = 7,
+					num = 3
+				},
+				{
+					name = "Muichiro",
+					position = Vector3.new(4512, 680, -553),
+					path = Workspace.Mobs.Bosses.Muichiro,
+					time = 3,
+					num = 2
+				},
+				-- Add other paths here similarly
+			}
 
-local pathsToCheck = {
-	{
-		name = "Sabito",
-		position = Vector3.new(1257.60046, 275.351685, -2834.26611),
-		path = findBossPath("Sabito"),
-		time = 3,
-		num = 2
-	},
-	{
-		name = "Susamaru",
-		position = Vector3.new(1415.65686, 315.908813, -4571.56445),
-		path = findBossPath("Susamaru"),
-		time = 3,
-		num = 2
-	},
-	{
-		name = "Zanegutsu Kuuchie",
-		position = Vector3.new(-336.3461, 425.857422, -2271.75513),
-		path = findBossPath("Zanegutsu Kuuchie"),
-		time = 3,
-		num = 2
-	},
-	{
-		name = "Yahaba",
-		position = Vector3.new(1415.65686, 315.908813, -4571.56445),
-		path = findBossPath("Yahaba"),
-		time = 3,
-		num = 2
-	},
-	{
-		name = "Bandit Kaden",
-		position = Vector3.new(-569.584351, 304.46698, -2827.55371),
-		path = findBossPath("Bandit Kaden"),
-		time = 3,
-		num = 2
-	},
-	{
-		name = "Bandit Zoku",
-		position = Vector3.new(174.656708, 283.257355, -1969.98572),
-		path = findBossPath("Bandit Zoku"),
-		time = 3,
-		num = 2
-	},
-	{
-		name = "Shiron",
-		position = Vector3.new(3203.10229, 370.884155, -3953.36035),
-		path = findBossPath("Shiron"),
-		time = 3,
-		num = 2
-	},
-	{
-		name = "Nezuko",
-		position = Vector3.new(3549.86816, 342.214478, -4595.73145),
-		path = findBossPath("Nezuko"),
-		time = 3,
-		num = 2
-	},
-	{
-		name = "Slasher",
-		position = Vector3.new(4355.59082, 342.214478, -4386.90527),
-		path = findBossPath("Slasher"),
-		time = 3,
-		num = 2
-	},
-	{
-		name = "Giyu",
-		position = Vector3.new(3013.30884, 316.95871, -2916.32202),
-		path = findBossPath("Giyu"),
-		time = 3,
-		num = 2
-	},
-	{
-		name = "Sanemi",
-		position = Vector3.new(1619.91357, 348.461884, -3717.00464),
-		path = findBossPath("Sanemi"),
-		time = 3,
-		num = 2
-	}
-}
-
-			local FarmModes = CFrame.new(0,getgenv().Distance,0) * CFrame.Angles(math.rad(-90),0,0) 
             _G.TweenSpeed = 300            
             local function GetDistance(Endpoint)
                 if typeof(Endpoint) == "Instance" then
@@ -654,7 +591,7 @@ local pathsToCheck = {
                 while task.wait() do
                     if bossrun then
                         local pathInWorkspace = Workspace.Mobs:FindFirstChild(pathName)
-                        if (pathToCheck and #(pathToCheck:GetChildren()) <= Num) then
+                        if pathToCheck and #pathToCheck:GetChildren() == Num then
                             print("Moving to the next path")
                             break
                         end
@@ -673,49 +610,7 @@ local pathsToCheck = {
                     wait()
                 end
             end)
-
-local function GetNearestBoss()
-
-   local Bosses = game:GetService("Workspace").Mobs:GetDescendants()
-   local BossesTable = {}
-
-   for i,v in pairs(Bosses) do
-       if table.find(BossessTable, v.Name) and v:IsA("Model") and v:FindFirstChild("Humanoid") then
-           if v.Humanoid.Health > 0 then
-               table.insert(BossesTable, v)
-           end
-       end
-   end
-
-   local NearestBoss = nil
-   local NearestBossDistance = math.huge
-
-   for i,v in pairs(BossesTable) do
-       local Distance = GetDistance(v:GetModelCFrame() * FarmModes)
-       if Distance < NearestBossDistance then
-           NearestBoss = v
-           NearestBossDistance = Distance
-       end
-   end
-
-   return NearestBoss
-end
-
--- // AUTO ALL BOSSES - FARM
-
-spawn(function()
-   while task.wait() do
-                   local v = GetNearestBoss()
-                               repeat task.wait()                                      
-                                   if GetDistance(v:GetModelCFrame() * FarmModes) < 25 and GetDistance(v:GetModelCFrame() * FarmModes) < 150 then
-                                       Root.CFrame = v:GetModelCFrame() * FarmModes
-                                   end
-                               until not v.Parent or v.Humanoid.Health <= 0 or not v:IsDescendantOf(workspace)
-               end
-   end
-end)
-            
-
+	
 			wait()
 			RemoveDMG()
 			wait()
@@ -723,7 +618,7 @@ end)
 			--game:GetService("RunService"):Set3dRenderingEnabled(false)
 			wait(300)
 			local isLooping = false
-			wait(3600)
+			wait(7200)
 	--[[
 game:GetService("Players").LocalPlayer.PlayerGui.MainGuis.Settings2.Visible = true
 wait()
