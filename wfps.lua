@@ -661,5 +661,5 @@ simulateButtonClick()
 		elseif game.PlaceId == 9321822839 then
 			game:GetService("TeleportService"):Teleport(5956785391)
 		else
-			print("Wrong game")
+			game:GetService("TeleportService"):Teleport(5956785391)
 		end
