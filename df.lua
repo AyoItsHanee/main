@@ -78,6 +78,7 @@ repeat wait() until game:IsLoaded()
 		button.MouseButton1Click:Connect(toggleKeepSC)
 		-- Function to toggle KeepSC and update UI
 		local function TpB()
+			game:GetService("RunService"):Set3dRenderingEnabled(true)
 			rootPart.CFrame = CFrame.new(Vector3.new(-3634, 708, -1484))
 		end
 		buttonx.MouseButton1Click:Connect(TpB)
