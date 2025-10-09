@@ -41,7 +41,7 @@ wait(0.5)
 
 spawn(
     function()
-        while task.wait(1) do
+        while task.wait(0.1) do
             game:GetService("ReplicatedStorage").Packages._Index:FindFirstChild("sleitnick_net@0.2.0").net:FindFirstChild("RE/FishingCompleted"):FireServer()
         end
     end
