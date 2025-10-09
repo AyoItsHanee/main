@@ -1,4 +1,34 @@
 local rootPart = game.Players.LocalPlayer.Character:WaitForChild("HumanoidRootPart")
+local vu = game:GetService("VirtualUser")
+_G.KeepSC = true
+game:GetService("Players").LocalPlayer.Idled:connect(function()
+vu:Button2Down(Vector2.new(0,0),workspace.CurrentCamera.CFrame)
+wait(1)
+vu:Button2Up(Vector2.new(0,0),workspace.CurrentCamera.CFrame)
+end)
+
+queueteleport = (syn and syn.queue_on_teleport) or queue_on_teleport or (fluxus and fluxus.queue_on_teleport) or (delta and delta.queue_on_teleport)
+local TeleportCheck = false
+game:GetService("Players").LocalPlayer.OnTeleport:Connect(
+    function(State)
+        if KeepSC then
+            if (not TeleportCheck) and queueteleport then
+                TeleportCheck = true
+                queueteleport(
+                    "loadstring(game:HttpGet('https://raw.githubusercontent.com/AyoItsHanee/main/main/fsit.lua'))()"
+                )
+            end
+        else
+            if (not TeleportCheck) and queueteleport then
+                TeleportCheck = true
+                queueteleport(
+                    "loadstring(game:HttpGet('https://raw.githubusercontent.com/AyoItsHanee/main/main/rah.lua'))()"
+                )
+            end
+        end
+    end
+)
+
 
 spawn(
     function()
@@ -41,7 +71,7 @@ wait(0.5)
 
 spawn(
     function()
-        while task.wait(0.1) do
+        while task.wait(1) do
             game:GetService("ReplicatedStorage").Packages._Index:FindFirstChild("sleitnick_net@0.2.0").net:FindFirstChild("RE/FishingCompleted"):FireServer()
         end
     end
