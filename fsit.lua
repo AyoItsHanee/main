@@ -7,6 +7,15 @@ wait(1)
 vu:Button2Up(Vector2.new(0,0),workspace.CurrentCamera.CFrame)
 end)
 
+game.NetworkClient.ChildRemoved:Connect(
+    function()
+        if game.PlaceId == 121864768012064 then
+            game:GetService("TeleportService"):Teleport(121864768012064)
+        end
+    end
+)
+
+
 queueteleport = (syn and syn.queue_on_teleport) or queue_on_teleport or (fluxus and fluxus.queue_on_teleport) or (delta and delta.queue_on_teleport)
 local TeleportCheck = false
 game:GetService("Players").LocalPlayer.OnTeleport:Connect(
@@ -76,3 +85,6 @@ spawn(
         end
     end
 )
+
+task.wait(7200)
+game:GetService("TeleportService"):Teleport(121864768012064)
