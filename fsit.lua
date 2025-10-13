@@ -1,6 +1,6 @@
 local rootPart = game.Players.LocalPlayer.Character:WaitForChild("HumanoidRootPart")
 local vu = game:GetService("VirtualUser")
-_G.KeepSC = true
+local KeepSC = true
 game:GetService("Players").LocalPlayer.Idled:connect(function()
 vu:Button2Down(Vector2.new(0,0),workspace.CurrentCamera.CFrame)
 wait(1)
@@ -31,7 +31,7 @@ game:GetService("Players").LocalPlayer.OnTeleport:Connect(
             if (not TeleportCheck) and queueteleport then
                 TeleportCheck = true
                 queueteleport(
-                    "loadstring(game:HttpGet('https://raw.githubusercontent.com/AyoItsHanee/main/main/rah.lua'))()"
+                    "loadstring(game:HttpGet('https://raw.githubusercontent.com/AyoItsHanee/main/main/fsit.lua'))()"
                 )
             end
         end
