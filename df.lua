@@ -23,7 +23,7 @@ repeat wait() until game:IsLoaded()
 	vu:Button2Up(Vector2.new(0,0),workspace.CurrentCamera.CFrame)
 	end)
 
-	game:GetService("RunService"):Set3dRenderingEnabled(false)
+	--game:GetService("RunService"):Set3dRenderingEnabled(false)
 	
 	game.NetworkClient.ChildRemoved:Connect(function()
 	game:GetService("TeleportService"):Teleport(5094651510)
