@@ -6,6 +6,7 @@ repeat wait() until game:IsLoaded()
 	local rootPart = character:WaitForChild("HumanoidRootPart")
 	local KeepSC = true
 	local checkore = true
+	local timeout = 130
 	local vu = game:GetService("VirtualUser")
 	local function getLocalPlayerUsername()
 		local player = game.Players.LocalPlayer
@@ -341,6 +342,17 @@ game:GetService("ReplicatedStorage").Remotes.Sync:InvokeServer(unpack(args))
 				print("wrong game")
 			end
 end
+
+		local startTime = tick() -- Record the start time
+		-- Wait until the Timer GUI is visible or until the timeout is reached
+		while task.wait() do
+			if tick() - startTime >= timeout then
+				print("Timeout reached. Timer GUI did not become visible.")
+				break -- Exit the loop if the timeout is reached
+			end
+			wait(1) -- Adjust the delay as needed, e.g., check every second
+		end
+
 		master()
 	end)
 if not success then
