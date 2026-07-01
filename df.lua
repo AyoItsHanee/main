@@ -344,7 +344,7 @@ game:GetService("ReplicatedStorage").Remotes.Sync:InvokeServer(unpack(args))
 end
 		master()
 
-				local startTime = tick() -- Record the start
+				local startTime = tick() -- Record the start time
 		-- Wait until the Timer GUI is visible or until the timeout is reached
 		while task.wait() do
 			if tick() - startTime >= timeout then
