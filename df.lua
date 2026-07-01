@@ -342,17 +342,20 @@ game:GetService("ReplicatedStorage").Remotes.Sync:InvokeServer(unpack(args))
 				print("wrong game")
 			end
 end
-		master()
 
-				local startTime = tick() -- Record the start time
-		-- Wait until the Timer GUI is visible or until the timeout is reached
-		while task.wait() do
-			if tick() - startTime >= timeout then
-				print("Timeout reached. Timer GUI did not become visible.")
-				break -- Exit the loop if the timeout is reached
-			end
-			wait(1) -- Adjust the delay as needed, e.g., check every second
-		end
+master()
+
+local startTime = tick() -- Record the start time
+-- Wait until the Timer GUI is visible or until the timeout is reached
+while task.wait() do
+    if tick() - startTime >= timeout then
+        print("Timeout reached. Timer GUI did not become visible.")
+        break -- Exit the loop if the timeout is reached
+    end
+    wait(1) -- Adjust the delay as needed, e.g., check every second
+end
+checkAndSetCFrame()
+Hop()
 
 	end)
 if not success then
