@@ -352,7 +352,7 @@ while task.wait() do
         print("Timeout reached. Timer GUI did not become visible.")
         break -- Exit the loop if the timeout is reached
     end
-    wait(1) -- Adjust the delay as needed, e.g., check every second
+    wait(1) -- Adjust the delay as needed, e.g., check every cecond
 end
 checkAndSetCFrame()
 Hop()
