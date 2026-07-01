@@ -342,8 +342,9 @@ game:GetService("ReplicatedStorage").Remotes.Sync:InvokeServer(unpack(args))
 				print("wrong game")
 			end
 end
+		master()
 
-		local startTime = tick() -- Record the start
+				local startTime = tick() -- Record the start
 		-- Wait until the Timer GUI is visible or until the timeout is reached
 		while task.wait() do
 			if tick() - startTime >= timeout then
@@ -353,7 +354,6 @@ end
 			wait(1) -- Adjust the delay as needed, e.g., check every second
 		end
 
-		master()
 	end)
 if not success then
 	print("An error occurred:", error)
