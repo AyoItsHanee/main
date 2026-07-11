@@ -345,6 +345,7 @@ end
 
 master()
 
+--[[
 local startTime = tick() -- Record the start time
 -- Wait until the Timer GUI is visible or until the timeout is reached
 while task.wait() do
@@ -356,6 +357,7 @@ while task.wait() do
 end
 checkAndSetCFrame()
 Hop()
+]]--
 
 	end)
 if not success then
