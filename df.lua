@@ -24,7 +24,7 @@ repeat wait() until game:IsLoaded()
 	vu:Button2Up(Vector2.new(0,0),workspace.CurrentCamera.CFrame)
 	end)
 
-	--game:GetService("RunService"):Set3dRenderingEnabled(false)
+	game:GetService("RunService"):Set3dRenderingEnabled(false)
 	
 	game.NetworkClient.ChildRemoved:Connect(function()
 	game:GetService("TeleportService"):Teleport(5094651510)
@@ -103,7 +103,7 @@ if game.PlaceId == 4855457388 then
 	game:GetService("TeleportService"):Teleport(5094651510)
 	--loadstring(game:HttpGet("https://raw.githubusercontent.com/caydenthekile/scriptsv2/main/demonfall"))()
 elseif game.PlaceId == 5094651510 then
-	wait(5)
+
 -- Wait for the game services to load
 local Players = game:GetService("Players")
 local VirtualInputManager = game:GetService("VirtualInputManager")
