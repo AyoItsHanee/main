@@ -103,7 +103,7 @@ if game.PlaceId == 4855457388 then
 	game:GetService("TeleportService"):Teleport(5094651510)
 	--loadstring(game:HttpGet("https://raw.githubusercontent.com/caydenthekile/scriptsv2/main/demonfall"))()
 elseif game.PlaceId == 5094651510 then
-	wait(3)
+	wait(5)
 -- Wait for the game services to load
 local Players = game:GetService("Players")
 local VirtualInputManager = game:GetService("VirtualInputManager")
@@ -112,7 +112,7 @@ local VirtualInputManager = game:GetService("VirtualInputManager")
 local player = Players.LocalPlayer
 local playerGui = game:GetService("ReplicatedStorage")
 
---[[
+
 -- Get the specific ImageButton
 local screenGui0 = playerGui:WaitForChild("LoadingScreen")
 local screenGui = screenGui0:WaitForChild("Background")
@@ -137,7 +137,8 @@ local function simulateButtonClick()
     VirtualInputManager:SendMouseButtonEvent(clickPosition.X, clickPosition.Y + 30, 0, false, game, 0)
 end
 simulateButtonClick()
-]]--
+
+
 local args = {
     [1] = "Player",
     [2] = "SpawnCharacter"
