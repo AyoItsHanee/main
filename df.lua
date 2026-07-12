@@ -118,6 +118,12 @@ local screenGui = screenGui0:WaitForChild("Background")
 local Settings = screenGui:WaitForChild("Loading")
 local button = Settings:WaitForChild("Skip")
 
+local vim = game:GetService("VirtualInputManager")
+vim:SendKeyEvent(true, Enum.KeyCode.ButtonA, false, game)
+task.wait()
+vim:SendKeyEvent(false, Enum.KeyCode.ButtonA, false, game)
+
+--[[
 -- Function to simulate a click on the button
 local function simulateButtonClick()
     -- Get the button's position and size
@@ -137,7 +143,7 @@ local function simulateButtonClick()
 end
 simulateButtonClick()
 
---[[
+
 local args = {
     [1] = "Player",
     [2] = "SpawnCharacter"
