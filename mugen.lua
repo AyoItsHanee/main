@@ -2,6 +2,11 @@ repeat
     wait()
 until game:IsLoaded()
 print("Roblox loaded")
+
+if game.PlaceId == 9321822839 then
+    game:GetService("TeleportService"):Teleport(5956785391)
+end
+
 if hanee then
     print("Script is aleady running")
     return
