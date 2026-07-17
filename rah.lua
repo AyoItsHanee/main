@@ -92,10 +92,10 @@ buttonWfps1a.Parent = frame
 
 -- Create a TextButton for wfps
 local buttonMugen = Instance.new("TextButton")
-buttonWfps1a.Size = UDim2.new(1, 0, 0.2, 0)
-buttonWfps1a.Position = UDim2.new(0, 0, 1.4, 0)
-buttonWfps1a.Text = "Toggle Mugen"
-buttonWfps1a.Parent = frame
+buttonMugen.Size = UDim2.new(1, 0, 0.2, 0)
+buttonMugen.Position = UDim2.new(0, 0, 1.4, 0)
+buttonMugen.Text = "Toggle Mugen"
+buttonMugen.Parent = frame
 
 --[[
 -- Create a Title Bar
@@ -263,7 +263,7 @@ local function toggleMugen()
     Mugen = not Mugen
 
     -- Send notification
-    local Mugenntf = Mugen and "Canceled DF Trinkets in next game" or "Executing DF Trinkets in next game"
+    local Mugenntf = Mugen and "Canceled Mugen autofarm in next game" or "Executing Mugen autofarm in next game"
     game.StarterGui:SetCore("SendNotification", {
         Title = "Mugen autofarm Toggle",
         Text = Mugenntf,
