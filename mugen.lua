@@ -3,10 +3,6 @@ repeat
 until game:IsLoaded()
 print("Roblox loaded")
 
-if game.PlaceId == 9321822839 then
-    game:GetService("TeleportService"):Teleport(5956785391)
-end
-
 if hanee then
     print("Script is aleady running")
     return
@@ -49,11 +45,10 @@ game.NetworkClient.ChildRemoved:Connect(
 		end
     end)
 
-        --[[
-if not game:IsLoaded() then
-    game.Loaded:Wait()
+if game.PlaceId == 9321822839 then
+    game:GetService("TeleportService"):Teleport(5956785391)
 end
-]]--
+
 --Wait for the LocalPlayer to be loaded
 game:GetService("Players").LocalPlayer:WaitForChild("doneloadinggamepasses")
 print("game loaded")
