@@ -356,6 +356,17 @@ local function simulateEPress()
 	game:GetService("VirtualInputManager"):SendKeyEvent(false, Enum.KeyCode.E, false, game)
 end
 
+local function delwarning()
+    local mugenTrain = game:GetService("Players").LocalPlayer:WaitForChild("PlayerScripts"):WaitForChild("Mugen_Train", 5)
+    if mugenTrain then
+	    local overheadUi = mugenTrain:FindFirstChild("NPC_Over_head_ui")
+	    if overheadUi then
+		    overheadUi:Destroy()
+		    print("NPC_Over_head_ui destroyed")
+	    end
+    end
+end
+
 
 if game.PlaceId == 5956785391 then
     local args = {
@@ -450,6 +461,7 @@ elseif game.PlaceId == 9321822839 then
     game:GetService("TeleportService"):Teleport(5956785391)
 elseif game.PlaceId == 11468034852 then
     wait(70)
+    spawn(delwarning)
     print("Going to skip dialog")
     local tween = Tween(CFrame.new(5523, -53, 2181))
     while (Root.Position - Vector3.new(5523, -53, 2181)).Magnitude > 1 do
