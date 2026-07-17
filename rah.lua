@@ -9,6 +9,7 @@ local wfps1 = true
 local wfps1a = true
 local wfps2 = true
 local df = true
+local Mugen = true
 local vu = game:GetService("VirtualUser")
 
 game:GetService("Players").LocalPlayer.Idled:connect(function()
@@ -87,6 +88,13 @@ local buttonWfps1a = Instance.new("TextButton")
 buttonWfps1a.Size = UDim2.new(1, 0, 0.2, 0)
 buttonWfps1a.Position = UDim2.new(0, 0, 1.2, 0)
 buttonWfps1a.Text = "Toggle wfps1a"
+buttonWfps1a.Parent = frame
+
+-- Create a TextButton for wfps
+local buttonMugen = Instance.new("TextButton")
+buttonWfps1a.Size = UDim2.new(1, 0, 0.2, 0)
+buttonWfps1a.Position = UDim2.new(0, 0, 1.4, 0)
+buttonWfps1a.Text = "Toggle Mugen"
 buttonWfps1a.Parent = frame
 
 --[[
@@ -250,6 +258,20 @@ local function toggleDf()
 end
 buttonDf.MouseButton1Click:Connect(toggleDf)
 
+-- Function to toggle df and update UI
+local function toggleMugen()
+    Mugen = not Mugen
+
+    -- Send notification
+    local Mugenntf = Mugen and "Canceled DF Trinkets in next game" or "Executing DF Trinkets in next game"
+    game.StarterGui:SetCore("SendNotification", {
+        Title = "Mugen autofarm Toggle",
+        Text = Mugenntf,
+        Duration = 3
+    })
+end
+buttonMugen.MouseButton1Click:Connect(toggleMugen)
+
 local queueteleport = (delta and delta.queue_on_teleport) or (syn and syn.queue_on_teleport) or queue_on_teleport or (fluxus and fluxus.queue_on_teleport)
 local TeleportCheck = false
 game:GetService("Players").LocalPlayer.OnTeleport:Connect(function(State)
@@ -277,6 +299,11 @@ game:GetService("Players").LocalPlayer.OnTeleport:Connect(function(State)
         if (not TeleportCheck) and queueteleport then	
             TeleportCheck = true
             queueteleport("loadstring(game:HttpGet('https://raw.githubusercontent.com/AyoItsHanee/main/main/df.lua'))()")
+        end
+    elseif KeepSc and (not Mugen) then
+        if (not TeleportCheck) and queueteleport then	
+            TeleportCheck = true
+            queueteleport("loadstring(game:HttpGet('https://raw.githubusercontent.com/AyoItsHanee/main/main/mugen.lua'))()")
         end
     else
         if (not TeleportCheck) and queueteleport then	

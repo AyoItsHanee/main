@@ -39,7 +39,7 @@ game.NetworkClient.ChildRemoved:Connect(
 			else
 			if (not TeleportCheck) and queueteleport then	
 			TeleportCheck = true
-			queueteleport("loadstring(game:HttpGet('https://raw.githubusercontent.com/AyoItsHanee/main/main/mugen.lua'))() pcall(function() getgenv().hanee = false end)")
+			queueteleport("loadstring(game:HttpGet('https://raw.githubusercontent.com/AyoItsHanee/main/main/rah.lua'))() pcall(function() getgenv().hanee = false end)")
 				end
 		end
     end)
