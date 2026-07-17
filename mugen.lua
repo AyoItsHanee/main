@@ -489,7 +489,7 @@ elseif game.PlaceId == 11468034852 then
 
     -- Script continues here once Clash_Ui2 is Enabled
     print("Clash_Ui2 is now enabled, continuing...")
-    wait(10)
+    wait(7)
     local VIM = game:GetService("VirtualInputManager")
     local function pressKey(key)
         VIM:SendKeyEvent(true, key, false, game)
@@ -508,7 +508,7 @@ elseif game.PlaceId == 11468034852 then
 	    :WaitForChild("Akaza")
 
     print("Akaza now exists, continuing...")
-    wait(20)
+    wait(60)
     game:GetService("TeleportService"):Teleport(5956785391)
 else
     print("Wrong game")
