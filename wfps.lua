@@ -503,7 +503,7 @@ end)
 			end)
 
 			local function mugensystem()
-				--mugensekali = true
+				mugensekali = true
 				while task.wait(1) do
 					if mugensekali then
 						local menit = os.date("%M")
