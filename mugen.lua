@@ -1,7 +1,7 @@
 repeat
     wait()
 until game:IsLoaded()
-print("Roblox loaded")
+print("Roblox loaded!")
 
 if hanee then
     print("Script is aleady running")
