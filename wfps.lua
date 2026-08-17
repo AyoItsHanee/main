@@ -503,7 +503,7 @@ end)
 			end)
 
 			local function mugensystem()
-				local mugensekali = true
+				--mugensekali = true
 				while task.wait(1) do
 					if mugensekali then
 						local menit = os.date("%M")
@@ -519,8 +519,9 @@ end)
     						end
     						print("hi")
 							game:GetService("ReplicatedStorage").purchase_mugen_ticket:FireServer(1) --buy ticket
-							local mugensekali = false
+							--mugensekali = false
 							wait(60)
+							bossrun = not bossrun
 						end
 					end
 				end
