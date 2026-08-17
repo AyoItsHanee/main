@@ -73,7 +73,7 @@ print("game loaded")
 	vu:Button2Up(Vector2.new(0,0),workspace.CurrentCamera.CFrame)
 	end)
 
-		print("Boss Rotation v0.3.5")
+		print("Boss Rotation v0.4.0 integrated with mugen")
 		print("executed true sc")
 		local function getLocalPlayerUsername()
 			local player = game.Players.LocalPlayer
