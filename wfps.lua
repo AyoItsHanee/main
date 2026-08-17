@@ -4,8 +4,10 @@ if hanee then
     print("Script is aleady running")
     return
 end
+pcall(function() getgenv().formugen = false end)
 pcall(function() getgenv().hanee = true end)
-local spawn, wait = task.spawn, task.wait
+	local spawn, wait = task.spawn, task.wait
+	local itstimeformugen = false
 	local bossrun = true
 	local KeepSC = true
 	local checkore = true
@@ -38,16 +40,21 @@ local spawn, wait = task.spawn, task.wait
 		local TeleportCheck = false
 		game:GetService("Players").LocalPlayer.OnTeleport:Connect(function(State)
 			if KeepSC then
-		if (not TeleportCheck) and queueteleport then
-			TeleportCheck = true
-			queueteleport("loadstring(game:HttpGet('https://raw.githubusercontent.com/AyoItsHanee/main/main/wfps.lua'))() pcall(function() getgenv().hanee = false end)")
+				if (not TeleportCheck) and queueteleport then
+					TeleportCheck = true
+					queueteleport("loadstring(game:HttpGet('https://raw.githubusercontent.com/AyoItsHanee/main/main/wfps.lua'))() pcall(function() getgenv().hanee = false end)")
+				end
+			elseif itstimeformugen then
+				if (not TeleportCheck) and queueteleport then
+					TeleportCheck = true
+					queueteleport("loadstring(game:HttpGet('https://raw.githubusercontent.com/AyoItsHanee/main/main/mugen.lua'))() pcall(function() getgenv().hanee = false end) pcall(function() getgenv().formugen = true end)")
 				end
 			else
-			if (not TeleportCheck) and queueteleport then	
-			TeleportCheck = true
-			queueteleport("loadstring(game:HttpGet('https://raw.githubusercontent.com/AyoItsHanee/main/main/rah.lua'))() pcall(function() getgenv().hanee = false end)")
+				if (not TeleportCheck) and queueteleport then	
+					TeleportCheck = true
+					queueteleport("loadstring(game:HttpGet('https://raw.githubusercontent.com/AyoItsHanee/main/main/rah.lua'))() pcall(function() getgenv().hanee = false end)")
 				end
-		end
+			end
 		end)
 
 --[[
@@ -191,6 +198,39 @@ print("game loaded")
 				game:GetService("TeleportService"):Teleport(5956785391)
 
 		elseif game.PlaceId == 13883059853 then
+
+			local TweenService = game:GetService("TweenService")
+			local Root = game.Players.LocalPlayer.Character.HumanoidRootPart
+			_G.TweenSpeed = 300            
+            local function GetDistance(Endpoint)
+                if typeof(Endpoint) == "Instance" then
+                    Endpoint = Vector3.new(Endpoint.Position.X, Root.Position.Y, Endpoint.Position.Z)
+                elseif typeof(Endpoint) == "CFrame" then
+                    Endpoint = Vector3.new(Endpoint.Position.X, Root.Position.Y, Endpoint.Position.Z)
+                end
+                local Magnitude = (Endpoint - Root.Position).Magnitude
+                return Magnitude
+            end
+            
+            function Tween(Endpoint)
+                if typeof(Endpoint) == "Instance" then
+                    Endpoint = Endpoint.CFrame
+                end
+                local TweenFunc = {}
+                local Distance = GetDistance(Endpoint)
+                local tweenInfo = TweenInfo.new(Distance / _G.TweenSpeed, Enum.EasingStyle.Linear)
+                local tween = TweenService:Create(Root, tweenInfo, {CFrame = Endpoint})
+            
+                -- Play the tween
+                tween:Play()
+                -- Function to cancel the tween
+                function TweenFunc:Cancel()
+                    tween:Cancel()
+                    return false
+                end
+                return TweenFunc
+            end
+
 			spawn(function()
 			while task.wait() do
 				for _, v in pairs(game:GetService("Players").LocalPlayer.Character:GetDescendants()) do
@@ -462,8 +502,23 @@ end)
 				end
 			end)
 
-			local TweenService = game:GetService("TweenService")
-			local Root = game.Players.LocalPlayer.Character.HumanoidRootPart
+			spawn(function()
+				while task.wait(1) do
+					local menit = os.date("%M")
+					if menit == "00" or menit == "01" or menit == "02" or menit == "03" or menit == "04" or menit == "05" or menit == "06" or menit == "07" or menit == "08" or menit == "09" then
+						local bossrun = false
+						repeat wait() until istweenavailable
+						local itstimeformugen = true
+						print("Going to Mugen Train")
+    					local tween = Tween(CFrame.new(728, 501, 1098))
+    					while (Root.Position - Vector3.new(728, 501, 1098)).Magnitude > 1 do
+        					wait(0.1) -- Check every 0.1 seconds
+    					end
+    					print("hi")
+					end
+				end
+			end)
+
 			local Goal = {}
 
 			-- Function to teleport to specific paths
@@ -547,46 +602,18 @@ end)
 				},
 				-- Add other paths here similarly
 			}
-
-            _G.TweenSpeed = 300            
-            local function GetDistance(Endpoint)
-                if typeof(Endpoint) == "Instance" then
-                    Endpoint = Vector3.new(Endpoint.Position.X, Root.Position.Y, Endpoint.Position.Z)
-                elseif typeof(Endpoint) == "CFrame" then
-                    Endpoint = Vector3.new(Endpoint.Position.X, Root.Position.Y, Endpoint.Position.Z)
-                end
-                local Magnitude = (Endpoint - Root.Position).Magnitude
-                return Magnitude
-            end
-            
-            function Tween(Endpoint)
-                if typeof(Endpoint) == "Instance" then
-                    Endpoint = Endpoint.CFrame
-                end
-                local TweenFunc = {}
-                local Distance = GetDistance(Endpoint)
-                local tweenInfo = TweenInfo.new(Distance / _G.TweenSpeed, Enum.EasingStyle.Linear)
-                local tween = TweenService:Create(Root, tweenInfo, {CFrame = Endpoint})
-            
-                -- Play the tween
-                tween:Play()
-                -- Function to cancel the tween
-                function TweenFunc:Cancel()
-                    tween:Cancel()
-                    return false
-                end
-                return TweenFunc
-            end
             
             local function CheckAndMove(pathName, position, pathToCheck, Time, Num)
                 print("Going to " .. pathName)
                 local endpointCFrame = CFrame.new(position)
                 local tween = Tween(endpointCFrame)
+				local istweenavailable = false
             
                 -- Wait until the player reaches the position
                 while (Root.Position - position).Magnitude > 1 do
                     wait(0.1) -- Check every 0.1 seconds
                 end
+				local istweenavailable = true
             
                 while task.wait() do
                     if bossrun then
