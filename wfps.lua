@@ -502,23 +502,27 @@ end)
 				end
 			end)
 
-			spawn(function()
+			local function mugensystem()
+				local mugensekali = true
 				while task.wait(1) do
-					local menit = os.date("%M")
-					if menit == "00" or menit == "01" or menit == "02" or menit == "03" or menit == "04" or menit == "05" or menit == "06" or menit == "07" or menit == "08" or menit == "09" then
-						local bossrun = false
-						repeat wait() until istweenavailable
-						local itstimeformugen = true
-						print("Going to Mugen Train")
-    					local tween = Tween(CFrame.new(728, 501, 1098))
-    					while (Root.Position - Vector3.new(728, 501, 1098)).Magnitude > 1 do
-        					wait(0.1) -- Check every 0.1 seconds
-    					end
-    					print("hi")
-						game:GetService("ReplicatedStorage").purchase_mugen_ticket:FireServer(1) --buy ticket
+					if mugensekali then
+						local menit = os.date("%M")
+						if menit == "00" or menit == "01" or menit == "02" or menit == "03" or menit == "04" or menit == "05" or menit == "06" or menit == "07" or menit == "08" or menit == "09" then
+							local bossrun = false
+							repeat wait() until istweenavailable
+							local itstimeformugen = true
+							print("Going to Mugen Train")
+    						local tween = Tween(CFrame.new(728, 501, 1098))
+    						while (Root.Position - Vector3.new(728, 501, 1098)).Magnitude > 1 do
+        						wait(0.1) -- Check every 0.1 seconds
+    						end
+    						print("hi")
+							game:GetService("ReplicatedStorage").purchase_mugen_ticket:FireServer(1) --buy ticket
+							local mugensekali = false
+						end
 					end
 				end
-			end)
+			end
 
 			local Goal = {}
 
@@ -638,6 +642,8 @@ end)
                     wait()
                 end
             end)
+
+			spawn(mugensystem)
 	
 			wait()
 			RemoveDMG()
