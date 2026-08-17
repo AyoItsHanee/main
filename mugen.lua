@@ -17,6 +17,7 @@ local spawn, wait = task.spawn, task.wait
 local bossrun = true
 local KeepSC = true
 local checkore = true
+--[[
 game.NetworkClient.ChildRemoved:Connect(
     function()
         if game.PlaceId == 5956785391 then
@@ -28,6 +29,7 @@ game.NetworkClient.ChildRemoved:Connect(
         end
     end
 )
+    ]]--
 
 
 	queueteleport = (syn and syn.queue_on_teleport) or queue_on_teleport or (fluxus and fluxus.queue_on_teleport) or (delta and delta.queue_on_teleport)
