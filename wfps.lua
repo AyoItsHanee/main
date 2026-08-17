@@ -4,8 +4,9 @@ if hanee then
     print("Script is aleady running")
     return
 end
-pcall(function() getgenv().formugen = false end)
-pcall(function() getgenv().hanee = true end)
+--pcall(function() getgenv().formugen = false end)
+getgenv().formugen = false
+getgenv().hanee = true
 	local spawn, wait = task.spawn, task.wait
 	local itstimeformugen = false
 	local bossrun = true
@@ -42,17 +43,17 @@ pcall(function() getgenv().hanee = true end)
 			if KeepSC then
 				if (not TeleportCheck) and queueteleport then
 					TeleportCheck = true
-					queueteleport("loadstring(game:HttpGet('https://raw.githubusercontent.com/AyoItsHanee/main/main/wfps.lua'))() pcall(function() getgenv().hanee = false end)")
+					queueteleport("loadstring(game:HttpGet('https://raw.githubusercontent.com/AyoItsHanee/main/main/wfps.lua'))() getgenv().hanee = false")
 				end
 			elseif itstimeformugen then
 				if (not TeleportCheck) and queueteleport then
 					TeleportCheck = true
-					queueteleport("loadstring(game:HttpGet('https://raw.githubusercontent.com/AyoItsHanee/main/main/mugen.lua'))() pcall(function() getgenv().hanee = false end) pcall(function() getgenv().formugen = true end)")
+					queueteleport("loadstring(game:HttpGet('https://raw.githubusercontent.com/AyoItsHanee/main/main/mugen.lua'))() getgenv().hanee = false getgenv().formugen = true")
 				end
 			else
 				if (not TeleportCheck) and queueteleport then	
 					TeleportCheck = true
-					queueteleport("loadstring(game:HttpGet('https://raw.githubusercontent.com/AyoItsHanee/main/main/rah.lua'))() pcall(function() getgenv().hanee = false end)")
+					queueteleport("loadstring(game:HttpGet('https://raw.githubusercontent.com/AyoItsHanee/main/main/rah.lua'))() getgenv().hanee = false")
 				end
 			end
 		end)

@@ -12,12 +12,7 @@ if formugen then
     print("Paused farming wfps")
     return
 end
-
-pcall(
-    function()
-        getgenv().hanee = true
-    end
-)
+getgenv().hanee = true
 local spawn, wait = task.spawn, task.wait
 local bossrun = true
 local KeepSC = true
@@ -41,24 +36,26 @@ game.NetworkClient.ChildRemoved:Connect(
         if KeepSC then
 		    if (not TeleportCheck) and queueteleport then
 			    TeleportCheck = true
-			    queueteleport("loadstring(game:HttpGet('https://raw.githubusercontent.com/AyoItsHanee/main/main/mugen.lua'))() pcall(function() getgenv().hanee = false end)")
+			    queueteleport("loadstring(game:HttpGet('https://raw.githubusercontent.com/AyoItsHanee/main/main/mugen.lua'))() getgenv().hanee = false")
 			end
 		elseif formugen then
             if (not TeleportCheck) and queueteleport then
 			    TeleportCheck = true
-			    queueteleport("loadstring(game:HttpGet('https://raw.githubusercontent.com/AyoItsHanee/main/main/wfps.lua'))() pcall(function() getgenv().hanee = false end) pcall(function() getgenv().formugen = false end)")
+			    queueteleport("loadstring(game:HttpGet('https://raw.githubusercontent.com/AyoItsHanee/main/main/wfps.lua'))() getgenv().hanee = false getgenv().formugen = false")
 			end
         else
 			if (not TeleportCheck) and queueteleport then	
 			    TeleportCheck = true
-			    queueteleport("loadstring(game:HttpGet('https://raw.githubusercontent.com/AyoItsHanee/main/main/rah.lua'))() pcall(function() getgenv().hanee = false end)")
+			    queueteleport("loadstring(game:HttpGet('https://raw.githubusercontent.com/AyoItsHanee/main/main/rah.lua'))() getgenv().hanee = false")
 			end
 		end
     end)
 
+    --[[
 if game.PlaceId == 9321822839 then
     game:GetService("TeleportService"):Teleport(5956785391)
 end
+]]--
 
 --Wait for the LocalPlayer to be loaded
 game:GetService("Players").LocalPlayer:WaitForChild("doneloadinggamepasses")
