@@ -515,6 +515,7 @@ end)
         					wait(0.1) -- Check every 0.1 seconds
     					end
     					print("hi")
+						game:GetService("ReplicatedStorage").purchase_mugen_ticket:FireServer(1) --buy ticket
 					end
 				end
 			end)
