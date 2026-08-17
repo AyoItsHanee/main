@@ -7,6 +7,12 @@ if hanee then
     print("Script is aleady running")
     return
 end
+
+if formugen then
+    print("Paused farming wfps")
+    return
+end
+
 pcall(
     function()
         getgenv().hanee = true
@@ -29,19 +35,24 @@ game.NetworkClient.ChildRemoved:Connect(
 )
 
 
-		queueteleport = (syn and syn.queue_on_teleport) or queue_on_teleport or (fluxus and fluxus.queue_on_teleport) or (delta and delta.queue_on_teleport)
-		local TeleportCheck = false
-		game:GetService("Players").LocalPlayer.OnTeleport:Connect(function(State)
-			if KeepSC then
-		if (not TeleportCheck) and queueteleport then
-			TeleportCheck = true
-			queueteleport("loadstring(game:HttpGet('https://raw.githubusercontent.com/AyoItsHanee/main/main/mugen.lua'))() pcall(function() getgenv().hanee = false end)")
-				end
-			else
+	queueteleport = (syn and syn.queue_on_teleport) or queue_on_teleport or (fluxus and fluxus.queue_on_teleport) or (delta and delta.queue_on_teleport)
+	local TeleportCheck = false
+	game:GetService("Players").LocalPlayer.OnTeleport:Connect(function(State)
+        if KeepSC then
+		    if (not TeleportCheck) and queueteleport then
+			    TeleportCheck = true
+			    queueteleport("loadstring(game:HttpGet('https://raw.githubusercontent.com/AyoItsHanee/main/main/mugen.lua'))() pcall(function() getgenv().hanee = false end)")
+			end
+		elseif formugen then
+            if (not TeleportCheck) and queueteleport then
+			    TeleportCheck = true
+			    queueteleport("loadstring(game:HttpGet('https://raw.githubusercontent.com/AyoItsHanee/main/main/wfps.lua'))() pcall(function() getgenv().hanee = false end) pcall(function() getgenv().formugen = false end)")
+			end
+        else
 			if (not TeleportCheck) and queueteleport then	
-			TeleportCheck = true
-			queueteleport("loadstring(game:HttpGet('https://raw.githubusercontent.com/AyoItsHanee/main/main/rah.lua'))() pcall(function() getgenv().hanee = false end)")
-				end
+			    TeleportCheck = true
+			    queueteleport("loadstring(game:HttpGet('https://raw.githubusercontent.com/AyoItsHanee/main/main/rah.lua'))() pcall(function() getgenv().hanee = false end)")
+			end
 		end
     end)
 
