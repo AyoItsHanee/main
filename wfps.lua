@@ -509,6 +509,7 @@ end)
 						local menit = os.date("%M")
 						--if menit == "00" or menit == "01" or menit == "02" or menit == "03" or menit == "04" or menit == "05" or menit == "06" or menit == "07" or menit == "08" or menit == "09" then
 							local bossrun = false
+							print("turned off boss rotation")
 							repeat wait() until istweenavailable
 							local itstimeformugen = true
 							print("Going to Mugen Train")
