@@ -33,12 +33,12 @@ game.NetworkClient.ChildRemoved:Connect(
 	queueteleport = (syn and syn.queue_on_teleport) or queue_on_teleport or (fluxus and fluxus.queue_on_teleport) or (delta and delta.queue_on_teleport)
 	local TeleportCheck = false
 	game:GetService("Players").LocalPlayer.OnTeleport:Connect(function(State)
-        if KeepSC then
+        if (not formugen) and KeepSC then
 		    if (not TeleportCheck) and queueteleport then
 			    TeleportCheck = true
 			    queueteleport("loadstring(game:HttpGet('https://raw.githubusercontent.com/AyoItsHanee/main/main/mugen.lua'))() pcall(function() getgenv().hanee = false end)")
 			end
-		elseif formugen then
+		elseif formugen and KeepSCthen
             if (not TeleportCheck) and queueteleport then
 			    TeleportCheck = true
 			    queueteleport("loadstring(game:HttpGet('https://raw.githubusercontent.com/AyoItsHanee/main/main/wfps.lua'))() pcall(function() getgenv().hanee = false end) pcall(function() getgenv().formugen = false end)")
