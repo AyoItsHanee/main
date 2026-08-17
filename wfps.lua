@@ -4,10 +4,10 @@ if hanee then
     print("Script is aleady running")
     return
 end
---pcall(function() getgenv().formugen = false end)
-getgenv().formugen = false
-getgenv().hanee = true
+pcall(function() getgenv().formugen = false end)
+pcall(function() getgenv().hanee = true end)
 	local spawn, wait = task.spawn, task.wait
+	local ver = "Boss Rotation v0.4.1 integrated with mugen"
 	local itstimeformugen = false
 	local bossrun = true
 	local KeepSC = true
@@ -43,17 +43,17 @@ getgenv().hanee = true
 			if (not itstimeformugen) and KeepSC then
 				if (not TeleportCheck) and queueteleport then
 					TeleportCheck = true
-					queueteleport("loadstring(game:HttpGet('https://raw.githubusercontent.com/AyoItsHanee/main/main/wfps.lua'))() getgenv().hanee = false")
+					queueteleport("loadstring(game:HttpGet('https://raw.githubusercontent.com/AyoItsHanee/main/main/wfps.lua'))() pcall(function() getgenv().hanee = false end)")
 				end
-			elseif itstimeformugen then
+			elseif itstimeformugen and KeepSC then
 				if (not TeleportCheck) and queueteleport then
 					TeleportCheck = true
-					queueteleport("loadstring(game:HttpGet('https://raw.githubusercontent.com/AyoItsHanee/main/main/mugen.lua'))() getgenv().hanee = false getgenv().formugen = true")
+					queueteleport("loadstring(game:HttpGet('https://raw.githubusercontent.com/AyoItsHanee/main/main/mugen.lua'))() pcall(function() getgenv().hanee = false end) pcall(function() getgenv().formugen = true end)")
 				end
 			else
 				if (not TeleportCheck) and queueteleport then	
 					TeleportCheck = true
-					queueteleport("loadstring(game:HttpGet('https://raw.githubusercontent.com/AyoItsHanee/main/main/rah.lua'))() getgenv().hanee = false")
+					queueteleport("loadstring(game:HttpGet('https://raw.githubusercontent.com/AyoItsHanee/main/main/rah.lua'))() pcall(function() getgenv().hanee = false end)")
 				end
 			end
 		end)
@@ -74,7 +74,7 @@ print("game loaded")
 	vu:Button2Up(Vector2.new(0,0),workspace.CurrentCamera.CFrame)
 	end)
 
-		print("Boss Rotation v0.4.0 integrated with mugen")
+		print(ver)
 		print("executed true sc")
 		local function getLocalPlayerUsername()
 			local player = game.Players.LocalPlayer
@@ -512,7 +512,7 @@ end)
 							bossrun = not bossrun
 							print("turned off boss rotation")
 							repeat wait() until istweenavailable
-							itstimeformugen = true
+							itstimeformugen = not itstimeformugen
 							print("Going to Mugen Train")
     						local tween = Tween(CFrame.new(728, 501, 1098))
     						while (Root.Position - Vector3.new(728, 501, 1098)).Magnitude > 1 do
@@ -698,6 +698,8 @@ simulateButtonClick()
 
 		elseif game.PlaceId == 9321822839 then
 			game:GetService("TeleportService"):Teleport(5956785391)
+		elseif game.PlaceId == 13883059853 then
+			loadstring(game:HttpGet('https://raw.githubusercontent.com/AyoItsHanee/main/main/mugen.lua'))()
 		else
 			game:GetService("TeleportService"):Teleport(5956785391)
 		end
