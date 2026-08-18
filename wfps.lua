@@ -528,6 +528,8 @@ end)
 				end
 			end
 
+			wait(2)
+
 			local Goal = {}
 
 			-- Function to teleport to specific paths
