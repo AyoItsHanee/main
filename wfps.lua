@@ -48,7 +48,11 @@ pcall(function() getgenv().hanee = true end)
 			elseif itstimeformugen and KeepSC then
 				if (not TeleportCheck) and queueteleport then
 					TeleportCheck = true
-					queueteleport("loadstring(game:HttpGet('https://raw.githubusercontent.com/AyoItsHanee/main/main/mugen.lua'))() pcall(function() getgenv().hanee = false end) pcall(function() getgenv().formugen = true end)")
+					queueteleport([[
+						loadstring(game:HttpGet('https://raw.githubusercontent.com/AyoItsHanee/main/main/mugen.lua'))();
+						pcall(function() getgenv().hanee = false end);
+						pcall(function() getgenv().formugen = true end);
+					]])
 				end
 			else
 				if (not TeleportCheck) and queueteleport then	
@@ -520,6 +524,7 @@ end)
     						end
     						print("hi")
 							game:GetService("ReplicatedStorage").purchase_mugen_ticket:FireServer(1) --buy ticket
+							writefile("mugenstatus.txt", tostring(formugen))
 							--mugensekali = false
 							wait(60)
 							bossrun = not bossrun
