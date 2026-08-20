@@ -1,3 +1,5 @@
+repeat wait() until game:IsLoaded()
+
 if game.PlaceId == 13379208636 then
     print("f this shi")
 else
