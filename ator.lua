@@ -164,13 +164,13 @@ local function getRefillBox()
 end
 
 -- // Auto Reload
-local characters = workspace:WaitForChild("Characters")
-local character = characters:WaitForChild(game:GetService("Players").LocalPlayer.Name)
-local rig = character:WaitForChild("Rig_" .. game:GetService("Players").LocalPlayer.Name)
-local leftHand = rig:WaitForChild("LeftHand")
-local blade1 = leftHand:WaitForChild("Blade_1")
 task.spawn(
     function()
+        local characters = workspace:WaitForChild("Characters")
+        local character = characters:WaitForChild(game:GetService("Players").LocalPlayer.Name)
+        local rig = character:WaitForChild("Rig_" .. game:GetService("Players").LocalPlayer.Name)
+        local leftHand = rig:WaitForChild("LeftHand")
+        local blade1 = leftHand:WaitForChild("Blade_1")
         while task.wait(.1) do
             -- Get the new value of the attribute
             local isBroken = blade1:GetAttribute("Broken")
