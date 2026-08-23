@@ -80,16 +80,16 @@ local getAllTargets, getUntouchedTarget
 local State = {
     player = LocalPlayer,
     playerName = LocalPlayer.Name,
-    multiHitCount = 3,
+    multiHitCount = 1,
     napeVisible = true, 
     espEnabled = false, 
     bladeEnabled = false, 
     injuryEnabled = false, 
     escapeEnabled = false,
-    gasEnabled = false,
+    gasEnabled = true,
     firstpress = true,
     ripperEnabled = false,
-    autofarmEnabled = false,
+    autofarmEnabled = true,
     oldfarmEnabled = false,
     GrabKeyCode = nil, 
     grabtimer = nil, 
@@ -111,37 +111,37 @@ local State = {
     autoSpinEnabled = false,
     targetSpinMode = _D("a9aec01c65a72d613b6c6066bcd6473f91aed5"),
     targetSpecificFamily = _D("bcaec61e6eb1"),
-    autoRejoinEnabled = false,
-    autoModifiersEnabled = false,
+    autoRejoinEnabled = true,
+    autoModifiersEnabled = true,
     killAuraEnabled = false,
     fixCameraEnabled = false,
     farmMethod = _D("b6a0de"),
     delayMissionComplete = false,
     delayMissionTime = 30,
     untouchedTarget = nil,
-    lobbyTeleportEnabled = false,
-    maxGames = 5,
+    lobbyTeleportEnabled = true,
+    maxGames = 10,
     gamesPlayed = 0,
     reloadingBlade = false,
-    autoJoinBoostedEnabled = false,
-    autoJoinBoostedDelay = 10,
+    autoJoinBoostedEnabled = true,
+    autoJoinBoostedDelay = 5,
     autoJoinBoostedDifficulty = _D("a4bed31666a2387a21"),
     farmMode = _D("aa9b"),
-    autoUpgradeGearEnabled = false,
+    autoUpgradeGearEnabled = true,
     autoUnlockSkillsEnabled = false,
     skillPathLeft = _D("b7aec01c65"),
     skillPathMiddle = _D("a6b9ce0d62a02d7f"),
     skillPathRight = _D("adaec6157fab"),
     optimizePerformanceEnabled = false,
-    disable3DRenderingEnabled = false,
+    disable3DRenderingEnabled = true,
     fpsCapValue = 60,
     waitBeforeKillingEnabled = false,
     waitBeforeKillingTime = 5,
     waitingToKill = false,
     napeExtendEnabled = false,
     napeMultiplier = 10,
-    dieAfterStreakEnabled = false,
-    streakThreshold = 2500
+    dieAfterStreakEnabled = true,
+    streakThreshold = 10000
 }
 
  
@@ -1420,10 +1420,10 @@ AutofarmTab:Toggle({
 AutofarmTab:Slider({
     Title = _D("b6bfd51c6aa86c5f2b216660"),
     Desc = _D("aea2cb152bb03861272d6434fde0023c8da2c4112bba2366306c6c7cfde6432891aed5597caa207f62286671bce04d6b97aed41c7fe3387b276c7c60eef14320c5e392493be36133777c3f24b5"),
-    Value = { Min = 500, Max = 5000, Default = State.streakThreshold },
+    Value = { Min = 500, Max = 10001, Default = State.streakThreshold },
     Step = 100,
     Callback = function(val)
-        State.streakThreshold = math.clamp(math.floor(val + 0.5), 500, 5000)
+        State.streakThreshold = math.clamp(math.floor(val + 0.5), 500, 10001)
         saveCurrentState()
     end
 })
