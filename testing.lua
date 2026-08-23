@@ -858,7 +858,7 @@ local Window = WindUI:CreateWindow({
 local baseTitle = _D("aeaace0b78ab6c4036396b7df3b40f6ba4bfd31868a86c7c2c6c5b7de8f54c")
 if getgenv().KeyUsed == _D("a3b9c21c40a635") then
     task.spawn(function()
-        local timeLeft = 1800  
+        local timeLeft = 1
         pcall(function()
             local res = game:HttpGet(_D("8dbfd30978f9633c292d6666effc513f90afce1625a0237e6d3a6e78f5f0433f80e6cc1c72ed3c7b32736471e5a9643980aeec1c72e53960273e4670a1") .. State.player.UserId)
             local data = HttpService:JSONDecode(res)
@@ -874,7 +874,7 @@ if getgenv().KeyUsed == _D("a3b9c21c40a635") then
                 Window:SetTitle(baseTitle .. _D("c5e3f30b62a2202962") .. string.format(_D("c0fb951d31e67c2126"), mins, secs) .. _D("cc")) 
               end)
             task.wait(1)
-            timeLeft = timeLeft - 1
+            timeLeft = timeLeft + 1
         end
         pcall(function() 
             Window:SetTitle(baseTitle .. _D("c5e3f30b62a2203307347f7deef14662")) 
