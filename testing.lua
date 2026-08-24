@@ -375,7 +375,7 @@ State.delayMissionTime = loadedData.delayMissionTime ~= nil and loadedData.delay
 State.lobbyTeleportEnabled = loadedData.lobbyTeleportEnabled ~= nil and loadedData.lobbyTeleportEnabled or false
 State.maxGames = loadedData.maxGames ~= nil and loadedData.maxGames or 5
 State.gamesPlayed = loadedData.gamesPlayed ~= nil and loadedData.gamesPlayed or 0
-State.autoJoinBoostedEnabled = loadedData.autoJoinBoostedEnabled ~= nil and loadedData.autoJoinBoostedEnabled or true
+State.autoJoinBoostedEnabled = loadedData.autoJoinBoostedEnabled ~= nil and loadedData.autoJoinBoostedEnabled or false
 State.autoJoinBoostedDelay = loadedData.autoJoinBoostedDelay ~= nil and loadedData.autoJoinBoostedDelay or 10
 State.autoJoinBoostedDifficulty = loadedData.autoJoinBoostedDifficulty ~= nil and loadedData.autoJoinBoostedDifficulty or  _D("a4bed31666a2387a21")
 State.farmMode = loadedData.farmMode ~= nil and loadedData.farmMode or  _D("aa9b")
