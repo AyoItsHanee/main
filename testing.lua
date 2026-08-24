@@ -364,7 +364,7 @@ State.oldfarmEnabled = loadedData.oldfarmEnabled ~= nil and loadedData.oldfarmEn
 State.gasEnabled = loadedData.gasEnabled ~= nil and loadedData.gasEnabled or State.gasEnabled
 State.targetSpinMode = loadedData.targetSpinMode ~= nil and loadedData.targetSpinMode or  _D("a9aec01c65a72d613b6c6066bcd6473f91aed5")
 State.targetSpecificFamily = loadedData.targetSpecificFamily ~= nil and loadedData.targetSpecificFamily or  _D("bcaec61e6eb1")
-State.autoRejoinEnabled = loadedData.autoRejoinEnabled ~= nil and loadedData.autoRejoinEnabled or State.autoRejoinEnabled
+State.autoRejoinEnabled = loadedData.autoRejoinEnabled ~= nil and loadedData.autoRejoinEnabled or true
 State.autoModifiersEnabled = loadedData.autoModifiersEnabled ~= nil and loadedData.autoModifiersEnabled or State.autoModifiersEnabled
 State.killAuraEnabled = loadedData.killAuraEnabled ~= nil and loadedData.killAuraEnabled or State.killAuraEnabled
 State.fixCameraEnabled = loadedData.fixCameraEnabled ~= nil and loadedData.fixCameraEnabled or State.fixCameraEnabled
@@ -3127,7 +3127,7 @@ if State.inGame then
             showNotification(_D("a4bed3166da23e7e"), _D("adaad51d2bf0617e2b227a60f9e7023f8ca6c2167eb76c61272d6c7cf9f002a9655f871f64b12f7a2c2b2f67f9e6542e97ebd51c61ac257d63"))
             task.wait(2)
             pcall(function()
-                TeleportService:Teleport(game.PlaceId, LocalPlayer)
+                TeleportService:Teleport(14916516914, LocalPlayer)
             end)
         end
     end)
