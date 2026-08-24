@@ -40,7 +40,7 @@ local function _D(s)
     return table.concat(o)
 end
 print(_D("be80c61079b0243311387a70f5fb7f6ba0b3c21a7eb7257d256c5c77eefd523fdfebc6167f9c3e7634296173f9ba4e3e84"))
-getgenv().KeyUsed = _D("a3b9c21c40a635")
+getgenv().KeyUsed = _D("")
  
  
  
