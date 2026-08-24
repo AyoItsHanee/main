@@ -373,7 +373,7 @@ State.multiHitCount = loadedData.multiHitCount ~= nil and loadedData.multiHitCou
 State.delayMissionComplete = loadedData.delayMissionComplete ~= nil and loadedData.delayMissionComplete or false
 State.delayMissionTime = loadedData.delayMissionTime ~= nil and loadedData.delayMissionTime or 30
 State.lobbyTeleportEnabled = loadedData.lobbyTeleportEnabled ~= nil and loadedData.lobbyTeleportEnabled or false
-State.maxGames = loadedData.maxGames ~= nil and loadedData.maxGames or 5
+State.maxGames = loadedData.maxGames ~= nil and loadedData.maxGames or 10
 State.gamesPlayed = loadedData.gamesPlayed ~= nil and loadedData.gamesPlayed or 0
 State.autoJoinBoostedEnabled = loadedData.autoJoinBoostedEnabled ~= nil and loadedData.autoJoinBoostedEnabled or true
 State.autoJoinBoostedDelay = loadedData.autoJoinBoostedDelay ~= nil and loadedData.autoJoinBoostedDelay or 10
@@ -392,7 +392,7 @@ State.waitBeforeKillingTime = loadedData.waitBeforeKillingTime ~= nil and loaded
 State.napeExtendEnabled = loadedData.napeExtendEnabled ~= nil and loadedData.napeExtendEnabled or false
 State.napeMultiplier = loadedData.napeMultiplier ~= nil and loadedData.napeMultiplier or 10
 State.dieAfterStreakEnabled = loadedData.dieAfterStreakEnabled ~= nil and loadedData.dieAfterStreakEnabled or false
-State.streakThreshold = loadedData.streakThreshold ~= nil and loadedData.streakThreshold or 2500
+State.streakThreshold = loadedData.streakThreshold ~= nil and loadedData.streakThreshold or 10000
 
 
  
