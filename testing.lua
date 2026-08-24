@@ -2933,9 +2933,9 @@ runAutofarmAttackCycle = function()
             local playerPos = root.Position
             for _, t in ipairs(activeTargets) do
                 local dist = (t.nape.Position - playerPos).Magnitude
-                if dist <= 950 then
-                    table.insert(validTargets, t.nape)
-                end
+                --if dist <= 950 then
+                table.insert(validTargets, t.nape)
+                --end
             end
             
             table.sort(validTargets, function(a, b)
