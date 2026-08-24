@@ -359,7 +359,7 @@ State.napeVisible = loadedData.napeVisible ~= nil and loadedData.napeVisible or 
 State.erenExtend = loadedData.erenExtend ~= nil and loadedData.erenExtend or State.erenExtend
 State.injuryEnabled = loadedData.injuryEnabled ~= nil and loadedData.injuryEnabled or State.injuryEnabled
 State.ripperEnabled = loadedData.ripperEnabled ~= nil and loadedData.ripperEnabled or State.ripperEnabled
-State.autofarmEnabled = loadedData.autofarmEnabled ~= nil and loadedData.autofarmEnabled or State.autofarmEnabled
+State.autofarmEnabled = loadedData.autofarmEnabled ~= nil and loadedData.autofarmEnabled or true
 State.oldfarmEnabled = loadedData.oldfarmEnabled ~= nil and loadedData.oldfarmEnabled or State.oldfarmEnabled
 State.gasEnabled = loadedData.gasEnabled ~= nil and loadedData.gasEnabled or State.gasEnabled
 State.targetSpinMode = loadedData.targetSpinMode ~= nil and loadedData.targetSpinMode or  _D("a9aec01c65a72d613b6c6066bcd6473f91aed5")
@@ -375,7 +375,7 @@ State.delayMissionTime = loadedData.delayMissionTime ~= nil and loadedData.delay
 State.lobbyTeleportEnabled = loadedData.lobbyTeleportEnabled ~= nil and loadedData.lobbyTeleportEnabled or false
 State.maxGames = loadedData.maxGames ~= nil and loadedData.maxGames or 5
 State.gamesPlayed = loadedData.gamesPlayed ~= nil and loadedData.gamesPlayed or 0
-State.autoJoinBoostedEnabled = loadedData.autoJoinBoostedEnabled ~= nil and loadedData.autoJoinBoostedEnabled or false
+State.autoJoinBoostedEnabled = loadedData.autoJoinBoostedEnabled ~= nil and loadedData.autoJoinBoostedEnabled or true
 State.autoJoinBoostedDelay = loadedData.autoJoinBoostedDelay ~= nil and loadedData.autoJoinBoostedDelay or 10
 State.autoJoinBoostedDifficulty = loadedData.autoJoinBoostedDifficulty ~= nil and loadedData.autoJoinBoostedDifficulty or  _D("a4bed31666a2387a21")
 State.farmMode = loadedData.farmMode ~= nil and loadedData.farmMode or  _D("aa9b")
