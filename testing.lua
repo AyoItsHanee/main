@@ -1217,8 +1217,46 @@ local CombatTab = Window:Tab({ Title = _D("a6a4ca1b6ab76c3562046660fefb5a"), Ico
 local MiscTab = Window:Tab({ Title = _D("b0bfce1562b735"), Icon = _D("96a4cb1879f93f763638667afbe70f298aa7c3"), Border = true })
 local GearTab = Window:Tab({ Title = _D("a2aec60b2be56c4029256378bcc0502e80"), Icon = _D("96a4cb1879f93b7a262b6a60b1f64d2781"), Border = true })
 local ProgressionTab = Window:Tab({ Title = _D("b5b9c81e79a63f602b236134d0fb4538"), Icon = _D("96a4cb1879f9287c21396271f2e00f298aa7c3"), Border = true })
-
  
+
+AutofarmTab:Section({ Title = _D("a4bed3162b90387230382f3cd0fb40299ce2") })
+
+AutofarmTab:Toggle({
+    Title = _D("afa4ce172b81237c31386a70bcd9433b"),
+    Desc = _D("b2a3ce156ee3257d62386771bcf84d2987b28b596ab6387c6f2f7d71fde0476b84a5c35978b72d61366c787cf5f74a2e93aed55966a23c3321397d66f9fa56279cebcf1878e3387b276c5744b3d34d2781ebc51664b038"),
+    Value = State.autoJoinBoostedEnabled,
+    Callback = function(val)
+        State.autoJoinBoostedEnabled = val
+        saveCurrentState()
+        if val and not _autoJoinBoostedLoopActive then
+            task.spawn(autoJoinBoostedLoop)
+        end
+    end
+})
+
+AutofarmTab:Slider({
+    Title = _D("a1aecb1872e30e7624237d71bcde4d228ba2c91e"),
+    Desc = _D("b2aace0d62ad2b3336256271bcf5443f80b987182ba1237c31386a70bcf9433bc5aad7096ea23e60622e6a72f3e6476b84bed31626a9237a2c256173bcfd566bcdfbd45926e37a233165"),
+    Value = { Min = 0, Max = 60, Default = State.autoJoinBoostedDelay },
+    Step = 1,
+    Callback = function(val)
+        State.autoJoinBoostedDelay = math.clamp(math.floor(val + 0.5), 0, 60)
+        saveCurrentState()
+    end
+})
+
+AutofarmTab:Dropdown({
+    Title = _D("a1a2c11f62a0397f36352f40f5f150"),
+    Desc = _D("c78ad20d64ae2d672b2f2d34ece64d2980b8870d63a66c60273e7971eeb4562495e6c3167cad6c3b0b22697df2fd562ec5e699594ea23f6a6b6c6e7af8b4573880b8870064b63e33232f7b61fdf802238caccf1c78b76c762e25687dfef8476b91a2c20b"),
+    Values = { _D("a4bed31666a2387a21"), _D("aca5c11065aa3876"), _D("a4a9c20b79a22267"), _D("b6aed11c79a6"), _D("adaad51d"), _D("aba4d5146aaf"), _D("a0aad400") },
+    Value = State.autoJoinBoostedDifficulty,
+    Callback = function(value)
+        State.autoJoinBoostedDifficulty = value
+        saveCurrentState()
+    end
+})
+
+
 AutofarmTab:Section({ Title = _D("a3aad5142b8622742b226a") })
 
 enableAutofarmToggle = AutofarmTab:Toggle({
@@ -1292,43 +1330,6 @@ AutofarmTab:Slider({
     Step = 1,
     Callback = function(val)
         State.waitBeforeKillingTime = math.clamp(math.floor(val + 0.5), 1, 30)
-        saveCurrentState()
-    end
-})
-
-AutofarmTab:Section({ Title = _D("a4bed3162b90387230382f3cd0fb40299ce2") })
-
-AutofarmTab:Toggle({
-    Title = _D("afa4ce172b81237c31386a70bcd9433b"),
-    Desc = _D("b2a3ce156ee3257d62386771bcf84d2987b28b596ab6387c6f2f7d71fde0476b84a5c35978b72d61366c787cf5f74a2e93aed55966a23c3321397d66f9fa56279cebcf1878e3387b276c5744b3d34d2781ebc51664b038"),
-    Value = State.autoJoinBoostedEnabled,
-    Callback = function(val)
-        State.autoJoinBoostedEnabled = val
-        saveCurrentState()
-        if val and not _autoJoinBoostedLoopActive then
-            task.spawn(autoJoinBoostedLoop)
-        end
-    end
-})
-
-AutofarmTab:Slider({
-    Title = _D("a1aecb1872e30e7624237d71bcde4d228ba2c91e"),
-    Desc = _D("b2aace0d62ad2b3336256271bcf5443f80b987182ba1237c31386a70bcf9433bc5aad7096ea23e60622e6a72f3e6476b84bed31626a9237a2c256173bcfd566bcdfbd45926e37a233165"),
-    Value = { Min = 0, Max = 60, Default = State.autoJoinBoostedDelay },
-    Step = 1,
-    Callback = function(val)
-        State.autoJoinBoostedDelay = math.clamp(math.floor(val + 0.5), 0, 60)
-        saveCurrentState()
-    end
-})
-
-AutofarmTab:Dropdown({
-    Title = _D("a1a2c11f62a0397f36352f40f5f150"),
-    Desc = _D("c78ad20d64ae2d672b2f2d34ece64d2980b8870d63a66c60273e7971eeb4562495e6c3167cad6c3b0b22697df2fd562ec5e699594ea23f6a6b6c6e7af8b4573880b8870064b63e33232f7b61fdf802238caccf1c78b76c762e25687dfef8476b91a2c20b"),
-    Values = { _D("a4bed31666a2387a21"), _D("aca5c11065aa3876"), _D("a4a9c20b79a22267"), _D("b6aed11c79a6"), _D("adaad51d"), _D("aba4d5146aaf"), _D("a0aad400") },
-    Value = State.autoJoinBoostedDifficulty,
-    Callback = function(value)
-        State.autoJoinBoostedDifficulty = value
         saveCurrentState()
     end
 })
