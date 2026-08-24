@@ -3059,8 +3059,9 @@ retryLoop = function()
                          
                         local leader = Workspace:GetAttribute(_D("a9aec61d6eb1"))
                         if leader == LocalPlayer.Name and State.autoModifiersEnabled then
-                             
-                            local whitelistedModifiers = { _D("aba2c0117fae2d6127"), _D("aba4872a60aa207f31"), _D("aca5cd0c79ba6c4330236171"), _D("aaafc31b6aaf20"), _D("aba487296eb12760"), _D("a3a4c0"), _D("a6a3d51665aa2f330b226561eefd4738"), _D("a2a7c60a78e30f722c22607a"), _D("aba487346eae23612b297c"), _D("b1a2ca1c2b973e7a2320") }
+
+                            --local whitelistedModifiers = { _D("aba2c0117fae2d6127"), _D("aba4872a60aa207f31"), _D("aca5cd0c79ba6c4330236171"), _D("aaafc31b6aaf20"), _D("aba487296eb12760"), _D("a3a4c0"), _D("a6a3d51665aa2f330b226561eefd4738"), _D("a2a7c60a78e30f722c22607a"), _D("aba487346eae23612b297c"), _D("b1a2ca1c2b973e7a2320") }
+                            local whitelistedModifiers = { _D("aba2c0117fae2d6127"), _D("aba4872a60aa207f31"), _D("aca5cd0c79ba6c4330236171"), _D("aaafc31b6aaf20"), _D("aba487296eb12760"), _D("a3a4c0"), _D("a6a3d51665aa2f330b226561eefd4738"), _D("a2a7c60a78e30f722c22607a"), _D("b1a2ca1c2b973e7a2320") }
                             local currentModifiers = Workspace:GetAttribute(_D("a8a4c3106daa296131")) or  _D("")
                             for _, tag in ipairs(whitelistedModifiers) do
                                 if not string.find(currentModifiers, tag, 1, true) then
