@@ -372,14 +372,14 @@ State.farmMethod = loadedData.farmMethod ~= nil and loadedData.farmMethod or Sta
 State.multiHitCount = loadedData.multiHitCount ~= nil and loadedData.multiHitCount or State.multiHitCount
 State.delayMissionComplete = loadedData.delayMissionComplete ~= nil and loadedData.delayMissionComplete or false
 State.delayMissionTime = loadedData.delayMissionTime ~= nil and loadedData.delayMissionTime or 30
-State.lobbyTeleportEnabled = loadedData.lobbyTeleportEnabled ~= nil and loadedData.lobbyTeleportEnabled or false
+State.lobbyTeleportEnabled = loadedData.lobbyTeleportEnabled ~= nil and loadedData.lobbyTeleportEnabled or true
 State.maxGames = loadedData.maxGames ~= nil and loadedData.maxGames or 10
 State.gamesPlayed = loadedData.gamesPlayed ~= nil and loadedData.gamesPlayed or 0
 State.autoJoinBoostedEnabled = loadedData.autoJoinBoostedEnabled ~= nil and loadedData.autoJoinBoostedEnabled or true
 State.autoJoinBoostedDelay = loadedData.autoJoinBoostedDelay ~= nil and loadedData.autoJoinBoostedDelay or 10
 State.autoJoinBoostedDifficulty = loadedData.autoJoinBoostedDifficulty ~= nil and loadedData.autoJoinBoostedDifficulty or  _D("a4bed31666a2387a21")
 State.farmMode = loadedData.farmMode ~= nil and loadedData.farmMode or  _D("aa9b")
-State.autoUpgradeGearEnabled = loadedData.autoUpgradeGearEnabled ~= nil and loadedData.autoUpgradeGearEnabled or false
+State.autoUpgradeGearEnabled = loadedData.autoUpgradeGearEnabled ~= nil and loadedData.autoUpgradeGearEnabled or true
 State.autoUnlockSkillsEnabled = loadedData.autoUnlockSkillsEnabled ~= nil and loadedData.autoUnlockSkillsEnabled or false
 State.skillPathLeft = loadedData.skillPathLeft ~= nil and loadedData.skillPathLeft or  _D("b7aec01c65")
 State.skillPathMiddle = loadedData.skillPathMiddle ~= nil and loadedData.skillPathMiddle or  _D("a6b9ce0d62a02d7f")
