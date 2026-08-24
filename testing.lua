@@ -391,7 +391,7 @@ State.waitBeforeKillingEnabled = loadedData.waitBeforeKillingEnabled ~= nil and 
 State.waitBeforeKillingTime = loadedData.waitBeforeKillingTime ~= nil and loadedData.waitBeforeKillingTime or 5
 State.napeExtendEnabled = loadedData.napeExtendEnabled ~= nil and loadedData.napeExtendEnabled or false
 State.napeMultiplier = loadedData.napeMultiplier ~= nil and loadedData.napeMultiplier or 10
-State.dieAfterStreakEnabled = loadedData.dieAfterStreakEnabled ~= nil and loadedData.dieAfterStreakEnabled or false
+State.dieAfterStreakEnabled = loadedData.dieAfterStreakEnabled ~= nil and loadedData.dieAfterStreakEnabled or true
 State.streakThreshold = loadedData.streakThreshold ~= nil and loadedData.streakThreshold or 10000
 
 
