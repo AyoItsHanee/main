@@ -452,12 +452,13 @@ local function saveCurrentState()
     saveConfig(saveFolder, configToSave)
 end
 
+--[[
 Players.PlayerRemoving:Connect(function(player)
     if player == LocalPlayer then
         saveCurrentState()
     end
 end)
-
+]]--
  
 local WindUI                  
 local runAutofarmAttackCycle
