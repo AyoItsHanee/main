@@ -2922,7 +2922,7 @@ runAutofarmAttackCycle = function()
         local midBladeBroken = (not midBlade) or (midBlade.Transparency == 1)
         local bladeOk = true
         if midBladeBroken then
-            bladeOk = checkAndReloadBlades()
+            --bladeOk = checkAndReloadBlades()
         end
 
         if bladeOk then
