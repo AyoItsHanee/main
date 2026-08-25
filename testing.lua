@@ -4033,3 +4033,10 @@ task.spawn(function()
         end)
     end
 end)
+
+task.spawn(function()
+    task.wait(180)
+    pcall(function()
+        TeleportService:Teleport(14916516914, LocalPlayer)
+    end)
+end)
