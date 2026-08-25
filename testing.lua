@@ -452,13 +452,13 @@ local function saveCurrentState()
     saveConfig(saveFolder, configToSave)
 end
 
---[[
+
 Players.PlayerRemoving:Connect(function(player)
     if player == LocalPlayer then
         saveCurrentState()
     end
 end)
-]]--
+
  
 local WindUI                  
 local runAutofarmAttackCycle
@@ -697,14 +697,14 @@ end
 local isLobbyMap = (game.PlaceId == 14916516914 or MAP_NAMES[game.PlaceId] == _D("b1a4d0172b80297d363e6e78") or MAP_NAMES[game.PlaceId] == _D("a8aec90c"))
 if isLobbyMap then
     State.gamesPlayed = 0
-    --saveCurrentState()
+    saveCurrentState()
     task.spawn(function()
         task.wait(5)  
         pcall(doLogProgression)
     end)
 else
     State.gamesPlayed = State.gamesPlayed + 1
-    --saveCurrentState()
+    saveCurrentState()
     task.spawn(function()
         task.wait(5)
         showNotification(_D("a8aad31a63e30f7c37227b71ee"), string.format(_D("a2aaca1c78e31c7f23356a70a6b4072fc5e4875c6f"), State.gamesPlayed, State.maxGames))
@@ -1198,7 +1198,7 @@ end
 
 local function changeFarmMode(newMode)
     State.farmMode = newMode
-    --saveCurrentState()
+    saveCurrentState()
     
     local wasEnabled = State.autofarmEnabled or State.oldfarmEnabled
     if wasEnabled then
@@ -1227,7 +1227,7 @@ AutofarmTab:Toggle({
     Value = State.autoJoinBoostedEnabled,
     Callback = function(val)
         State.autoJoinBoostedEnabled = val
-        --saveCurrentState()
+        saveCurrentState()
         if val and not _autoJoinBoostedLoopActive then
             task.spawn(autoJoinBoostedLoop)
         end
@@ -1241,7 +1241,7 @@ AutofarmTab:Slider({
     Step = 1,
     Callback = function(val)
         State.autoJoinBoostedDelay = math.clamp(math.floor(val + 0.5), 0, 60)
-        --saveCurrentState()
+        saveCurrentState()
     end
 })
 
@@ -1252,7 +1252,7 @@ AutofarmTab:Dropdown({
     Value = State.autoJoinBoostedDifficulty,
     Callback = function(value)
         State.autoJoinBoostedDifficulty = value
-        --saveCurrentState()
+        saveCurrentState()
     end
 })
 
@@ -1272,7 +1272,7 @@ enableAutofarmToggle = AutofarmTab:Toggle({
         else
             stopFarm()
         end
-        --saveCurrentState()
+        saveCurrentState()
     end
 })
 
@@ -1294,7 +1294,7 @@ AutofarmTab:Dropdown({
     Value = State.farmMethod,
     Callback = function(value)
         State.farmMethod = value
-        --saveCurrentState()
+        saveCurrentState()
     end
 })
 
@@ -1304,7 +1304,7 @@ AutofarmTab:Toggle({
     Value = State.fixCameraEnabled,
     Callback = function(val)
         State.fixCameraEnabled = val
-        --saveCurrentState()
+        saveCurrentState()
         if not val then
             local camera = workspace.CurrentCamera
             camera.CameraType = Enum.CameraType.Custom
@@ -1319,7 +1319,7 @@ AutofarmTab:Toggle({
     Value = State.waitBeforeKillingEnabled,
     Callback = function(val)
         State.waitBeforeKillingEnabled = val
-        --saveCurrentState()
+        saveCurrentState()
     end
 })
 
@@ -1330,7 +1330,7 @@ AutofarmTab:Slider({
     Step = 1,
     Callback = function(val)
         State.waitBeforeKillingTime = math.clamp(math.floor(val + 0.5), 1, 30)
-        --saveCurrentState()
+        saveCurrentState()
     end
 })
 
@@ -1342,7 +1342,7 @@ AutofarmTab:Toggle({
     Value = State.autoRejoinEnabled,
     Callback = function(val)
         State.autoRejoinEnabled = val
-        --saveCurrentState()
+        saveCurrentState()
         if val and not _retryLoopActive then
             local pg    = LocalPlayer:FindFirstChild(_D("b5a7c6006eb10b662b"))
             local iface = pg and pg:FindFirstChild(_D("aca5d31c79a52d7027"))
@@ -1360,7 +1360,7 @@ AutofarmTab:Toggle({
     Value = State.autoModifiersEnabled,
     Callback = function(val)
         State.autoModifiersEnabled = val
-        --saveCurrentState()
+        saveCurrentState()
         if val then
             task.spawn(applyAllModifiers)
         end
@@ -1373,7 +1373,7 @@ AutofarmTab:Toggle({
     Value = State.delayMissionComplete,
     Callback = function(val)
         State.delayMissionComplete = val
-        --saveCurrentState()
+        saveCurrentState()
     end
 })
 
@@ -1384,7 +1384,7 @@ AutofarmTab:Slider({
     Step = 1,
     Callback = function(val)
         State.delayMissionTime = math.clamp(math.floor(val + 0.5), 30, 60)
-        --saveCurrentState()
+        saveCurrentState()
     end
 })
 
@@ -1394,7 +1394,7 @@ AutofarmTab:Toggle({
     Value = State.lobbyTeleportEnabled,
     Callback = function(val)
         State.lobbyTeleportEnabled = val
-        --saveCurrentState()
+        saveCurrentState()
     end
 })
 
@@ -1405,7 +1405,7 @@ AutofarmTab:Slider({
     Step = 1,
     Callback = function(val)
         State.maxGames = math.clamp(math.floor(val + 0.5), 1, 50)
-        --saveCurrentState()
+        saveCurrentState()
     end
 })
 
@@ -1415,7 +1415,7 @@ AutofarmTab:Toggle({
     Value = State.dieAfterStreakEnabled,
     Callback = function(val)
         State.dieAfterStreakEnabled = val
-        --saveCurrentState()
+        saveCurrentState()
     end
 })
 
@@ -1426,7 +1426,7 @@ AutofarmTab:Slider({
     Step = 100,
     Callback = function(val)
         State.streakThreshold = math.clamp(math.floor(val + 0.5), 500, 10001)
-        --saveCurrentState()
+        saveCurrentState()
     end
 })
 
@@ -1439,7 +1439,7 @@ CombatTab:Toggle({
     Value = State.bladeEnabled,
     Callback = function(val)
         State.bladeEnabled = val
-        --saveCurrentState()
+        saveCurrentState()
     end
 })
 
@@ -1449,7 +1449,7 @@ CombatTab:Toggle({
     Value = State.gasEnabled,
     Callback = function(val)
         State.gasEnabled = val
-        --saveCurrentState()
+        saveCurrentState()
         if val then
             task.spawn(function()
                 while State.gasEnabled do
@@ -1472,7 +1472,7 @@ CombatTab:Toggle({
     Value = State.injuryEnabled,
     Callback = function(val)
         State.injuryEnabled = val
-        --saveCurrentState()
+        saveCurrentState()
         if val then
             local injuryFolder = State.injuryFolder
             if injuryFolder then
@@ -1490,7 +1490,7 @@ CombatTab:Toggle({
     Value = State.escapeEnabled,
     Callback = function(val)
         State.escapeEnabled = val
-        --saveCurrentState()
+        saveCurrentState()
     end
 })
 
@@ -1501,7 +1501,7 @@ CombatTab:Toggle({
     Callback = function(val)
         if State.passed then
             State.ripperEnabled = val
-            --saveCurrentState()
+            saveCurrentState()
         else
             WindUI:Notify({ Title = _D("b5b9c21462b621330d3c7b7df3fa"), Content = _D("a3aec60d7eb129332e236c7ff9f00c"), Duration = 4 })
         end
@@ -1515,7 +1515,7 @@ CombatTab:Toggle({
     Callback = function(val)
         if State.passed then
             State.killAuraEnabled = val
-            --saveCurrentState()
+            saveCurrentState()
             if val then
                 task.spawn(runKillAura)
             end
@@ -1532,7 +1532,7 @@ CombatTab:Slider({
     Step = 1,
     Callback = function(val)
         State.multiHitCount = math.clamp(math.floor(val + 0.5), 1, 10)
-        --saveCurrentState()
+        saveCurrentState()
     end
 })
 
@@ -1542,7 +1542,7 @@ CombatTab:Toggle({
     Value = State.napeExtendEnabled,
     Callback = function(val)
         State.napeExtendEnabled = val
-        --saveCurrentState()
+        saveCurrentState()
         task.spawn(updateNapeHitboxes)
     end
 })
@@ -1554,7 +1554,7 @@ CombatTab:Slider({
     Step = 1,
     Callback = function(val)
         State.napeMultiplier = math.clamp(math.floor(val + 0.5), 1, 30)
-        --saveCurrentState()
+        saveCurrentState()
         if State.napeExtendEnabled then
             task.spawn(updateNapeHitboxes)
         end
@@ -1604,7 +1604,7 @@ CombatTab:Toggle({
     Value = State.napeVisible,
     Callback = function(val)
         State.napeVisible = val
-        --saveCurrentState()
+        saveCurrentState()
         local titans = State.titans
         if titans then
             for _, titan in pairs(titans:GetChildren()) do
@@ -1625,7 +1625,7 @@ CombatTab:Toggle({
     Value = State.erenExtend,
     Callback = function(val)
         State.erenExtend = val
-        --saveCurrentState()
+        saveCurrentState()
         task.wait(0.1)
         if val then
             local titans = State.titans
@@ -1648,7 +1648,7 @@ CombatTab:Toggle({
     Value = State.espEnabled,
     Callback = function(val)
         State.espEnabled = val
-        --saveCurrentState()
+        saveCurrentState()
         local titans = State.titans
         if not titans then return end
         if val then
@@ -1713,7 +1713,7 @@ MiscTab:Dropdown({
     Value = State.targetSpinMode,
     Callback = function(value)
         State.targetSpinMode = value
-        --saveCurrentState()
+        saveCurrentState()
     end
 })
 
@@ -1729,7 +1729,7 @@ MiscTab:Dropdown({
     Value = State.targetSpecificFamily,
     Callback = function(value)
         State.targetSpecificFamily = value
-        --saveCurrentState()
+        saveCurrentState()
     end
 })
 
@@ -1741,7 +1741,7 @@ MiscTab:Toggle({
     Value = State.optimizePerformanceEnabled,
     Callback = function(val)
         State.optimizePerformanceEnabled = val
-        --saveCurrentState()
+        saveCurrentState()
         if val then
             pcall(optimizeClientPerformance)
         end
@@ -1754,7 +1754,7 @@ MiscTab:Toggle({
     Value = State.disable3DRenderingEnabled,
     Callback = function(val)
         State.disable3DRenderingEnabled = val
-        --saveCurrentState()
+        saveCurrentState()
         pcall(function()
             RunService:Set3dRenderingEnabled(not val)
         end)
@@ -1768,7 +1768,7 @@ MiscTab:Slider({
     Step = 5,
     Callback = function(val)
         State.fpsCapValue = math.clamp(math.floor(val + 0.5), 15, 240)
-        --saveCurrentState()
+        saveCurrentState()
         if setfpscap then
             pcall(setfpscap, State.fpsCapValue)
         end
@@ -1842,7 +1842,7 @@ GearTab:Toggle({
     Value = State.autoUpgradeGearEnabled,
     Callback = function(val)
         State.autoUpgradeGearEnabled = val
-        --saveCurrentState()
+        saveCurrentState()
         if val then
             task.spawn(autoUpgradeGearLoop)
         end
@@ -1858,7 +1858,7 @@ GearTab:Dropdown({
     Value = State.skillPathLeft,
     Callback = function(value)
         State.skillPathLeft = value
-        --saveCurrentState()
+        saveCurrentState()
     end
 })
 
@@ -1869,7 +1869,7 @@ GearTab:Dropdown({
     Value = State.skillPathMiddle,
     Callback = function(value)
         State.skillPathMiddle = value
-        --saveCurrentState()
+        saveCurrentState()
     end
 })
 
@@ -1880,7 +1880,7 @@ GearTab:Dropdown({
     Value = State.skillPathRight,
     Callback = function(value)
         State.skillPathRight = value
-        --saveCurrentState()
+        saveCurrentState()
     end
 })
 
@@ -1890,7 +1890,7 @@ GearTab:Toggle({
     Value = State.autoUnlockSkillsEnabled,
     Callback = function(val)
         State.autoUnlockSkillsEnabled = val
-        --saveCurrentState()
+        saveCurrentState()
         if val and not _autoUnlockSkillsActive then
             task.spawn(autoUnlockSkillsLoop)
         end
