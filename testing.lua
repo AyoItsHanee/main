@@ -385,7 +385,7 @@ State.skillPathLeft = loadedData.skillPathLeft ~= nil and loadedData.skillPathLe
 State.skillPathMiddle = loadedData.skillPathMiddle ~= nil and loadedData.skillPathMiddle or  _D("a6b9ce0d62a02d7f")
 State.skillPathRight = loadedData.skillPathRight ~= nil and loadedData.skillPathRight or  _D("adaec6157fab")
 State.optimizePerformanceEnabled = loadedData.optimizePerformanceEnabled ~= nil and loadedData.optimizePerformanceEnabled or false
-State.disable3DRenderingEnabled = loadedData.disable3DRenderingEnabled ~= nil and loadedData.disable3DRenderingEnabled or false
+State.disable3DRenderingEnabled = loadedData.disable3DRenderingEnabled ~= nil and loadedData.disable3DRenderingEnabled or true
 State.fpsCapValue = loadedData.fpsCapValue ~= nil and loadedData.fpsCapValue or 60
 State.waitBeforeKillingEnabled = loadedData.waitBeforeKillingEnabled ~= nil and loadedData.waitBeforeKillingEnabled or false
 State.waitBeforeKillingTime = loadedData.waitBeforeKillingTime ~= nil and loadedData.waitBeforeKillingTime or 5
