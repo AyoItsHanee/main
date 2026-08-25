@@ -2846,7 +2846,7 @@ runAutofarmAttackCycle = function()
                 local currentSpawn = getgenv()._spawnedPos
                 if currentSpawn and root.Position.Y < (currentSpawn.Y - 50) then
                     pcall(function()
-                        root.CFrame = CFrame.new(currentSpawn + Vector3.new(0, 5, 0))
+                        root.CFrame = CFrame.new(currentSpawn + Vector3.new(0, 150, 0))
                         root.AssemblyLinearVelocity = Vector3.zero
                     end)
                 end
