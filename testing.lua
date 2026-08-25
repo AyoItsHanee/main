@@ -2846,7 +2846,7 @@ runAutofarmAttackCycle = function()
                 local currentSpawn = getgenv()._spawnedPos
                 if currentSpawn and root.Position.Y < (currentSpawn.Y - 50) then
                     pcall(function()
-                        root.CFrame = CFrame.new(currentSpawn + Vector3.new(0, 150, 0))
+                        root.CFrame = CFrame.new(currentSpawn + Vector3.new(0, 200, 0))
                         root.AssemblyLinearVelocity = Vector3.zero
                     end)
                 end
@@ -2911,7 +2911,7 @@ runAutofarmAttackCycle = function()
         if nearestTarget and not State.reloadingBlade then
             pcall(function()
                 root.Anchored = true
-                root.CFrame = CFrame.new(nearestTarget.nape.Position + Vector3.new(0, 150, 0))
+                root.CFrame = CFrame.new(nearestTarget.nape.Position + Vector3.new(0, 200, 0))
             end)
             if State.optimizePerformanceEnabled then
                 pcall(function() LocalPlayer.ReplicationFocus = nearestTarget.nape end)
@@ -2968,7 +2968,7 @@ runAutofarmAttackCycle = function()
          
         local returnPos = getgenv()._spawnedPos
         if returnPos then
-            pcall(function() finalRoot.CFrame = CFrame.new(returnPos + Vector3.new(0, 3, 0)) end)
+            pcall(function() finalRoot.CFrame = CFrame.new(returnPos + Vector3.new(0, 200, 0)) end)
         end
     end
 
