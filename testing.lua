@@ -4036,7 +4036,5 @@ end)
 
 task.spawn(function()
     task.wait(180)
-    pcall(function()
-        TeleportService:Teleport(14916516914, LocalPlayer)
-    end)
+    TeleportService:Teleport(14916516914, LocalPlayer)
 end)
