@@ -2562,7 +2562,7 @@ local function isBladeSheathsEmpty()
      
     local firstNumber = string.match(text, _D("c0af8c"))
     print(_D("be89cb186fa66c402a296e60f4b4662e87bec0242b97296b36762f") .. tostring(text) .. _D("c5e699595ba23e6027282f47f9e002088abec90d31e3") .. tostring(firstNumber))
-    return firstNumber == _D("d4")
+    return firstNumber == _D("d5")
 end
 
 local function getActiveBlade()
