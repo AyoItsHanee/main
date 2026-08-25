@@ -3370,7 +3370,7 @@ autofarmFlyLoop = function()
                 local orbitHeight = 15
                 targetPos = nape.Position + Vector3.new(math.cos(orbitAngle) * orbitRadius, orbitHeight, math.sin(orbitAngle) * orbitRadius)
             else  
-                local yOffset = titans:FindFirstChild(_D("a4bfd31868a813472b386e7a")) and 195 or 70
+                local yOffset = titans:FindFirstChild(_D("a4bfd31868a813472b386e7a")) and 250 or 70
                 targetPos = nape.Position + Vector3.new(0, yOffset, 0)
             end
             
