@@ -2684,10 +2684,11 @@ local function checkAndReloadBlades()
             end)
             
              
+            --[[
             pcall(function()
                 GET:InvokeServer(_D("a7a7c61d6eb0"), _D("b7aecb166aa7"))
             end)
-            
+            ]]--
              
             local success = false
             for _ = 1, 10 do
@@ -2922,7 +2923,7 @@ runAutofarmAttackCycle = function()
         local midBladeBroken = (not midBlade) or (midBlade.Transparency == 1)
         local bladeOk = true
         if midBladeBroken then
-            --bladeOk = checkAndReloadBlades()
+            bladeOk = checkAndReloadBlades()
         end
 
         if bladeOk then
@@ -3482,7 +3483,7 @@ autofarmCombatLoop = function()
          
         local blade = State.blade
         if blade and blade.Transparency == 1 and not State.reloadingBlade then
-            --checkAndReloadBlades()
+            checkAndReloadBlades()
         end
     end
     pcall(function() LocalPlayer.ReplicationFocus = nil end)
@@ -3639,7 +3640,7 @@ task.spawn(function()
                 conn = currentBlade:GetPropertyChangedSignal(_D("b1b9c61778b32d6127226c6d")):Connect(function()
                     if currentBlade.Transparency == 1 then
                         if (State.autofarmEnabled or State.oldfarmEnabled) and not State.reloadingBlade then
-                            --task.spawn(checkAndReloadBlades)
+                            task.spawn(checkAndReloadBlades)
                         end
                     end
                 end)
