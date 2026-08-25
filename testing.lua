@@ -4036,9 +4036,9 @@ end)
 
 task.spawn(function()
     if game.PlaceId == 14916516914 then
+        print("Currently In Lobby")
+    else
         task.wait(180)
         TeleportService:Teleport(14916516914, LocalPlayer)
-    else
-        print("Currently In Lobby")
     end
 end)
