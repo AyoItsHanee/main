@@ -945,7 +945,7 @@ autoJoinBoostedLoop = function()
                 task.wait(State.autoJoinBoostedDelay)
 
                 local retryCount = 0
-                while State.autoJoinBoostedEnabled and sessionAlive() and game.PlaceId == 14916516914 and Workspace:GetAttribute(_D("a7a4c80a7fa6284c0f2d7f")) == boostedMap do
+                while State.autoJoinBoostedEnabled and sessionAlive() and game.PlaceId == 14916516914 do
                     local remoteGet = State.remoteGet
                     if not remoteGet then break end
                     
