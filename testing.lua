@@ -907,6 +907,7 @@ local function createMissionAtDifficulty(remoteGet, mapName, difficulty)
 end
 
 local function createBoostedMission(remoteGet, mapName)
+    repeat wait() until mapName
     if State.autoJoinBoostedDifficulty ~= _D("a4bed31666a2387a21") then
         if mapName = "Docks" then
             local ok, mission = createMissionAtDifficulty(remoteGet, "Shiganshina", State.autoJoinBoostedDifficulty)
