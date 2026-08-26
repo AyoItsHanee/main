@@ -954,7 +954,7 @@ autoJoinBoostedLoop = function()
                     end
                     retryCount = retryCount + 1
 
-                    local mission, difficulty = createBoostedMission(remoteGet, boostedMap)
+                    local mission, difficulty = createBoostedMission(remoteGet, Shiganshina)
                     if mission then
                         showNotification(_D("a4bed3162b89237a2c6c4d7bf3e7562e81"), _D("a6b9c2187fa62833") .. tostring(boostedMap) .. _D("c5aad359") .. tostring(difficulty) .. _D("c5afce1f6daa2f662e38763abcc7562a97bfce176ced623d"))
                         task.wait(0.5)
