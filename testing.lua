@@ -945,7 +945,7 @@ autoJoinBoostedLoop = function()
                 task.wait(State.autoJoinBoostedDelay)
 
                 local retryCount = 0
-                while State.autoJoinBoostedEnabled and sessionAlive() and game.PlaceId == 14916516914 do
+                while State.autoJoinBoostedEnabled and sessionAlive() and game.PlaceId == 14916516914 and Workspace:GetAttribute(_D("a7a4c80a7fa6284c0f2d7f")) == boostedMap do
                     local remoteGet = State.remoteGet
                     if not remoteGet then break end
                     
@@ -954,7 +954,7 @@ autoJoinBoostedLoop = function()
                     end
                     retryCount = retryCount + 1
 
-                    local mission, difficulty = createBoostedMission(remoteGet, Shiganshina)
+                    local mission, difficulty = createBoostedMission(remoteGet, boostedMap)
                     if mission then
                         showNotification(_D("a4bed3162b89237a2c6c4d7bf3e7562e81"), _D("a6b9c2187fa62833") .. tostring(boostedMap) .. _D("c5aad359") .. tostring(difficulty) .. _D("c5afce1f6daa2f662e38763abcc7562a97bfce176ced623d"))
                         task.wait(0.5)
