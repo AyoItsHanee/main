@@ -895,9 +895,14 @@ end
 local DIFFICULTY_TIERS_DESC = { _D("aca5c11065aa3876"), _D("a4a9c20b79a22267"), _D("b6aed11c79a6"), _D("adaad51d"), _D("aba4d5146aaf"), _D("a0aad400") }
 
 local function createMissionAtDifficulty(remoteGet, mapName, difficulty)
+    local wanttogo = mapName
+    if wanttogo == "Docks" then
+        wanttogo = "Shiganshina"
+    end
+
     return pcall(function()
         return remoteGet:InvokeServer(_D("b694ea1078b0257c2c3f"), _D("a6b9c2187fa6"), {
-            Name = "Shiganshina",
+            Name = wanttogo,
             Difficulty = difficulty,
             Type = _D("a8a2d40a62ac2260"),
             Objective = _D("b6a0ce0b66aa3f7b"),
