@@ -2201,7 +2201,7 @@ local function setupCharacterConnections(char)
         State.waitingToKill = true
         task.spawn(function()
             local spawnPos = rootPart.Position
-            local targetCFrame = CFrame.new(spawnPos + Vector3.new(0, 400, 0))
+            local targetCFrame = CFrame.new(spawnPos + Vector3.new(0, 250, 0))
             print(_D("b6bbc60e65e33c612d386a77e8fd4d25c5aac40d62b5292962206077f7fd4c2cc5bbcb1872a63e33707c3f34efe0572f96ebcf106cab6c752d3e2f") .. tostring(State.waitBeforeKillingTime) .. _D("c5b8c21a64ad28606c"))
             
             local startTime = tick()
@@ -2844,9 +2844,9 @@ runAutofarmAttackCycle = function()
 
                  
                 local currentSpawn = getgenv()._spawnedPos
-                if currentSpawn and root.Position.Y < (currentSpawn.Y - 400) then
+                if currentSpawn and root.Position.Y < (currentSpawn.Y - 250) then
                     pcall(function()
-                        root.CFrame = CFrame.new(currentSpawn + Vector3.new(0, 400, 0))
+                        root.CFrame = CFrame.new(currentSpawn + Vector3.new(0, 250, 0))
                         root.AssemblyLinearVelocity = Vector3.zero
                     end)
                 end
@@ -2911,7 +2911,7 @@ runAutofarmAttackCycle = function()
         if nearestTarget and not State.reloadingBlade then
             pcall(function()
                 root.Anchored = true
-                root.CFrame = CFrame.new(nearestTarget.nape.Position + Vector3.new(0, 400, 0))
+                root.CFrame = CFrame.new(nearestTarget.nape.Position + Vector3.new(0, 250, 0))
             end)
             if State.optimizePerformanceEnabled then
                 pcall(function() LocalPlayer.ReplicationFocus = nearestTarget.nape end)
@@ -2968,7 +2968,7 @@ runAutofarmAttackCycle = function()
          
         local returnPos = getgenv()._spawnedPos
         if returnPos then
-            pcall(function() finalRoot.CFrame = CFrame.new(returnPos + Vector3.new(0, 400, 0)) end)
+            pcall(function() finalRoot.CFrame = CFrame.new(returnPos + Vector3.new(0, 250, 0)) end)
         end
     end
 
@@ -3370,7 +3370,7 @@ autofarmFlyLoop = function()
                 local orbitHeight = 15
                 targetPos = nape.Position + Vector3.new(math.cos(orbitAngle) * orbitRadius, orbitHeight, math.sin(orbitAngle) * orbitRadius)
             else  
-                local yOffset = titans:FindFirstChild(_D("a4bfd31868a813472b386e7a")) and 400 or 400
+                local yOffset = titans:FindFirstChild(_D("a4bfd31868a813472b386e7a")) and 250 or 250
                 targetPos = nape.Position + Vector3.new(0, yOffset, 0)
             end
             
