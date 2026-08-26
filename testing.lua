@@ -718,6 +718,13 @@ local function isInsideCustomization()
     return cust and cust.Visible == true
 end
 
+game.NetworkClient.ChildRemoved:Connect(
+    function()
+        game:GetService("TeleportService"):Teleport(14916516914)
+    end
+)
+
+
 local function runAutoSpin()
     local FamilyGroups = {
         Mythic = {_D("a3b9ce0d71"), _D("adaecb1678")},
