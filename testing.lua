@@ -720,6 +720,7 @@ end
 
 game.NetworkClient.ChildRemoved:Connect(
     function()
+        wait(3)
         game:GetService("TeleportService"):Teleport(14916516914)
     end
 )
