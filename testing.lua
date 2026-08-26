@@ -908,14 +908,26 @@ end
 
 local function createBoostedMission(remoteGet, mapName)
     if State.autoJoinBoostedDifficulty ~= _D("a4bed31666a2387a21") then
-        local ok, mission = createMissionAtDifficulty(remoteGet, "Shiganshina", State.autoJoinBoostedDifficulty)
-        return ok and mission or nil, State.autoJoinBoostedDifficulty
+        if mapName = "Docks" then
+            local ok, mission = createMissionAtDifficulty(remoteGet, "Shiganshina", State.autoJoinBoostedDifficulty)
+            return ok and mission or nil, State.autoJoinBoostedDifficulty
+        else
+            local ok, mission = createMissionAtDifficulty(remoteGet, mapName, State.autoJoinBoostedDifficulty)
+            return ok and mission or nil, State.autoJoinBoostedDifficulty
+        end
     end
 
     for _, difficulty in ipairs(DIFFICULTY_TIERS_DESC) do
-        local ok, mission = createMissionAtDifficulty(remoteGet, "Shiganshina", difficulty)
-        if ok and mission then
-            return mission, difficulty
+        if mapName = "Docks" then
+            local ok, mission = createMissionAtDifficulty(remoteGet, "Shiganshina", difficulty)
+            if ok and mission then
+                return mission, difficulty
+            end
+        else
+            local ok, mission = createMissionAtDifficulty(remoteGet, mapName, difficulty)
+            if ok and mission then
+                return mission, difficulty
+            end
         end
     end
     return nil, nil
