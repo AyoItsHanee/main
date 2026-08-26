@@ -907,28 +907,15 @@ local function createMissionAtDifficulty(remoteGet, mapName, difficulty)
 end
 
 local function createBoostedMission(remoteGet, mapName)
-    repeat wait() until mapName
     if State.autoJoinBoostedDifficulty ~= _D("a4bed31666a2387a21") then
-        if mapName = "Docks" then
-            local ok, mission = createMissionAtDifficulty(remoteGet, "Shiganshina", State.autoJoinBoostedDifficulty)
-            return ok and mission or nil, State.autoJoinBoostedDifficulty
-        else
-            local ok, mission = createMissionAtDifficulty(remoteGet, mapName, State.autoJoinBoostedDifficulty)
-            return ok and mission or nil, State.autoJoinBoostedDifficulty
-        end
+        local ok, mission = createMissionAtDifficulty(remoteGet, mapName, State.autoJoinBoostedDifficulty)
+        return ok and mission or nil, State.autoJoinBoostedDifficulty
     end
 
     for _, difficulty in ipairs(DIFFICULTY_TIERS_DESC) do
-        if mapName = "Docks" then
-            local ok, mission = createMissionAtDifficulty(remoteGet, "Shiganshina", difficulty)
-            if ok and mission then
-                return mission, difficulty
-            end
-        else
-            local ok, mission = createMissionAtDifficulty(remoteGet, mapName, difficulty)
-            if ok and mission then
-                return mission, difficulty
-            end
+        local ok, mission = createMissionAtDifficulty(remoteGet, mapName, difficulty)
+        if ok and mission then
+            return mission, difficulty
         end
     end
     return nil, nil
@@ -967,7 +954,12 @@ autoJoinBoostedLoop = function()
                     end
                     retryCount = retryCount + 1
 
-                    local mission, difficulty = createBoostedMission(remoteGet, boostedMap)
+                    if boostedMap = "Docks" then
+                        local mission, difficulty = createBoostedMission(remoteGet, "Shiganshina")
+                    else
+                        local mission, difficulty = createBoostedMission(remoteGet, boostedMap)
+                    end
+
                     if mission then
                         showNotification(_D("a4bed3162b89237a2c6c4d7bf3e7562e81"), _D("a6b9c2187fa62833") .. tostring(boostedMap) .. _D("c5aad359") .. tostring(difficulty) .. _D("c5afce1f6daa2f662e38763abcc7562a97bfce176ced623d"))
                         task.wait(0.5)
