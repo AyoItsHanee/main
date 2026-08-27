@@ -1,6 +1,6 @@
 -- this was processed by Luaxom at https://discord.gg/Sps39CydcZ
 -- Obfuscated by Kairsh Studio
-repeat wait() until game.IsLoaded()
+repeat wait() until game:IsLoaded()
 print("Game is Loaded!")
 
 if hanee then
