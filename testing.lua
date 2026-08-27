@@ -1,5 +1,29 @@
 -- this was processed by Luaxom at https://discord.gg/Sps39CydcZ
 -- Obfuscated by Kairsh Studio
+repeat wait() until game.IsLoaded()
+print("Game is Loaded!")
+
+if hanee then
+    print("Script is already running!")
+    return
+end
+
+getgenv().hanee = true
+
+queueteleport = (syn and syn.queue_on_teleport) or queue_on_teleport or (fluxus and fluxus.queue_on_teleport) or (delta and delta.queue_on_teleport)
+local TeleportCheck = false
+game:GetService("Players").LocalPlayer.OnTeleport:Connect(
+    function(State)
+        if (not TeleportCheck) and queueteleport then
+            TeleportCheck = true
+            queueteleport(
+                "loadstring(game:HttpGet('https://raw.githubusercontent.com/AyoItsHanee/main/main/testing.lua'))() getgenv().hanee = false"
+            )
+        end
+    end
+)
+
+
 local function _isGenuine(fn)
     if type(fn) ~= "function" then return false end
     local ok, isC = pcall(function() return iscclosure and iscclosure(fn) end)
