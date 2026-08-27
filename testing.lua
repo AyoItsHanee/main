@@ -1,5 +1,5 @@
 -- this was processed by Luaxom at https://discord.gg/Sps39CydcZ
--- Obfuscated by Kairsh Studio
+-- Obfuscated by Kairsh Studioo
 repeat wait() until game:IsLoaded()
 print("Game is Loaded!")
 
