@@ -41,7 +41,7 @@ game.NetworkClient.ChildRemoved:Connect(
 		elseif formugen and KeepSC then
             if (not TeleportCheck) and queueteleport then
 			    TeleportCheck = true
-			    queueteleport("loadstring(game:HttpGet('https://raw.githubusercontent.com/AyoItsHanee/main/main/wfps.lua'))() getgenv().hanee = false getgenv().formugen = false")
+			    queueteleport("loadstring(game:HttpGet('https://raw.githubusercontent.com/AyoItsHanee/main/main/wfps.lua'))() pcall(function() getgenv().hanee = false end) pcall(function() getgenv().formugen = false end)")
 			end
         else
 			if (not TeleportCheck) and queueteleport then	

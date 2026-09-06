@@ -49,7 +49,7 @@ getgenv().hanee = true
 			elseif itstimeformugen and KeepSC then
 				if (not TeleportCheck) and queueteleport then
 					TeleportCheck = true
-					queueteleport("loadstring(game:HttpGet('https://raw.githubusercontent.com/AyoItsHanee/main/main/mugen.lua'))() getgenv().hanee = false getgenv().formugen = true")
+					queueteleport("loadstring(game:HttpGet('https://raw.githubusercontent.com/AyoItsHanee/main/main/mugen.lua'))() pcall(function() getgenv().hanee = false end) pcall(function() getgenv().formugen = true end)")
 				end
 			else
 				if (not TeleportCheck) and queueteleport then	
