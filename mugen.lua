@@ -13,6 +13,7 @@ if formugen then
     return
 end
 getgenv().hanee = true
+getgenv().formugen
 local spawn, wait = task.spawn, task.wait
 local bossrun = true
 local KeepSC = true
