@@ -530,8 +530,6 @@ end)
 				end
 			end
 
-			wait(2)
-
 			local Goal = {}
 
 			-- Function to teleport to specific paths
@@ -639,6 +637,10 @@ end)
                     wait()
                 end
             end
+
+			spawn(mugensystem)
+
+			wait(2)
             
             spawn(function()
                 while task.wait() do
@@ -650,9 +652,6 @@ end)
                     wait()
                 end
             end)
-
-			spawn(mugensystem)
-	
 			wait()
 			RemoveDMG()
 			wait()
