@@ -2721,11 +2721,11 @@ local function checkAndReloadBlades()
             end)
             
              
-            --[[
+            
             pcall(function()
                 GET:InvokeServer(_D("a7a7c61d6eb0"), _D("b7aecb166aa7"))
             end)
-            ]]--
+            
              
             local success = false
             for _ = 1, 10 do
